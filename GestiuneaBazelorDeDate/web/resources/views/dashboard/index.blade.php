@@ -189,7 +189,7 @@
             </div>
 
             <div class="mt-4 space-y-3.5 text-xs">
-                @forelse($recentActivity as $act)
+                @forelse($recentActivities as $act)
                 <div class="flex items-start gap-2.5 pb-2.5 border-b border-darkbg-border/60 last:border-0 last:pb-0">
                     <div class="w-2 h-2 rounded-full bg-indigo-500 mt-1.5 shrink-0"></div>
                     <div class="flex-1">
