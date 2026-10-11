@@ -19,7 +19,7 @@ class DatabaseIntegrityTest extends TestCase
     public function test_project_cascade_delete_removes_tasks_and_comments(): void
     {
         $role = Role::firstOrCreate(['slug' => 'admin'], ['name' => 'Admin']);
-        $user = User::firstOrCreate(['email' => 'integrity-tester@linearflow.local'], [
+        $user = User::firstOrCreate(['email' => 'integrity-tester@workflow.local'], [
             'name' => 'Integrity Tester',
             'password' => bcrypt('secret123'),
             'role_id' => $role->id,

@@ -1,8 +1,8 @@
 {
-    "name": "stefanutc1/linear-flow",
+    "name": "stefanutc1/gbd-web",
     "type": "project",
-    "description": "Project & Workflow Management System - Platforma Web Stil Linear/Jira construita cu Laravel, MySQL, Blade si Tailwind CSS",
-    "keywords": ["laravel", "framework", "project-management", "workflow", "kanban", "linear", "jira"],
+    "description": "Project & Workflow Management System - Platforma Web construita cu Laravel, MySQL, Blade si Tailwind CSS",
+    "keywords": ["laravel", "framework", "project-management", "workflow", "kanban", "mysql"],
     "license": "MIT",
     "require": {
         "php": "^8.2",

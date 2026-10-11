@@ -3,12 +3,12 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: linearflow-mysql
+    container_name: gbd-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: workflow_management
-      MYSQL_USER: linearflow
+      MYSQL_USER: gbd_user
       MYSQL_PASSWORD: secretpassword
     ports:
       - "3306:3306"
@@ -20,13 +20,13 @@ services:
       timeout: 5s
       retries: 10
     networks:
-      - linearflow-network
+      - gbd-network
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: linearflow-app
+    container_name: gbd-app
     restart: unless-stopped
     depends_on:
       mysql:
@@ -34,7 +34,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      APP_NAME: "LinearFlow GBD"
+      APP_NAME: "Workflow Management"
       APP_ENV: local
       APP_KEY: "base64:7VlAUpF5x9aK0xM+tQY1R3w8xV3F6mZ1o9Qx2L7n8vQ="
       APP_DEBUG: "true"
@@ -53,12 +53,12 @@ services:
              php artisan db:seed --force &&
              php artisan serve --host=0.0.0.0 --port=8000"
     networks:
-      - linearflow-network
+      - gbd-network
 
 volumes:
   mysql_data:
     driver: local
 
 networks:
-  linearflow-network:
+  gbd-network:
     driver: bridge

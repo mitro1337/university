@@ -78,7 +78,7 @@ jobs:
         run: |
           cp -r "$GITHUB_WORKSPACE/ProgramareWeb/Laborator/Laborator1/"* "$GITHUB_WORKSPACE/_site/programare-web/"
 
-      - name: Deploy GBD Web (LinearFlow Workflow & Project Management)
+      - name: Deploy GBD Web (Workflow & Project Management)
         run: |
           cp -r "$GITHUB_WORKSPACE/GestiuneaBazelorDeDate/web/demo/"* "$GITHUB_WORKSPACE/_site/gbd/"
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Înregistrare Cont - LinearFlow</title>
+    <title>Înregistrare Cont - Project & Workflow Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
             </div>
-            <h1 class="text-2xl font-bold tracking-tight text-white">Linear<span class="text-indigo-400">Flow</span></h1>
+            <h1 class="text-2xl font-bold tracking-tight text-white">Project &amp; Workflow Management</h1>
             <p class="text-xs text-slate-400 mt-1">Înregistrare Utilizator Nou în Echipă</p>
         </div>
 
@@ -78,7 +78,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1.5">Email Corporativ*</label>
-                    <input type="email" name="email" value="{{ old('email') }}" required placeholder="ex: diana@linearflow.ro"
+                    <input type="email" name="email" value="{{ old('email') }}" required placeholder="ex: diana@example.com"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
                 </div>
 

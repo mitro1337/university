@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         // 2. Utilizatori
         $admin = User::create([
             'name' => 'Ştefan Administrator',
-            'email' => 'admin@linearflow.local',
+            'email' => 'admin@workflow.local',
             'password' => Hash::make('password'),
             'role_id' => $adminRole->id,
             'title' => 'Lead Software Architect',
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 
         $pm = User::create([
             'name' => 'Elena Proiectescu',
-            'email' => 'elena@linearflow.local',
+            'email' => 'elena@workflow.local',
             'password' => Hash::make('password'),
             'role_id' => $pmRole->id,
             'title' => 'Senior Project Manager',
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
 
         $dev1 = User::create([
             'name' => 'Mihai Codreanu',
-            'email' => 'mihai@linearflow.local',
+            'email' => 'mihai@workflow.local',
             'password' => Hash::make('password'),
             'role_id' => $devRole->id,
             'title' => 'Full Stack Engineer',
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
 
         $dev2 = User::create([
             'name' => 'Andreea Vasile',
-            'email' => 'andreea@linearflow.local',
+            'email' => 'andreea@workflow.local',
             'password' => Hash::make('password'),
             'role_id' => $devRole->id,
             'title' => 'Frontend UI/UX Developer',
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
 
         $qa = User::create([
             'name' => 'Radu Testovici',
-            'email' => 'radu@linearflow.local',
+            'email' => 'radu@workflow.local',
             'password' => Hash::make('password'),
             'role_id' => $qaRole->id,
             'title' => 'QA Automation Specialist',
@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
             'creator_id' => $pm->id,
             'assignee_id' => $dev2->id,
             'title' => 'Integrare panou Kanban şi carduri interactive',
-            'description' => 'Construirea interfeţei Blade cu componente reactive şi Tailwind CSS pentru fluxuri de lucru în stilul Linear/Jira.',
+            'description' => 'Construirea interfeţei Blade cu componente reactive şi Tailwind CSS pentru fluxuri de lucru în panoul Kanban.',
             'type' => 'feature',
             'story_points' => 5,
             'estimated_hours' => 12.0,

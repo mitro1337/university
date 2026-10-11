@@ -25,7 +25,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LinearFlow - Project & Workflow Management (GBD)</title>
+        <title>Project & Workflow Management (GBD)</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
         <style>body { font-family: 'Inter', sans-serif; background-color: #0c0e14; color: #e2e8f0; }</style>
@@ -39,7 +39,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold text-white">Linear<span class="text-indigo-400">Flow</span></h1>
+                    <h1 class="text-xl font-bold text-white">Project &amp; Workflow Management</h1>
                     <p class="text-xs text-slate-400">Platformă Web de Project & Workflow Management (Laravel 11 + MySQL)</p>
                 </div>
             </div>

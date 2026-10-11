@@ -1,5 +1,5 @@
 -- =====================================================================
--- LINEARFLOW GBD: SCHEMA SQL COMPLETĂ ŞI REVIZUITĂ
+-- GBD: SCHEMA SQL COMPLETĂ ŞI REVIZUITĂ
 -- Baza de date pentru sistemul de Project & Workflow Management
 -- =====================================================================
 
@@ -310,11 +310,11 @@ INSERT INTO roles (id, name, slug, description) VALUES
 
 -- Inserare utilizatori (parola este 'password' hashuită cu bcrypt / sha256)
 INSERT INTO users (id, role_id, name, email, password, title, status) VALUES
-(1, 1, 'Ştefan Administrator', 'admin@linearflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Lead Architect & Admin', 'active'),
-(2, 2, 'Elena Proiectescu', 'elena@linearflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Senior Project Manager', 'active'),
-(3, 3, 'Mihai Codreanu', 'mihai@linearflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Full Stack Developer', 'active'),
-(4, 3, 'Andreea Vasile', 'andreea@linearflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Frontend Engineer', 'active'),
-(5, 4, 'Radu Testovici', 'radu@linearflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'QA Automation Engineer', 'active');
+(1, 1, 'Ştefan Administrator', 'admin@workflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Lead Architect & Admin', 'active'),
+(2, 2, 'Elena Proiectescu', 'elena@workflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Senior Project Manager', 'active'),
+(3, 3, 'Mihai Codreanu', 'mihai@workflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Full Stack Developer', 'active'),
+(4, 3, 'Andreea Vasile', 'andreea@workflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'Frontend Engineer', 'active'),
+(5, 4, 'Radu Testovici', 'radu@workflow.local', '$2y$12$eA.X/F10G.gUu4FzV9v8g.9jR8R8o3Jp.LwF4.P5f9Uo1a9jC.1Ge', 'QA Automation Engineer', 'active');
 
 -- Inserare stări flux Kanban
 INSERT INTO statuses (id, name, slug, category, color_hex, position, is_final) VALUES
@@ -365,7 +365,7 @@ INSERT INTO project_members (project_id, user_id, project_role) VALUES
 INSERT INTO tasks (id, task_key, project_id, status_id, priority_id, creator_id, assignee_id, title, description, type, story_points, estimated_hours, logged_hours, due_date, completed_at, position) VALUES
 (1, 'GBD-1', 1, 6, 3, 1, 3, 'Design schemă relaţională şi constrângeri FK', 'Definirea tabelelor, cheilor primare şi secundare cu integritate referenţială strictă (CASCADE / RESTRICT).', 'feature', 5, 8.0, 7.5, '2026-10-05', '2026-10-05 16:30:00', 1),
 (2, 'GBD-2', 1, 3, 4, 1, 3, 'Optimizare interogări agregate şi indexare compusă', 'Adăugare indecşi B-Tree pe coloanele utilizate frecvent în filtrare şi clauze JOIN pentru timpi < 50ms.', 'task', 3, 6.0, 4.0, '2026-10-18', NULL, 1),
-(3, 'GBD-3', 1, 2, 2, 2, 4, 'Integrare panou Kanban şi carduri interactive', 'Construirea componentelor Blade cu Tailwind CSS pentru vizualizarea stadiilor de lucru în stilul Linear.', 'feature', 5, 12.0, 0.0, '2026-10-22', NULL, 1),
+(3, 'GBD-3', 1, 2, 2, 2, 4, 'Integrare panou Kanban şi carduri interactive', 'Construirea componentelor Blade cu Tailwind CSS pentru vizualizarea stadiilor de lucru în panoul Kanban.', 'feature', 5, 12.0, 0.0, '2026-10-22', NULL, 1),
 (4, 'GBD-4', 1, 4, 3, 2, 3, 'Audit trail şi trigger pentru istoric modificări', 'Salvare automată în tabela activity_logs la modificarea stării sau a priorităţii fiecărui task.', 'improvement', 2, 4.0, 3.5, '2026-10-14', NULL, 1),
 (5, 'GBD-5', 1, 1, 1, 1, NULL, 'Documentaţie tehnică şi export rapoarte SQL', 'Generare raport de performanţă şi descrierea structurii relaţionale a platformei.', 'task', 1, 3.0, 0.0, '2026-11-05', NULL, 1),
 

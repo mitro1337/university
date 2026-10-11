@@ -27,7 +27,7 @@ class ProjectManagementTest extends TestCase
         );
 
         $this->user = User::firstOrCreate(
-            ['email' => 'ci-tester@linearflow.local'],
+            ['email' => 'ci-tester@workflow.local'],
             [
                 'name' => 'CI Test Admin',
                 'password' => bcrypt('password123'),
@@ -41,7 +41,7 @@ class ProjectManagementTest extends TestCase
     {
         $response = $this->actingAs($this->user)->get('/dashboard');
         $response->assertStatus(200);
-        $response->assertSee('Linear');
+        $response->assertSee('Workspace');
     }
 
     public function test_projects_page_loads_successfully(): void

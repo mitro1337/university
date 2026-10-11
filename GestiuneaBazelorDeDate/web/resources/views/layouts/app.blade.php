@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'LinearFlow') - Project & Workflow Management</title>
+    <title>@yield('title', 'Workspace') - Project & Workflow Management</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,8 +70,7 @@
                 </svg>
             </div>
             <div>
-                <span class="font-bold tracking-tight text-white text-base">Linear<span class="text-indigo-400">Flow</span></span>
-                <span class="text-[11px] block text-slate-400 tracking-wide">{{ __('Workspace') }}</span>
+                <span class="font-bold tracking-tight text-white text-base">{{ __('Workspace') }}</span>
             </div>
         </div>
 

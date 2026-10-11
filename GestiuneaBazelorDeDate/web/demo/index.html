@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinearFlow - Project &amp; Workflow Management</title>
+    <title>Project &amp; Workflow Management</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,8 +75,7 @@
                 </svg>
             </div>
             <div>
-                <span class="font-bold tracking-tight text-white text-base">Linear<span class="text-indigo-400">Flow</span></span>
-                <span class="text-[11px] block text-slate-400 tracking-wide" data-i18n="workspace">Workspace</span>
+                <span class="font-bold tracking-tight text-white text-base" data-i18n="workspace">Workspace</span>
             </div>
         </div>
 
@@ -277,7 +276,7 @@
                         <span class="text-xs font-semibold text-slate-400" data-i18n="selected_project">Selected Project:</span>
                         <select id="kanban-project-select" onchange="renderKanban()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
                             <option value="all">All Projects</option>
-                            <option value="1">[LF] LinearFlow Core Platform</option>
+                            <option value="1">[PM] Core Platform</option>
                             <option value="2">[STORE] E-Commerce Storefront</option>
                             <option value="3">[AI] NLP &amp; Data Pipeline</option>
                         </select>
@@ -501,7 +500,7 @@
                             </div>
                             <div>
                                 <label class="block font-semibold text-slate-300 mb-1" data-i18n="email_address">Email Address*</label>
-                                <input type="email" id="member-email" required placeholder="e.g. diana@linearflow.com" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                                <input type="email" id="member-email" required placeholder="e.g. diana@example.com" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
                                 <label class="block font-semibold text-slate-300 mb-1" data-i18n="job_title">Job Title*</label>
@@ -539,7 +538,7 @@
                 <div>
                     <label class="block font-semibold text-slate-300 mb-1" data-i18n="project">Project*</label>
                     <select id="task-modal-project" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                        <option value="1">[LF] LinearFlow Core Platform</option>
+                        <option value="1">[PM] Core Platform</option>
                         <option value="2">[STORE] E-Commerce Storefront</option>
                         <option value="3">[AI] NLP &amp; Data Pipeline</option>
                     </select>
@@ -809,7 +808,7 @@
             }
         };
 
-        let currentLocale = localStorage.getItem('linearflow_locale') || 'en';
+        let currentLocale = localStorage.getItem('workflow_locale') || 'en';
         let currentTab = 'dashboard';
 
         function t(key) {
@@ -818,7 +817,7 @@
 
         function setLocale(lang) {
             currentLocale = lang;
-            localStorage.setItem('linearflow_locale', lang);
+            localStorage.setItem('workflow_locale', lang);
             document.documentElement.lang = lang;
 
             // Update switcher toggle buttons
@@ -849,17 +848,17 @@
 
         // --- 2. SAMPLE DATA ---
         let projects = [
-            { id: 1, key: 'LF', name: 'LinearFlow Core Platform', status: 'in_progress', budget: 35000, due: '2026-12-15' },
+            { id: 1, key: 'PM', name: 'Core Platform', status: 'in_progress', budget: 35000, due: '2026-12-15' },
             { id: 2, key: 'STORE', name: 'E-Commerce Storefront', status: 'in_progress', budget: 28000, due: '2026-11-20' },
             { id: 3, key: 'AI', name: 'NLP & Data Pipeline', status: 'planning', budget: 20000, due: '2027-01-30' }
         ];
 
         let users = [
-            { id: 1, name: 'Alex Mercer', email: 'alex@linearflow.com', role: 'Administrator', title: 'Lead Architect & DBA' },
-            { id: 2, name: 'Sarah Chen', email: 'sarah@linearflow.com', role: 'Project Manager', title: 'Technical PM' },
-            { id: 3, name: 'Maria Vance', email: 'maria@linearflow.com', role: 'Developer', title: 'Senior Backend Engineer' },
-            { id: 4, name: 'David Kim', email: 'david@linearflow.com', role: 'Developer', title: 'Fullstack Engineer' },
-            { id: 5, name: 'Elena Rostova', email: 'elena@linearflow.com', role: 'QA Engineer', title: 'QA Lead' }
+            { id: 1, name: 'Alex Mercer', email: 'alex@example.com', role: 'Administrator', title: 'Lead Architect & DBA' },
+            { id: 2, name: 'Sarah Chen', email: 'sarah@example.com', role: 'Project Manager', title: 'Technical PM' },
+            { id: 3, name: 'Maria Vance', email: 'maria@example.com', role: 'Developer', title: 'Senior Backend Engineer' },
+            { id: 4, name: 'David Kim', email: 'david@example.com', role: 'Developer', title: 'Fullstack Engineer' },
+            { id: 5, name: 'Elena Rostova', email: 'elena@example.com', role: 'QA Engineer', title: 'QA Lead' }
         ];
 
         let tasks = [

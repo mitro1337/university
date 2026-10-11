@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autentificare - LinearFlow</title>
+    <title>Autentificare - Project & Workflow Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
             </div>
-            <h1 class="text-2xl font-bold tracking-tight text-white">Linear<span class="text-indigo-400">Flow</span></h1>
+            <h1 class="text-2xl font-bold tracking-tight text-white">Project &amp; Workflow Management</h1>
             <p class="text-xs text-slate-400 mt-1">Platformă Avansată de Project & Workflow Management</p>
         </div>
 
@@ -74,7 +74,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1.5">Email</label>
-                    <input type="email" name="email" value="{{ old('email', 'admin@linearflow.ro') }}" required autofocus
+                    <input type="email" name="email" value="{{ old('email', 'admin@workflow.local') }}" required autofocus
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
                 </div>
 
@@ -109,9 +109,9 @@
                 <div class="mt-4 p-3 bg-darkbg-surface/60 border border-darkbg-border rounded-lg text-[11px] text-left text-slate-400">
                     <div class="font-semibold text-slate-300 mb-1">Conturi demo preconfigurate:</div>
                     <div class=" text-[10px] space-y-0.5">
-                        <div>Admin: <span class="text-indigo-300">admin@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
-                        <div>PM: <span class="text-indigo-300">alex@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
-                        <div>Dev: <span class="text-indigo-300">maria@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
+                        <div>Admin: <span class="text-indigo-300">admin@workflow.local</span> / <span class="text-slate-300">password</span></div>
+                        <div>PM: <span class="text-indigo-300">alex@workflow.local</span> / <span class="text-slate-300">password</span></div>
+                        <div>Dev: <span class="text-indigo-300">maria@workflow.local</span> / <span class="text-slate-300">password</span></div>
                     </div>
                 </div>
             </div>

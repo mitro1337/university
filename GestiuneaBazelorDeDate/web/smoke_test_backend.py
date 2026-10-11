@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LinearFlow Backend & MySQL Live Integration Smoke Test
+Laravel & MySQL Live Integration Smoke Test
 Validează conexiunea live cu serverul Laravel şi baza de date MySQL în GitHub Actions.
 """
 
@@ -64,7 +64,7 @@ def test_endpoints():
 
 def main():
     print("=" * 60)
-    print("  LINEARFLOW LARAVEL + MYSQL LIVE SMOKE TEST")
+    print("  LARAVEL + MYSQL LIVE INTEGRATION SMOKE TEST")
     print("=" * 60)
 
     if not wait_for_server():
