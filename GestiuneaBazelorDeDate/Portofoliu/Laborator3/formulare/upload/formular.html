@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formular date si upload fisier</title>
+</head>
+<body>
+    <h2>Formular preluare date si upload fisiere</h2>
+    <hr>
+    
+    <!-- multipart/form-data este obligatoriu pentru upload de fisiere -->
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <table cellpadding="4">
+            <tr>
+                <td><b>Nume*:</b></td>
+                <td><input type="text" name="nume" required size="30"></td>
+            </tr>
+            <tr>
+                <td><b>Prenume:</b></td>
+                <td><input type="text" name="prenume" size="30"></td>
+            </tr>
+            <tr>
+                <td><b>Telefon:</b></td>
+                <td><input type="text" name="telefon" size="20"></td>
+            </tr>
+            <tr>
+                <td><b>Fax:</b></td>
+                <td><input type="text" name="fax" size="20"></td>
+            </tr>
+            <tr>
+                <td><b>Email:</b></td>
+                <td><input type="email" name="email" size="30"></td>
+            </tr>
+            <tr>
+                <td><b>Sexul:</b></td>
+                <td>
+                    <input type="radio" name="sex" value="Masculin" id="sm" checked>
+                    <label for="sm">Masculin</label>
+                    <input type="radio" name="sex" value="Feminin" id="sf">
+                    <label for="sf">Feminin</label>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Studii:</b></td>
+                <td>
+                    <select name="studii">
+                        <option value="Scoala profesionala">Scoala profesionala</option>
+                        <option value="Liceu">Liceu</option>
+                        <option value="Facultate" selected>Facultate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Accesati Internetul de la:</b></td>
+                <td>
+                    <input type="checkbox" name="locatie_internet[]" value="Serviciu" id="loc_serv">
+                    <label for="loc_serv">Serviciu</label>
+                    <input type="checkbox" name="locatie_internet[]" value="Acasa" id="loc_acasa" checked>
+                    <label for="loc_acasa">Acasa</label>
+                    <input type="checkbox" name="locatie_internet[]" value="Internet cafe" id="loc_cafe">
+                    <label for="loc_cafe">Internet cafe</label>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Fisier pentru upload:</b></td>
+                <td><input type="file" name="fisier_upload"></td>
+            </tr>
+            <tr>
+                <td valign="top"><b>Observatii - Domenii de studii:</b></td>
+                <td>
+                    <textarea name="observatii" rows="4" cols="40"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Trimite datele">
+                    <input type="reset" value="Reseteaza formularul">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Probleme Propuse: Ferestre (Frameset)</title>
+</head>
+<!-- Ferestrele inlocuiesc tagul <body> cu <frameset> -->
+<frameset rows="50%, 50%">
+    <frameset cols="50%, 50%">
+        <!-- Cadru stanga sus: Pagina 1 Curs GBD -->
+        <frame src="pagina1.html" name="cadru_gbd" title="Curs GBD">
+        <!-- Cadru dreapta sus: Pagina 2 Curs Contabilitatea Afacerilor -->
+        <frame src="pagina2.html" name="cadru_conta" title="Curs Contabilitatea Afacerilor">
+    </frameset>
+    <!-- Cadru jos: Ferestre noi (Google) -->
+    <frame src="ferestre_noi.html" name="cadru_jos" title="Ferestre noi">
+    
+    <noframes>
+        <body>
+            <p>Browserul dumneavoastra nu suporta afisarea cadrelor (frameset).</p>
+        </body>
+    </noframes>
+</frameset>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book-O-Rama - New Book Entry</title>
+</head>
+<body>
+    <h2>Book-O-Rama - New Book Entry</h2>
+    <hr>
+    
+    <form action="insert_book.php" method="POST">
+        <table cellpadding="4">
+            <tr>
+                <td><b>ISBN:</b></td>
+                <td><input type="text" name="isbn" maxlength="13" size="13" required></td>
+            </tr>
+            <tr>
+                <td><b>Author:</b></td>
+                <td><input type="text" name="author" maxlength="50" size="30" required></td>
+            </tr>
+            <tr>
+                <td><b>Title:</b></td>
+                <td><input type="text" name="title" maxlength="100" size="40" required></td>
+            </tr>
+            <tr>
+                <td><b>Price $:</b></td>
+                <td><input type="number" step="0.01" name="price" size="7" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add Book"></td>
+            </tr>
+        </table>
+    </form>
+    
+    <br>
+    <p><a href="search.html">Back to search catalog</a></p>
+</body>
+</html>

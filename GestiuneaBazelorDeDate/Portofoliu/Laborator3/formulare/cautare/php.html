@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cautare in documentatia PHP</title>
+</head>
+<body>
+    <h2>Cautare in documentatia PHP</h2>
+    <hr>
+    <p>Formularul foloseste metoda <b>GET</b> pentru a interoga direct motorul de cautare al documentatiei oficiale php.net:</p>
+    
+    <form action="https://www.php.net/manual-lookup.php" method="GET" target="_blank">
+        <label for="pattern"><b>Cauta functia PHP sau un cuvant:</b></label><br>
+        <input type="text" name="pattern" id="pattern" size="30" placeholder="ex: explode, array_merge" required>
+        <input type="submit" value="Cauta in PHP Manual">
+    </form>
+    
+    <p><small>Observatie: Verificati bara de adrese dupa cautare; veti vedea <code>pattern=termen</code> in URL.</small></p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formular date (Metoda POST)</title>
+</head>
+<body>
+    <h2>Formular preluare date - Metoda POST</h2>
+    <hr>
+    
+    <form action="pagina.php" method="POST">
+        <p>
+            <label for="nume"><b>Nume:</b></label><br>
+            <input type="text" name="nume" id="nume" size="35" required>
+        </p>
+        <p>
+            <label for="textfl"><b>Text foarte lung:</b></label><br>
+            <textarea name="textfl" id="textfl" rows="6" cols="50" required></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Trimite prin POST">
+        </p>
+    </form>
+    
+    <p><small>Observatie: Prin POST datele nu apar in URL, fiind trimise in corpul cererii HTTP.</small></p>
+</body>
+</html>

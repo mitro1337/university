@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Probleme Propuse - Stiluri de text si Linii orizontale</title>
+    <style>
+        /* Simularea etichetei vechi <blink> cu CSS pentru compatibilitate în browsere moderne */
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h2>Stiluri pentru blocuri de text</h2>
+    <hr>
+
+    <p><b>Text scris cu caractere ingrosate.</b></p>
+    
+    <p>
+        <font size="+1">Text cu caractere marite cu o unitate</font>
+        <font size="+2">mai mare</font>
+        <font size="+3">şi mai mare</font>
+        <font size="+4">şi mai mare.</font>
+    </p>
+    
+    <p><font size="-1">Textul este scris cu caractere micsorate cu o unitate mai mic.</font></p>
+    
+    <p><i>Text scris cu caractere italice.</i></p>
+    
+    <p>În aceasta linie sus este <sup>superscript</sup> iar jos este <sub>subscript</sub>.</p>
+    
+    <p>Aceasta linie este în intregime <strike>sectionata de o linie orizontala</strike>.</p>
+    
+    <p>În aceasta linie urmatorul cuvant este <u>subliniat</u>, iar cuvantul strike <strike>sectionat</strike>.</p>
+    
+    <p>Acest cuvant clipeste <blink class="blink">Blink</blink></p>
+
+    <br><br>
+    <h2>Linii orizontale</h2>
+    <hr>
+    
+    <p><b>Tipuri de linii orizontale:</b></p>
+    <p>O linie implicita alinierea stanga, latime 100%, grosime 2 cu umbra:</p>
+    <hr align="left" width="100%" size="2">
+
+    <p>Urmeaza o linie aliniata în centru, de latime 50%, grosime 5 pixeli, fara umbra:</p>
+    <hr align="center" width="50%" size="5" noshade>
+
+    <p>Urmeaza o linie aliniata la dreapta, de latime 150 de pixeli, grosime 12 pixeli, de culoare rosie:</p>
+    <hr align="right" width="150" size="12" color="red">
+
+</body>
+</html>

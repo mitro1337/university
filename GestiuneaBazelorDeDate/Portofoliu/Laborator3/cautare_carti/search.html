@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formular cautare carti</title>
+</head>
+<body>
+    <h2>Formular cautare carti in baza de date</h2>
+    <hr>
+    
+    <form action="rezultate.php" method="POST">
+        <p>
+            <b>Alegeti tipul de cautare:</b><br>
+            <select name="tipcautare">
+                <option value="autor">Autor</option>
+                <option value="titlu">Titlu</option>
+            </select>
+        </p>
+        <p>
+            <b>Introduceti termenul cautat:</b><br>
+            <input type="text" name="termencautat" size="30" required>
+        </p>
+        <p>
+            <input type="submit" value="Cautare">
+        </p>
+    </form>
+</body>
+</html>
