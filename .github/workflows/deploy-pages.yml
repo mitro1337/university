@@ -37,51 +37,51 @@ jobs:
 
       - name: Build HCI Frontend (Angular 20 Standalone)
         run: |
-          cd InteractiuneaOmCalculator/Proiect/code/frontend
+          cd "$GITHUB_WORKSPACE/InteractiuneaOmCalculator/Proiect/code/frontend"
           npm ci || npm install
           npm run build -- --base-href /university/hci/
           
           # Copy Angular distribution to _site/hci
           if [ -d "dist/frontend/browser" ]; then
-            cp -r dist/frontend/browser/* ../../../../../_site/hci/
+            cp -r dist/frontend/browser/* "$GITHUB_WORKSPACE/_site/hci/"
           else
-            cp -r dist/frontend/* ../../../../../_site/hci/
+            cp -r dist/frontend/* "$GITHUB_WORKSPACE/_site/hci/"
           fi
           
           # Enable SPA client-side routing fallback in subfolder
-          cp ../../../../../_site/hci/index.html ../../../../../_site/hci/404.html
-          cd ../../../../../
+          cp "$GITHUB_WORKSPACE/_site/hci/index.html" "$GITHUB_WORKSPACE/_site/hci/404.html"
+          cd "$GITHUB_WORKSPACE"
 
       - name: Build Practica de Specialitate (Next.js 15 App)
         run: |
-          cd PracticaSpecialitate/proiect
+          cd "$GITHUB_WORKSPACE/PracticaSpecialitate/proiect"
           npm ci || npm install --legacy-peer-deps
           npm run build || true
           
           # Copy exported and prerendered static assets
           if [ -d "out" ]; then
-            cp -r out/* ../../_site/practica-specialitate/
+            cp -r out/* "$GITHUB_WORKSPACE/_site/practica-specialitate/"
           elif [ -d ".next/server/app" ]; then
-            cp -r public/* ../../_site/practica-specialitate/ 2>/dev/null || true
-            mkdir -p ../../_site/practica-specialitate/_next/static
-            cp -r .next/static/* ../../_site/practica-specialitate/_next/static/ 2>/dev/null || true
-            cp .next/server/app/index.html ../../_site/practica-specialitate/index.html 2>/dev/null || cp -r .next/server/app/* ../../_site/practica-specialitate/ 2>/dev/null || true
+            cp -r public/* "$GITHUB_WORKSPACE/_site/practica-specialitate/" 2>/dev/null || true
+            mkdir -p "$GITHUB_WORKSPACE/_site/practica-specialitate/_next/static"
+            cp -r .next/static/* "$GITHUB_WORKSPACE/_site/practica-specialitate/_next/static/" 2>/dev/null || true
+            cp .next/server/app/index.html "$GITHUB_WORKSPACE/_site/practica-specialitate/index.html" 2>/dev/null || cp -r .next/server/app/* "$GITHUB_WORKSPACE/_site/practica-specialitate/" 2>/dev/null || true
           fi
-          cd ../../
+          cd "$GITHUB_WORKSPACE"
 
       - name: Deploy Lucrare de Licenta (Banking Cyber Kiosk)
         run: |
-          cp -r LucrareLicenta/code/web/* _site/lucrare-licenta/
+          cp -r "$GITHUB_WORKSPACE/LucrareLicenta/code/web/"* "$GITHUB_WORKSPACE/_site/lucrare-licenta/"
 
       - name: Deploy Programare Web (Laborator 1)
         run: |
-          cp -r ProgramareWeb/Laborator/Laborator1/* _site/programare-web/
+          cp -r "$GITHUB_WORKSPACE/ProgramareWeb/Laborator/Laborator1/"* "$GITHUB_WORKSPACE/_site/programare-web/"
 
       - name: Assemble Central Portal & SPA Router
         run: |
-          cp portal/index.html _site/index.html
-          cp portal/404.html _site/404.html
-          touch _site/.nojekyll
+          cp "$GITHUB_WORKSPACE/portal/index.html" "$GITHUB_WORKSPACE/_site/index.html"
+          cp "$GITHUB_WORKSPACE/portal/404.html" "$GITHUB_WORKSPACE/_site/404.html"
+          touch "$GITHUB_WORKSPACE/_site/.nojekyll"
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
@@ -114,22 +114,22 @@ jobs:
 
       - name: Compile Backend TypeScript
         run: |
-          cd InteractiuneaOmCalculator/Proiect/code/backend
+          cd "$GITHUB_WORKSPACE/InteractiuneaOmCalculator/Proiect/code/backend"
           npm ci || npm install
           npm run build
-          cd ../../../../
+          cd "$GITHUB_WORKSPACE"
 
       - name: Package Backend Release Artifact
         run: |
-          tar -czf hci-backend-dist.tar.gz \
-            -C InteractiuneaOmCalculator/Proiect/code/backend \
+          tar -czf "$GITHUB_WORKSPACE/hci-backend-dist.tar.gz" \
+            -C "$GITHUB_WORKSPACE/InteractiuneaOmCalculator/Proiect/code/backend" \
             dist package.json package-lock.json .env.example Dockerfile
           
       - name: Upload Backend Distribution Bundle
         uses: actions/upload-artifact@v4
         with:
           name: hci-backend-dist-bundle
-          path: hci-backend-dist.tar.gz
+          path: ${{ github.workspace }}/hci-backend-dist.tar.gz
           retention-days: 90
 
       - name: Set up Docker Buildx
