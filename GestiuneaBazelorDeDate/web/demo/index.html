@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinearFlow - Project & Workflow Management</title>
+    <title>LinearFlow - Project &amp; Workflow Management</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,39 +76,39 @@
             </div>
             <div>
                 <span class="font-bold tracking-tight text-white text-base">Linear<span class="text-indigo-400">Flow</span></span>
-                <span class="text-[11px] block text-slate-400 tracking-wide">Workspace</span>
+                <span class="text-[11px] block text-slate-400 tracking-wide" data-i18n="workspace">Workspace</span>
             </div>
         </div>
 
         <!-- Navigation Links -->
         <nav class="p-4 space-y-1.5 flex-1">
-            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2">Platform</div>
+            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2" data-i18n="platform">Platform</div>
             
             <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                Dashboard
+                <span data-i18n="dashboard">Dashboard</span>
             </button>
 
             <button onclick="switchTab('projects')" id="nav-projects" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                Projects &amp; Board
+                <span data-i18n="projects_board">Projects &amp; Board</span>
             </button>
 
             <button onclick="switchTab('tasks')" id="nav-tasks" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                All Issues
+                <span data-i18n="all_issues">All Issues</span>
             </button>
 
-            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 pt-4 mb-2">Management</div>
+            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 pt-4 mb-2" data-i18n="management">Management</div>
 
             <button onclick="switchTab('teams')" id="nav-teams" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                Team &amp; Roles
+                <span data-i18n="team_roles">Team &amp; Roles</span>
             </button>
 
             <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                Analytics &amp; Reports
+                <span data-i18n="analytics_reports">Analytics &amp; Reports</span>
             </button>
         </nav>
 
@@ -116,7 +116,7 @@
         <div class="p-4 border-t border-darkbg-border">
             <button onclick="openNewTaskModal()" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-indigo-600/25 transition">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                New Issue
+                <span data-i18n="new_issue">New Issue</span>
             </button>
         </div>
 
@@ -146,12 +146,18 @@
             </div>
 
             <div class="flex items-center gap-3">
+                <!-- Language Switcher Pill -->
+                <div class="flex items-center bg-darkbg-card border border-darkbg-border rounded-lg p-0.5 text-xs">
+                    <button id="lang-btn-en" onclick="setLocale('en')" class="px-2.5 py-1 rounded-md font-semibold transition bg-indigo-600 text-white shadow">EN</button>
+                    <button id="lang-btn-ro" onclick="setLocale('ro')" class="px-2.5 py-1 rounded-md font-semibold transition text-slate-400 hover:text-white">RO</button>
+                </div>
+
                 <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                    New Issue
+                    <span data-i18n="new_issue">New Issue</span>
                 </button>
                 <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web" target="_blank" class="px-3 py-1.5 bg-darkbg-card hover:bg-darkbg-hover text-slate-300 border border-darkbg-border rounded-lg text-xs font-medium transition flex items-center gap-1.5">
-                    GitHub Repository
+                    <span data-i18n="github_repo">GitHub Repository</span>
                 </a>
             </div>
         </header>
@@ -165,53 +171,53 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Total Projects</span>
+                            <span class="text-xs font-medium text-slate-400" data-i18n="total_projects">Total Projects</span>
                             <span class="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-total-projects">3</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-emerald-400 font-medium">3 active</span>&nbsp;&bull; $83,000 budget
+                            <span class="text-emerald-400 font-medium" id="kpi-active-projects">3 active</span>&nbsp;&bull; <span id="kpi-budget-text">$83,000 budget</span>
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Open Issues</span>
+                            <span class="text-xs font-medium text-slate-400" data-i18n="open_issues">Open Issues</span>
                             <span class="p-2 bg-amber-500/10 text-amber-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-open-tasks">8</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-amber-400 font-medium">In progress &amp; review</span>
+                            <span class="text-amber-400 font-medium" data-i18n="in_progress_review">In progress &amp; review</span>
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Resolved Issues</span>
+                            <span class="text-xs font-medium text-slate-400" data-i18n="resolved_issues">Resolved Issues</span>
                             <span class="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-completed-tasks">6</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-emerald-400 font-medium" id="kpi-completion-rate">42.8%</span>&nbsp;completion rate
+                            <span class="text-emerald-400 font-medium" id="kpi-completion-rate">42.8%</span>&nbsp;<span data-i18n="completion_rate_suffix">completion rate</span>
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Team Size</span>
+                            <span class="text-xs font-medium text-slate-400" data-i18n="team_size">Team Size</span>
                             <span class="p-2 bg-violet-500/10 text-violet-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-team-members">5</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-slate-300 font-medium">5 active members</span>
+                            <span class="text-slate-300 font-medium" id="kpi-active-members-text">5 active members</span>
                         </div>
                     </div>
                 </div>
@@ -220,8 +226,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Workflow Status Breakdown</h2>
-                            <span class="text-xs text-slate-400">By current stage</span>
+                            <h2 class="text-sm font-semibold text-white" data-i18n="status_breakdown">Workflow Status Breakdown</h2>
+                            <span class="text-xs text-slate-400" data-i18n="by_stage">By current stage</span>
                         </div>
                         <div class="space-y-3.5" id="dash-status-dist">
                             <!-- Injected by JS -->
@@ -230,8 +236,8 @@
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Priority Breakdown</h2>
-                            <span class="text-xs text-slate-400">By severity</span>
+                            <h2 class="text-sm font-semibold text-white" data-i18n="priority_breakdown">Priority Breakdown</h2>
+                            <span class="text-xs text-slate-400" data-i18n="by_severity">By severity</span>
                         </div>
                         <div class="space-y-3.5" id="dash-priority-dist">
                             <!-- Injected by JS -->
@@ -243,8 +249,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Active Projects &amp; Progress</h2>
-                            <button onclick="switchTab('projects')" class="text-xs text-indigo-400 hover:text-indigo-300">View Board &rarr;</button>
+                            <h2 class="text-sm font-semibold text-white" data-i18n="active_projects_progress">Active Projects &amp; Progress</h2>
+                            <button onclick="switchTab('projects')" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium"><span data-i18n="view_board">View Board</span> &rarr;</button>
                         </div>
                         <div class="space-y-4" id="dash-projects-list">
                             <!-- Injected by JS -->
@@ -253,8 +259,8 @@
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Recent Activity</h2>
-                            <span class="text-xs text-slate-400">Live feed</span>
+                            <h2 class="text-sm font-semibold text-white" data-i18n="recent_activity">Recent Activity</h2>
+                            <span class="text-xs text-slate-400" data-i18n="live_feed">Live feed</span>
                         </div>
                         <div class="space-y-3.5 text-xs text-slate-300" id="dash-activity-log">
                             <!-- Injected by JS -->
@@ -268,7 +274,7 @@
                 <!-- Project Selector & Filter -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-darkbg-card border border-darkbg-border rounded-xl p-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-xs font-semibold text-slate-400">Selected Project:</span>
+                        <span class="text-xs font-semibold text-slate-400" data-i18n="selected_project">Selected Project:</span>
                         <select id="kanban-project-select" onchange="renderKanban()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
                             <option value="all">All Projects</option>
                             <option value="1">[LF] LinearFlow Core Platform</option>
@@ -278,7 +284,7 @@
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow">
-                            + New Issue
+                            + <span data-i18n="new_issue">New Issue</span>
                         </button>
                     </div>
                 </div>
@@ -290,7 +296,7 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">Backlog</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider" data-i18n="backlog">Backlog</span>
                             </div>
                             <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-slate-400" id="count-backlog">0</span>
                         </div>
@@ -302,7 +308,7 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">In Progress</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider" data-i18n="in_progress">In Progress</span>
                             </div>
                             <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-amber-400" id="count-in_progress">0</span>
                         </div>
@@ -314,7 +320,7 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">In Review</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider" data-i18n="in_review">In Review</span>
                             </div>
                             <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-purple-400" id="count-in_review">0</span>
                         </div>
@@ -326,7 +332,7 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">Done</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider" data-i18n="done">Done</span>
                             </div>
                             <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-emerald-400" id="count-done">0</span>
                         </div>
@@ -340,28 +346,28 @@
                 <!-- Filters Bar -->
                 <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
                     <div class="flex flex-wrap items-center gap-3">
-                        <input type="text" id="task-search-input" onkeyup="renderTasksTable()" placeholder="Search by title or key..."
+                        <input type="text" id="task-search-input" onkeyup="renderTasksTable()" placeholder="Search by title or key..." data-i18n-placeholder="search_placeholder"
                                class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-60">
                         
                         <select id="task-filter-status" onchange="renderTasksTable()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-                            <option value="">All Statuses</option>
-                            <option value="backlog">Backlog</option>
-                            <option value="in_progress">In Progress</option>
-                            <option value="in_review">In Review</option>
-                            <option value="done">Done</option>
+                            <option value="" data-i18n="all_statuses">All Statuses</option>
+                            <option value="backlog" data-i18n="backlog">Backlog</option>
+                            <option value="in_progress" data-i18n="in_progress">In Progress</option>
+                            <option value="in_review" data-i18n="in_review">In Review</option>
+                            <option value="done" data-i18n="done">Done</option>
                         </select>
 
                         <select id="task-filter-priority" onchange="renderTasksTable()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-                            <option value="">All Priorities</option>
-                            <option value="urgent">Urgent</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
+                            <option value="" data-i18n="all_priorities">All Priorities</option>
+                            <option value="urgent" data-i18n="urgent">Urgent</option>
+                            <option value="high" data-i18n="high">High</option>
+                            <option value="medium" data-i18n="medium">Medium</option>
+                            <option value="low" data-i18n="low">Low</option>
                         </select>
                     </div>
 
                     <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition shadow">
-                        + New Issue
+                        + <span data-i18n="new_issue">New Issue</span>
                     </button>
                 </div>
 
@@ -371,15 +377,15 @@
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Key</th>
-                                    <th class="py-3 px-4">Title</th>
-                                    <th class="py-3 px-4">Project</th>
-                                    <th class="py-3 px-4">Status</th>
-                                    <th class="py-3 px-4">Priority</th>
-                                    <th class="py-3 px-4">Assignee</th>
+                                    <th class="py-3 px-4" data-i18n="key">Key</th>
+                                    <th class="py-3 px-4" data-i18n="title">Title</th>
+                                    <th class="py-3 px-4" data-i18n="project">Project</th>
+                                    <th class="py-3 px-4" data-i18n="status">Status</th>
+                                    <th class="py-3 px-4" data-i18n="priority">Priority</th>
+                                    <th class="py-3 px-4" data-i18n="assignee">Assignee</th>
                                     <th class="py-3 px-4 text-center">SP</th>
-                                    <th class="py-3 px-4">Due Date</th>
-                                    <th class="py-3 px-4 text-right">Action</th>
+                                    <th class="py-3 px-4" data-i18n="due_date">Due Date</th>
+                                    <th class="py-3 px-4 text-right" data-i18n="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="tasks-table-body">
@@ -394,8 +400,8 @@
             <section id="view-reports" class="hidden space-y-8">
                 <!-- Info SQL -->
                 <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
-                    <h2 class="text-sm font-semibold text-white">Performance Analytics &amp; Project Metrics</h2>
-                    <p class="text-xs text-slate-400 mt-1">
+                    <h2 class="text-sm font-semibold text-white" data-i18n="perf_analytics_title">Performance Analytics &amp; Project Metrics</h2>
+                    <p class="text-xs text-slate-400 mt-1" data-i18n="perf_analytics_subtitle">
                         Aggregated workflow velocity, completion rate, and workload balance across all active projects.
                     </p>
                 </div>
@@ -405,20 +411,20 @@
                     <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
                         <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                            1. Project Velocity &amp; Completion Rate
+                            <span data-i18n="report1_title">1. Project Velocity &amp; Completion Rate</span>
                         </h3>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Project</th>
-                                    <th class="py-3 px-4">Budget</th>
-                                    <th class="py-3 px-4 text-center">Total Issues</th>
-                                    <th class="py-3 px-4 text-center">Resolved</th>
-                                    <th class="py-3 px-4 text-center">Active</th>
-                                    <th class="py-3 px-4 text-center">Story Points</th>
-                                    <th class="py-3 px-4 w-48">Progress</th>
+                                    <th class="py-3 px-4" data-i18n="project">Project</th>
+                                    <th class="py-3 px-4" data-i18n="budget">Budget</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="total_issues">Total Issues</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="resolved">Resolved</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="active">Active</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="story_points">Story Points</th>
+                                    <th class="py-3 px-4 w-48" data-i18n="progress">Progress</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="report-project-metrics">
@@ -433,20 +439,20 @@
                     <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
                         <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                            2. Team Workload &amp; Capacity
+                            <span data-i18n="report2_title">2. Team Workload &amp; Capacity</span>
                         </h3>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Member</th>
-                                    <th class="py-3 px-4">Title &amp; Role</th>
-                                    <th class="py-3 px-4 text-center">Assigned</th>
-                                    <th class="py-3 px-4 text-center">In Progress</th>
-                                    <th class="py-3 px-4 text-center">Completed</th>
-                                    <th class="py-3 px-4 text-center">Active Points</th>
-                                    <th class="py-3 px-4 text-center">Capacity Status</th>
+                                    <th class="py-3 px-4" data-i18n="member">Member</th>
+                                    <th class="py-3 px-4" data-i18n="title_role">Title &amp; Role</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="assigned">Assigned</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="in_progress">In Progress</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="completed">Completed</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="active_points">Active Points</th>
+                                    <th class="py-3 px-4 text-center" data-i18n="capacity_status">Capacity Status</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="report-team-workload">
@@ -463,17 +469,17 @@
                     <!-- Directory Table (2 cols) -->
                     <div class="lg:col-span-2 bg-darkbg-card border border-darkbg-border rounded-xl overflow-hidden">
                         <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
-                            <h2 class="text-sm font-semibold text-white">Team Directory &amp; Permissions</h2>
-                            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">5 members</span>
+                            <h2 class="text-sm font-semibold text-white" data-i18n="team_dir_title">Team Directory &amp; Permissions</h2>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700" id="team-count-badge">5 members</span>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-xs">
                                 <thead>
                                     <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                        <th class="py-3 px-4">User</th>
-                                        <th class="py-3 px-4">Position</th>
-                                        <th class="py-3 px-4">Role</th>
-                                        <th class="py-3 px-4 text-center">Assigned Issues</th>
+                                        <th class="py-3 px-4" data-i18n="user">User</th>
+                                        <th class="py-3 px-4" data-i18n="position">Position</th>
+                                        <th class="py-3 px-4" data-i18n="role">Role</th>
+                                        <th class="py-3 px-4 text-center" data-i18n="assigned_issues">Assigned Issues</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-darkbg-border" id="team-members-table">
@@ -485,24 +491,24 @@
 
                     <!-- Add Team Member Form (1 col) -->
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 self-start">
-                        <h3 class="text-sm font-semibold text-white mb-1">Invite Team Member</h3>
-                        <p class="text-xs text-slate-400 mb-4">Grant platform access with assigned role</p>
+                        <h3 class="text-sm font-semibold text-white mb-1" data-i18n="invite_member_title">Invite Team Member</h3>
+                        <p class="text-xs text-slate-400 mb-4" data-i18n="invite_member_subtitle">Grant platform access with assigned role</p>
 
                         <form id="new-member-form" onsubmit="handleNewMember(event)" class="space-y-3 text-xs">
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Full Name*</label>
+                                <label class="block font-semibold text-slate-300 mb-1" data-i18n="full_name">Full Name*</label>
                                 <input type="text" id="member-name" required placeholder="e.g. Diana Miller" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Email Address*</label>
+                                <label class="block font-semibold text-slate-300 mb-1" data-i18n="email_address">Email Address*</label>
                                 <input type="email" id="member-email" required placeholder="e.g. diana@linearflow.com" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Job Title*</label>
+                                <label class="block font-semibold text-slate-300 mb-1" data-i18n="job_title">Job Title*</label>
                                 <input type="text" id="member-title" required placeholder="e.g. Frontend Engineer" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Role*</label>
+                                <label class="block font-semibold text-slate-300 mb-1" data-i18n="role">Role*</label>
                                 <select id="member-role" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                                     <option value="Developer">Developer</option>
                                     <option value="QA Engineer">QA Engineer</option>
@@ -511,7 +517,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow transition mt-2">
-                                Add Member
+                                <span data-i18n="add_member">Add Member</span>
                             </button>
                         </form>
                     </div>
@@ -525,13 +531,13 @@
     <div id="modal-new-task" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-darkbg-card border border-darkbg-border rounded-2xl max-w-lg w-full p-6 shadow-2xl">
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-darkbg-border">
-                <h3 class="text-sm font-semibold text-white">Create New Issue</h3>
+                <h3 class="text-sm font-semibold text-white" data-i18n="modal_create_title">Create New Issue</h3>
                 <button onclick="closeNewTaskModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
             </div>
 
             <form onsubmit="handleCreateTask(event)" class="space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Project*</label>
+                    <label class="block font-semibold text-slate-300 mb-1" data-i18n="project">Project*</label>
                     <select id="task-modal-project" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                         <option value="1">[LF] LinearFlow Core Platform</option>
                         <option value="2">[STORE] E-Commerce Storefront</option>
@@ -540,52 +546,52 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Issue Title*</label>
+                    <label class="block font-semibold text-slate-300 mb-1" data-i18n="issue_title">Issue Title*</label>
                     <input type="text" id="task-modal-title" required placeholder="e.g. Implement schema referential integrity"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Description</label>
+                    <label class="block font-semibold text-slate-300 mb-1" data-i18n="description">Description</label>
                     <textarea id="task-modal-desc" rows="3" placeholder="Technical specifications..."
                               class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"></textarea>
                 </div>
 
                 <div class="grid grid-cols-3 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Status*</label>
+                        <label class="block font-semibold text-slate-300 mb-1" data-i18n="status">Status*</label>
                         <select id="task-modal-status" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                            <option value="backlog">Backlog</option>
-                            <option value="in_progress">In Progress</option>
-                            <option value="in_review">In Review</option>
-                            <option value="done">Done</option>
+                            <option value="backlog" data-i18n="backlog">Backlog</option>
+                            <option value="in_progress" data-i18n="in_progress">In Progress</option>
+                            <option value="in_review" data-i18n="in_review">In Review</option>
+                            <option value="done" data-i18n="done">Done</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Priority*</label>
+                        <label class="block font-semibold text-slate-300 mb-1" data-i18n="priority">Priority*</label>
                         <select id="task-modal-priority" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                            <option value="urgent">Urgent</option>
-                            <option value="high">High</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="low">Low</option>
+                            <option value="urgent" data-i18n="urgent">Urgent</option>
+                            <option value="high" data-i18n="high">High</option>
+                            <option value="medium" selected data-i18n="medium">Medium</option>
+                            <option value="low" data-i18n="low">Low</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Type*</label>
+                        <label class="block font-semibold text-slate-300 mb-1" data-i18n="type">Type*</label>
                         <select id="task-modal-type" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                            <option value="task">Task</option>
-                            <option value="bug">Bug</option>
-                            <option value="feature">Feature</option>
-                            <option value="improvement">Improvement</option>
+                            <option value="task" data-i18n="task">Task</option>
+                            <option value="bug" data-i18n="bug">Bug</option>
+                            <option value="feature" data-i18n="feature">Feature</option>
+                            <option value="improvement" data-i18n="improvement">Improvement</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Assignee</label>
+                        <label class="block font-semibold text-slate-300 mb-1" data-i18n="assignee">Assignee</label>
                         <select id="task-modal-assignee" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             <option value="Alex Mercer">Alex Mercer</option>
                             <option value="Sarah Chen">Sarah Chen</option>
@@ -596,21 +602,252 @@
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Story Points</label>
+                        <label class="block font-semibold text-slate-300 mb-1" data-i18n="story_points">Story Points</label>
                         <input type="number" id="task-modal-sp" value="3" min="1" max="100" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                     </div>
                 </div>
 
                 <div class="pt-3 border-t border-darkbg-border flex justify-end gap-2">
-                    <button type="button" onclick="closeNewTaskModal()" class="px-3 py-1.5 bg-darkbg-surface text-slate-300 rounded-lg font-medium">Cancel</button>
-                    <button type="submit" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow">Create Issue</button>
+                    <button type="button" onclick="closeNewTaskModal()" class="px-3 py-1.5 bg-darkbg-surface text-slate-300 rounded-lg font-medium" data-i18n="cancel">Cancel</button>
+                    <button type="submit" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow" data-i18n="create_issue">Create Issue</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT STATE & RENDERING ENGINE -->
+    <!-- JAVASCRIPT STATE, I18N & RENDERING ENGINE -->
     <script>
+        // --- 1. I18N DICTIONARIES ---
+        const i18n = {
+            en: {
+                workspace: "Workspace",
+                platform: "Platform",
+                dashboard: "Dashboard",
+                projects_board: "Projects & Board",
+                all_issues: "All Issues",
+                management: "Management",
+                team_roles: "Team & Roles",
+                analytics_reports: "Analytics & Reports",
+                new_issue: "New Issue",
+                github_repo: "GitHub Repository",
+                total_projects: "Total Projects",
+                open_issues: "Open Issues",
+                resolved_issues: "Resolved Issues",
+                team_size: "Team Size",
+                in_progress_review: "In progress & review",
+                completion_rate_suffix: "completion rate",
+                active_members_suffix: "active members",
+                status_breakdown: "Workflow Status Breakdown",
+                by_stage: "By current stage",
+                priority_breakdown: "Priority Breakdown",
+                by_severity: "By severity",
+                active_projects_progress: "Active Projects & Progress",
+                view_board: "View Board",
+                recent_activity: "Recent Activity",
+                live_feed: "Live feed",
+                selected_project: "Selected Project:",
+                all_projects: "All Projects",
+                backlog: "Backlog",
+                in_progress: "In Progress",
+                in_review: "In Review",
+                done: "Done",
+                urgent: "Urgent",
+                high: "High",
+                medium: "Medium",
+                low: "Low",
+                task: "Task",
+                bug: "Bug",
+                feature: "Feature",
+                improvement: "Improvement",
+                search_placeholder: "Search by title or key...",
+                all_statuses: "All Statuses",
+                all_priorities: "All Priorities",
+                key: "Key",
+                title: "Title",
+                project: "Project",
+                status: "Status",
+                priority: "Priority",
+                assignee: "Assignee",
+                due_date: "Due Date",
+                action: "Action",
+                mark_done: "Mark Done",
+                perf_analytics_title: "Performance Analytics & Project Metrics",
+                perf_analytics_subtitle: "Aggregated workflow velocity, completion rate, and workload balance across all active projects.",
+                report1_title: "1. Project Velocity & Completion Rate",
+                report2_title: "2. Team Workload & Capacity",
+                budget: "Budget",
+                total_issues: "Total Issues",
+                resolved: "Resolved",
+                active: "Active",
+                story_points: "Story Points",
+                progress: "Progress",
+                member: "Member",
+                title_role: "Title & Role",
+                assigned: "Assigned",
+                completed: "Completed",
+                active_points: "Active Points",
+                capacity_status: "Capacity Status",
+                optimal: "Optimal",
+                heavy_load: "Heavy Load",
+                available_capacity: "Available Capacity",
+                team_dir_title: "Team Directory & Permissions",
+                user: "User",
+                position: "Position",
+                role: "Role",
+                assigned_issues: "Assigned Issues",
+                invite_member_title: "Invite Team Member",
+                invite_member_subtitle: "Grant platform access with assigned role",
+                full_name: "Full Name*",
+                email_address: "Email Address*",
+                job_title: "Job Title*",
+                add_member: "Add Member",
+                modal_create_title: "Create New Issue",
+                issue_title: "Issue Title*",
+                description: "Description",
+                type: "Type*",
+                cancel: "Cancel",
+                create_issue: "Create Issue",
+                issues: "issues",
+                no_matching_issues: "No issues found matching your filters.",
+                members: "members",
+                member_added: "Member {name} was added successfully.",
+                issue_created: "Issue {key} created successfully."
+            },
+            ro: {
+                workspace: "Spațiu de Lucru",
+                platform: "Platformă",
+                dashboard: "Panou Principal",
+                projects_board: "Proiecte & Panou",
+                all_issues: "Toate Taskurile",
+                management: "Gestiune",
+                team_roles: "Echipă & Roluri",
+                analytics_reports: "Analitice & Rapoarte",
+                new_issue: "Task Nou",
+                github_repo: "Depozit GitHub",
+                total_projects: "Total Proiecte",
+                open_issues: "Taskuri Deschise",
+                resolved_issues: "Taskuri Rezolvate",
+                team_size: "Dimensiune Echipă",
+                in_progress_review: "În lucru & verificare",
+                completion_rate_suffix: "rată de finalizare",
+                active_members_suffix: "membri activi",
+                status_breakdown: "Distribuție pe Stări",
+                by_stage: "După etapa curentă",
+                priority_breakdown: "Distribuție pe Priorități",
+                by_severity: "După severitate",
+                active_projects_progress: "Proiecte Active & Progres",
+                view_board: "Vezi Panoul",
+                recent_activity: "Activitate Recentă",
+                live_feed: "Flux în timp real",
+                selected_project: "Proiect Selectat:",
+                all_projects: "Toate Proiectele",
+                backlog: "Backlog",
+                in_progress: "În Lucru",
+                in_review: "În Verificare",
+                done: "Finalizat",
+                urgent: "Urgent",
+                high: "Ridicată",
+                medium: "Medie",
+                low: "Scăzută",
+                task: "Task",
+                bug: "Bug",
+                feature: "Funcționalitate",
+                improvement: "Îmbunătățire",
+                search_placeholder: "Caută după titlu sau cheie...",
+                all_statuses: "Toate Stările",
+                all_priorities: "Toate Prioritățile",
+                key: "Cheie",
+                title: "Titlu",
+                project: "Proiect",
+                status: "Stare",
+                priority: "Prioritate",
+                assignee: "Responsabil",
+                due_date: "Termen Limită",
+                action: "Acțiune",
+                mark_done: "Finalizează",
+                perf_analytics_title: "Analitice Performanță & Metrici Proiecte",
+                perf_analytics_subtitle: "Viteză flux agregată, rată finalizare și echilibru de încărcare pe toate proiectele active.",
+                report1_title: "1. Viteză Proiecte & Procentaj Progres",
+                report2_title: "2. Încărcare Echipă & Capacitate",
+                budget: "Buget",
+                total_issues: "Total Taskuri",
+                resolved: "Rezolvat",
+                active: "Active",
+                story_points: "Story Points",
+                progress: "Progres",
+                member: "Membru",
+                title_role: "Funcție & Rol",
+                assigned: "Alocat",
+                completed: "Finalizat",
+                active_points: "Puncte Active",
+                capacity_status: "Status Capacitate",
+                optimal: "Optim",
+                heavy_load: "Supraîncărcat",
+                available_capacity: "Capacitate Disponibilă",
+                team_dir_title: "Director Echipă & Permisiuni",
+                user: "Utilizator",
+                position: "Funcție",
+                role: "Rol",
+                assigned_issues: "Taskuri Alocate",
+                invite_member_title: "Înregistrează Membru Nou",
+                invite_member_subtitle: "Acordă acces în platformă cu rolul specificat",
+                full_name: "Nume Complet*",
+                email_address: "Adresă Email*",
+                job_title: "Funcție Tehnică*",
+                add_member: "Adaugă Membru",
+                modal_create_title: "Creează Task Nou",
+                issue_title: "Titlu Task*",
+                description: "Descriere",
+                type: "Tip*",
+                cancel: "Anulează",
+                create_issue: "Creează Taskul",
+                issues: "taskuri",
+                no_matching_issues: "Nu a fost găsit niciun task conform filtrelor.",
+                members: "membri",
+                member_added: "Membrul {name} a fost adăugat cu succes.",
+                issue_created: "Taskul {key} a fost creat cu succes."
+            }
+        };
+
+        let currentLocale = localStorage.getItem('linearflow_locale') || 'en';
+        let currentTab = 'dashboard';
+
+        function t(key) {
+            return (i18n[currentLocale] && i18n[currentLocale][key]) || (i18n.en && i18n.en[key]) || key;
+        }
+
+        function setLocale(lang) {
+            currentLocale = lang;
+            localStorage.setItem('linearflow_locale', lang);
+            document.documentElement.lang = lang;
+
+            // Update switcher toggle buttons
+            const btnEn = document.getElementById('lang-btn-en');
+            const btnRo = document.getElementById('lang-btn-ro');
+            if (lang === 'ro') {
+                btnRo.className = "px-2.5 py-1 rounded-md font-semibold transition bg-indigo-600 text-white shadow";
+                btnEn.className = "px-2.5 py-1 rounded-md font-semibold transition text-slate-400 hover:text-white";
+            } else {
+                btnEn.className = "px-2.5 py-1 rounded-md font-semibold transition bg-indigo-600 text-white shadow";
+                btnRo.className = "px-2.5 py-1 rounded-md font-semibold transition text-slate-400 hover:text-white";
+            }
+
+            // Update all static data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const k = el.getAttribute('data-i18n');
+                el.innerText = t(k);
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const k = el.getAttribute('data-i18n-placeholder');
+                el.placeholder = t(k);
+            });
+
+            // Re-render current view with translated dynamic strings
+            switchTab(currentTab);
+        }
+
+        // --- 2. SAMPLE DATA ---
         let projects = [
             { id: 1, key: 'LF', name: 'LinearFlow Core Platform', status: 'in_progress', budget: 35000, due: '2026-12-15' },
             { id: 2, key: 'STORE', name: 'E-Commerce Storefront', status: 'in_progress', budget: 28000, due: '2026-11-20' },
@@ -639,32 +876,34 @@
         ];
 
         let activities = [
-            { user: 'Alex Mercer', action: 'marked as resolved', task: 'LF-2', time: '2 hours ago' },
-            { user: 'Maria Vance', action: 'moved to In Progress', task: 'LF-3', time: '4 hours ago' },
-            { user: 'David Kim', action: 'commented on', task: 'LF-5', time: '6 hours ago' },
-            { user: 'Elena Rostova', action: 'started review for', task: 'STORE-3', time: 'yesterday' },
-            { user: 'Sarah Chen', action: 'approved release of', task: 'STORE-2', time: '2 days ago' }
+            { user: 'Alex Mercer', action: 'resolved', task: 'LF-2', time: '2 hours ago' },
+            { user: 'Maria Vance', action: 'in_progress', task: 'LF-3', time: '4 hours ago' },
+            { user: 'David Kim', action: 'commented', task: 'LF-5', time: '6 hours ago' },
+            { user: 'Elena Rostova', action: 'in_review', task: 'STORE-3', time: 'yesterday' },
+            { user: 'Sarah Chen', action: 'resolved', task: 'STORE-2', time: '2 days ago' }
         ];
 
+        // --- 3. TAB CONTROLLER ---
         function switchTab(tab) {
+            currentTab = tab;
             const tabs = ['dashboard', 'projects', 'tasks', 'reports', 'teams'];
-            tabs.forEach(t => {
-                document.getElementById(`view-${t}`).classList.add('hidden');
-                document.getElementById(`nav-${t}`).classList.remove('active');
+            tabs.forEach(tName => {
+                document.getElementById(`view-${tName}`).classList.add('hidden');
+                document.getElementById(`nav-${tName}`).classList.remove('active');
             });
 
             document.getElementById(`view-${tab}`).classList.remove('hidden');
             document.getElementById(`nav-${tab}`).classList.add('active');
 
-            const titles = {
-                dashboard: 'Dashboard',
-                projects: 'Projects & Board',
-                tasks: 'All Issues',
-                reports: 'Analytics & Reports',
-                teams: 'Team & Roles'
+            const tabKeyMap = {
+                dashboard: 'dashboard',
+                projects: 'projects_board',
+                tasks: 'all_issues',
+                reports: 'analytics_reports',
+                teams: 'team_roles'
             };
 
-            document.getElementById('page-title').innerText = titles[tab];
+            document.getElementById('page-title').innerText = t(tabKeyMap[tab]);
 
             if (tab === 'dashboard') renderDashboard();
             if (tab === 'projects') renderKanban();
@@ -673,6 +912,7 @@
             if (tab === 'teams') renderTeams();
         }
 
+        // --- 4. VIEW RENDERERS ---
         function renderDashboard() {
             const total = tasks.length;
             const completed = tasks.filter(t => t.status === 'done').length;
@@ -680,16 +920,19 @@
             const rate = total > 0 ? ((completed / total) * 100).toFixed(1) : 0;
 
             document.getElementById('kpi-total-projects').innerText = projects.length;
+            document.getElementById('kpi-active-projects').innerText = `${projects.length} ${t('active').toLowerCase()}`;
+            document.getElementById('kpi-budget-text').innerText = `$83,000 ${t('budget').toLowerCase()}`;
             document.getElementById('kpi-open-tasks').innerText = open;
             document.getElementById('kpi-completed-tasks').innerText = completed;
             document.getElementById('kpi-completion-rate').innerText = `${rate}%`;
             document.getElementById('kpi-team-members').innerText = users.length;
+            document.getElementById('kpi-active-members-text').innerText = `${users.length} ${t('active_members_suffix')}`;
 
             const statuses = [
-                { id: 'backlog', name: 'Backlog', color: '#94a3b8' },
-                { id: 'in_progress', name: 'In Progress', color: '#f59e0b' },
-                { id: 'in_review', name: 'In Review', color: '#a855f7' },
-                { id: 'done', name: 'Done', color: '#10b981' }
+                { id: 'backlog', key: 'backlog', color: '#94a3b8' },
+                { id: 'in_progress', key: 'in_progress', color: '#f59e0b' },
+                { id: 'in_review', key: 'in_review', color: '#a855f7' },
+                { id: 'done', key: 'done', color: '#10b981' }
             ];
 
             let statusHtml = '';
@@ -699,8 +942,8 @@
                 statusHtml += `
                     <div>
                         <div class="flex justify-between text-xs mb-1">
-                            <span class="text-slate-300 font-medium">${s.name}</span>
-                            <span class="text-slate-400 font-medium">${count} issues (${pct}%)</span>
+                            <span class="text-slate-300 font-medium">${t(s.key)}</span>
+                            <span class="text-slate-400 font-medium">${count} ${t('issues')} (${pct}%)</span>
                         </div>
                         <div class="w-full bg-darkbg-surface h-2 rounded-full overflow-hidden border border-darkbg-border">
                             <div class="h-full rounded-full transition-all" style="width: ${pct}%; background-color: ${s.color}"></div>
@@ -711,10 +954,10 @@
             document.getElementById('dash-status-dist').innerHTML = statusHtml;
 
             const priorities = [
-                { id: 'urgent', name: 'Urgent', color: '#f43f5e' },
-                { id: 'high', name: 'High', color: '#f97316' },
-                { id: 'medium', name: 'Medium', color: '#eab308' },
-                { id: 'low', name: 'Low', color: '#64748b' }
+                { id: 'urgent', key: 'urgent', color: '#f43f5e' },
+                { id: 'high', key: 'high', color: '#f97316' },
+                { id: 'medium', key: 'medium', color: '#eab308' },
+                { id: 'low', key: 'low', color: '#64748b' }
             ];
 
             let prioHtml = '';
@@ -724,8 +967,8 @@
                 prioHtml += `
                     <div>
                         <div class="flex justify-between text-xs mb-1">
-                            <span class="text-slate-300 font-medium">${p.name}</span>
-                            <span class="text-slate-400 font-medium">${count} issues (${pct}%)</span>
+                            <span class="text-slate-300 font-medium">${t(p.key)}</span>
+                            <span class="text-slate-400 font-medium">${count} ${t('issues')} (${pct}%)</span>
                         </div>
                         <div class="w-full bg-darkbg-surface h-2 rounded-full overflow-hidden border border-darkbg-border">
                             <div class="h-full rounded-full transition-all" style="width: ${pct}%; background-color: ${p.color}"></div>
@@ -747,7 +990,7 @@
                                 <span class="text-xs font-semibold text-indigo-400 px-1.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">${p.key}</span>
                                 <h3 class="text-xs font-semibold text-white">${p.name}</h3>
                             </div>
-                            <div class="text-[11px] text-slate-400 mt-1 font-medium">$${p.budget.toLocaleString()} &bull; Target: ${p.due}</div>
+                            <div class="text-[11px] text-slate-400 mt-1 font-medium">$${p.budget.toLocaleString()} &bull; ${t('due_date')}: ${p.due}</div>
                         </div>
                         <div class="w-full sm:w-44 flex items-center gap-2">
                             <div class="flex-1 bg-darkbg-card h-2 rounded-full overflow-hidden border border-darkbg-border">
@@ -762,12 +1005,18 @@
 
             let actHtml = '';
             activities.forEach(a => {
+                let actionText = a.action;
+                if (a.action === 'resolved') actionText = currentLocale === 'ro' ? 'a rezolvat' : 'marked as resolved';
+                else if (a.action === 'in_progress') actionText = currentLocale === 'ro' ? 'a mutat în lucru' : 'moved to In Progress';
+                else if (a.action === 'in_review') actionText = currentLocale === 'ro' ? 'a trimis la verificare' : 'started review for';
+                else if (a.action === 'commented') actionText = currentLocale === 'ro' ? 'a comentat la' : 'commented on';
+
                 actHtml += `
                     <div class="flex items-start gap-2.5 pb-2.5 border-b border-darkbg-border/60 last:border-0 last:pb-0">
                         <div class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0"></div>
                         <div class="flex-1">
                             <span class="font-medium text-white">${a.user}</span>
-                            <span class="text-slate-400"> ${a.action} </span>
+                            <span class="text-slate-400"> ${actionText} </span>
                             <span class="text-indigo-400 font-semibold">${a.task}</span>
                             <div class="text-[11px] text-slate-500 mt-0.5 font-normal">${a.time}</div>
                         </div>
@@ -797,7 +1046,7 @@
                         <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-3.5 hover:border-indigo-500/40 transition shadow-sm space-y-2.5">
                             <div class="flex items-center justify-between">
                                 <span class="font-semibold text-xs text-indigo-400">${task.key}</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded border ${prioColor}">${task.priority}</span>
+                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded border ${prioColor}">${t(task.priority)}</span>
                             </div>
 
                             <p class="text-xs font-medium text-slate-100 leading-snug">${task.title}</p>
@@ -809,10 +1058,10 @@
 
                             <div class="pt-1 flex items-center justify-between">
                                 <select onchange="updateTaskStatus(${task.id}, this.value)" class="bg-darkbg-surface border border-darkbg-border rounded px-2 py-0.5 text-[11px] text-slate-300 focus:outline-none">
-                                    <option value="backlog" ${task.status === 'backlog' ? 'selected' : ''}>Backlog</option>
-                                    <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
-                                    <option value="in_review" ${task.status === 'in_review' ? 'selected' : ''}>In Review</option>
-                                    <option value="done" ${task.status === 'done' ? 'selected' : ''}>Done</option>
+                                    <option value="backlog" ${task.status === 'backlog' ? 'selected' : ''}>${t('backlog')}</option>
+                                    <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>${t('in_progress')}</option>
+                                    <option value="in_review" ${task.status === 'in_review' ? 'selected' : ''}>${t('in_review')}</option>
+                                    <option value="done" ${task.status === 'done' ? 'selected' : ''}>${t('done')}</option>
                                 </select>
                             </div>
                         </div>
@@ -825,16 +1074,16 @@
         function updateTaskStatus(taskId, newStatus) {
             const task = tasks.find(t => t.id === taskId);
             if (task) {
-                const oldStatus = task.status;
                 task.status = newStatus;
                 activities.unshift({
                     user: 'Alex Mercer',
-                    action: `moved to ${newStatus}`,
+                    action: newStatus,
                     task: task.key,
-                    time: 'just now'
+                    time: currentLocale === 'ro' ? 'chiar acum' : 'just now'
                 });
                 renderKanban();
                 renderDashboard();
+                renderTasksTable();
             }
         }
 
@@ -859,21 +1108,21 @@
                         <td class="py-3 px-4 font-medium text-white">${task.title}</td>
                         <td class="py-3 px-4 text-slate-400 text-xs">${project ? project.key : ''}</td>
                         <td class="py-3 px-4">
-                            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-800 text-slate-300 border border-slate-700 capitalize">${task.status.replace('_', ' ')}</span>
+                            <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-800 text-slate-300 border border-slate-700 capitalize">${t(task.status)}</span>
                         </td>
                         <td class="py-3 px-4">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${task.priority === 'urgent' ? 'text-rose-400' : 'text-slate-300'}">${task.priority}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${task.priority === 'urgent' ? 'text-rose-400' : 'text-slate-300'}">${t(task.priority)}</span>
                         </td>
                         <td class="py-3 px-4 text-slate-300">${task.assignee}</td>
                         <td class="py-3 px-4 text-center text-slate-300 font-medium">${task.sp}</td>
                         <td class="py-3 px-4 text-slate-400 text-xs">${task.due}</td>
                         <td class="py-3 px-4 text-right">
-                            <button onclick="updateTaskStatus(${task.id}, 'done')" class="text-indigo-400 hover:text-indigo-300 text-xs font-semibold">Mark Done</button>
+                            <button onclick="updateTaskStatus(${task.id}, 'done')" class="text-indigo-400 hover:text-indigo-300 text-xs font-semibold">${t('mark_done')}</button>
                         </td>
                     </tr>
                 `;
             });
-            document.getElementById('tasks-table-body').innerHTML = html || '<tr><td colspan="9" class="py-6 text-center text-slate-500">No issues found matching your filters.</td></tr>';
+            document.getElementById('tasks-table-body').innerHTML = html || `<tr><td colspan="9" class="py-6 text-center text-slate-500">${t('no_matching_issues')}</td></tr>`;
         }
 
         function renderReports() {
@@ -914,6 +1163,7 @@
                 const uDone = uTasks.filter(t => t.status === 'done').length;
                 const uActive = uTasks.length - uDone;
                 const uSp = uTasks.filter(t => t.status !== 'done').reduce((acc, t) => acc + (t.sp || 0), 0);
+                const capacityStatusText = uSp > 10 ? t('heavy_load') : t('available_capacity');
 
                 twHtml += `
                     <tr class="hover:bg-darkbg-hover/50 transition">
@@ -925,7 +1175,7 @@
                         <td class="py-3.5 px-4 text-center text-indigo-300 font-semibold">${uSp} SP</td>
                         <td class="py-3.5 px-4 text-center">
                             <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${uSp > 10 ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30' : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'}">
-                                ${uSp > 10 ? 'Heavy Load' : 'Available Capacity'}
+                                ${capacityStatusText}
                             </span>
                         </td>
                     </tr>
@@ -960,6 +1210,7 @@
                 `;
             });
             document.getElementById('team-members-table').innerHTML = html;
+            document.getElementById('team-count-badge').innerText = `${users.length} ${t('members')}`;
         }
 
         function handleNewMember(e) {
@@ -973,7 +1224,7 @@
             document.getElementById('new-member-form').reset();
             renderTeams();
             renderDashboard();
-            alert(`Member ${name} was added successfully.`);
+            alert(t('member_added').replace('{name}', name));
         }
 
         function openNewTaskModal() {
@@ -1015,20 +1266,20 @@
             tasks.unshift(newTask);
             activities.unshift({
                 user: 'Alex Mercer',
-                action: 'created issue',
+                action: 'created',
                 task: key,
-                time: 'just now'
+                time: currentLocale === 'ro' ? 'chiar acum' : 'just now'
             });
 
             closeNewTaskModal();
             renderKanban();
             renderDashboard();
             renderTasksTable();
-            alert(`Issue ${key} created successfully.`);
+            alert(t('issue_created').replace('{key}', key));
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderDashboard();
+            setLocale(currentLocale);
         });
     </script>
 

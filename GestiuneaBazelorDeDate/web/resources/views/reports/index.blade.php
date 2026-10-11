@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Analytics & Reports')
-@section('page_title', 'Analytics & Reports')
+@section('title', __('Analytics & Reports'))
+@section('page_title', __('Analytics & Reports'))
 
 @section('content')
 <div class="space-y-8">
 
     <!-- Information Header -->
     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
-        <h2 class="text-base font-semibold text-white">Engineering Analytics &amp; Workflow Velocity</h2>
+        <h2 class="text-base font-semibold text-white">{{ __('Engineering Analytics & Workflow Velocity') }}</h2>
         <p class="text-xs text-slate-400 mt-1">
-            Real-time multi-dimensional metrics aggregated across projects, sprint stages, workloads, and issue resolution lifecycles.
+            {{ __('Real-time multi-dimensional metrics aggregated across projects, sprint stages, workloads, and issue resolution lifecycles.') }}
         </p>
     </div>
 
@@ -20,9 +20,9 @@
             <div>
                 <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                     <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    1. Project Velocity &amp; Completion Rate
+                    1. {{ __('Project Velocity & Completion Rate') }}
                 </h3>
-                <p class="text-xs text-slate-400 mt-0.5">Calculated by aggregating all active issues per project</p>
+                <p class="text-xs text-slate-400 mt-0.5">{{ __('Calculated by aggregating all active issues per project') }}</p>
             </div>
         </div>
 
@@ -30,14 +30,14 @@
             <table class="w-full text-left text-xs">
                 <thead>
                     <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                        <th class="py-3 px-4">Project</th>
-                        <th class="py-3 px-4">Status &amp; Budget</th>
-                        <th class="py-3 px-4 text-center">Total Issues</th>
-                        <th class="py-3 px-4 text-center">Completed</th>
-                        <th class="py-3 px-4 text-center">Active</th>
-                        <th class="py-3 px-4 text-center">Overdue</th>
-                        <th class="py-3 px-4 text-center">Story Points</th>
-                        <th class="py-3 px-4 w-48">Progress Rate</th>
+                        <th class="py-3 px-4">{{ __('Project') }}</th>
+                        <th class="py-3 px-4">{{ __('Status & Budget') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Total Issues') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Completed') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Active') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Overdue') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Story Points') }}</th>
+                        <th class="py-3 px-4 w-48">{{ __('Progress Rate') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-darkbg-border">
@@ -50,7 +50,7 @@
                             </div>
                         </td>
                         <td class="py-3.5 px-4">
-                            <div class="text-slate-300 capitalize">{{ str_replace('_', ' ', $pm->project_status) }}</div>
+                            <div class="text-slate-300 capitalize">{{ __(str_replace('_', ' ', $pm->project_status)) }}</div>
                             <div class="text-[11px] text-slate-500">${{ number_format($pm->budget, 2) }}</div>
                         </td>
                         <td class="py-3.5 px-4 text-center text-white font-semibold">{{ $pm->total_tasks }}</td>
@@ -73,7 +73,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="8" class="py-6 text-center text-slate-400">No projects found.</td>
+                        <td colspan="8" class="py-6 text-center text-slate-400">{{ __('No projects found.') }}</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -87,9 +87,9 @@
             <div>
                 <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                     <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                    2. Team Workload &amp; Capacity
+                    2. {{ __('Team Workload & Capacity') }}
                 </h3>
-                <p class="text-xs text-slate-400 mt-0.5">Member-level allocation: active issues, story points, and logged hours</p>
+                <p class="text-xs text-slate-400 mt-0.5">{{ __('Member-level allocation: active issues, story points, and logged hours') }}</p>
             </div>
         </div>
 
@@ -97,17 +97,17 @@
             <table class="w-full text-left text-xs">
                 <thead>
                     <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                        <th class="py-3 px-4">Team Member</th>
-                        <th class="py-3 px-4">Role &amp; Title</th>
-                        <th class="py-3 px-4 text-center">Assigned Issues</th>
-                        <th class="py-3 px-4 text-center">Active</th>
-                        <th class="py-3 px-4 text-center">Completed</th>
-                        <th class="py-3 px-4 text-center">Active Points</th>
-                        <th class="py-3 px-4 text-center">Logged Hours</th>
-                        <th class="py-3 px-4 text-center">Capacity Status</th>
+                        <th class="py-3 px-4">{{ __('Team Member') }}</th>
+                        <th class="py-3 px-4">{{ __('Role & Title') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Assigned Issues') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Active') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Completed') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Active Points') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Logged Hours') }}</th>
+                        <th class="py-3 px-4 text-center">{{ __('Capacity Status') }}</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-darkbg-border">
+                <tbody class="divide-y border-darkbg-border">
                     @forelse($teamWorkload as $tw)
                     <tr class="hover:bg-darkbg-hover/50 transition">
                         <td class="py-3.5 px-4">
@@ -129,17 +129,17 @@
                         <td class="py-3.5 px-4 text-center text-slate-300">{{ $tw->total_logged_hours }} h</td>
                         <td class="py-3.5 px-4 text-center">
                             @if($tw->active_story_points > 15)
-                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/15 text-rose-400 border border-rose-500/30">Overloaded</span>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/15 text-rose-400 border border-rose-500/30">{{ __('Overloaded') }}</span>
                             @elseif($tw->active_story_points >= 8)
-                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">Optimal</span>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">{{ __('Optimal') }}</span>
                             @else
-                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Available</span>
+                                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">{{ __('Available') }}</span>
                             @endif
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="8" class="py-6 text-center text-slate-400">No workload records found.</td>
+                        <td colspan="8" class="py-6 text-center text-slate-400">{{ __('No workload records found.') }}</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -156,12 +156,12 @@
                 <div>
                     <h3 class="text-sm font-semibold text-rose-400 flex items-center gap-2">
                         <svg class="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        3. Overdue Issues
+                        3. {{ __('Overdue Issues') }}
                     </h3>
-                    <p class="text-xs text-slate-400 mt-0.5">Issues whose target due date has passed</p>
+                    <p class="text-xs text-slate-400 mt-0.5">{{ __('Issues whose target due date has passed') }}</p>
                 </div>
                 <span class="text-xs px-2 py-1 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold">
-                    {{ $overdueTasks->count() }} overdue
+                    {{ $overdueTasks->count() }} {{ __('overdue') }}
                 </span>
             </div>
 
@@ -169,11 +169,11 @@
                 <table class="w-full text-left text-xs">
                     <thead>
                         <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                            <th class="py-3 px-4">Key &amp; Title</th>
-                            <th class="py-3 px-4">Project</th>
-                            <th class="py-3 px-4">Assignee</th>
-                            <th class="py-3 px-4">Target Date</th>
-                            <th class="py-3 px-4 text-center">Delay</th>
+                            <th class="py-3 px-4">{{ __('Key & Title') }}</th>
+                            <th class="py-3 px-4">{{ __('Project') }}</th>
+                            <th class="py-3 px-4">{{ __('Assignee') }}</th>
+                            <th class="py-3 px-4">{{ __('Target Date') }}</th>
+                            <th class="py-3 px-4 text-center">{{ __('Delay') }}</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-darkbg-border">
@@ -184,18 +184,18 @@
                                 <span class="text-white">{{ $ot->task_title }}</span>
                             </td>
                             <td class="py-3.5 px-4 text-slate-300 font-medium">{{ $ot->project_name }}</td>
-                            <td class="py-3.5 px-4 text-slate-400">{{ $ot->assignee_name ?? 'Unassigned' }}</td>
+                            <td class="py-3.5 px-4 text-slate-400">{{ $ot->assignee_name ?? __('Unassigned') }}</td>
                             <td class="py-3.5 px-4 text-slate-400">{{ \Carbon\Carbon::parse($ot->due_date)->format('M d, Y') }}</td>
                             <td class="py-3.5 px-4 text-center">
                                 <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/40">
-                                    +{{ $ot->days_overdue }} days
+                                    +{{ $ot->days_overdue }} {{ __('days') }}
                                 </span>
                             </td>
                         </tr>
                         @empty
                         <tr>
                             <td colspan="5" class="py-6 text-center text-slate-400">
-                                <span class="text-emerald-400 font-medium">All clear!</span> No overdue issues at this time.
+                                <span class="text-emerald-400 font-medium">{{ __('All clear!') }}</span> {{ __('No issues found matching your criteria.') }}
                             </td>
                         </tr>
                         @endforelse
@@ -209,9 +209,9 @@
             <div class="pb-3 mb-4 border-b border-darkbg-border">
                 <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                     <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
-                    4. Distribution by Issue Type
+                    4. {{ __('Distribution by Issue Type') }}
                 </h3>
-                <p class="text-xs text-slate-400 mt-0.5">Average story points and total logged hours</p>
+                <p class="text-xs text-slate-400 mt-0.5">{{ __('Average story points and total logged hours') }}</p>
             </div>
 
             <div class="space-y-4">
@@ -228,10 +228,10 @@
                             @else
                                 <span class="w-2 h-2 rounded-full bg-blue-500"></span>
                             @endif
-                            {{ $typeStat->type }}
+                            {{ __($typeStat->type) }}
                         </span>
                         <span class="text-xs font-semibold text-white px-2 py-0.5 rounded bg-darkbg-card border border-darkbg-border">
-                            {{ $typeStat->count }} issues
+                            {{ $typeStat->count }} {{ __('issues') }}
                         </span>
                     </div>
 
@@ -241,7 +241,7 @@
                     </div>
                 </div>
                 @empty
-                <div class="text-xs text-slate-400 text-center py-4">No data available.</div>
+                <div class="text-xs text-slate-400 text-center py-4">{{ __('No issues found matching your criteria.') }}</div>
                 @endforelse
             </div>
         </div>

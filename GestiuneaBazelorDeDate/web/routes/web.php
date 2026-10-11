@@ -42,3 +42,12 @@ Route::patch('/teams/{user}/role', [TeamController::class, 'updateRole'])->name(
 
 // Rapoarte şi Statistici SQL
 Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+
+// Comutare Limbă (i18n)
+Route::get('/locale/{lang}', function ($lang) {
+    if (in_array($lang, ['en', 'ro'])) {
+        session(['locale' => $lang]);
+    }
+    return redirect()->back();
+})->name('locale.switch');
+
