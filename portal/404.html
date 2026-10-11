@@ -20,6 +20,8 @@
     const path = window.location.pathname;
     if (path.includes('/university/hci')) {
       window.location.replace('/university/hci/' + (window.location.search || '') + (window.location.hash || ''));
+    } else if (path.includes('/university/gbd')) {
+      window.location.replace('/university/gbd/' + (window.location.search || '') + (window.location.hash || ''));
     } else {
       window.location.replace('/university/');
     }

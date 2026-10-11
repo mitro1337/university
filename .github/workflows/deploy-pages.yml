@@ -34,6 +34,7 @@ jobs:
           mkdir -p _site/lucrare-licenta
           mkdir -p _site/practica-specialitate
           mkdir -p _site/programare-web
+          mkdir -p _site/gbd
 
       - name: Build HCI Frontend (Angular 20 Standalone)
         run: |
@@ -76,6 +77,10 @@ jobs:
       - name: Deploy Programare Web (Laborator 1)
         run: |
           cp -r "$GITHUB_WORKSPACE/ProgramareWeb/Laborator/Laborator1/"* "$GITHUB_WORKSPACE/_site/programare-web/"
+
+      - name: Deploy GBD Web (LinearFlow Workflow & Project Management)
+        run: |
+          cp -r "$GITHUB_WORKSPACE/GestiuneaBazelorDeDate/web/demo/"* "$GITHUB_WORKSPACE/_site/gbd/"
 
       - name: Assemble Central Portal & SPA Router
         run: |
