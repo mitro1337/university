@@ -341,13 +341,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-8.2-
 
+      - name: Prepare Laravel directory permissions
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/{cache,sessions,views} storage/logs storage/app/public
+          chmod -R 777 bootstrap/cache storage
+
       - name: Install Composer dependencies
         env:
           COMPOSER_POLICY_ADVISORIES_BLOCK: "0"
-          COMPOSER_AUDIT_BLOCK: "0"
         run: |
           composer config --no-interaction policy.advisories.block false || true
-          composer config --no-interaction audit.block false || true
           if [ -f composer.lock ]; then
             composer install --prefer-dist --no-progress --no-interaction --no-audit
           else
