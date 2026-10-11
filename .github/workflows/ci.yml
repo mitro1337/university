@@ -6,6 +6,7 @@ on:
     paths:
       - 'LucrareLicenta/code/**'
       - 'PracticaSpecialitate/proiect/**'
+      - 'GestiuneaBazelorDeDate/web/**'
       - '.github/workflows/ci.yml'
   pull_request:
     branches: [ main, master ]
@@ -13,6 +14,7 @@ on:
     paths:
       - 'LucrareLicenta/code/**'
       - 'PracticaSpecialitate/proiect/**'
+      - 'GestiuneaBazelorDeDate/web/**'
       - '.github/workflows/ci.yml'
   workflow_dispatch:
 
@@ -33,6 +35,7 @@ jobs:
       web_kiosk: ${{ steps.filter.outputs.web_kiosk }}
       web_ps2: ${{ steps.filter.outputs.web_ps2 }}
       docker_ll3: ${{ steps.filter.outputs.docker_ll3 }}
+      gbd_web: ${{ steps.filter.outputs.gbd_web }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -60,6 +63,10 @@ jobs:
             docker_ll3:
               - 'LucrareLicenta/code/web/backend/Dockerfile'
               - '.github/workflows/ci.yml'
+            gbd_web:
+              - 'GestiuneaBazelorDeDate/web/**'
+              - '.github/workflows/ci.yml'
+
 
   python-ci:
     name: "Python 3.11 CI (LL3 Simulators & Tests)"
@@ -286,9 +293,112 @@ jobs:
             kill $(cat backend.pid) || true
           fi
 
+  gbd-laravel-mysql-ci:
+    name: "Laravel 11 & MySQL 8.0 CI (GBD Workflow Platform)"
+    needs: [ path-filter ]
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.path-filter.outputs.gbd_web == 'true' }}
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: workflow_management
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    defaults:
+      run:
+        working-directory: GestiuneaBazelorDeDate/web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP 8.2 with MySQL extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, bcmath, zip
+          coverage: none
+
+      - name: Set up Python 3.11 for live integration testing
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Validate composer.json syntax
+        run: composer validate --no-check-publish
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-8.2-${{ hashFiles('GestiuneaBazelorDeDate/web/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-php-8.2-
+
+      - name: Install Composer dependencies
+        run: |
+          if [ -f composer.lock ]; then
+            composer install --prefer-dist --no-progress --no-interaction
+          else
+            composer update --prefer-dist --no-progress --no-interaction
+          fi
+
+      - name: Configure CI environment (.env)
+        run: |
+          cp .env.ci .env
+          php artisan key:generate --force
+
+      - name: Verify MySQL database connectivity
+        run: |
+          for i in {1..30}; do
+            if php -r "new PDO('mysql:host=127.0.0.1;port=3306;dbname=workflow_management', 'root', 'root');" 2>/dev/null; then
+              echo "[OK] Conexiunea la containerul MySQL 8.0 a fost stabilita cu succes."
+              break
+            fi
+            echo "[WAIT] Se asteapta pornirea containerului de baza de date MySQL..."
+            sleep 1
+          done
+
+      - name: Execute migrations and seed database in MySQL
+        run: |
+          php artisan migrate:fresh --seed --force
+
+      - name: Run automated PHPUnit feature & integrity test suites
+        run: |
+          php artisan test --colors=always
+
+      - name: Launch Laravel application server in background
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8000 > laravel-server.log 2>&1 &
+          echo $! > laravel.pid
+          echo "Server Laravel pornit in fundal cu PID $(cat laravel.pid)"
+
+      - name: Run live integration smoke tests
+        run: |
+          python3 smoke_test_backend.py
+
+      - name: Dump Laravel server logs on failure
+        if: failure()
+        run: |
+          echo "=== LOGURI SERVER LARAVEL ==="
+          cat laravel-server.log || true
+
+      - name: Terminate background server process
+        if: always()
+        run: |
+          if [ -f laravel.pid ]; then
+            kill $(cat laravel.pid) || true
+          fi
+
   ci-gate:
     name: "Continuous Integration Quality Gate"
-    needs: [ path-filter, python-ci, java-maven-ci, frontend-web-ci, ps2-nextjs-ci, docker-ci, application-smoke-test ]
+    needs: [ path-filter, python-ci, java-maven-ci, frontend-web-ci, ps2-nextjs-ci, docker-ci, application-smoke-test, gbd-laravel-mysql-ci ]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -301,8 +411,9 @@ jobs:
           echo "PS2 Next.js CI: ${{ needs.ps2-nextjs-ci.result }}"
           echo "Docker CI: ${{ needs.docker-ci.result }}"
           echo "Smoke Test: ${{ needs.application-smoke-test.result }}"
+          echo "GBD Laravel/MySQL CI: ${{ needs.gbd-laravel-mysql-ci.result }}"
 
-          for res in "${{ needs.python-ci.result }}" "${{ needs.java-maven-ci.result }}" "${{ needs.frontend-web-ci.result }}" "${{ needs.ps2-nextjs-ci.result }}" "${{ needs.docker-ci.result }}" "${{ needs.application-smoke-test.result }}"; do
+          for res in "${{ needs.python-ci.result }}" "${{ needs.java-maven-ci.result }}" "${{ needs.frontend-web-ci.result }}" "${{ needs.ps2-nextjs-ci.result }}" "${{ needs.docker-ci.result }}" "${{ needs.application-smoke-test.result }}" "${{ needs.gbd-laravel-mysql-ci.result }}"; do
             if [ "$res" == "failure" ]; then
               echo "[FAIL] Unul sau mai multe joburi obligatorii au esuat."
               exit 1
@@ -323,6 +434,7 @@ jobs:
           | **PS2 Weather App** | Next.js 15 / React 19 Build & Lint | ${{ needs.ps2-nextjs-ci.result }} |
           | **Containerization** | Docker Buildx Image Build & Layer Cache | ${{ needs.docker-ci.result }} |
           | **Smoke Test** | Live REST Endpoints & Wazuh Telemetry Stream | ${{ needs.application-smoke-test.result }} |
+          | **GBD Platform** | Laravel 11 + MySQL 8.0 Containerized CI & Tests | ${{ needs.gbd-laravel-mysql-ci.result }} |
           | **Aggregate CI Gate** | Monorepo Quality Status for Branch Protection | SUCCESS |
 
           *Pipeline executat pe infrastructura stefanutc1/university.*
