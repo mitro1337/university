@@ -108,7 +108,7 @@
                 </p>
                 <div class="mt-4 p-3 bg-darkbg-surface/60 border border-darkbg-border rounded-lg text-[11px] text-left text-slate-400">
                     <div class="font-semibold text-slate-300 mb-1">Conturi demo preconfigurate:</div>
-                    <div class="font-mono text-[10px] space-y-0.5">
+                    <div class=" text-[10px] space-y-0.5">
                         <div>Admin: <span class="text-indigo-300">admin@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
                         <div>PM: <span class="text-indigo-300">alex@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
                         <div>Dev: <span class="text-indigo-300">maria@linearflow.ro</span> / <span class="text-slate-300">password</span></div>
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <div class="text-center mt-6 text-[11px] text-slate-500 font-mono">
+        <div class="text-center mt-6 text-[11px] text-slate-500 ">
             Proiect Gestiunea Bazelor de Date &bull; Laravel &amp; MySQL
         </div>
     </div>

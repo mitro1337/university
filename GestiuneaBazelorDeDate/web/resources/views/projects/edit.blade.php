@@ -14,7 +14,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Cheie Proiect</label>
                     <input type="text" value="{{ $project->project_key }}" disabled
-                           class="w-full bg-darkbg-surface/50 border border-darkbg-border rounded-lg px-3 py-2 text-xs font-mono uppercase text-slate-500 cursor-not-allowed">
+                           class="w-full bg-darkbg-surface/50 border border-darkbg-border rounded-lg px-3 py-2 text-xs  uppercase text-slate-500 cursor-not-allowed">
                 </div>
 
                 <div class="sm:col-span-2">
@@ -77,7 +77,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Buget Alocat (RON)</label>
                     <input type="number" step="0.01" name="budget" value="{{ old('budget', $project->budget) }}"
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white  focus:outline-none focus:border-indigo-500">
                 </div>
             </div>
 

@@ -8,7 +8,7 @@
     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-6">
         <div class="flex items-center justify-between pb-4 mb-4 border-b border-darkbg-border">
             <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+                <span class="text-xs  font-bold px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
                     {{ $task->task_key }}
                 </span>
                 <span class="text-xs text-slate-400">în proiectul</span>
@@ -85,7 +85,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Story Points</label>
                     <input type="number" name="story_points" value="{{ old('story_points', $task->story_points) }}" min="0" max="100"
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white  focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
@@ -99,12 +99,12 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Ore Estimate</label>
                     <input type="number" step="0.5" name="estimated_hours" value="{{ old('estimated_hours', $task->estimated_hours) }}" min="0"
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white  focus:outline-none focus:border-indigo-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Ore Înregistrate (Logged)</label>
                     <input type="number" step="0.5" name="logged_hours" value="{{ old('logged_hours', $task->logged_hours) }}" min="0"
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white  focus:outline-none focus:border-indigo-500">
                 </div>
             </div>
 

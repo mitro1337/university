@@ -43,7 +43,7 @@
             <div>
                 <!-- Top Card Header -->
                 <div class="flex items-center justify-between mb-3">
-                    <span class="px-2.5 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-md text-xs font-mono font-bold">
+                    <span class="px-2.5 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-md text-xs  font-bold">
                         {{ $project->project_key }}
                     </span>
 
@@ -76,7 +76,7 @@
                 <div class="mb-4">
                     <div class="flex items-center justify-between text-xs mb-1.5">
                         <span class="text-slate-400 font-medium">Progres general</span>
-                        <span class="text-emerald-400 font-mono font-bold">{{ $project->progress_percentage }}%</span>
+                        <span class="text-emerald-400  font-bold">{{ $project->progress_percentage }}%</span>
                     </div>
                     <div class="w-full h-2 bg-darkbg-surface rounded-full overflow-hidden">
                         <div class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-full" style="width: {{ $project->progress_percentage }}%"></div>

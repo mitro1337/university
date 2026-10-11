@@ -16,11 +16,11 @@
     <!-- BREADCRUMB ŞI NAVIGARE -->
     <div class="flex items-center justify-between text-xs text-slate-400">
         <div class="flex items-center gap-2">
-            <a href="{{ route('projects.show', $task->project) }}" class="hover:text-indigo-400 font-mono font-bold text-slate-300">
+            <a href="{{ route('projects.show', $task->project) }}" class="hover:text-indigo-400  font-bold text-slate-300">
                 &larr; {{ $task->project->project_key }} ({{ $task->project->name }})
             </a>
             <span>/</span>
-            <span class="font-mono text-indigo-400 font-bold">{{ $task->task_key }}</span>
+            <span class=" text-indigo-400 font-bold">{{ $task->task_key }}</span>
         </div>
 
         <div class="flex items-center gap-2">
@@ -45,7 +45,7 @@
             <!-- Box Principal: Titlu şi Descriere -->
             <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-6">
                 <div class="flex items-center gap-2 mb-2">
-                    <span class="px-2 py-0.5 bg-slate-800 text-slate-300 rounded text-xs uppercase font-mono font-bold tracking-wider">
+                    <span class="px-2 py-0.5 bg-slate-800 text-slate-300 rounded text-xs uppercase  font-bold tracking-wider">
                         {{ $task->type }}
                     </span>
                     @if($task->isOverdue())
@@ -120,7 +120,7 @@
                                 {{ $log->description ?? $log->action }}
                             </p>
                             @if($log->field_name)
-                            <p class="text-[11px] text-slate-400 mt-0.5 font-mono">
+                            <p class="text-[11px] text-slate-400 mt-0.5 ">
                                 {{ $log->field_name }}: <span class="text-rose-400 line-through">{{ $log->old_value }}</span> &rarr; <span class="text-emerald-400">{{ $log->new_value }}</span>
                             </p>
                             @endif
@@ -183,13 +183,13 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-[11px] font-medium text-slate-400 mb-1">Story Points</label>
-                        <div class="px-3 py-1.5 bg-darkbg-surface border border-darkbg-border rounded-lg text-xs font-mono font-bold text-white">
+                        <div class="px-3 py-1.5 bg-darkbg-surface border border-darkbg-border rounded-lg text-xs  font-bold text-white">
                             {{ $task->story_points ?? '1' }} SP
                         </div>
                     </div>
                     <div>
                         <label class="block text-[11px] font-medium text-slate-400 mb-1">Ore Înregistrate</label>
-                        <div class="px-3 py-1.5 bg-darkbg-surface border border-darkbg-border rounded-lg text-xs font-mono text-emerald-400">
+                        <div class="px-3 py-1.5 bg-darkbg-surface border border-darkbg-border rounded-lg text-xs  text-emerald-400">
                             {{ $task->logged_hours }} / {{ $task->estimated_hours }} h
                         </div>
                     </div>

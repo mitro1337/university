@@ -13,7 +13,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Cheie Proiect (Key)*</label>
                     <input type="text" name="project_key" value="{{ old('project_key') }}" maxlength="10" placeholder="ex: GBD" required
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs font-mono uppercase text-white focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs  uppercase text-white focus:outline-none focus:border-indigo-500">
                     <span class="text-[10px] text-slate-400">Prefixul taskurilor (ex: GBD-1)</span>
                 </div>
 
@@ -77,7 +77,7 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Buget Alocat (RON)</label>
                     <input type="number" step="0.01" name="budget" value="{{ old('budget', '0.00') }}"
-                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-indigo-500">
+                           class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white  focus:outline-none focus:border-indigo-500">
                 </div>
             </div>
 

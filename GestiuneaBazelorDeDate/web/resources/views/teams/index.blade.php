@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Echipă & Roluri')
-@section('page_title', 'Gestiune Echipă & Roluri Utilizatori')
+@section('title', 'Team & Roles')
+@section('page_title', 'Team Directory & Roles')
 
 @section('content')
 <div class="space-y-6">
@@ -10,7 +10,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 flex items-center justify-between">
             <div>
-                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Membri</div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Members</div>
                 <div class="text-2xl font-bold text-white mt-1">{{ $users->count() }}</div>
             </div>
             <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
@@ -24,7 +24,7 @@
         <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 flex items-center justify-between">
             <div>
                 <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider truncate max-w-[150px]">{{ $dist->name }}</div>
-                <div class="text-2xl font-bold text-white mt-1">{{ $dist->user_count }} <span class="text-xs font-normal text-slate-400">membri</span></div>
+                <div class="text-2xl font-bold text-white mt-1">{{ $dist->user_count }} <span class="text-xs font-normal text-slate-400">members</span></div>
             </div>
             <div class="w-10 h-10 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,11 +42,11 @@
         <div class="lg:col-span-2 bg-darkbg-card border border-darkbg-border rounded-xl overflow-hidden">
             <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
                 <div>
-                    <h2 class="text-base font-semibold text-white">Director Echipă & Permisiuni</h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Utilizatori activi, roluri în sistem şi taskuri alocate</p>
+                    <h2 class="text-base font-semibold text-white">Team Directory &amp; Permissions</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Active users, system roles, and assigned workload</p>
                 </div>
-                <span class="text-xs font-mono px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                    {{ $users->count() }} utilizatori
+                <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                    {{ $users->count() }} members
                 </span>
             </div>
 
@@ -54,11 +54,11 @@
                 <table class="w-full text-left text-xs">
                     <thead>
                         <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                            <th class="py-3 px-4">Utilizator</th>
-                            <th class="py-3 px-4">Titlu / Funcţie</th>
-                            <th class="py-3 px-4">Rol & Permisiuni</th>
-                            <th class="py-3 px-4 text-center">Taskuri</th>
-                            <th class="py-3 px-4 text-center">Proiecte</th>
+                            <th class="py-3 px-4">User</th>
+                            <th class="py-3 px-4">Title / Position</th>
+                            <th class="py-3 px-4">Role &amp; Access</th>
+                            <th class="py-3 px-4 text-center">Issues</th>
+                            <th class="py-3 px-4 text-center">Projects</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-darkbg-border">
@@ -71,7 +71,7 @@
                                     </div>
                                     <div>
                                         <div class="font-medium text-white">{{ $user->name }}</div>
-                                        <div class="text-[11px] text-slate-400 font-mono">{{ $user->email }}</div>
+                                        <div class="text-[11px] text-slate-400">{{ $user->email }}</div>
                                     </div>
                                 </div>
                             </td>
@@ -81,7 +81,6 @@
                             </td>
 
                             <td class="py-3.5 px-4">
-                                <!-- Form rapid de actualizare a rolului -->
                                 <form action="{{ route('teams.updateRole', $user->id) }}" method="POST" class="inline-flex items-center gap-1.5">
                                     @csrf
                                     @method('PATCH')
@@ -97,20 +96,20 @@
                             </td>
 
                             <td class="py-3.5 px-4 text-center">
-                                <span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-indigo-400 border border-slate-700">
+                                <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-indigo-400 border border-slate-700 font-semibold">
                                     {{ $user->assigned_tasks_count }}
                                 </span>
                             </td>
 
                             <td class="py-3.5 px-4 text-center">
-                                <span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                                <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
                                     {{ $user->projects_count }}
                                 </span>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" class="py-8 text-center text-slate-400">Nu există utilizatori înregistraţi.</td>
+                            <td colspan="5" class="py-8 text-center text-slate-400">No registered users found.</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -121,51 +120,51 @@
         <!-- Add New Team Member Form (1 col) -->
         <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 self-start">
             <div class="pb-3 mb-4 border-b border-darkbg-border">
-                <h3 class="text-sm font-semibold text-white">Înregistrează Membru Nou</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Creează un utilizator cu rol şi acces la platformă</p>
+                <h3 class="text-sm font-semibold text-white">Add Team Member</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Invite a new user with system permissions</p>
             </div>
 
             <form action="{{ route('teams.store') }}" method="POST" class="space-y-4">
                 @csrf
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Nume Complet*</label>
-                    <input type="text" name="name" value="{{ old('name') }}" required placeholder="ex: Diana Marinescu"
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name*</label>
+                    <input type="text" name="name" value="{{ old('name') }}" required placeholder="e.g. Diana Miller"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Adresă Email*</label>
-                    <input type="email" name="email" value="{{ old('email') }}" required placeholder="ex: diana@linearflow.ro"
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address*</label>
+                    <input type="email" name="email" value="{{ old('email') }}" required placeholder="e.g. diana@linearflow.com"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Titlu / Rol Tehnic*</label>
-                    <input type="text" name="title" value="{{ old('title') }}" required placeholder="ex: Frontend Developer / QA Specialist"
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Job Title*</label>
+                    <input type="text" name="title" value="{{ old('title') }}" required placeholder="e.g. Frontend Engineer"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Rol Sistem*</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">System Role*</label>
                     <select name="role_id" required class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
                         @foreach($roles as $role)
                             <option value="{{ $role->id }}" {{ $role->slug == 'dev' ? 'selected' : '' }}>
-                                {{ $role->name }} ({{ $role->description }})
+                                {{ $role->name }}
                             </option>
                         @endforeach
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Parolă Iniţială*</label>
-                    <input type="password" name="password" required placeholder="Minim 6 caractere"
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Temporary Password*</label>
+                    <input type="password" name="password" required placeholder="Minimum 6 characters"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div class="pt-2">
-                    <button type="submit" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-indigo-600/25 transition">
-                        + Adaugă Membru în Echipă
+                    <button type="submit" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition">
+                        + Add Team Member
                     </button>
                 </div>
             </form>

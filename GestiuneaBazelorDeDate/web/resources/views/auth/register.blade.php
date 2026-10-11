@@ -116,7 +116,7 @@
             </div>
         </div>
 
-        <div class="text-center mt-6 text-[11px] text-slate-500 font-mono">
+        <div class="text-center mt-6 text-[11px] text-slate-500 ">
             Proiect Gestiunea Bazelor de Date &bull; Laravel &amp; MySQL
         </div>
     </div>

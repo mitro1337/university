@@ -50,16 +50,16 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
             </div>
 
             <h2 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">Pași rapizi de pornire în mediul local:</h2>
-            <div class="bg-[#0c0e14] border border-[#232738] rounded-lg p-4 font-mono text-xs text-slate-300 space-y-2">
-                <p><span class="text-slate-500"># 1. Instalare dependențe Composer & NPM</span><br><span class="text-emerald-400">composer install</span> && <span class="text-emerald-400">npm install</span></p>
-                <p><span class="text-slate-500"># 2. Configurare mediu & cheie aplicație</span><br><span class="text-emerald-400">cp .env.example .env</span> && <span class="text-emerald-400">php artisan key:generate</span></p>
-                <p><span class="text-slate-500"># 3. Import schemă SQL & migrări</span><br><span class="text-emerald-400">mysql -u root -p linearflow_db &lt; database/schema.sql</span><br><span class="text-slate-500">sau</span> <span class="text-emerald-400">php artisan migrate --seed</span></p>
-                <p><span class="text-slate-500"># 4. Lansare server dezvoltare</span><br><span class="text-emerald-400">php artisan serve</span></p>
+            <div class="bg-[#0c0e14] border border-[#232738] rounded-lg p-4 text-xs text-slate-300 space-y-2">
+                <p><span class="text-slate-500"># 1. Install Composer & NPM dependencies</span><br><span class="text-emerald-400">composer install</span> && <span class="text-emerald-400">npm install</span></p>
+                <p><span class="text-slate-500"># 2. Configure environment & app key</span><br><span class="text-emerald-400">cp .env.example .env</span> && <span class="text-emerald-400">php artisan key:generate</span></p>
+                <p><span class="text-slate-500"># 3. Database migrations & seeds</span><br><span class="text-emerald-400">php artisan migrate --seed</span></p>
+                <p><span class="text-slate-500"># 4. Start local development server</span><br><span class="text-emerald-400">php artisan serve</span></p>
             </div>
 
             <div class="mt-6 pt-5 border-t border-[#232738] flex items-center justify-between text-xs text-slate-400">
                 <span>Stack: Laravel &bull; Blade &bull; Tailwind CSS &bull; MySQL</span>
-                <span class="text-indigo-400 font-mono">v1.0.0</span>
+                <span class="text-indigo-400 font-semibold">v1.0.0</span>
             </div>
         </div>
     </body>

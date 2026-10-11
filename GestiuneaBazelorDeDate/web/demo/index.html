@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ro" class="dark">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinearFlow - Project & Workflow Management (GBD)</title>
+    <title>LinearFlow - Project & Workflow Management</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,13 +76,13 @@
             </div>
             <div>
                 <span class="font-bold tracking-tight text-white text-base">Linear<span class="text-indigo-400">Flow</span></span>
-                <span class="text-[10px] block text-slate-400 font-mono tracking-wider uppercase">GBD Edition</span>
+                <span class="text-[11px] block text-slate-400 tracking-wide">Workspace</span>
             </div>
         </div>
 
-        <!-- Navigation Links (Tabs) -->
+        <!-- Navigation Links -->
         <nav class="p-4 space-y-1.5 flex-1">
-            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2">Platformă</div>
+            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2">Platform</div>
             
             <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
@@ -91,47 +91,47 @@
 
             <button onclick="switchTab('projects')" id="nav-projects" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                Proiecte &amp; Kanban
+                Projects &amp; Board
             </button>
 
             <button onclick="switchTab('tasks')" id="nav-tasks" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                Taskuri
+                All Issues
             </button>
 
             <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 pt-4 mb-2">Management</div>
 
             <button onclick="switchTab('teams')" id="nav-teams" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                Echipă &amp; Roluri
+                Team &amp; Roles
             </button>
 
             <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-slate-200 hover:bg-darkbg-hover border border-transparent">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                Rapoarte SQL
+                Analytics &amp; Reports
             </button>
         </nav>
 
-        <!-- Action shortcut: Creare Rapida Task -->
+        <!-- Action shortcut: Create Issue -->
         <div class="p-4 border-t border-darkbg-border">
             <button onclick="openNewTaskModal()" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-indigo-600/25 transition">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                Task Nou
+                New Issue
             </button>
         </div>
 
         <!-- User Profile Card -->
         <div class="p-4 border-t border-darkbg-border flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-200 border border-slate-600">
-                    ȘT
+                <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-xs font-bold">
+                    AM
                 </div>
                 <div class="text-xs">
-                    <p class="font-medium text-slate-200 leading-tight">Ștefan Administrator</p>
+                    <p class="font-medium text-slate-200 leading-tight">Alex Mercer</p>
                     <p class="text-[11px] text-slate-400 leading-tight">Lead Architect</p>
                 </div>
             </div>
-            <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate" target="_blank" class="text-slate-400 hover:text-indigo-400 transition" title="Vezi sursa pe GitHub">
+            <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web" target="_blank" class="text-slate-400 hover:text-indigo-400 transition" title="View Source on GitHub">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             </a>
         </div>
@@ -142,19 +142,16 @@
         <!-- TOP HEADER BAR -->
         <header class="h-16 bg-darkbg-surface/80 backdrop-blur border-b border-darkbg-border px-6 flex items-center justify-between shrink-0">
             <div class="flex items-center gap-3">
-                <h1 id="page-title" class="text-lg font-semibold text-white tracking-tight">Dashboard General</h1>
-                <span id="page-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">KPI Overview</span>
+                <h1 id="page-title" class="text-base font-semibold text-white tracking-tight">Dashboard</h1>
             </div>
 
             <div class="flex items-center gap-3">
-                <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-medium">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    MySQL 8.0 &bull; Online Demo
-                </div>
-
-                <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web" target="_blank" class="px-3 py-1.5 bg-darkbg-card hover:bg-darkbg-hover text-slate-200 border border-darkbg-border rounded-lg text-xs font-medium transition flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                    Sursă Laravel
+                <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold shadow transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    New Issue
+                </button>
+                <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web" target="_blank" class="px-3 py-1.5 bg-darkbg-card hover:bg-darkbg-hover text-slate-300 border border-darkbg-border rounded-lg text-xs font-medium transition flex items-center gap-1.5">
+                    GitHub Repository
                 </a>
             </div>
         </header>
@@ -168,63 +165,63 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Total Proiecte</span>
+                            <span class="text-xs font-medium text-slate-400">Total Projects</span>
                             <span class="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-total-projects">3</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-emerald-400 font-medium">3 active</span>&nbsp;&bull; buget 83,000 RON
+                            <span class="text-emerald-400 font-medium">3 active</span>&nbsp;&bull; $83,000 budget
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Taskuri Deschise (Active)</span>
+                            <span class="text-xs font-medium text-slate-400">Open Issues</span>
                             <span class="p-2 bg-amber-500/10 text-amber-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-open-tasks">8</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-amber-400 font-medium">În lucru &amp; review</span>
+                            <span class="text-amber-400 font-medium">In progress &amp; review</span>
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Taskuri Finalizate</span>
+                            <span class="text-xs font-medium text-slate-400">Resolved Issues</span>
                             <span class="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-completed-tasks">6</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-emerald-400 font-medium" id="kpi-completion-rate">42.8%</span>&nbsp;rată rezolvare
+                            <span class="text-emerald-400 font-medium" id="kpi-completion-rate">42.8%</span>&nbsp;completion rate
                         </div>
                     </div>
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 hover:border-slate-700 transition">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-medium text-slate-400">Membri Echipă</span>
+                            <span class="text-xs font-medium text-slate-400">Team Size</span>
                             <span class="p-2 bg-violet-500/10 text-violet-400 rounded-lg">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                             </span>
                         </div>
                         <div class="mt-3 text-2xl font-bold text-white tracking-tight" id="kpi-team-members">5</div>
                         <div class="mt-1 flex items-center text-xs text-slate-500">
-                            <span class="text-slate-300 font-medium">5 roluri active</span>&nbsp;&bull; Admin, PM, Dev
+                            <span class="text-slate-300 font-medium">5 active members</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- DISTRIBUŢIE SQL PE STĂRI & PRIORITĂŢI -->
+                <!-- STATUS & PRIORITY DISTRIBUTION -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Distribuţie Taskuri pe Stări (Workflow)</h2>
-                            <span class="text-xs font-mono text-slate-400">GROUP BY status</span>
+                            <h2 class="text-sm font-semibold text-white">Workflow Status Breakdown</h2>
+                            <span class="text-xs text-slate-400">By current stage</span>
                         </div>
                         <div class="space-y-3.5" id="dash-status-dist">
                             <!-- Injected by JS -->
@@ -233,8 +230,8 @@
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Distribuţie Taskuri pe Priorităţi</h2>
-                            <span class="text-xs font-mono text-slate-400">GROUP BY priority</span>
+                            <h2 class="text-sm font-semibold text-white">Priority Breakdown</h2>
+                            <span class="text-xs text-slate-400">By severity</span>
                         </div>
                         <div class="space-y-3.5" id="dash-priority-dist">
                             <!-- Injected by JS -->
@@ -242,12 +239,12 @@
                     </div>
                 </div>
 
-                <!-- PROIECTE & RECENT ACTIVITY -->
+                <!-- PROJECTS & RECENT ACTIVITY -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Proiecte Recente &amp; Progres</h2>
-                            <button onclick="switchTab('projects')" class="text-xs text-indigo-400 hover:text-indigo-300">Vezi Kanban &rarr;</button>
+                            <h2 class="text-sm font-semibold text-white">Active Projects &amp; Progress</h2>
+                            <button onclick="switchTab('projects')" class="text-xs text-indigo-400 hover:text-indigo-300">View Board &rarr;</button>
                         </div>
                         <div class="space-y-4" id="dash-projects-list">
                             <!-- Injected by JS -->
@@ -256,8 +253,8 @@
 
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-sm font-semibold text-white">Audit Trail &bull; Activitate</h2>
-                            <span class="text-xs font-mono text-slate-400">activity_logs</span>
+                            <h2 class="text-sm font-semibold text-white">Recent Activity</h2>
+                            <span class="text-xs text-slate-400">Live feed</span>
                         </div>
                         <div class="space-y-3.5 text-xs text-slate-300" id="dash-activity-log">
                             <!-- Injected by JS -->
@@ -266,22 +263,22 @@
                 </div>
             </section>
 
-            <!-- 2. TAB: PROIECTE & KANBAN -->
+            <!-- 2. TAB: PROJECTS & KANBAN -->
             <section id="view-projects" class="hidden space-y-6">
                 <!-- Project Selector & Filter -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-darkbg-card border border-darkbg-border rounded-xl p-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-xs font-semibold text-slate-400">Proiect Selectat:</span>
+                        <span class="text-xs font-semibold text-slate-400">Selected Project:</span>
                         <select id="kanban-project-select" onchange="renderKanban()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500">
-                            <option value="all">Toate Proiectele (Agregat)</option>
-                            <option value="1">[GBD] Sistem de Management Flux de Lucru</option>
-                            <option value="2">[ECOMM] Magazin Online E-Commerce</option>
-                            <option value="3">[AI] Modul Procesare Date &amp; NLP</option>
+                            <option value="all">All Projects</option>
+                            <option value="1">[LF] LinearFlow Core Platform</option>
+                            <option value="2">[STORE] E-Commerce Storefront</option>
+                            <option value="3">[AI] NLP &amp; Data Pipeline</option>
                         </select>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-medium transition flex items-center gap-1.5 shadow">
-                            + Task Nou
+                        <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow">
+                            + New Issue
                         </button>
                     </div>
                 </div>
@@ -295,7 +292,7 @@
                                 <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
                                 <span class="font-semibold text-xs text-white uppercase tracking-wider">Backlog</span>
                             </div>
-                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-darkbg-card text-slate-400" id="count-backlog">0</span>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-slate-400" id="count-backlog">0</span>
                         </div>
                         <div class="space-y-3 min-h-[300px]" id="col-backlog"></div>
                     </div>
@@ -305,9 +302,9 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">În Lucru</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider">In Progress</span>
                             </div>
-                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-darkbg-card text-amber-400" id="count-in_progress">0</span>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-amber-400" id="count-in_progress">0</span>
                         </div>
                         <div class="space-y-3 min-h-[300px]" id="col-in_progress"></div>
                     </div>
@@ -317,9 +314,9 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">În Verificare</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider">In Review</span>
                             </div>
-                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-darkbg-card text-purple-400" id="count-in_review">0</span>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-purple-400" id="count-in_review">0</span>
                         </div>
                         <div class="space-y-3 min-h-[300px]" id="col-in_review"></div>
                     </div>
@@ -329,9 +326,9 @@
                         <div class="flex items-center justify-between pb-3 mb-3 border-b border-darkbg-border">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                                <span class="font-semibold text-xs text-white uppercase tracking-wider">Finalizat</span>
+                                <span class="font-semibold text-xs text-white uppercase tracking-wider">Done</span>
                             </div>
-                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-darkbg-card text-emerald-400" id="count-done">0</span>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-darkbg-card text-emerald-400" id="count-done">0</span>
                         </div>
                         <div class="space-y-3 min-h-[300px]" id="col-done"></div>
                     </div>
@@ -343,28 +340,28 @@
                 <!-- Filters Bar -->
                 <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
                     <div class="flex flex-wrap items-center gap-3">
-                        <input type="text" id="task-search-input" onkeyup="renderTasksTable()" placeholder="Caută după titlu sau cheie..."
-                               class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-56">
+                        <input type="text" id="task-search-input" onkeyup="renderTasksTable()" placeholder="Search by title or key..."
+                               class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-60">
                         
                         <select id="task-filter-status" onchange="renderTasksTable()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-                            <option value="">Toate Stările</option>
+                            <option value="">All Statuses</option>
                             <option value="backlog">Backlog</option>
-                            <option value="in_progress">În Lucru</option>
-                            <option value="in_review">În Verificare</option>
-                            <option value="done">Finalizat</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="in_review">In Review</option>
+                            <option value="done">Done</option>
                         </select>
 
                         <select id="task-filter-priority" onchange="renderTasksTable()" class="bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-                            <option value="">Toate Priorităţile</option>
+                            <option value="">All Priorities</option>
                             <option value="urgent">Urgent</option>
-                            <option value="high">Ridicată</option>
-                            <option value="medium">Medie</option>
-                            <option value="low">Scăzută</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
                         </select>
                     </div>
 
-                    <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-medium transition shadow">
-                        + Adaugă Task
+                    <button onclick="openNewTaskModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition shadow">
+                        + New Issue
                     </button>
                 </div>
 
@@ -374,15 +371,15 @@
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Cheie</th>
-                                    <th class="py-3 px-4">Titlu Task</th>
-                                    <th class="py-3 px-4">Proiect</th>
-                                    <th class="py-3 px-4">Stare</th>
-                                    <th class="py-3 px-4">Prioritate</th>
-                                    <th class="py-3 px-4">Responsabil</th>
+                                    <th class="py-3 px-4">Key</th>
+                                    <th class="py-3 px-4">Title</th>
+                                    <th class="py-3 px-4">Project</th>
+                                    <th class="py-3 px-4">Status</th>
+                                    <th class="py-3 px-4">Priority</th>
+                                    <th class="py-3 px-4">Assignee</th>
                                     <th class="py-3 px-4 text-center">SP</th>
-                                    <th class="py-3 px-4">Termen Limită</th>
-                                    <th class="py-3 px-4 text-right">Acțiuni</th>
+                                    <th class="py-3 px-4">Due Date</th>
+                                    <th class="py-3 px-4 text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="tasks-table-body">
@@ -393,38 +390,35 @@
                 </div>
             </section>
 
-            <!-- 4. TAB: RAPOARTE SQL -->
+            <!-- 4. TAB: REPORTS & ANALYTICS -->
             <section id="view-reports" class="hidden space-y-8">
                 <!-- Info SQL -->
-                <div class="bg-gradient-to-r from-darkbg-card via-darkbg-surface to-darkbg-card border border-darkbg-border rounded-xl p-5">
-                    <div class="flex items-center gap-2">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">SQL Engine</span>
-                        <h2 class="text-base font-semibold text-white">Analiză Agregată &amp; Vederi Relaţionale (MySQL 8.0)</h2>
-                    </div>
+                <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5">
+                    <h2 class="text-sm font-semibold text-white">Performance Analytics &amp; Project Metrics</h2>
                     <p class="text-xs text-slate-400 mt-1">
-                        Calculat în timp real: <code class="text-indigo-400 bg-slate-900 px-1 py-0.5 rounded">LEFT JOIN</code>, <code class="text-indigo-400 bg-slate-900 px-1 py-0.5 rounded">CASE WHEN</code>, agregate (<code class="text-indigo-400 bg-slate-900 px-1 py-0.5 rounded">COUNT, SUM, AVG, DATEDIFF, ROUND</code>) şi grupări <code class="text-indigo-400 bg-slate-900 px-1 py-0.5 rounded">GROUP BY</code>.
+                        Aggregated workflow velocity, completion rate, and workload balance across all active projects.
                     </p>
                 </div>
 
-                <!-- RAPORT 1: Metrici Proiecte -->
+                <!-- REPORT 1: Project Velocity -->
                 <div class="bg-darkbg-card border border-darkbg-border rounded-xl overflow-hidden">
                     <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
                         <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                            1. Metrici Proiecte &amp; Procentaj de Progres
+                            1. Project Velocity &amp; Completion Rate
                         </h3>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Cod &amp; Proiect</th>
-                                    <th class="py-3 px-4">Stare &amp; Buget</th>
-                                    <th class="py-3 px-4 text-center">Total Taskuri</th>
-                                    <th class="py-3 px-4 text-center">Finalizate</th>
+                                    <th class="py-3 px-4">Project</th>
+                                    <th class="py-3 px-4">Budget</th>
+                                    <th class="py-3 px-4 text-center">Total Issues</th>
+                                    <th class="py-3 px-4 text-center">Resolved</th>
                                     <th class="py-3 px-4 text-center">Active</th>
                                     <th class="py-3 px-4 text-center">Story Points</th>
-                                    <th class="py-3 px-4 w-48">Rată Progres</th>
+                                    <th class="py-3 px-4 w-48">Progress</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="report-project-metrics">
@@ -434,25 +428,25 @@
                     </div>
                 </div>
 
-                <!-- RAPORT 2: Workload Echipă -->
+                <!-- REPORT 2: Team Workload -->
                 <div class="bg-darkbg-card border border-darkbg-border rounded-xl overflow-hidden">
                     <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
                         <h3 class="text-sm font-semibold text-white flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                            2. Încărcarea Membrilor Echipei (Team Workload)
+                            2. Team Workload &amp; Capacity
                         </h3>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                    <th class="py-3 px-4">Membru Echipă</th>
-                                    <th class="py-3 px-4">Rol &amp; Poziție</th>
-                                    <th class="py-3 px-4 text-center">Alocate</th>
-                                    <th class="py-3 px-4 text-center">Active</th>
-                                    <th class="py-3 px-4 text-center">Finalizate</th>
-                                    <th class="py-3 px-4 text-center">Story Points</th>
-                                    <th class="py-3 px-4 text-center">Nivel Încărcare</th>
+                                    <th class="py-3 px-4">Member</th>
+                                    <th class="py-3 px-4">Title &amp; Role</th>
+                                    <th class="py-3 px-4 text-center">Assigned</th>
+                                    <th class="py-3 px-4 text-center">In Progress</th>
+                                    <th class="py-3 px-4 text-center">Completed</th>
+                                    <th class="py-3 px-4 text-center">Active Points</th>
+                                    <th class="py-3 px-4 text-center">Capacity Status</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-darkbg-border" id="report-team-workload">
@@ -463,23 +457,23 @@
                 </div>
             </section>
 
-            <!-- 5. TAB: ECHIPĂ & ROLURI -->
+            <!-- 5. TAB: TEAM & ROLES -->
             <section id="view-teams" class="hidden space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <!-- Directory Table (2 cols) -->
                     <div class="lg:col-span-2 bg-darkbg-card border border-darkbg-border rounded-xl overflow-hidden">
                         <div class="p-5 border-b border-darkbg-border flex items-center justify-between">
-                            <h2 class="text-sm font-semibold text-white">Director Echipă &amp; Permisiuni</h2>
-                            <span class="text-xs font-mono px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">5 membri</span>
+                            <h2 class="text-sm font-semibold text-white">Team Directory &amp; Permissions</h2>
+                            <span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">5 members</span>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-xs">
                                 <thead>
                                     <tr class="border-b border-darkbg-border bg-darkbg-surface/50 text-slate-400 font-semibold uppercase tracking-wider">
-                                        <th class="py-3 px-4">Utilizator</th>
-                                        <th class="py-3 px-4">Titlu / Funcție</th>
-                                        <th class="py-3 px-4">Rol Sistem</th>
-                                        <th class="py-3 px-4 text-center">Taskuri</th>
+                                        <th class="py-3 px-4">User</th>
+                                        <th class="py-3 px-4">Position</th>
+                                        <th class="py-3 px-4">Role</th>
+                                        <th class="py-3 px-4 text-center">Assigned Issues</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-darkbg-border" id="team-members-table">
@@ -491,24 +485,24 @@
 
                     <!-- Add Team Member Form (1 col) -->
                     <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-5 self-start">
-                        <h3 class="text-sm font-semibold text-white mb-1">Înregistrează Membru Nou</h3>
-                        <p class="text-xs text-slate-400 mb-4">Adaugă un utilizator cu rol în platformă</p>
+                        <h3 class="text-sm font-semibold text-white mb-1">Invite Team Member</h3>
+                        <p class="text-xs text-slate-400 mb-4">Grant platform access with assigned role</p>
 
                         <form id="new-member-form" onsubmit="handleNewMember(event)" class="space-y-3 text-xs">
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Nume Complet*</label>
-                                <input type="text" id="member-name" required placeholder="ex: Diana Marinescu" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                                <label class="block font-semibold text-slate-300 mb-1">Full Name*</label>
+                                <input type="text" id="member-name" required placeholder="e.g. Diana Miller" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Email*</label>
-                                <input type="email" id="member-email" required placeholder="ex: diana@linearflow.ro" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                                <label class="block font-semibold text-slate-300 mb-1">Email Address*</label>
+                                <input type="email" id="member-email" required placeholder="e.g. diana@linearflow.com" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Titlu / Rol Tehnic*</label>
-                                <input type="text" id="member-title" required placeholder="ex: Frontend Developer" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                                <label class="block font-semibold text-slate-300 mb-1">Job Title*</label>
+                                <input type="text" id="member-title" required placeholder="e.g. Frontend Engineer" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             </div>
                             <div>
-                                <label class="block font-semibold text-slate-300 mb-1">Rol Sistem*</label>
+                                <label class="block font-semibold text-slate-300 mb-1">Role*</label>
                                 <select id="member-role" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                                     <option value="Developer">Developer</option>
                                     <option value="QA Engineer">QA Engineer</option>
@@ -517,7 +511,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow transition mt-2">
-                                + Adaugă în Echipă
+                                Add Member
                             </button>
                         </form>
                     </div>
@@ -527,59 +521,59 @@
         </main>
     </div>
 
-    <!-- MODAL: TASK NOU -->
+    <!-- MODAL: NEW ISSUE -->
     <div id="modal-new-task" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-darkbg-card border border-darkbg-border rounded-2xl max-w-lg w-full p-6 shadow-2xl">
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-darkbg-border">
-                <h3 class="text-sm font-semibold text-white">Creare Task / Issue Nou</h3>
+                <h3 class="text-sm font-semibold text-white">Create New Issue</h3>
                 <button onclick="closeNewTaskModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
             </div>
 
             <form onsubmit="handleCreateTask(event)" class="space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Proiect Părinte*</label>
+                    <label class="block font-semibold text-slate-300 mb-1">Project*</label>
                     <select id="task-modal-project" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                        <option value="1">[GBD] Sistem de Management Flux de Lucru</option>
-                        <option value="2">[ECOMM] Magazin Online E-Commerce</option>
-                        <option value="3">[AI] Modul Procesare Date &amp; NLP</option>
+                        <option value="1">[LF] LinearFlow Core Platform</option>
+                        <option value="2">[STORE] E-Commerce Storefront</option>
+                        <option value="3">[AI] NLP &amp; Data Pipeline</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Titlu Task*</label>
-                    <input type="text" id="task-modal-title" required placeholder="ex: Implementare constrângeri de integritate referenţială"
+                    <label class="block font-semibold text-slate-300 mb-1">Issue Title*</label>
+                    <input type="text" id="task-modal-title" required placeholder="e.g. Implement schema referential integrity"
                            class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">Descriere</label>
-                    <textarea id="task-modal-desc" rows="3" placeholder="Detalii tehnice..."
+                    <label class="block font-semibold text-slate-300 mb-1">Description</label>
+                    <textarea id="task-modal-desc" rows="3" placeholder="Technical specifications..."
                               class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"></textarea>
                 </div>
 
                 <div class="grid grid-cols-3 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Stare*</label>
+                        <label class="block font-semibold text-slate-300 mb-1">Status*</label>
                         <select id="task-modal-status" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             <option value="backlog">Backlog</option>
-                            <option value="in_progress">În Lucru</option>
-                            <option value="in_review">În Verificare</option>
-                            <option value="done">Finalizat</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="in_review">In Review</option>
+                            <option value="done">Done</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Prioritate*</label>
+                        <label class="block font-semibold text-slate-300 mb-1">Priority*</label>
                         <select id="task-modal-priority" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             <option value="urgent">Urgent</option>
-                            <option value="high">Ridicată</option>
-                            <option value="medium" selected>Medie</option>
-                            <option value="low">Scăzută</option>
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Tip*</label>
+                        <label class="block font-semibold text-slate-300 mb-1">Type*</label>
                         <select id="task-modal-type" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                             <option value="task">Task</option>
                             <option value="bug">Bug</option>
@@ -591,25 +585,25 @@
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Responsabil</label>
+                        <label class="block font-semibold text-slate-300 mb-1">Assignee</label>
                         <select id="task-modal-assignee" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
-                            <option value="Maria Ionescu">Maria Ionescu</option>
-                            <option value="Alex Popescu">Alex Popescu</option>
-                            <option value="Andrei Dumitru">Andrei Dumitru</option>
-                            <option value="Elena Radu">Elena Radu</option>
-                            <option value="Ștefan Administrator">Ștefan Administrator</option>
+                            <option value="Alex Mercer">Alex Mercer</option>
+                            <option value="Sarah Chen">Sarah Chen</option>
+                            <option value="Maria Vance">Maria Vance</option>
+                            <option value="David Kim">David Kim</option>
+                            <option value="Elena Rostova">Elena Rostova</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block font-semibold text-slate-300 mb-1">Story Points (1-100)</label>
-                        <input type="number" id="task-modal-sp" value="3" min="1" max="100" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-indigo-500">
+                        <label class="block font-semibold text-slate-300 mb-1">Story Points</label>
+                        <input type="number" id="task-modal-sp" value="3" min="1" max="100" class="w-full bg-darkbg-surface border border-darkbg-border rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
                     </div>
                 </div>
 
                 <div class="pt-3 border-t border-darkbg-border flex justify-end gap-2">
-                    <button type="button" onclick="closeNewTaskModal()" class="px-3 py-1.5 bg-darkbg-surface text-slate-300 rounded-lg font-medium">Anulează</button>
-                    <button type="submit" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow">Creează Taskul</button>
+                    <button type="button" onclick="closeNewTaskModal()" class="px-3 py-1.5 bg-darkbg-surface text-slate-300 rounded-lg font-medium">Cancel</button>
+                    <button type="submit" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-semibold shadow">Create Issue</button>
                 </div>
             </form>
         </div>
@@ -617,43 +611,41 @@
 
     <!-- JAVASCRIPT STATE & RENDERING ENGINE -->
     <script>
-        // State iniţial extras din seed-ul MySQL GBD
         let projects = [
-            { id: 1, key: 'GBD', name: 'Sistem de Management Flux de Lucru', status: 'in_progress', budget: 35000, due: '2026-12-15' },
-            { id: 2, key: 'ECOMM', name: 'Platformă Magazin Online E-Commerce', status: 'in_progress', budget: 28000, due: '2026-11-20' },
-            { id: 3, key: 'AI', name: 'Modul Procesare Date & NLP', status: 'planning', budget: 20000, due: '2027-01-30' }
+            { id: 1, key: 'LF', name: 'LinearFlow Core Platform', status: 'in_progress', budget: 35000, due: '2026-12-15' },
+            { id: 2, key: 'STORE', name: 'E-Commerce Storefront', status: 'in_progress', budget: 28000, due: '2026-11-20' },
+            { id: 3, key: 'AI', name: 'NLP & Data Pipeline', status: 'planning', budget: 20000, due: '2027-01-30' }
         ];
 
         let users = [
-            { id: 1, name: 'Ștefan Administrator', email: 'admin@linearflow.ro', role: 'Administrator', title: 'Lead Architect & DBA' },
-            { id: 2, name: 'Alex Popescu', email: 'alex@linearflow.ro', role: 'Project Manager', title: 'Technical PM' },
-            { id: 3, name: 'Maria Ionescu', email: 'maria@linearflow.ro', role: 'Developer', title: 'Senior Backend Engineer' },
-            { id: 4, name: 'Andrei Dumitru', email: 'andrei@linearflow.ro', role: 'Developer', title: 'Fullstack Dev' },
-            { id: 5, name: 'Elena Radu', email: 'elena@linearflow.ro', role: 'QA Engineer', title: 'QA Specialist' }
+            { id: 1, name: 'Alex Mercer', email: 'alex@linearflow.com', role: 'Administrator', title: 'Lead Architect & DBA' },
+            { id: 2, name: 'Sarah Chen', email: 'sarah@linearflow.com', role: 'Project Manager', title: 'Technical PM' },
+            { id: 3, name: 'Maria Vance', email: 'maria@linearflow.com', role: 'Developer', title: 'Senior Backend Engineer' },
+            { id: 4, name: 'David Kim', email: 'david@linearflow.com', role: 'Developer', title: 'Fullstack Engineer' },
+            { id: 5, name: 'Elena Rostova', email: 'elena@linearflow.com', role: 'QA Engineer', title: 'QA Lead' }
         ];
 
         let tasks = [
-            { id: 1, key: 'GBD-1', projectId: 1, title: 'Proiectare schemă SQL şi constrângeri de integritate referenţială', desc: 'Definire chei străine cu reguli ON DELETE CASCADE şi RESTRICT.', status: 'done', priority: 'urgent', type: 'task', assignee: 'Ștefan Administrator', sp: 8, due: '2026-10-01' },
-            { id: 2, key: 'GBD-2', projectId: 1, title: 'Implementare vederi SQL agregate pentru statistici proiecte', desc: 'Creare view_task_summary şi view_project_metrics cu calcul procentual.', status: 'done', priority: 'high', type: 'feature', assignee: 'Ștefan Administrator', sp: 5, due: '2026-10-05' },
-            { id: 3, key: 'GBD-3', projectId: 1, title: 'Dezvoltare controller raportare cu interogări complexe JOIN', desc: 'Extragere DATEDIFF pentru tichete restante şi calcul mediu story points.', status: 'in_progress', priority: 'high', type: 'feature', assignee: 'Maria Ionescu', sp: 5, due: '2026-10-18' },
-            { id: 4, key: 'GBD-4', projectId: 1, title: 'Optimizare interogări prin indecşi compuşi pe tasks', desc: 'Adăugare index idx_tasks_project_status şi idx_tasks_due_status.', status: 'in_review', priority: 'medium', type: 'improvement', assignee: 'Maria Ionescu', sp: 3, due: '2026-10-22' },
-            { id: 5, key: 'GBD-5', projectId: 1, title: 'Rezolvare bug actualizare stare finală la mutare task', desc: 'La trecere în starea Finalizat se populează automat completed_at.', status: 'in_progress', priority: 'urgent', type: 'bug', assignee: 'Andrei Dumitru', sp: 5, due: '2026-10-12' },
-            { id: 6, key: 'ECOMM-1', projectId: 2, title: 'Integrare modul plăţi securizate 3D Secure v2', desc: 'Conectare gateway bancar şi gestiune webhooks.', status: 'in_progress', priority: 'urgent', type: 'feature', assignee: 'Maria Ionescu', sp: 8, due: '2026-10-25' },
-            { id: 7, key: 'ECOMM-2', projectId: 2, title: 'Catalog produse faţetat cu filtrare dinamică', desc: 'Implementare filtre pe categorii, atribute şi intervale de preţ.', status: 'done', priority: 'high', type: 'feature', assignee: 'Andrei Dumitru', sp: 5, due: '2026-10-08' },
-            { id: 8, key: 'ECOMM-3', projectId: 2, title: 'Testare automată flux coş de cumpărături şi checkout', desc: 'Scriere teste end-to-end Cypress pentru fluxul complet.', status: 'in_review', priority: 'medium', type: 'task', assignee: 'Elena Radu', sp: 3, due: '2026-10-20' },
-            { id: 9, key: 'AI-1', projectId: 3, title: 'Configurare pipeline clasificare tichete de suport', desc: 'Antrenare model clasificare automată în funcţie de prioritate.', status: 'backlog', priority: 'medium', type: 'feature', assignee: 'Ștefan Administrator', sp: 8, due: '2026-11-15' },
-            { id: 10, key: 'AI-2', projectId: 3, title: 'Generare automată sumare progres sprint', desc: 'Utilizare LLM pentru sinteza activităţilor din audit trail.', status: 'backlog', priority: 'low', type: 'improvement', assignee: 'Andrei Dumitru', sp: 5, due: '2026-11-28' }
+            { id: 1, key: 'LF-1', projectId: 1, title: 'Design database schema & referential integrity constraints', desc: 'Define foreign keys with ON DELETE CASCADE and RESTRICT rules.', status: 'done', priority: 'urgent', type: 'task', assignee: 'Alex Mercer', sp: 8, due: '2026-10-01' },
+            { id: 2, key: 'LF-2', projectId: 1, title: 'Build aggregated database views for project metrics', desc: 'Create summary views for tracking velocity and completion rates.', status: 'done', priority: 'high', type: 'feature', assignee: 'Alex Mercer', sp: 5, due: '2026-10-05' },
+            { id: 3, key: 'LF-3', projectId: 1, title: 'Develop reporting controller with multi-table joins', desc: 'Aggregate workload, days overdue and average velocity.', status: 'in_progress', priority: 'high', type: 'feature', assignee: 'Maria Vance', sp: 5, due: '2026-10-18' },
+            { id: 4, key: 'LF-4', projectId: 1, title: 'Optimize query execution with composite indexes', desc: 'Add composite indexes on project_id and status_id columns.', status: 'in_review', priority: 'medium', type: 'improvement', assignee: 'Maria Vance', sp: 3, due: '2026-10-22' },
+            { id: 5, key: 'LF-5', projectId: 1, title: 'Resolve completion timestamp trigger on state update', desc: 'Ensure completed_at is automatically stamped when moving to Done.', status: 'in_progress', priority: 'urgent', type: 'bug', assignee: 'David Kim', sp: 5, due: '2026-10-12' },
+            { id: 6, key: 'STORE-1', projectId: 2, title: 'Integrate 3D Secure v2 payment gateway', desc: 'Connect secure checkout flow and handle asynchronous webhooks.', status: 'in_progress', priority: 'urgent', type: 'feature', assignee: 'Maria Vance', sp: 8, due: '2026-10-25' },
+            { id: 7, key: 'STORE-2', projectId: 2, title: 'Faceted product catalog with dynamic attribute filters', desc: 'Implement multi-attribute filtering by category and price range.', status: 'done', priority: 'high', type: 'feature', assignee: 'David Kim', sp: 5, due: '2026-10-08' },
+            { id: 8, key: 'STORE-3', projectId: 2, title: 'End-to-end automated test suite for checkout funnel', desc: 'Write comprehensive integration tests covering edge cases.', status: 'in_review', priority: 'medium', type: 'task', assignee: 'Elena Rostova', sp: 3, due: '2026-10-20' },
+            { id: 9, key: 'AI-1', projectId: 3, title: 'Implement automated support ticket classification pipeline', desc: 'Train classification model based on priority and subject.', status: 'backlog', priority: 'medium', type: 'feature', assignee: 'Alex Mercer', sp: 8, due: '2026-11-15' },
+            { id: 10, key: 'AI-2', projectId: 3, title: 'Generate sprint progress summary and release notes', desc: 'Utilize automated summaries from the audit log.', status: 'backlog', priority: 'low', type: 'improvement', assignee: 'David Kim', sp: 5, due: '2026-11-28' }
         ];
 
         let activities = [
-            { user: 'Ștefan Administrator', action: 'A marcat ca finalizat', task: 'GBD-2', time: 'acum 2 ore' },
-            { user: 'Maria Ionescu', action: 'A trecut în lucru', task: 'GBD-3', time: 'acum 4 ore' },
-            { user: 'Andrei Dumitru', action: 'A adăugat un comentariu pe', task: 'GBD-5', time: 'acum 6 ore' },
-            { user: 'Elena Radu', action: 'A început verificarea pentru', task: 'ECOMM-3', time: 'ieri' },
-            { user: 'Alex Popescu', action: 'A aprobat lansarea modulului', task: 'ECOMM-2', time: 'acum 2 zile' }
+            { user: 'Alex Mercer', action: 'marked as resolved', task: 'LF-2', time: '2 hours ago' },
+            { user: 'Maria Vance', action: 'moved to In Progress', task: 'LF-3', time: '4 hours ago' },
+            { user: 'David Kim', action: 'commented on', task: 'LF-5', time: '6 hours ago' },
+            { user: 'Elena Rostova', action: 'started review for', task: 'STORE-3', time: 'yesterday' },
+            { user: 'Sarah Chen', action: 'approved release of', task: 'STORE-2', time: '2 days ago' }
         ];
 
-        // Navigare între tab-uri
         function switchTab(tab) {
             const tabs = ['dashboard', 'projects', 'tasks', 'reports', 'teams'];
             tabs.forEach(t => {
@@ -665,15 +657,14 @@
             document.getElementById(`nav-${tab}`).classList.add('active');
 
             const titles = {
-                dashboard: { title: 'Dashboard General', badge: 'KPI Overview' },
-                projects: { title: 'Workflow & Panou Kanban', badge: 'Interactive Board' },
-                tasks: { title: 'Centralizator Taskuri', badge: 'Tabel Filtrare' },
-                reports: { title: 'Rapoarte Agregate SQL', badge: 'MySQL Queries' },
-                teams: { title: 'Echipă & Roluri Sistem', badge: 'RBAC Directory' }
+                dashboard: 'Dashboard',
+                projects: 'Projects & Board',
+                tasks: 'All Issues',
+                reports: 'Analytics & Reports',
+                teams: 'Team & Roles'
             };
 
-            document.getElementById('page-title').innerText = titles[tab].title;
-            document.getElementById('page-badge').innerText = titles[tab].badge;
+            document.getElementById('page-title').innerText = titles[tab];
 
             if (tab === 'dashboard') renderDashboard();
             if (tab === 'projects') renderKanban();
@@ -682,7 +673,6 @@
             if (tab === 'teams') renderTeams();
         }
 
-        // Render Dashboard
         function renderDashboard() {
             const total = tasks.length;
             const completed = tasks.filter(t => t.status === 'done').length;
@@ -695,12 +685,11 @@
             document.getElementById('kpi-completion-rate').innerText = `${rate}%`;
             document.getElementById('kpi-team-members').innerText = users.length;
 
-            // Status Distribution
             const statuses = [
                 { id: 'backlog', name: 'Backlog', color: '#94a3b8' },
-                { id: 'in_progress', name: 'În Lucru', color: '#f59e0b' },
-                { id: 'in_review', name: 'În Verificare', color: '#a855f7' },
-                { id: 'done', name: 'Finalizat', color: '#10b981' }
+                { id: 'in_progress', name: 'In Progress', color: '#f59e0b' },
+                { id: 'in_review', name: 'In Review', color: '#a855f7' },
+                { id: 'done', name: 'Done', color: '#10b981' }
             ];
 
             let statusHtml = '';
@@ -711,7 +700,7 @@
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <span class="text-slate-300 font-medium">${s.name}</span>
-                            <span class="text-slate-400 font-mono">${count} taskuri (${pct}%)</span>
+                            <span class="text-slate-400 font-medium">${count} issues (${pct}%)</span>
                         </div>
                         <div class="w-full bg-darkbg-surface h-2 rounded-full overflow-hidden border border-darkbg-border">
                             <div class="h-full rounded-full transition-all" style="width: ${pct}%; background-color: ${s.color}"></div>
@@ -721,12 +710,11 @@
             });
             document.getElementById('dash-status-dist').innerHTML = statusHtml;
 
-            // Priority Distribution
             const priorities = [
                 { id: 'urgent', name: 'Urgent', color: '#f43f5e' },
-                { id: 'high', name: 'Ridicată', color: '#f97316' },
-                { id: 'medium', name: 'Medie', color: '#eab308' },
-                { id: 'low', name: 'Scăzută', color: '#64748b' }
+                { id: 'high', name: 'High', color: '#f97316' },
+                { id: 'medium', name: 'Medium', color: '#eab308' },
+                { id: 'low', name: 'Low', color: '#64748b' }
             ];
 
             let prioHtml = '';
@@ -737,7 +725,7 @@
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <span class="text-slate-300 font-medium">${p.name}</span>
-                            <span class="text-slate-400 font-mono">${count} taskuri (${pct}%)</span>
+                            <span class="text-slate-400 font-medium">${count} issues (${pct}%)</span>
                         </div>
                         <div class="w-full bg-darkbg-surface h-2 rounded-full overflow-hidden border border-darkbg-border">
                             <div class="h-full rounded-full transition-all" style="width: ${pct}%; background-color: ${p.color}"></div>
@@ -747,7 +735,6 @@
             });
             document.getElementById('dash-priority-dist').innerHTML = prioHtml;
 
-            // Projects List
             let projHtml = '';
             projects.forEach(p => {
                 const pTasks = tasks.filter(t => t.projectId === p.id);
@@ -757,23 +744,22 @@
                     <div class="p-3.5 bg-darkbg-surface rounded-xl border border-darkbg-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="font-mono text-xs font-bold text-indigo-400 px-1.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">${p.key}</span>
+                                <span class="text-xs font-semibold text-indigo-400 px-1.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">${p.key}</span>
                                 <h3 class="text-xs font-semibold text-white">${p.name}</h3>
                             </div>
-                            <div class="text-[11px] text-slate-400 mt-1 font-mono">${p.budget.toLocaleString()} RON &bull; Deadline: ${p.due}</div>
+                            <div class="text-[11px] text-slate-400 mt-1 font-medium">$${p.budget.toLocaleString()} &bull; Target: ${p.due}</div>
                         </div>
                         <div class="w-full sm:w-44 flex items-center gap-2">
                             <div class="flex-1 bg-darkbg-card h-2 rounded-full overflow-hidden border border-darkbg-border">
                                 <div class="bg-indigo-500 h-full rounded-full" style="width: ${pPct}%"></div>
                             </div>
-                            <span class="font-mono text-xs font-semibold text-slate-300 w-10 text-right">${pPct}%</span>
+                            <span class="text-xs font-semibold text-slate-300 w-10 text-right">${pPct}%</span>
                         </div>
                     </div>
                 `;
             });
             document.getElementById('dash-projects-list').innerHTML = projHtml;
 
-            // Activities List
             let actHtml = '';
             activities.forEach(a => {
                 actHtml += `
@@ -782,8 +768,8 @@
                         <div class="flex-1">
                             <span class="font-medium text-white">${a.user}</span>
                             <span class="text-slate-400"> ${a.action} </span>
-                            <span class="font-mono text-indigo-400 font-semibold">${a.task}</span>
-                            <div class="text-[10px] text-slate-500 font-mono mt-0.5">${a.time}</div>
+                            <span class="text-indigo-400 font-semibold">${a.task}</span>
+                            <div class="text-[11px] text-slate-500 mt-0.5 font-normal">${a.time}</div>
                         </div>
                     </div>
                 `;
@@ -791,7 +777,6 @@
             document.getElementById('dash-activity-log').innerHTML = actHtml;
         }
 
-        // Render Kanban
         function renderKanban() {
             const filterProj = document.getElementById('kanban-project-select').value;
             const filteredTasks = filterProj === 'all' ? tasks : tasks.filter(t => t.projectId == filterProj);
@@ -811,7 +796,7 @@
                     html += `
                         <div class="bg-darkbg-card border border-darkbg-border rounded-xl p-3.5 hover:border-indigo-500/40 transition shadow-sm space-y-2.5">
                             <div class="flex items-center justify-between">
-                                <span class="font-mono font-bold text-[11px] text-indigo-400">${task.key}</span>
+                                <span class="font-semibold text-xs text-indigo-400">${task.key}</span>
                                 <span class="text-[10px] font-semibold uppercase px-2 py-0.5 rounded border ${prioColor}">${task.priority}</span>
                             </div>
 
@@ -819,15 +804,15 @@
 
                             <div class="flex items-center justify-between pt-2 border-t border-darkbg-border/60 text-[11px]">
                                 <span class="text-slate-400">${task.assignee.split(' ')[0]}</span>
-                                <span class="font-mono font-bold text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">${task.sp} SP</span>
+                                <span class="font-semibold text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded">${task.sp} SP</span>
                             </div>
 
                             <div class="pt-1 flex items-center justify-between">
-                                <select onchange="updateTaskStatus(${task.id}, this.value)" class="bg-darkbg-surface border border-darkbg-border rounded px-2 py-0.5 text-[10px] text-slate-300 focus:outline-none">
+                                <select onchange="updateTaskStatus(${task.id}, this.value)" class="bg-darkbg-surface border border-darkbg-border rounded px-2 py-0.5 text-[11px] text-slate-300 focus:outline-none">
                                     <option value="backlog" ${task.status === 'backlog' ? 'selected' : ''}>Backlog</option>
-                                    <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>În Lucru</option>
-                                    <option value="in_review" ${task.status === 'in_review' ? 'selected' : ''}>În Verificare</option>
-                                    <option value="done" ${task.status === 'done' ? 'selected' : ''}>Finalizat</option>
+                                    <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+                                    <option value="in_review" ${task.status === 'in_review' ? 'selected' : ''}>In Review</option>
+                                    <option value="done" ${task.status === 'done' ? 'selected' : ''}>Done</option>
                                 </select>
                             </div>
                         </div>
@@ -843,17 +828,16 @@
                 const oldStatus = task.status;
                 task.status = newStatus;
                 activities.unshift({
-                    user: 'Ștefan Administrator',
-                    action: `A schimbat starea din ${oldStatus} în`,
+                    user: 'Alex Mercer',
+                    action: `moved to ${newStatus}`,
                     task: task.key,
-                    time: 'chiar acum'
+                    time: 'just now'
                 });
                 renderKanban();
                 renderDashboard();
             }
         }
 
-        // Render Tasks Table
         function renderTasksTable() {
             const search = document.getElementById('task-search-input').value.toLowerCase();
             const filterSt = document.getElementById('task-filter-status').value;
@@ -871,9 +855,9 @@
                 const project = projects.find(p => p.id === task.projectId);
                 html += `
                     <tr class="hover:bg-darkbg-hover/50 transition">
-                        <td class="py-3 px-4 font-mono font-bold text-indigo-400">${task.key}</td>
+                        <td class="py-3 px-4 font-semibold text-indigo-400">${task.key}</td>
                         <td class="py-3 px-4 font-medium text-white">${task.title}</td>
-                        <td class="py-3 px-4 text-slate-400 font-mono text-[11px]">${project ? project.key : ''}</td>
+                        <td class="py-3 px-4 text-slate-400 text-xs">${project ? project.key : ''}</td>
                         <td class="py-3 px-4">
                             <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-800 text-slate-300 border border-slate-700 capitalize">${task.status.replace('_', ' ')}</span>
                         </td>
@@ -881,20 +865,18 @@
                             <span class="px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${task.priority === 'urgent' ? 'text-rose-400' : 'text-slate-300'}">${task.priority}</span>
                         </td>
                         <td class="py-3 px-4 text-slate-300">${task.assignee}</td>
-                        <td class="py-3 px-4 text-center font-mono text-slate-300">${task.sp}</td>
-                        <td class="py-3 px-4 text-slate-400 font-mono text-[11px]">${task.due}</td>
+                        <td class="py-3 px-4 text-center text-slate-300 font-medium">${task.sp}</td>
+                        <td class="py-3 px-4 text-slate-400 text-xs">${task.due}</td>
                         <td class="py-3 px-4 text-right">
-                            <button onclick="updateTaskStatus(${task.id}, 'done')" class="text-indigo-400 hover:text-indigo-300 text-xs font-medium">Rezolvă</button>
+                            <button onclick="updateTaskStatus(${task.id}, 'done')" class="text-indigo-400 hover:text-indigo-300 text-xs font-semibold">Mark Done</button>
                         </td>
                     </tr>
                 `;
             });
-            document.getElementById('tasks-table-body').innerHTML = html || '<tr><td colspan="9" class="py-6 text-center text-slate-500">Nu au fost găsite taskuri conform filtrelor.</td></tr>';
+            document.getElementById('tasks-table-body').innerHTML = html || '<tr><td colspan="9" class="py-6 text-center text-slate-500">No issues found matching your filters.</td></tr>';
         }
 
-        // Render Reports
         function renderReports() {
-            // Project Metrics
             let pmHtml = '';
             projects.forEach(p => {
                 const pTasks = tasks.filter(t => t.projectId === p.id);
@@ -906,19 +888,19 @@
                 pmHtml += `
                     <tr class="hover:bg-darkbg-hover/50 transition">
                         <td class="py-3.5 px-4 font-medium text-white">
-                            <span class="font-mono text-indigo-400 font-bold mr-2">[${p.key}]</span>${p.name}
+                            <span class="text-indigo-400 font-semibold mr-2">[${p.key}]</span>${p.name}
                         </td>
-                        <td class="py-3.5 px-4 text-slate-400 font-mono text-[11px]">${p.budget.toLocaleString()} RON</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-white">${pTasks.length}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-emerald-400">${pDone}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-amber-400">${pOpen}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-slate-300">${totalSp} SP</td>
+                        <td class="py-3.5 px-4 text-slate-400 text-xs">$${p.budget.toLocaleString()}</td>
+                        <td class="py-3.5 px-4 text-center text-white font-medium">${pTasks.length}</td>
+                        <td class="py-3.5 px-4 text-center text-emerald-400 font-medium">${pDone}</td>
+                        <td class="py-3.5 px-4 text-center text-amber-400 font-medium">${pOpen}</td>
+                        <td class="py-3.5 px-4 text-center text-slate-300 font-medium">${totalSp} SP</td>
                         <td class="py-3.5 px-4">
                             <div class="flex items-center gap-2">
                                 <div class="flex-1 bg-darkbg-surface h-2 rounded-full overflow-hidden border border-darkbg-border">
                                     <div class="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full rounded-full" style="width: ${pct}%"></div>
                                 </div>
-                                <span class="font-mono text-[11px] text-slate-300 w-10 text-right">${pct}%</span>
+                                <span class="text-xs text-slate-300 w-10 text-right font-medium">${pct}%</span>
                             </div>
                         </td>
                     </tr>
@@ -926,7 +908,6 @@
             });
             document.getElementById('report-project-metrics').innerHTML = pmHtml;
 
-            // Team Workload
             let twHtml = '';
             users.forEach(u => {
                 const uTasks = tasks.filter(t => t.assignee === u.name);
@@ -937,14 +918,14 @@
                 twHtml += `
                     <tr class="hover:bg-darkbg-hover/50 transition">
                         <td class="py-3.5 px-4 font-medium text-white">${u.name}</td>
-                        <td class="py-3.5 px-4 text-slate-400">${u.title} <span class="text-indigo-400 text-[10px] font-mono">[${u.role}]</span></td>
-                        <td class="py-3.5 px-4 text-center font-mono text-white">${uTasks.length}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-amber-400 font-semibold">${uActive}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-emerald-400">${uDone}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-indigo-300 font-semibold">${uSp} SP</td>
+                        <td class="py-3.5 px-4 text-slate-400">${u.title} <span class="text-indigo-400 text-xs">(${u.role})</span></td>
+                        <td class="py-3.5 px-4 text-center text-white font-medium">${uTasks.length}</td>
+                        <td class="py-3.5 px-4 text-center text-amber-400 font-semibold">${uActive}</td>
+                        <td class="py-3.5 px-4 text-center text-emerald-400 font-medium">${uDone}</td>
+                        <td class="py-3.5 px-4 text-center text-indigo-300 font-semibold">${uSp} SP</td>
                         <td class="py-3.5 px-4 text-center">
                             <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${uSp > 10 ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30' : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'}">
-                                ${uSp > 10 ? 'Încărcare Ridicată' : 'Capacitate Optimă'}
+                                ${uSp > 10 ? 'Heavy Load' : 'Available Capacity'}
                             </span>
                         </td>
                     </tr>
@@ -953,7 +934,6 @@
             document.getElementById('report-team-workload').innerHTML = twHtml;
         }
 
-        // Render Teams
         function renderTeams() {
             let html = '';
             users.forEach(u => {
@@ -967,7 +947,7 @@
                                 </div>
                                 <div>
                                     <div class="font-medium text-white">${u.name}</div>
-                                    <div class="text-[11px] text-slate-400 font-mono">${u.email}</div>
+                                    <div class="text-xs text-slate-400 font-normal">${u.email}</div>
                                 </div>
                             </div>
                         </td>
@@ -975,14 +955,13 @@
                         <td class="py-3.5 px-4">
                             <span class="px-2 py-0.5 rounded text-xs font-medium bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">${u.role}</span>
                         </td>
-                        <td class="py-3.5 px-4 text-center font-mono text-white font-semibold">${userTasksCount}</td>
+                        <td class="py-3.5 px-4 text-center text-white font-semibold">${userTasksCount}</td>
                     </tr>
                 `;
             });
             document.getElementById('team-members-table').innerHTML = html;
         }
 
-        // Add Member Form
         function handleNewMember(e) {
             e.preventDefault();
             const name = document.getElementById('member-name').value;
@@ -994,10 +973,9 @@
             document.getElementById('new-member-form').reset();
             renderTeams();
             renderDashboard();
-            alert(`Membru ${name} a fost adăugat cu succes!`);
+            alert(`Member ${name} was added successfully.`);
         }
 
-        // Modal Task Nou
         function openNewTaskModal() {
             document.getElementById('modal-new-task').classList.remove('hidden');
         }
@@ -1036,20 +1014,19 @@
 
             tasks.unshift(newTask);
             activities.unshift({
-                user: 'Ștefan Administrator',
-                action: 'A creat un task nou',
+                user: 'Alex Mercer',
+                action: 'created issue',
                 task: key,
-                time: 'chiar acum'
+                time: 'just now'
             });
 
             closeNewTaskModal();
             renderKanban();
             renderDashboard();
             renderTasksTable();
-            alert(`Taskul ${key} a fost creat cu succes!`);
+            alert(`Issue ${key} created successfully.`);
         }
 
-        // Initial render
         document.addEventListener('DOMContentLoaded', () => {
             renderDashboard();
         });
