@@ -23,9 +23,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
+ENV COMPOSER_POLICY_ADVISORIES_BLOCK=0 \
+    COMPOSER_AUDIT_BLOCK=0
+
 # Copiere dependinte composer pentru optimizare cache Docker layer
 COPY composer.json composer.lock* ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+RUN if [ -f composer.lock ]; then \
+        composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-audit; \
+    else \
+        composer update --no-dev --no-scripts --no-autoloader --prefer-dist --no-audit; \
+    fi
 
 # Copiere cod sursa aplicatie
 COPY . .

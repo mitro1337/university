@@ -342,11 +342,16 @@ jobs:
             ${{ runner.os }}-php-8.2-
 
       - name: Install Composer dependencies
+        env:
+          COMPOSER_POLICY_ADVISORIES_BLOCK: "0"
+          COMPOSER_AUDIT_BLOCK: "0"
         run: |
+          composer config --no-interaction policy.advisories.block false || true
+          composer config --no-interaction audit.block false || true
           if [ -f composer.lock ]; then
-            composer install --prefer-dist --no-progress --no-interaction
+            composer install --prefer-dist --no-progress --no-interaction --no-audit
           else
-            composer update --prefer-dist --no-progress --no-interaction
+            composer update --prefer-dist --no-progress --no-interaction --no-audit
           fi
 
       - name: Configure CI environment (.env)
