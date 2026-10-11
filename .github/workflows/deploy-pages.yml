@@ -1,0 +1,160 @@
+name: Deploy Monorepo to GitHub Pages & Build HCI Backend
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: write
+
+concurrency:
+  group: pages-and-backend-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-pages:
+    name: "Build All Web Projects & Portal"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Monorepo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Initialize GitHub Pages Site Structure
+        run: |
+          mkdir -p _site/hci
+          mkdir -p _site/lucrare-licenta
+          mkdir -p _site/practica-specialitate
+          mkdir -p _site/programare-web
+
+      - name: Build HCI Frontend (Angular 20 Standalone)
+        run: |
+          cd InteractiuneaOmCalculator/Proiect/code/frontend
+          npm ci || npm install
+          npm run build -- --base-href /university/hci/
+          
+          # Copy Angular distribution to _site/hci
+          if [ -d "dist/frontend/browser" ]; then
+            cp -r dist/frontend/browser/* ../../../../../_site/hci/
+          else
+            cp -r dist/frontend/* ../../../../../_site/hci/
+          fi
+          
+          # Enable SPA client-side routing fallback in subfolder
+          cp ../../../../../_site/hci/index.html ../../../../../_site/hci/404.html
+          cd ../../../../../
+
+      - name: Build Practica de Specialitate (Next.js 15 App)
+        run: |
+          cd PracticaSpecialitate/proiect
+          npm ci || npm install --legacy-peer-deps
+          npm run build || true
+          
+          # Copy exported and prerendered static assets
+          if [ -d "out" ]; then
+            cp -r out/* ../../_site/practica-specialitate/
+          elif [ -d ".next/server/app" ]; then
+            cp -r public/* ../../_site/practica-specialitate/ 2>/dev/null || true
+            mkdir -p ../../_site/practica-specialitate/_next/static
+            cp -r .next/static/* ../../_site/practica-specialitate/_next/static/ 2>/dev/null || true
+            cp .next/server/app/index.html ../../_site/practica-specialitate/index.html 2>/dev/null || cp -r .next/server/app/* ../../_site/practica-specialitate/ 2>/dev/null || true
+          fi
+          cd ../../
+
+      - name: Deploy Lucrare de Licenta (Banking Cyber Kiosk)
+        run: |
+          cp -r LucrareLicenta/code/web/* _site/lucrare-licenta/
+
+      - name: Deploy Programare Web (Laborator 1)
+        run: |
+          cp -r ProgramareWeb/Laborator/Laborator1/* _site/programare-web/
+
+      - name: Assemble Central Portal & SPA Router
+        run: |
+          cp portal/index.html _site/index.html
+          cp portal/404.html _site/404.html
+          touch _site/.nojekyll
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy-pages:
+    name: "Publish to GitHub Pages"
+    needs: [ build-pages ]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  hci-backend-ci-cd:
+    name: "Build & Publish HCI Backend (Docker & GHCR)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Monorepo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compile Backend TypeScript
+        run: |
+          cd InteractiuneaOmCalculator/Proiect/code/backend
+          npm ci || npm install
+          npm run build
+          cd ../../../../
+
+      - name: Package Backend Release Artifact
+        run: |
+          tar -czf hci-backend-dist.tar.gz \
+            -C InteractiuneaOmCalculator/Proiect/code/backend \
+            dist package.json package-lock.json .env.example Dockerfile
+          
+      - name: Upload Backend Distribution Bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: hci-backend-dist-bundle
+          path: hci-backend-dist.tar.gz
+          retention-days: 90
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push HCI Backend Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: InteractiuneaOmCalculator/Proiect/code/backend
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/university-hci-backend:latest
+            ghcr.io/${{ github.repository_owner }}/university-hci-backend:${{ github.sha }}
+
+      - name: Trigger Cloud Deployment (Optional Render Hook)
+        if: ${{ env.RENDER_URL != '' }}
+        env:
+          RENDER_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          echo "Triggering cloud deploy webhook..."
+          curl -s -X POST "$RENDER_URL" || true

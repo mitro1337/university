@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "slug": "sbc-microcontrollers",
+    "name": "Plăci de Dezvoltare & SBC",
+    "icon": "cpu",
+    "description": "Calculatoare pe o singură placă (SBC), microcontrolere avansate ARM/RISC-V, plăci Edge AI, module ESP32 Wi-Fi 6 / Zigbee și Arduino.",
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "slug": "homelab-networking",
+    "name": "Homelab & Echipamente Rețea",
+    "icon": "server",
+    "description": "Noduri Mini PC Proxmox, plăci de rețea 10G/25G SFP28, gateway-uri UniFi, switch-uri MikroTik, transceivere optice și cabinete rack.",
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "slug": "sensors-iot",
+    "name": "Senzori & Module IoT",
+    "icon": "activity",
+    "description": "Gateway-uri Home Assistant, coordonatoare Zigbee 3.0, senzori de calitate aer CO2 NDIR/VOC, telemetrie laser ToF, relee SSR și module industriale RS485.",
+    "sort_order": 3
+  },
+  {
+    "id": 4,
+    "slug": "power-accessories",
+    "name": "Alimentare, Răcire & Conectică",
+    "icon": "zap",
+    "description": "Surse industriale Mean Well, surse USB-PD 27W, UPS-uri rackmount, ventilatoare 1U server, regulatoare DC-DC Pololu, injectoare PoE și cabluri Cat6.",
+    "sort_order": 4
+  },
+  {
+    "id": 5,
+    "slug": "enterprise-hardware",
+    "name": "Infrastructură Enterprise & Datacenter",
+    "icon": "database",
+    "description": "Servere rackmount 1U/2U, plăci de rețea 25G/40G/100G Mellanox, controllere SAS HBA IT-Mode ZFS, SSD-uri Enterprise U.2 PLP și unități PDU administrate.",
+    "sort_order": 5
+  },
+  {
+    "id": 6,
+    "slug": "niche-hardware",
+    "name": "Hardware Nișat & Cercetare / Lab",
+    "icon": "terminal",
+    "description": "Dispozitive Apple legacy (A10/A10X) pentru Linux & checkm8, SBC-uri RK3588, plăci RISC-V, kituri FPGA, unelte de reverse engineering, sonde JTAG/SWD și module Software Defined Radio (SDR).",
+    "sort_order": 6
+  },
+  {
+    "id": 7,
+    "slug": "cybersecurity-research",
+    "name": "Cybersecurity & Security Research",
+    "icon": "shield",
+    "description": "Echipamente pentru audit de securitate autorizat și cercetare hardware: Flipper Zero, ecosistem Hak5 (WiFi Pineapple, LAN Turtle, Packet Squirrel, Rubber Ducky), unelte RFID/NFC (Proxmark3, ChameleonUltra), plăci ESP32 Marauder/Bruce, adaptoare monitor mode și TAP-uri hardware de rețea.",
+    "sort_order": 7
+  }
+]

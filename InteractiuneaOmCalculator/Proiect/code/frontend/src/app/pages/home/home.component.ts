@@ -73,7 +73,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
 
           <div class="w-28 h-28 sm:w-32 sm:h-32 flex-shrink-0 bg-surface-sunken rounded-xl p-3 flex items-center justify-center relative product-floating overflow-hidden">
             <img 
-              src="/images/products/nvidia-jetson-orin-nano-8gb-dev-kit.png" 
+              src="images/products/nvidia-jetson-orin-nano-8gb-dev-kit.png" 
               alt="Flagship SBC Node"
               data-lenis-parallax="0.08"
               class="lenis-parallax-image max-h-full max-w-full object-contain filter drop-shadow-md">

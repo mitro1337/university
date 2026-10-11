@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecționare Universitatea din Craiova</title>
+  <script>
+    // GitHub Pages SPA router redirection
+    const path = window.location.pathname;
+    if (path.includes('/university/hci')) {
+      // Preserve search parameters and hash
+      window.location.replace('/university/hci/' + (window.location.search || '') + (window.location.hash || ''));
+    } else {
+      window.location.replace('/university/');
+    }
+  </script>
+</head>
+<body style="background: #0c0907; color: #fcf8f4; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+  <div style="text-align: center;">
+    <h2 style="color: #b86830;">Redirecționare în curs...</h2>
+    <p style="color: #c2ada0;">Dacă pagina nu se încarcă automat, <a href="/university/" style="color: #b86830;">click aici pentru portalul principal</a>.</p>
+  </div>
+</body>
+</html>
