@@ -3,446 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universitatea din Craiova - Portofoliu Web & Proiecte Academice</title>
-  <meta name="description" content="Centralizator proiecte universitare, aplicații web, interfețe HCI și sisteme de securitate bancară - Universitatea din Craiova.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>stefanutc1 / university</title>
   <style>
-    :root {
-      --bg-canvas: #0c0907;
-      --bg-surface: #17110c;
-      --bg-surface-elevated: #241a13;
-      --border-subtle: #312318;
-      --border-strong: #493424;
-      --text-primary: #fcf8f4;
-      --text-secondary: #c2ada0;
-      --text-muted: #857065;
-      --accent: #b86830;
-      --accent-hover: #c9773b;
-      --accent-glow: rgba(184, 104, 48, 0.25);
-      --badge-bg: rgba(184, 104, 48, 0.12);
-      --success: #10b981;
-    }
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    body {
-      background-color: var(--bg-canvas);
-      color: var(--text-primary);
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-image: 
-        radial-gradient(ellipse at 50% 0%, rgba(184, 104, 48, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 10% 30%, rgba(36, 26, 19, 0.5) 0%, transparent 40%);
-    }
-    header {
-      padding: 3.5rem 1.5rem 2rem;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .badge-ucv {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      background: var(--badge-bg);
-      border: 1px solid rgba(184, 104, 48, 0.3);
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.25rem;
-    }
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--success);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--success);
-    }
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.25rem);
-      letter-spacing: 0.03em;
-      color: var(--text-primary);
-      line-height: 1;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-    .subtitle {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-    }
-    .meta-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .meta-tag {
-      padding: 0.25rem 0.6rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-    }
-    main {
-      flex: 1;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-    }
-    .card.featured {
-      border-color: rgba(184, 104, 48, 0.4);
-      background: linear-gradient(180deg, var(--bg-surface-elevated) 0%, var(--bg-surface) 100%);
-    }
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    .card-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      padding: 0.2rem 0.55rem;
-      background: var(--badge-bg);
-      border-radius: 6px;
-    }
-    .card-version {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-family: monospace;
-    }
-    .card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
-    }
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.25rem;
-      line-height: 1.5;
-    }
-    .card-features {
-      list-style: none;
-      margin-bottom: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .card-features li {
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .card-features li::before {
-      content: "•";
-      color: var(--accent);
-      font-weight: bold;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      background: var(--accent);
+    html, body {
+      background-color: #000000;
       color: #ffffff;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 999px;
-      transition: background 0.2s;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 32px 24px;
     }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1rem;
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1px solid var(--border-subtle);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border-radius: 999px;
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--text-primary);
-      background: rgba(184, 104, 48, 0.08);
-    }
-    .section-backend {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-bottom: 3rem;
-    }
-    .section-backend h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.75rem;
-      color: var(--text-primary);
-    }
-    .code-box {
-      background: #050403;
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 0.9rem 1.2rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.85rem;
-      color: #e5b38d;
-      overflow-x: auto;
-      margin-top: 1rem;
-    }
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: auto;
-    }
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    footer a:hover {
+    a {
+      color: #ffffff;
       text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a:hover {
+      color: #888888;
+    }
+    .block {
+      margin-bottom: 24px;
+    }
+    .dim {
+      color: #777777;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="badge-ucv">
-      <span class="badge-dot"></span>
-      Universitatea din Craiova • Portofoliu Centralizat
-    </div>
-    <h1>Ecosistem Proiecte Web & Software</h1>
-    <p class="subtitle">
-      Aplicații interactive, sisteme de e-commerce specializate, simulatoare de securitate bancară și laboratoare web găzduite prin GitHub Pages.
-    </p>
-    <div class="meta-bar">
-      <span class="meta-tag">Angular 20 Standalone</span>
-      <span class="meta-tag">Next.js 15 & React 19</span>
-      <span class="meta-tag">Node.js Express REST API</span>
-      <span class="meta-tag">Docker & GHCR</span>
-      <span class="meta-tag">CI/CD GitHub Actions</span>
-    </div>
-  </header>
+  <div class="block">
+    <div>stefanutc1</div>
+    <div>@</div>
+    <div>university</div>
+  </div>
 
-  <main>
-    <div class="grid">
+  <div class="block">
+    <div class="dim">// live web projects</div>
+    <ul>
+      <li>&bull; <a href="./hci/">hci</a> &mdash; vexera homelab e-commerce (angular 20) [<a href="./hci/">demo</a>] [<a href="https://github.com/stefanutc1/university/tree/main/InteractiuneaOmCalculator/Proiect">code</a>]</li>
+      <li>&bull; <a href="./lucrare-licenta/">licenta</a> &mdash; banking cyber defense &amp; kiosk interface [<a href="./lucrare-licenta/">demo</a>] [<a href="https://github.com/stefanutc1/university/tree/main/LucrareLicenta">code</a>]</li>
+      <li>&bull; <a href="./practica-specialitate/">practica</a> &mdash; agro-meteo &amp; climatic telemetry (next.js 15) [<a href="./practica-specialitate/">demo</a>] [<a href="https://github.com/stefanutc1/university/tree/main/PracticaSpecialitate/proiect">code</a>]</li>
+      <li>&bull; <a href="./programare-web/">programare-web</a> &mdash; semantic web &amp; forms lab [<a href="./programare-web/">demo</a>] [<a href="https://github.com/stefanutc1/university/tree/main/ProgramareWeb/Laborator/Laborator1">code</a>]</li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web">gbd-web</a> &mdash; linearflow workflow &amp; project management (laravel 11 + mysql) [<a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/web">code</a>]</li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/Portofoliu">gbd-sql</a> &mdash; portofoliu baze de date (carti, studenti, vanzari, comenzi) [<a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate/Portofoliu">sql</a>]</li>
+    </ul>
+  </div>
 
-      <!-- Proiect HCI (Vexera) -->
-      <article class="card featured">
-        <div>
-          <div class="card-header">
-            <span class="card-tag">HCI • Magazin Online</span>
-            <span class="card-version">v1.0.0 (Angular 20)</span>
-          </div>
-          <h2 class="card-title">Vexera — Hardware Homelab, IT&C & IoT</h2>
-          <p class="card-desc">
-            Platformă modernă de comerț electronic cu 180+ produse tehnice, concepută conform principiilor de Interacțiune Om-Calculator (HCI), ergonomie cognitivă și accesibilitate WCAG 2.1 AA.
-          </p>
-          <ul class="card-features">
-            <li>Catalog fațetat dinamic cu filtrare avansată</li>
-            <li>Configurator interactiv Rack 19" (Lab Builder)</li>
-            <li>Navigare asistată cu Command Palette (Ctrl+K)</li>
-            <li>Panou accesibilitate dedicat (scalare font & contrast)</li>
-            <li>Lenis Smooth Scrolling inerțial & microinteracțiuni</li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="./hci/" class="btn-primary">
-            <span>Lansează Aplicația HCI (Vexera)</span>
-            <span>→</span>
-          </a>
-          <a href="https://github.com/stefanutc1/university/blob/main/InteractiuneaOmCalculator/Proiect/DOCUMENTATION.md" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            <span>Citește Documentația HCI</span>
-          </a>
-        </div>
-      </article>
+  <div class="block">
+    <div class="dim">// repository courses</div>
+    <ul>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/AnalizaSiProiectareaSistemelorInformatice">analiza-si-proiectarea-sistemelor-informatice</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/BazeDeDate">baze-de-date</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/GestiuneaBazelorDeDate">gestiunea-bazelor-de-date</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/InteractiuneaOmCalculator">interactiunea-om-calculator</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/LucrareLicenta">lucrare-licenta</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/PracticaElaborareLucrareLicenta">practica-elaborare-lucrare-licenta</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/PracticaSpecialitate">practica-specialitate</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/ProgramareOrientataObiect">programare-orientata-obiect</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/ProgramareWeb">programare-web</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/ProgramareaCalculatoarelor">programarea-calculatoarelor</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/ReteleCalculatoare">retele-calculatoare</a></li>
+      <li>&bull; <a href="https://github.com/stefanutc1/university/tree/main/StructuriDeDate">structuri-de-date</a></li>
+    </ul>
+  </div>
 
-      <!-- Lucrare de Licenta -->
-      <article class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-tag">Licență • Securitate Bancară</span>
-            <span class="card-version">LL3 Kiosk Web</span>
-          </div>
-          <h2 class="card-title">Banking Cyber Defense & Kiosk Interface</h2>
-          <p class="card-desc">
-            Interfață tactilă de terminal bancar securizat, monitorizare audit și simulare a celor 5 scenarii de atac cibernetic bazate pe matricea MITRE ATT&CK.
-          </p>
-          <ul class="card-features">
-            <li>Interfață tactilă Kiosk cu securizare CSRF/XSS</li>
-            <li>Simulare atacuri MITRE (Credential Stuffing, SQLi)</li>
-            <li>Motor de tranzacții și monitorizare audit în timp real</li>
-            <li>Flux de autorizare multi-factor (MFA)</li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="./lucrare-licenta/" class="btn-primary">
-            <span>Deschide Kiosk Securitate</span>
-            <span>→</span>
-          </a>
-          <a href="https://github.com/stefanutc1/university/tree/main/LucrareLicenta" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            <span>Vezi Sursa Licență</span>
-          </a>
-        </div>
-      </article>
+  <div class="block">
+    <div class="dim">// container</div>
+    <div>docker run -d -p 3001:3001 ghcr.io/stefanutc1/university-hci-backend:latest</div>
+  </div>
 
-      <!-- Practica de Specialitate -->
-      <article class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-tag">Practică • Agrometeorologie</span>
-            <span class="card-version">Next.js 15 / React 19</span>
-          </div>
-          <h2 class="card-title">Monitorizare Meteo & Telemetrie Climatică</h2>
-          <p class="card-desc">
-            Aplicație de prognoză hiper-locală și monitorizare a indicilor agro-meteorologici cu integrare telemetrie Open-Meteo și interfață adaptivă.
-          </p>
-          <ul class="card-features">
-            <li>Prognoză meteo dinamică pentru municipiul Craiova</li>
-            <li>Indici de evapotranspirație și radiație solară</li>
-            <li>Detectare automată locație și căutare globală</li>
-            <li>Design fluid cu Tailwind CSS și suport dark mode</li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="./practica-specialitate/" class="btn-primary">
-            <span>Deschide Aplicația Meteo</span>
-            <span>→</span>
-          </a>
-          <a href="https://github.com/stefanutc1/university/tree/main/PracticaSpecialitate/proiect" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            <span>Vezi Sursa Next.js</span>
-          </a>
-        </div>
-      </article>
+  <div class="block">
+    <div class="dim">// source</div>
+    <div>github: <a href="https://github.com/stefanutc1/university">https://github.com/stefanutc1/university</a></div>
+  </div>
 
-      <!-- Programare Web -->
-      <article class="card">
-        <div>
-          <div class="card-header">
-            <span class="card-tag">Laborator • Programare Web</span>
-            <span class="card-version">HTML5 & CSS3</span>
-          </div>
-          <h2 class="card-title">Structuri Web Semantice & Formulare</h2>
-          <p class="card-desc">
-            Lucrări de laborator axate pe bazele web development-ului semantic: tabele de date, formulare interactive, cadre de lucru (frameset) și legături hipertext.
-          </p>
-          <ul class="card-features">
-            <li>Elemente semantice HTML5 & navigare internă</li>
-            <li>Formulare cu controale diverse și validare nativă</li>
-            <li>Tabele complexe cu îmbinare de celule</li>
-            <li>Structuri multi-frame și integrare resurse media</li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <a href="./programare-web/" class="btn-primary">
-            <span>Vezi Lucrarea de Laborator</span>
-            <span>→</span>
-          </a>
-          <a href="https://github.com/stefanutc1/university/tree/main/ProgramareWeb/Laborator/Laborator1" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            <span>Vezi Fișierele Sursă</span>
-          </a>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- Backend Distribution Section -->
-    <section class="section-backend">
-      <h2>Backend REST API — HCI & Homelab Store</h2>
-      <p style="color: var(--text-secondary); font-size: 0.9rem; max-width: 800px;">
-        Backend-ul Node.js (Express + TypeScript + MySQL) este integrat în pipeline-ul CI/CD. La fiecare push pe branch-ul <code>main</code>, imaginea de producție este compilată și publicată automat pe <strong>GitHub Packages (GHCR)</strong>, iar pachetul de distribuție este arhivat ca release artifact.
-      </p>
-      
-      <div class="code-box">
-        # Rulare instantanee backend containerizat via GitHub Container Registry (GHCR):<br>
-        docker run -d -p 3001:3001 --name vexera-api ghcr.io/stefanutc1/university-hci-backend:latest
-      </div>
-      
-      <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-        <a href="https://github.com/stefanutc1/university/pkgs/container/university-hci-backend" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-          <span>Vezi Pachetul Docker pe GHCR</span>
-        </a>
-        <a href="https://github.com/stefanutc1/university/actions" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-          <span>Monitorizează Pipeline-ul CI/CD</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      Universitatea din Craiova • Facultatea de Economie și Administrarea Afacerilor / Informatică
-    </p>
-    <p style="margin-top: 0.5rem;">
-      <a href="https://github.com/stefanutc1/university" target="_blank" rel="noopener noreferrer">github.com/stefanutc1/university</a>
-    </p>
-  </footer>
+  <div class="block dim">
+    &copy; 2026 stefanutc1.github.io/university
+  </div>
 
 </body>
 </html>
