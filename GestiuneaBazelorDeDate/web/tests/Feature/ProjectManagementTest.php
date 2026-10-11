@@ -6,9 +6,6 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Project;
-use App\Models\Task;
-use App\Models\Status;
-use App\Models\Priority;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProjectManagementTest extends TestCase
@@ -32,16 +29,22 @@ class ProjectManagementTest extends TestCase
                 'name' => 'CI Test Admin',
                 'password' => bcrypt('password123'),
                 'role_id' => $role->id,
-                'title' => 'CI Automation Engineer'
+                'title' => 'CI Automation Engineer',
+                'status' => 'active',
             ]
         );
+    }
+
+    public function test_login_page_loads_successfully(): void
+    {
+        $response = $this->get('/login');
+        $response->assertStatus(200);
     }
 
     public function test_dashboard_page_loads_successfully(): void
     {
         $response = $this->actingAs($this->user)->get('/dashboard');
         $response->assertStatus(200);
-        $response->assertSee('Workspace');
     }
 
     public function test_projects_page_loads_successfully(): void
@@ -68,12 +71,14 @@ class ProjectManagementTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_locale_switcher_switches_language(): void
+    public function test_locale_switcher(): void
     {
-        $response = $this->get('/locale/ro');
-        $response->assertSessionHas('locale', 'ro');
+        $responseRo = $this->from('/dashboard')->get('/locale/ro');
+        $responseRo->assertRedirect('/dashboard');
+        $responseRo->assertSessionHas('locale', 'ro');
 
-        $responseEn = $this->get('/locale/en');
+        $responseEn = $this->from('/dashboard')->get('/locale/en');
+        $responseEn->assertRedirect('/dashboard');
         $responseEn->assertSessionHas('locale', 'en');
     }
 

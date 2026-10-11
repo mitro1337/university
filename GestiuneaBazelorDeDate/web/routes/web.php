@@ -48,6 +48,6 @@ Route::get('/locale/{lang}', function ($lang) {
     if (in_array($lang, ['en', 'ro'])) {
         session(['locale' => $lang]);
     }
-    return redirect()->back();
+    return redirect()->back(fallback: route('dashboard'));
 })->name('locale.switch');
 

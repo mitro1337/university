@@ -397,6 +397,8 @@ jobs:
         run: |
           echo "=== LOGURI SERVER LARAVEL ==="
           cat laravel-server.log || true
+          echo "=== LOGURI STORAGE LARAVEL ==="
+          cat storage/logs/*.log || true
 
       - name: Terminate background server process
         if: always()
