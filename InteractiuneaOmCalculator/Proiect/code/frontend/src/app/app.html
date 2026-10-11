@@ -1,0 +1,24 @@
+<div class="min-h-screen flex flex-col bg-canvas text-text-primary selection:bg-accent selection:text-white transition-colors duration-150">
+  <a 
+    href="#main-content" 
+    class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:shadow-overlay focus:outline-none focus:ring-2 focus:ring-accent-hover font-semibold text-xs">
+    Sari la conținutul principal
+  </a>
+
+  <app-navbar></app-navbar>
+
+  <main id="main-content" class="flex-1 focus:outline-none" tabindex="-1">
+    <div id="route-transition-wrapper" class="route-fade-enter">
+      <router-outlet (activate)="onRouteActivate()"></router-outlet>
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+
+  <app-cart-drawer></app-cart-drawer>
+  <app-command-palette></app-command-palette>
+  <app-keyboard-shortcuts-modal></app-keyboard-shortcuts-modal>
+  <app-accessibility-modal></app-accessibility-modal>
+  <app-lab-profile-modal></app-lab-profile-modal>
+  <app-ui-feedback-overlay></app-ui-feedback-overlay>
+</div>

@@ -1,0 +1,1622 @@
+[
+  {
+    "id": 1,
+    "slug": "raspberry-pi-5-8gb",
+    "name": "Raspberry Pi 5 Model B - 8GB RAM LPDDR4X",
+    "sku": "RPI5-8GB-EU",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/raspberry-pi-5-8gb.png"
+  },
+  {
+    "id": 2,
+    "slug": "raspberry-pi-5-4gb",
+    "name": "Raspberry Pi 5 Model B - 4GB RAM LPDDR4X",
+    "sku": "RPI5-4GB-EU",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/raspberry-pi-5-4gb.png"
+  },
+  {
+    "id": 3,
+    "slug": "nvidia-jetson-orin-nano-8gb-dev-kit",
+    "name": "NVIDIA Jetson Orin Nano Developer Kit 8GB - 40 TOPS AI",
+    "sku": "NV-ORIN-NANO-8GB",
+    "category_id": 1,
+    "subcategory": "Plăci Edge AI",
+    "image_url": "/images/products/nvidia-jetson-orin-nano-8gb-dev-kit.png"
+  },
+  {
+    "id": 4,
+    "slug": "arduino-giga-r1-wifi",
+    "name": "Arduino GIGA R1 WiFi - Dual-Core Cortex-M7/M4 + USB Host",
+    "sku": "ARD-GIGA-R1",
+    "category_id": 1,
+    "subcategory": "Plăci Arduino & ARM Cortex",
+    "image_url": "/images/products/arduino-giga-r1-wifi.png"
+  },
+  {
+    "id": 5,
+    "slug": "arduino-uno-r4-wifi",
+    "name": "Arduino Uno R4 WiFi (Renesas RA4M1 + ESP32-S3 Cloud)",
+    "sku": "ARD-UNO-R4-WIFI",
+    "category_id": 1,
+    "subcategory": "Plăci Arduino & ARM Cortex",
+    "image_url": "/images/products/arduino-uno-r4-wifi.png"
+  },
+  {
+    "id": 6,
+    "slug": "arduino-mega-2560-r3",
+    "name": "Arduino Mega 2560 R3 (ATmega2560 + ATmega16U2)",
+    "sku": "ARD-MEGA-2560-R3",
+    "category_id": 1,
+    "subcategory": "Plăci Arduino & ARM Cortex",
+    "image_url": "/images/products/arduino-mega-2560-r3.png"
+  },
+  {
+    "id": 7,
+    "slug": "raspberry-pi-pico-2-rp2350",
+    "name": "Raspberry Pi Pico 2 - Dual-Core ARM Cortex-M33 / RISC-V Hazard3",
+    "sku": "RPI-PICO-2",
+    "category_id": 1,
+    "subcategory": "Microcontrolere ARM / RISC-V",
+    "image_url": "/images/products/raspberry-pi-pico-2-rp2350.png"
+  },
+  {
+    "id": 8,
+    "slug": "sparkfun-esp32-c6-thing-plus",
+    "name": "SparkFun Thing Plus - ESP32-C6 Wi-Fi 6, BLE 5, Zigbee & Matter",
+    "sku": "SF-THING-ESP32C6",
+    "category_id": 1,
+    "subcategory": "Microcontrolere Zigbee & Matter",
+    "image_url": "/images/products/sparkfun-esp32-c6-thing-plus.png"
+  },
+  {
+    "id": 9,
+    "slug": "adafruit-feather-esp32-s3-stemma",
+    "name": "Adafruit Feather ESP32-S3 STEMMA QT - 8MB Flash Type-C",
+    "sku": "ADA-FEATHER-ESP32S3",
+    "category_id": 1,
+    "subcategory": "Microcontrolere Wi-Fi & BT",
+    "image_url": "/images/products/adafruit-feather-esp32-s3-stemma.png"
+  },
+  {
+    "id": 10,
+    "slug": "esp32-s3-devkitc-1-n16r8",
+    "name": "Modul ESP32-S3-DevKitC-1 N16R8 (16MB Flash, 8MB PSRAM)",
+    "sku": "ESP32-S3-N16R8",
+    "category_id": 1,
+    "subcategory": "Microcontrolere Wi-Fi & BT",
+    "image_url": "/images/products/esp32-s3-devkitc-1-n16r8.png"
+  },
+  {
+    "id": 11,
+    "slug": "esp32-wroom-32d-type-c",
+    "name": "Placă de Dezvoltare ESP32-WROOM-32D Dual-Core Type-C",
+    "sku": "ESP32-DEV-30P-C",
+    "category_id": 1,
+    "subcategory": "Microcontrolere Wi-Fi & BT",
+    "image_url": "/images/products/esp32-wroom-32d-type-c.png"
+  },
+  {
+    "id": 12,
+    "slug": "adafruit-can-bus-featherwing-mcp2515",
+    "name": "Adafruit CAN Bus FeatherWing MCP2515 & TJA1051/3 Transceiver",
+    "sku": "ADA-CAN-MCP2515",
+    "category_id": 1,
+    "subcategory": "Comunicație Industrială & CAN",
+    "image_url": "/images/products/adafruit-can-bus-featherwing-mcp2515.png"
+  },
+  {
+    "id": 13,
+    "slug": "minisforum-ms-01-workstation-mini-pc",
+    "name": "Minisforum MS-01 Workstation Mini PC (Intel i9-13900H, 2x 10G SFP+, 2x 2.5G)",
+    "sku": "MINIS-MS01-I9",
+    "category_id": 2,
+    "subcategory": "Servere & Mini PC",
+    "image_url": "/images/products/minisforum-ms-01-workstation-mini-pc.png"
+  },
+  {
+    "id": 14,
+    "slug": "mellanox-connectx-4-lx-25gbe-dual-port",
+    "name": "Placă de Rețea Mellanox ConnectX-4 Lx Dual Port 25GbE SFP28 PCIe 3.0 x8",
+    "sku": "MCX4121A-ACAT",
+    "category_id": 2,
+    "subcategory": "Plăci de Rețea 10G & 25G",
+    "image_url": "/images/products/mellanox-connectx-4-lx-25gbe-dual-port.png"
+  },
+  {
+    "id": 15,
+    "slug": "intel-x520-da2-10gbe-dual-port-pcie",
+    "name": "Placă de Rețea Intel X520-DA2 Dual Port 10GbE SFP+ PCIe x8",
+    "sku": "INTEL-X520-DA2",
+    "category_id": 2,
+    "subcategory": "Plăci de Rețea 10G & 25G",
+    "image_url": "/images/products/intel-x520-da2-10gbe-dual-port-pcie.png"
+  },
+  {
+    "id": 16,
+    "slug": "ubiquiti-unifi-dream-machine-special-edition",
+    "name": "Ubiquiti UniFi Dream Machine Special Edition (UDM-SE)",
+    "sku": "UBI-UDM-SE",
+    "category_id": 2,
+    "subcategory": "Routere & Gateway-uri Homelab",
+    "image_url": "/images/products/ubiquiti-unifi-dream-machine-special-edition.png"
+  },
+  {
+    "id": 17,
+    "slug": "ubiquiti-unifi-cloud-gateway-ultra",
+    "name": "Ubiquiti UniFi Cloud Gateway Ultra (UCG-Ultra)",
+    "sku": "UBI-UCG-ULTRA",
+    "category_id": 2,
+    "subcategory": "Routere & Gateway-uri Homelab",
+    "image_url": "/images/products/ubiquiti-unifi-cloud-gateway-ultra.png"
+  },
+  {
+    "id": 18,
+    "slug": "ubiquiti-unifi-switch-pro-8-poe",
+    "name": "Ubiquiti UniFi Switch Pro 8 PoE (USW-Pro-8-PoE) Layer 3 + 2x 10G SFP+",
+    "sku": "UBI-USW-PRO-8-POE",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/ubiquiti-unifi-switch-pro-8-poe.png"
+  },
+  {
+    "id": 19,
+    "slug": "ubiquiti-unifi-u6-pro-wifi-6",
+    "name": "Ubiquiti UniFi Access Point U6-Pro WiFi 6 Dual-Band 5.3 Gbps",
+    "sku": "UBI-U6-PRO",
+    "category_id": 2,
+    "subcategory": "Echipamente Rețea Wireless",
+    "image_url": "/images/products/ubiquiti-unifi-u6-pro-wifi-6.png"
+  },
+  {
+    "id": 20,
+    "slug": "mikrotik-crs305-1g-4s-in",
+    "name": "Switch 10G MikroTik CRS305-1G-4S+IN (4x 10G SFP+, 1x Gigabit, Fanless)",
+    "sku": "MIK-CRS305",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/mikrotik-crs305-1g-4s-in.png"
+  },
+  {
+    "id": 21,
+    "slug": "mikrotik-crs309-1g-8s-in",
+    "name": "Switch 10G MikroTik CRS309-1G-8S+IN (8x 10G SFP+, Desktop/Rack Fanless)",
+    "sku": "MIK-CRS309",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/mikrotik-crs309-1g-8s-in.png"
+  },
+  {
+    "id": 22,
+    "slug": "mikrotik-rb5009ug-s-in",
+    "name": "Router MikroTik RB5009UG+S+IN (1x 10G SFP+, 1x 2.5GbE, 7x 1GbE)",
+    "sku": "MIK-RB5009-S",
+    "category_id": 2,
+    "subcategory": "Routere & Gateway-uri Homelab",
+    "image_url": "/images/products/mikrotik-rb5009ug-s-in.png"
+  },
+  {
+    "id": 23,
+    "slug": "mikrotik-css610-8g-2s-in",
+    "name": "Switch MikroTik CSS610-8G-2S+IN (8x Gigabit RJ45, 2x 10G SFP+)",
+    "sku": "MIK-CSS610",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/mikrotik-css610-8g-2s-in.png"
+  },
+  {
+    "id": 24,
+    "slug": "mikrotik-crs310-8g-2s-in",
+    "name": "Switch 2.5G MikroTik CRS310-8G+2S+IN (8x 2.5GbE RJ45, 2x 10G SFP+)",
+    "sku": "MIK-CRS310-25G",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/mikrotik-crs310-8g-2s-in.png"
+  },
+  {
+    "id": 25,
+    "slug": "mikrotik-hex-s-router",
+    "name": "Router Gigabit MikroTik hEX S (5x Gigabit RJ45, 1x SFP, PoE Out)",
+    "sku": "MIK-HEX-S",
+    "category_id": 2,
+    "subcategory": "Routere & Gateway-uri Homelab",
+    "image_url": "/images/products/mikrotik-hex-s-router.png"
+  },
+  {
+    "id": 26,
+    "slug": "mikrotik-xs-da0001-dac-25g-1m",
+    "name": "Cablu Direct Attach DAC MikroTik XS+DA0001 (10G SFP+ / 25G SFP28 1m)",
+    "sku": "MIK-XS-DA0001",
+    "category_id": 2,
+    "subcategory": "Transceivere & Cabluri DAC/Optice",
+    "image_url": "/images/products/mikrotik-xs-da0001-dac-25g-1m.png"
+  },
+  {
+    "id": 27,
+    "slug": "mini-pc-homelab-intel-n100-4x25gbe",
+    "name": "Mini PC Homelab Intel Alder Lake-N N100 (4x 2.5GbE Intel i226-V, Fanless)",
+    "sku": "MINIPC-N100-4NIC",
+    "category_id": 2,
+    "subcategory": "Servere & Mini PC",
+    "image_url": "/images/products/mini-pc-homelab-intel-n100-4x25gbe.png"
+  },
+  {
+    "id": 28,
+    "slug": "cabinet-rack-10-inch-6u",
+    "name": "Cabinet Rack 10-inch 6U Negru cu Ușă din Sticlă Securizată",
+    "sku": "RACK-10IN-6U-BLK",
+    "category_id": 2,
+    "subcategory": "Cabinete Rack & Accesorii",
+    "image_url": "/images/products/cabinet-rack-10-inch-6u.png"
+  },
+  {
+    "id": 29,
+    "slug": "patch-panel-10-inch-12-porturi",
+    "name": "Patch Panel 10-inch 12 Porturi RJ45 Cat6 UTP 1U Negru",
+    "sku": "PP-10IN-12P-C6",
+    "category_id": 2,
+    "subcategory": "Cabinete Rack & Accesorii",
+    "image_url": "/images/products/patch-panel-10-inch-12-porturi.png"
+  },
+  {
+    "id": 30,
+    "slug": "transceiver-sfp-10gbase-t-copper",
+    "name": "Transceiver SFP+ 10GBASE-T RJ45 Copper 30m 10G/5G/2.5G/1G",
+    "sku": "SFP-10G-T-RJ45",
+    "category_id": 2,
+    "subcategory": "Transceivere & Cabluri DAC/Optice",
+    "image_url": "/images/products/transceiver-sfp-10gbase-t-copper.png"
+  },
+  {
+    "id": 31,
+    "slug": "cablu-dac-10g-sfp-1m",
+    "name": "Cablu Direct Attach Copper (DAC) 10G SFP+ Pasiv 1 Metru",
+    "sku": "DAC-10G-SFP-1M",
+    "category_id": 2,
+    "subcategory": "Transceivere & Cabluri DAC/Optice",
+    "image_url": "/images/products/cablu-dac-10g-sfp-1m.png"
+  },
+  {
+    "id": 32,
+    "slug": "switch-zyxel-gs1200-8",
+    "name": "Switch Zyxel GS1200-8 8-Port Gigabit Web Managed Metal",
+    "sku": "ZYX-GS1200-8",
+    "category_id": 2,
+    "subcategory": "Switch-uri cu Management",
+    "image_url": "/images/products/switch-zyxel-gs1200-8.png"
+  },
+  {
+    "id": 33,
+    "slug": "home-assistant-green-gateway",
+    "name": "Gateway Smart Home Hub - Home Assistant Green Plug-and-Play",
+    "sku": "HA-GREEN-HUB",
+    "category_id": 3,
+    "subcategory": "Gateway-uri Smart Home & Coordonatoare",
+    "image_url": "/images/products/home-assistant-green-gateway.png"
+  },
+  {
+    "id": 34,
+    "slug": "sonoff-zigbee-3-0-usb-dongle-plus-e",
+    "name": "Coordonator Sonoff Zigbee 3.0 USB Dongle Plus-E (EFR32MG21, +20dBm)",
+    "sku": "SON-ZBDONGLE-E",
+    "category_id": 3,
+    "subcategory": "Gateway-uri Smart Home & Coordonatoare",
+    "image_url": "/images/products/sonoff-zigbee-3-0-usb-dongle-plus-e.png"
+  },
+  {
+    "id": 35,
+    "slug": "senzor-calitate-aer-bme680-voc",
+    "name": "Senzor Ambiental și Calitate Aer Bosch BME680 (VOC, Gaz, Temp, Umid, Pres)",
+    "sku": "SEN-BOSH-BME680",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-calitate-aer-bme680-voc.png"
+  },
+  {
+    "id": 36,
+    "slug": "senzor-boscli-bme280-i2c",
+    "name": "Senzor Ambiental Bosch BME280 (Temperatură, Umiditate, Presiune)",
+    "sku": "SEN-BOSH-BME280",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-boscli-bme280-i2c.png"
+  },
+  {
+    "id": 37,
+    "slug": "senzor-calitate-aer-co2-scd41-ndir",
+    "name": "Senzor Calitate Aer CO2 Sensirion SCD41 NDIR Fotoacustic (400-5000 ppm)",
+    "sku": "SEN-SENS-SCD41",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-calitate-aer-co2-scd41-ndir.png"
+  },
+  {
+    "id": 38,
+    "slug": "senzor-calitate-aer-co2-scd40-ndir",
+    "name": "Senzor Calitate Aer CO2 Sensirion SCD40 NDIR Fotoacustic",
+    "sku": "SEN-SENS-SCD40",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-calitate-aer-co2-scd40-ndir.png"
+  },
+  {
+    "id": 39,
+    "slug": "senzor-sensirion-sht31-d-i2c",
+    "name": "Senzor Digital de Temperatură și Umiditate Sensirion SHT31-D I2C",
+    "sku": "SEN-SHT31-D",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-sensirion-sht31-d-i2c.png"
+  },
+  {
+    "id": 40,
+    "slug": "senzor-sensirion-gy-sht40-i2c",
+    "name": "Modul Senzor Digital Precizie Înaltă Sensirion SHT40 I2C",
+    "sku": "SEN-GY-SHT40",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-sensirion-gy-sht40-i2c.png"
+  },
+  {
+    "id": 41,
+    "slug": "senzor-temperatura-inox-ds18b20-waterproof",
+    "name": "Senzor Temperatură Impermeabil DS18B20 Inox 1-Wire Cablu 1m",
+    "sku": "SEN-DS18B20-WP-1M",
+    "category_id": 3,
+    "subcategory": "Senzori Industriali & Temperatură",
+    "image_url": "/images/products/senzor-temperatura-inox-ds18b20-waterproof.png"
+  },
+  {
+    "id": 42,
+    "slug": "senzor-distanta-laser-tof-vl53l0x",
+    "name": "Senzor Distanță Laser ToF STMicroelectronics VL53L0X 2m",
+    "sku": "SEN-ST-VL53L0X",
+    "category_id": 3,
+    "subcategory": "Telemetrie Laser & ToF",
+    "image_url": "/images/products/senzor-distanta-laser-tof-vl53l0x.png"
+  },
+  {
+    "id": 43,
+    "slug": "senzor-curent-tensiune-ti-ina219",
+    "name": "Senzor Curent și Tensiune Bidirecțional TI INA219 I2C High-Side",
+    "sku": "SEN-TI-INA219",
+    "category_id": 3,
+    "subcategory": "Senzori Putere & Energie",
+    "image_url": "/images/products/senzor-curent-tensiune-ti-ina219.png"
+  },
+  {
+    "id": 44,
+    "slug": "senzor-particule-praf-laser-pms5003",
+    "name": "Senzor Particule Praf PM2.5 / PM10 Plantower PMS5003 Laser",
+    "sku": "SEN-PLAN-PMS5003",
+    "category_id": 3,
+    "subcategory": "Senzori Ambientali & Calitate Aer",
+    "image_url": "/images/products/senzor-particule-praf-laser-pms5003.png"
+  },
+  {
+    "id": 45,
+    "slug": "modul-4-relee-5v-optocuplate",
+    "name": "Modul cu 4 Relee 5V Optocuplate 10A 250V AC cu Izolație Galvanică",
+    "sku": "MOD-REL-4CH-5V",
+    "category_id": 3,
+    "subcategory": "Module Relee & Putere",
+    "image_url": "/images/products/modul-4-relee-5v-optocuplate.png"
+  },
+  {
+    "id": 46,
+    "slug": "releu-solid-state-ssr-40da",
+    "name": "Releu Solid State SSR-40DA 40A 24-380V AC (Comandă 3-32V DC)",
+    "sku": "REL-SSR-40DA",
+    "category_id": 3,
+    "subcategory": "Module Relee & Putere",
+    "image_url": "/images/products/releu-solid-state-ssr-40da.png"
+  },
+  {
+    "id": 47,
+    "slug": "modul-releu-solid-state-2-canale-ssr",
+    "name": "Modul Releu Solid State SSR cu 2 Canale Comandă Optocuplată 5V",
+    "sku": "MOD-SSR-2CH-5V",
+    "category_id": 3,
+    "subcategory": "Module Relee & Putere",
+    "image_url": "/images/products/modul-releu-solid-state-2-canale-ssr.png"
+  },
+  {
+    "id": 48,
+    "slug": "convertor-industrial-rs485-la-ttl-uart",
+    "name": "Convertor Industrial Bidirecțional RS485 la TTL UART cu Protecție TVS",
+    "sku": "CONV-RS485-TTL",
+    "category_id": 3,
+    "subcategory": "Comunicație Industrială & CAN",
+    "image_url": "/images/products/convertor-industrial-rs485-la-ttl-uart.png"
+  },
+  {
+    "id": 49,
+    "slug": "sursa-industriala-mean-well-24v-13-4a",
+    "name": "Sursă Industrială Mean Well LRS-350-24 (24V 14.6A 350W Carcasă Metal)",
+    "sku": "MW-LRS-350-24",
+    "category_id": 4,
+    "subcategory": "Surse Industriale & Șină DIN",
+    "image_url": "/images/products/sursa-industriala-mean-well-24v-13-4a.png"
+  },
+  {
+    "id": 50,
+    "slug": "sursa-industriala-mean-well-12v-12-5a",
+    "name": "Sursă Industrială Mean Well LRS-150-12 (12V 12.5A 150W Metal)",
+    "sku": "MW-LRS-150-12",
+    "category_id": 4,
+    "subcategory": "Surse Industriale & Șină DIN",
+    "image_url": "/images/products/sursa-industriala-mean-well-12v-12-5a.png"
+  },
+  {
+    "id": 51,
+    "slug": "sursa-industriala-mean-well-lrs-100-12",
+    "name": "Sursă Industrială Mean Well LRS-100-12 (12V 8.5A 102W Carcasă Metal)",
+    "sku": "MW-LRS-100-12",
+    "category_id": 4,
+    "subcategory": "Surse Industriale & Șină DIN",
+    "image_url": "/images/products/sursa-industriala-mean-well-lrs-100-12.png"
+  },
+  {
+    "id": 52,
+    "slug": "ups-rackmount-1u-line-interactive-750va",
+    "name": "UPS Rackmount 1U Line-Interactive 750VA / 525W cu Afișaj LCD și Port USB/SNMP",
+    "sku": "UPS-RACK-1U-750VA",
+    "category_id": 4,
+    "subcategory": "Unități UPS & Alimentare Rack",
+    "image_url": "/images/products/ups-rackmount-1u-line-interactive-750va.png"
+  },
+  {
+    "id": 53,
+    "slug": "sina-din-otel-perforata-35mm-1m",
+    "name": "Șină DIN Oțel Galvanizat Perforată 35mm x 7.5mm x 1 Metru",
+    "sku": "DIN-RAIL-35-1M",
+    "category_id": 4,
+    "subcategory": "Surse Industriale & Șină DIN",
+    "image_url": "/images/products/sina-din-otel-perforata-35mm-1m.png"
+  },
+  {
+    "id": 54,
+    "slug": "sursa-raspberry-pi-27w-usb-c",
+    "name": "Sursă Oficială de Alimentare Raspberry Pi 27W USB-C PD (Negru)",
+    "sku": "PWR-RPI-27W-BLK",
+    "category_id": 4,
+    "subcategory": "Surse USB-PD & Laborator",
+    "image_url": "/images/products/sursa-raspberry-pi-27w-usb-c.png"
+  },
+  {
+    "id": 55,
+    "slug": "cooler-activ-oficial-raspberry-pi-5",
+    "name": "Cooler Activ Oficial Raspberry Pi 5 (Radiator Aluminiu + Ventilator PWM)",
+    "sku": "CLR-RPI5-ACT",
+    "category_id": 4,
+    "subcategory": "Răcire Activă & Ventilatoare Industriale",
+    "image_url": "/images/products/cooler-activ-oficial-raspberry-pi-5.png"
+  },
+  {
+    "id": 56,
+    "slug": "cooler-activ-negru-cnc-raspberry-pi-5",
+    "name": "Cooler Activ Negru Aluminiu Frezat CNC pentru Raspberry Pi 5",
+    "sku": "CLR-RPI5-CNC-BLK",
+    "category_id": 4,
+    "subcategory": "Răcire Activă & Ventilatoare Industriale",
+    "image_url": "/images/products/cooler-activ-negru-cnc-raspberry-pi-5.png"
+  },
+  {
+    "id": 57,
+    "slug": "microventilator-12v-40mm-server",
+    "name": "Microventilator 12V DC 40x40x10mm Rulare Continuă Rulment Dublu",
+    "sku": "FAN-12V-4010-BB",
+    "category_id": 4,
+    "subcategory": "Răcire Activă & Ventilatoare Industriale",
+    "image_url": "/images/products/microventilator-12v-40mm-server.png"
+  },
+  {
+    "id": 58,
+    "slug": "convertor-dcdc-buck-lm2596-voltmetru",
+    "name": "Convertor Coborâtor DC-DC Buck Step-Down LM2596 cu Voltmetru LED",
+    "sku": "MOD-LM2596-VM",
+    "category_id": 4,
+    "subcategory": "Surse USB-PD & Laborator",
+    "image_url": "/images/products/convertor-dcdc-buck-lm2596-voltmetru.png"
+  },
+  {
+    "id": 59,
+    "slug": "regulator-dcdc-step-up-down-pololu-s7v8a",
+    "name": "Regulator Tensiune Step-Up Step-Down S7V8A Pololu 2.7-11.8V la 5V",
+    "sku": "POL-S7V8A",
+    "category_id": 4,
+    "subcategory": "Surse USB-PD & Laborator",
+    "image_url": "/images/products/regulator-dcdc-step-up-down-pololu-s7v8a.png"
+  },
+  {
+    "id": 60,
+    "slug": "regulator-dcdc-step-down-5v-9a-pololu",
+    "name": "Regulator Coborâtor DC-DC Step-Down 5V 9A Pololu D24V90F5",
+    "sku": "POL-D24V90F5",
+    "category_id": 4,
+    "subcategory": "Surse USB-PD & Laborator",
+    "image_url": "/images/products/regulator-dcdc-step-down-5v-9a-pololu.png"
+  },
+  {
+    "id": 61,
+    "slug": "set-cabluri-injector-splitter-poe-pasiv",
+    "name": "Set Cabluri Injector Pasiv PoE și Splitter RJ45 DC Jack 5.5x2.1mm",
+    "sku": "POE-PASIV-SET",
+    "category_id": 4,
+    "subcategory": "Echipamente PoE",
+    "image_url": "/images/products/set-cabluri-injector-splitter-poe-pasiv.png"
+  },
+  {
+    "id": 62,
+    "slug": "modul-expansiune-ups-hat-raspberry-pi",
+    "name": "Modul Placă Expansiune UPS HAT cu Baterie Litiu 2500mAh pentru Raspberry Pi",
+    "sku": "HAT-UPS-RPI-LIPO",
+    "category_id": 4,
+    "subcategory": "Surse USB-PD & Laborator",
+    "image_url": "/images/products/modul-expansiune-ups-hat-raspberry-pi.png"
+  },
+  {
+    "id": 63,
+    "slug": "panou-rack-1u-4x-raspberry-pi",
+    "name": "Panou Frontal Rack 1U 19-inch pentru 4x Raspberry Pi 4 / 5",
+    "sku": "RCK-1U-4RPI",
+    "category_id": 4,
+    "subcategory": "Cabinete Rack & Accesorii",
+    "image_url": "/images/products/panou-rack-1u-4x-raspberry-pi.png"
+  },
+  {
+    "id": 64,
+    "slug": "cablu-patch-cord-cat6-utp-cupru-3m",
+    "name": "Cablu Rețea Patch Cord Cat6 UTP 3 Metri Cupru Masiv 250MHz Albastru",
+    "sku": "CAB-CAT6-UTP-3M-BL",
+    "category_id": 4,
+    "subcategory": "Prototipare & Cabluri Rețea",
+    "image_url": "/images/products/cablu-patch-cord-cat6-utp-cupru-3m.png"
+  },
+  {
+    "id": 65,
+    "slug": "breadboard-830-puncte-alimentare",
+    "name": "Placă de Teste Breadboard Transparent 830 Puncte cu Benzi Duble de Alimentare",
+    "sku": "BB-830P-TR",
+    "category_id": 4,
+    "subcategory": "Prototipare & Cabluri Rețea",
+    "image_url": "/images/products/breadboard-830-puncte-alimentare.png"
+  },
+  {
+    "id": 66,
+    "slug": "set-cabluri-dupont-120-buc",
+    "name": "Set Cabluri Jumper DuPont 120 Bucăți 20cm (Mamă-Mamă, Tată-Tată, Mamă-Tată)",
+    "sku": "CAB-DUP-120PC",
+    "category_id": 4,
+    "subcategory": "Prototipare & Cabluri Rețea",
+    "image_url": "/images/products/set-cabluri-dupont-120-buc.png"
+  },
+  {
+    "id": 67,
+    "slug": "server-rack-1u-supermicro-epyc-7302p",
+    "name": "Server Rack 1U Supermicro SuperServer (AMD EPYC 7302P 16C/32T, 64GB DDR4 ECC, 4x 3.5\" Hot-Swap)",
+    "sku": "SRV-SM-EPYC16",
+    "category_id": 5,
+    "subcategory": "Servere Datacenter",
+    "image_url": "/images/products/server-rack-1u-supermicro-epyc-7302p.png"
+  },
+  {
+    "id": 68,
+    "slug": "mellanox-connectx-5-25gbe-sfp28",
+    "name": "Placă de Rețea Mellanox ConnectX-5 Dual-Port 25GbE SFP28 PCIe 3.0 x8 (MCX512A-ACAT)",
+    "sku": "NIC-MLX-CX5-25G",
+    "category_id": 5,
+    "subcategory": "Rețelistică Datacenter",
+    "image_url": "/images/products/mellanox-connectx-5-25gbe-sfp28.png"
+  },
+  {
+    "id": 69,
+    "slug": "mellanox-connectx-4-100gbe-qsfp28",
+    "name": "Placă de Rețea Mellanox ConnectX-4 Dual-Port 100GbE QSFP28 PCIe 3.0 x16 (MCX415A-CCAT)",
+    "sku": "NIC-MLX-CX4-100G",
+    "category_id": 5,
+    "subcategory": "Rețelistică Datacenter",
+    "image_url": "/images/products/mellanox-connectx-4-100gbe-qsfp28.png"
+  },
+  {
+    "id": 70,
+    "slug": "mikrotik-ccr2004-1g-12s-plus-2xs",
+    "name": "Switch & Router MikroTik Cloud Core Router CCR2004-1G-12S+2XS (12x 10G SFP+, 2x 25G SFP28)",
+    "sku": "NET-MTK-CCR2004",
+    "category_id": 5,
+    "subcategory": "Rețelistică Datacenter",
+    "image_url": "/images/products/mikrotik-ccr2004-1g-12s-plus-2xs.png"
+  },
+  {
+    "id": 71,
+    "slug": "lsi-broadcom-sas-9300-8i-it-mode",
+    "name": "Host Bus Adapter (HBA) LSI Broadcom SAS 9300-8i 12Gbps 8-Port PCIe 3.0 [Flashed IT Mode ZFS]",
+    "sku": "HBA-LSI-9300-IT",
+    "category_id": 5,
+    "subcategory": "Storage Enterprise",
+    "image_url": "/images/products/lsi-broadcom-sas-9300-8i-it-mode.png"
+  },
+  {
+    "id": 72,
+    "slug": "kioxia-cd6-r-384tb-u2-nvme-ssd",
+    "name": "SSD Enterprise Kioxia CD6-R 3.84TB U.2 NVMe PCIe 4.0 x4 (KCD61RUL3T84, 1 DWPD, Power Loss Protection)",
+    "sku": "SSD-KIO-3840-U2",
+    "category_id": 5,
+    "subcategory": "Storage Enterprise",
+    "image_url": "/images/products/kioxia-cd6-r-384tb-u2-nvme-ssd.png"
+  },
+  {
+    "id": 73,
+    "slug": "eaton-epdu-g3-managed-16a",
+    "name": "PDU Rackmount Administrat Eaton ePDU G3 Managed 16A (8x C13 + 2x C19, Monitorizare per Priză)",
+    "sku": "PDU-EAT-G3-M16",
+    "category_id": 5,
+    "subcategory": "Alimentare & PDU",
+    "image_url": "/images/products/eaton-epdu-g3-managed-16a.png"
+  },
+  {
+    "id": 74,
+    "slug": "raritan-dominion-kx-iii-8-port-kvm-ip",
+    "name": "Consolă KVM over IP Raritan Dominion KX III (8 Porturi Server Cat5, Acces BIOS Web HTML5)",
+    "sku": "KVM-RAR-KX3-8",
+    "category_id": 5,
+    "subcategory": "Management Datacenter",
+    "image_url": "/images/products/raritan-dominion-kx-iii-8-port-kvm-ip.png"
+  },
+  {
+    "id": 75,
+    "slug": "apple-iphone-7-a10-fusion-linux-dev-node",
+    "name": "Apple iPhone 7 (A10 Fusion) 32GB Black [Ready for Linux / checkm8 / postmarketOS]",
+    "sku": "DEV-APL-IP7-A10",
+    "category_id": 6,
+    "subcategory": "Apple Linux (A10)",
+    "image_url": "/images/products/apple-iphone-7-a10-fusion-linux-dev-node.png"
+  },
+  {
+    "id": 76,
+    "slug": "apple-ipad-6th-gen-a10-linux-workstation",
+    "name": "Apple iPad 6th Gen 9.7\" (A10 Fusion, 2GB RAM) [checkm8 Linux Node / USB Host]",
+    "sku": "DEV-APL-IPAD6-A10",
+    "category_id": 6,
+    "subcategory": "Apple Linux (A10)",
+    "image_url": "/images/products/apple-ipad-6th-gen-a10-linux-workstation.png"
+  },
+  {
+    "id": 77,
+    "slug": "apple-ipad-pro-105-a10x-fusion-6-core",
+    "name": "Apple iPad Pro 10.5\" (A10X Fusion 6-Core, 4GB RAM) [checkm8 A10X High-Perf Linux]",
+    "sku": "DEV-APL-IPRO-A10X",
+    "category_id": 6,
+    "subcategory": "Apple Linux (A10X)",
+    "image_url": "/images/products/apple-ipad-pro-105-a10x-fusion-6-core.png"
+  },
+  {
+    "id": 78,
+    "slug": "orange-pi-5-plus-16gb-rk3588",
+    "name": "Orange Pi 5 Plus 16GB RAM (Rockchip RK3588 8-Core, 2x 2.5GbE, NPU 6 TOPS)",
+    "sku": "SBC-OPI-5P-16G",
+    "category_id": 6,
+    "subcategory": "SBC Speciale",
+    "image_url": "/images/products/orange-pi-5-plus-16gb-rk3588.png"
+  },
+  {
+    "id": 79,
+    "slug": "radxa-rock-5b-8gb-rk3588",
+    "name": "Radxa Rock 5B 8GB RAM (Rockchip RK3588, Dual 8K HDMI, 2.5GbE, M.2 M-Key)",
+    "sku": "SBC-RDX-R5B-8G",
+    "category_id": 6,
+    "subcategory": "SBC Speciale",
+    "image_url": "/images/products/radxa-rock-5b-8gb-rk3588.png"
+  },
+  {
+    "id": 80,
+    "slug": "khadas-vim4-8gb-lpddr4x-sbc",
+    "name": "Khadas VIM4 8GB LPDDR4X (Amlogic A311D2, Wi-Fi 6, Gigabit, HDMI In 4K)",
+    "sku": "SBC-KHD-VIM4-8G",
+    "category_id": 6,
+    "subcategory": "SBC Speciale",
+    "image_url": "/images/products/khadas-vim4-8gb-lpddr4x-sbc.png"
+  },
+  {
+    "id": 81,
+    "slug": "starfive-visionfive-2-risc-v-sbc-8gb",
+    "name": "StarFive VisionFive 2 (Quad-Core RISC-V JH7110, 8GB RAM, 2x Gigabit Ethernet)",
+    "sku": "SBC-STF-VF2-8G",
+    "category_id": 6,
+    "subcategory": "Hardware RISC-V",
+    "image_url": "/images/products/starfive-visionfive-2-risc-v-sbc-8gb.png"
+  },
+  {
+    "id": 82,
+    "slug": "milkv-duo-risc-v-64mb-sbc",
+    "name": "Milk-V Duo 64MB RISC-V SBC (CV1800B Dual RV64 @ 1GHz, Linux Ready)",
+    "sku": "SBC-MLK-DUO-64",
+    "category_id": 6,
+    "subcategory": "Hardware RISC-V",
+    "image_url": "/images/products/milkv-duo-risc-v-64mb-sbc.png"
+  },
+  {
+    "id": 83,
+    "slug": "sipeed-tang-primer-20k-fpga-kit",
+    "name": "Sipeed Tang Primer 20K FPGA Kit (Gowin GW2A-LV18PG256C8, 20K LUT, Core + Dock)",
+    "sku": "DEV-FPG-TANG-20K",
+    "category_id": 6,
+    "subcategory": "FPGA & Reconfigurable",
+    "image_url": "/images/products/sipeed-tang-primer-20k-fpga-kit.png"
+  },
+  {
+    "id": 84,
+    "slug": "digilent-pynq-z2-xilinx-zynq-board",
+    "name": "Digilent PYNQ-Z2 Development Board (Xilinx Zynq-7000 SoC Dual ARM + FPGA Fabric)",
+    "sku": "DEV-FPG-PYNQ-Z2",
+    "category_id": 6,
+    "subcategory": "FPGA & Reconfigurable",
+    "image_url": "/images/products/digilent-pynq-z2-xilinx-zynq-board.png"
+  },
+  {
+    "id": 85,
+    "slug": "tigard-multi-protocol-hardware-debug-probe",
+    "name": "Tigard Multi-Protocol Hardware Debug Probe (FTDI FT2232H, UART/JTAG/SWD/SPI/I2C)",
+    "sku": "REV-TGD-PROBE-01",
+    "category_id": 6,
+    "subcategory": "OS Dev & Reverse Engineering",
+    "image_url": "/images/products/tigard-multi-protocol-hardware-debug-probe.png"
+  },
+  {
+    "id": 86,
+    "slug": "black-magic-probe-v2-3-swd-jtag",
+    "name": "Black Magic Probe v2.3 Native SWD/JTAG Debugger (GDB Server Onboard)",
+    "sku": "DEV-BMP-PROBE-23",
+    "category_id": 6,
+    "subcategory": "OS Dev & Reverse Engineering",
+    "image_url": "/images/products/black-magic-probe-v2-3-swd-jtag.png"
+  },
+  {
+    "id": 87,
+    "slug": "programator-eeprom-ch341a-v17-pro",
+    "name": "Kit Programator EEPROM/SPI Flash CH341A v1.7 Pro (Clește Test SOIC8 + Adaptor 1.8V)",
+    "sku": "REV-CH341-PRO-KIT",
+    "category_id": 6,
+    "subcategory": "OS Dev & Reverse Engineering",
+    "image_url": "/images/products/programator-eeprom-ch341a-v17-pro.png"
+  },
+  {
+    "id": 88,
+    "slug": "hackrf-one-sdr-transceiver-kit",
+    "name": "HackRF One 1MHz - 6GHz SDR Transceiver (Carcasă Aluminiu + Antene + Cablu SMA)",
+    "sku": "SDR-GSG-HRF-KIT",
+    "category_id": 6,
+    "subcategory": "Software Defined Radio",
+    "image_url": "/images/products/hackrf-one-sdr-transceiver-kit.png"
+  },
+  {
+    "id": 89,
+    "slug": "rtl-sdr-blog-v4-dongle-tcxo-kit",
+    "name": "RTL-SDR Blog V4 Dongle SDR Receiver cu TCXO 1PPM + Kit Antene Dipol Polivalente",
+    "sku": "SDR-RTL-BLOG-V4",
+    "category_id": 6,
+    "subcategory": "Software Defined Radio",
+    "image_url": "/images/products/rtl-sdr-blog-v4-dongle-tcxo-kit.png"
+  },
+  {
+    "id": 90,
+    "slug": "google-coral-usb-accelerator-edge-tpu",
+    "name": "Google Coral USB Accelerator (Edge TPU Coprocessor 4 TOPS, USB 3.0 Type-C)",
+    "sku": "ACC-GGL-CORAL-USB",
+    "category_id": 6,
+    "subcategory": "Acceleratoare AI & Compute",
+    "image_url": "/images/products/google-coral-usb-accelerator-edge-tpu.png"
+  },
+  {
+    "id": 91,
+    "slug": "hailo-8-m2-ai-acceleration-module",
+    "name": "Hailo-8 M.2 AI Acceleration Module (Key M 2280 PCIe 3.0 x4, 26 TOPS @ 2.5W)",
+    "sku": "ACC-HLO-8-M2-26T",
+    "category_id": 6,
+    "subcategory": "Acceleratoare AI & Compute",
+    "image_url": "/images/products/hailo-8-m2-ai-acceleration-module.png"
+  },
+  {
+    "id": 92,
+    "slug": "flipper-zero-portable-multi-tool",
+    "name": "Flipper Zero Multi-Tool Device (Sub-1GHz, RFID, NFC, IR, GPIO & BadUSB)",
+    "sku": "SEC-FLP-ZERO-01",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Pentesting",
+    "image_url": "/images/products/flipper-zero-portable-multi-tool.png"
+  },
+  {
+    "id": 93,
+    "slug": "hak5-wifi-pineapple-mark-vii",
+    "name": "Hak5 WiFi Pineapple Mark VII (Dual-Band 2.4/5GHz Enterprise Wireless Audit)",
+    "sku": "SEC-HK5-PINE-MK7",
+    "category_id": 7,
+    "subcategory": "Network Security & Hak5",
+    "image_url": "/images/products/hak5-wifi-pineapple-mark-vii.png"
+  },
+  {
+    "id": 94,
+    "slug": "hak5-usb-rubber-ducky-v3",
+    "name": "Hak5 USB Rubber Ducky (DuckyScript 3.0 Keystroke Injection & BadUSB)",
+    "sku": "SEC-HK5-DUCKY-03",
+    "category_id": 7,
+    "subcategory": "USB Security & Hotplug",
+    "image_url": "/images/products/hak5-usb-rubber-ducky-v3.png"
+  },
+  {
+    "id": 95,
+    "slug": "hak5-lan-turtle-network-implant",
+    "name": "Hak5 LAN Turtle (Covert Systems Management & Network Implant)",
+    "sku": "SEC-HK5-TURTLE-01",
+    "category_id": 7,
+    "subcategory": "Network Security & Hak5",
+    "image_url": "/images/products/hak5-lan-turtle-network-implant.png"
+  },
+  {
+    "id": 96,
+    "slug": "hak5-packet-squirrel-ethernet-tap",
+    "name": "Hak5 Packet Squirrel (Hardware Ethernet TAP & Packet Capture)",
+    "sku": "SEC-HK5-SQUIRREL-01",
+    "category_id": 7,
+    "subcategory": "Network Security & Hak5",
+    "image_url": "/images/products/hak5-packet-squirrel-ethernet-tap.png"
+  },
+  {
+    "id": 97,
+    "slug": "esp32-marauder-v6-pocket-board",
+    "name": "ESP32 Marauder v6 Pocket Pentest Board (Ecran TFT Touch 2.8\", Antenă Externă SMA)",
+    "sku": "SEC-ESP-MRD-V6",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Pentesting",
+    "image_url": "/images/products/esp32-marauder-v6-pocket-board.png"
+  },
+  {
+    "id": 98,
+    "slug": "bruce-esp32-s3-multi-tool-board",
+    "name": "Bruce ESP32-S3 Multi-Tool Dev Board (Sub-GHz CC1101 + Wi-Fi/BLE + MicroSD)",
+    "sku": "SEC-ESP-BRUCE-S3",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Pentesting",
+    "image_url": "/images/products/bruce-esp32-s3-multi-tool-board.png"
+  },
+  {
+    "id": 99,
+    "slug": "proxmark3-rdv401-research-kit",
+    "name": "Proxmark3 RDV4.01 Research Kit (Dual-Band LF 125kHz & HF 13.56MHz + Chameleon)",
+    "sku": "SEC-PRX-MK3-RDV4",
+    "category_id": 7,
+    "subcategory": "RFID / NFC Research",
+    "image_url": "/images/products/proxmark3-rdv401-research-kit.png"
+  },
+  {
+    "id": 100,
+    "slug": "chameleon-ultra-pocket-rfid-nfc-emulator",
+    "name": "ChameleonUltra Pocket RFID/NFC Emulator & Reader (Bluetooth 5.0 + USB-C)",
+    "sku": "SEC-CHM-ULTRA-01",
+    "category_id": 7,
+    "subcategory": "RFID / NFC Research",
+    "image_url": "/images/products/chameleon-ultra-pocket-rfid-nfc-emulator.png"
+  },
+  {
+    "id": 101,
+    "slug": "alfa-network-awus036acm-monitor-mode-adapter",
+    "name": "Adaptor Wi-Fi Alfa Network AWUS036ACM 802.11ac 1200Mbps (Dual Antenă 5dBi, Monitor Mode & Injection)",
+    "sku": "SEC-ALF-036ACM",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Pentesting",
+    "image_url": "/images/products/alfa-network-awus036acm-monitor-mode-adapter.png"
+  },
+  {
+    "id": 102,
+    "slug": "bus-pirate-v5-hardware-hacking-tool",
+    "name": "Bus Pirate v5 Hardware Hacking Multi-Tool (I2C/SPI/UART/1-Wire, Terminal VT100, Ecran Color)",
+    "sku": "SEC-BUS-PIRATE-V5",
+    "category_id": 7,
+    "subcategory": "Hardware Hacking & Embedded",
+    "image_url": "/images/products/bus-pirate-v5-hardware-hacking-tool.png"
+  },
+  {
+    "id": 103,
+    "slug": "glasgow-interface-explorer-hardware-tool",
+    "name": "Glasgow Interface Explorer Hardware Tool (FPGA iCE40 + Interfețe Digitale Universale)",
+    "sku": "SEC-GLS-EXPLORER-01",
+    "category_id": 7,
+    "subcategory": "Hardware Hacking & Embedded",
+    "image_url": "/images/products/glasgow-interface-explorer-hardware-tool.png"
+  },
+  {
+    "id": 104,
+    "slug": "analizor-logic-usb-16-canale-100mhz",
+    "name": "Analizor Logic USB 16 Canale 100MHz (Compatibil Sigrok / PulseView / Saleae Logic Software)",
+    "sku": "SEC-LOG-16CH-100M",
+    "category_id": 7,
+    "subcategory": "Hardware Hacking & Embedded",
+    "image_url": "/images/products/analizor-logic-usb-16-canale-100mhz.png"
+  },
+  {
+    "id": 105,
+    "slug": "dual-gigabit-hardware-network-tap",
+    "name": "Dual Gigabit Hardware Network TAP (Passive 10/100/1000Base-T Packet Capture / Plunder Bug Style)",
+    "sku": "SEC-NET-TAP-1G",
+    "category_id": 7,
+    "subcategory": "Network Security & Hak5",
+    "image_url": "/images/products/dual-gigabit-hardware-network-tap.png"
+  },
+  {
+    "id": 106,
+    "slug": "tester-detector-cabluri-malitioase-omg",
+    "name": "Tester & Detector de Cabluri Malițioase C-to-C (O.MG Cable Tester / Hardware Interceptor Detector)",
+    "sku": "SEC-CAB-TEST-OMG",
+    "category_id": 7,
+    "subcategory": "USB Security & Hotplug",
+    "image_url": "/images/products/tester-detector-cabluri-malitioase-omg.png"
+  },
+  {
+    "id": 107,
+    "slug": "pachet-10x-carduri-taguri-t5577-mifare-magic",
+    "name": "Pachet 10x Carduri & Taguri Dual-Frequency T5577 (125kHz Re-writable) + Mifare Magic Gen2 (13.56MHz UID Changeable)",
+    "sku": "SEC-RFID-TAG-PACK10",
+    "category_id": 7,
+    "subcategory": "RFID / NFC Research",
+    "image_url": "/images/products/pachet-10x-carduri-taguri-t5577-mifare-magic.png"
+  },
+  {
+    "id": 322,
+    "slug": "raspberry-pi-compute-module-4-8gb-emmc-wifi",
+    "name": "Raspberry Pi Compute Module 4 (CM4) - 8GB RAM, 32GB eMMC, Wi-Fi & BT",
+    "sku": "RPI-CM4-8G32GW",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/raspberry-pi-compute-module-4-8gb-emmc-wifi.png"
+  },
+  {
+    "id": 323,
+    "slug": "banana-pi-bpi-r3-wifi-6-router-sbc",
+    "name": "Banana Pi BPI-R3 Wi-Fi 6 Router Board (MediaTek MT7986A, 2x 2.5G SFP)",
+    "sku": "BPI-R3-ROUTER",
+    "category_id": 1,
+    "subcategory": "SBC ARM & Networking",
+    "image_url": "/images/products/banana-pi-bpi-r3-wifi-6-router-sbc.png"
+  },
+  {
+    "id": 324,
+    "slug": "radxa-zero-3w-4gb-quad-core-wifi6",
+    "name": "Radxa Zero 3W (4GB RAM, Quad-Core Cortex-A35, Wi-Fi 6 & BT 5.4)",
+    "sku": "RADXA-ZERO-3W-4G",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/radxa-zero-3w-4gb-quad-core-wifi6.png"
+  },
+  {
+    "id": 325,
+    "slug": "libre-computer-aml-s905x-cc-le-potato-2gb",
+    "name": "Libre Computer AML-S905X-CC (Le Potato) - 2GB RAM 4K HDR",
+    "sku": "LC-LE-POTATO-2GB",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/libre-computer-aml-s905x-cc-le-potato-2gb.png"
+  },
+  {
+    "id": 326,
+    "slug": "pine64-quartz64-model-a-8gb-rk3566",
+    "name": "Pine64 Quartz64 Model A (8GB RAM, Rockchip RK3566, PCIe x1 Slot)",
+    "sku": "PINE64-QUARTZ64-A-8G",
+    "category_id": 1,
+    "subcategory": "SBC ARM",
+    "image_url": "/images/products/pine64-quartz64-model-a-8gb-rk3566.png"
+  },
+  {
+    "id": 327,
+    "slug": "apple-ipod-touch-7th-gen-a10-linux-dev",
+    "name": "Apple iPod touch (7th Gen) 32GB — A10 Fusion Linux Dev Platform",
+    "sku": "APPLE-IPOD-TOUCH-7-A10",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-ipod-touch-7th-gen-a10-linux-dev.png"
+  },
+  {
+    "id": 328,
+    "slug": "apple-iphone-7-plus-128gb-a10-linux-testbed",
+    "name": "Apple iPhone 7 Plus 128GB — A10 Fusion Linux Platform (Refurbished)",
+    "sku": "APPLE-IPHONE-7PLUS-A10",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-iphone-7-plus-128gb-a10-linux-testbed.png"
+  },
+  {
+    "id": 329,
+    "slug": "apple-tv-4k-1st-gen-a10x-headless-node",
+    "name": "Apple TV 4K (1st Gen) 64GB — Apple A10X Fusion 6-Core Headless Node",
+    "sku": "APPLE-TV-4K-A10X",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-tv-4k-1st-gen-a10x-headless-node.png"
+  },
+  {
+    "id": 330,
+    "slug": "milkv-mars-riscv-sbc-8gb-ram",
+    "name": "Milk-V Mars Quad-Core 64-bit RISC-V SBC (8GB RAM, JH7110)",
+    "sku": "MILKV-MARS-8GB",
+    "category_id": 6,
+    "subcategory": "Hardware RISC-V",
+    "image_url": "/images/products/milkv-mars-riscv-sbc-8gb-ram.png"
+  },
+  {
+    "id": 331,
+    "slug": "lichee-pi-4a-th1520-quad-riscv-16gb",
+    "name": "Sipeed Lichee Pi 4A (TH1520 Quad-Core RISC-V 16GB RAM + 128GB eMMC)",
+    "sku": "LICHEE-PI-4A-16G",
+    "category_id": 6,
+    "subcategory": "Hardware RISC-V",
+    "image_url": "/images/products/lichee-pi-4a-th1520-quad-riscv-16gb.png"
+  },
+  {
+    "id": 332,
+    "slug": "wch-ch32v003-riscv-dev-kit-10pk",
+    "name": "WCH CH32V003 RISC-V Development Kit (10x Plăci + WCH-LinkE Debugger)",
+    "sku": "WCH-CH32V003-KIT-10PK",
+    "category_id": 6,
+    "subcategory": "Hardware RISC-V",
+    "image_url": "/images/products/wch-ch32v003-riscv-dev-kit-10pk.png"
+  },
+  {
+    "id": 333,
+    "slug": "tang-nano-9k-gowin-fpga-hdmi-kit",
+    "name": "Tang Nano 9K Gowin FPGA Development Board cu HDMI & USB-JTAG",
+    "sku": "TANG-NANO-9K",
+    "category_id": 6,
+    "subcategory": "FPGA & Reconfigurable",
+    "image_url": "/images/products/tang-nano-9k-gowin-fpga-hdmi-kit.png"
+  },
+  {
+    "id": 334,
+    "slug": "lattice-icestick-ice40hx1k-open-source-fpga",
+    "name": "Lattice iCEstick iCE40HX-1K USB FPGA Kit (100% Open-Source Toolchain)",
+    "sku": "LATTICE-ICESTICK-1K",
+    "category_id": 6,
+    "subcategory": "FPGA & Reconfigurable",
+    "image_url": "/images/products/lattice-icestick-ice40hx1k-open-source-fpga.png"
+  },
+  {
+    "id": 335,
+    "slug": "digilent-basys-3-artix-7-fpga-trainer-board",
+    "name": "Digilent Basys 3 Artix-7 FPGA Trainer Board (Xilinx XC7A35T)",
+    "sku": "DIGILENT-BASYS3-A7",
+    "category_id": 6,
+    "subcategory": "FPGA & Reconfigurable",
+    "image_url": "/images/products/digilent-basys-3-artix-7-fpga-trainer-board.png"
+  },
+  {
+    "id": 336,
+    "slug": "beaglebone-black-rev-c-ti-am3358-real-time",
+    "name": "BeagleBone Black Rev C (TI Sitara AM3358 1GHz, U-Boot, 2x PRU Co-Processors)",
+    "sku": "BEAGLEBONE-BLACK-REVC",
+    "category_id": 6,
+    "subcategory": "OS Development & Embedded",
+    "image_url": "/images/products/beaglebone-black-rev-c-ti-am3358-real-time.png"
+  },
+  {
+    "id": 337,
+    "slug": "raspberry-pi-debug-probe-cmsis-dap-uart",
+    "name": "Raspberry Pi Debug Probe (CMSIS-DAP + UART USB Debugger Kit)",
+    "sku": "RPI-DEBUG-PROBE-KIT",
+    "category_id": 6,
+    "subcategory": "OS Development & Embedded",
+    "image_url": "/images/products/raspberry-pi-debug-probe-cmsis-dap-uart.png"
+  },
+  {
+    "id": 338,
+    "slug": "segger-jlink-edu-mini-debug-probe",
+    "name": "SEGGER J-Link EDU Mini Debug Probe (Cortex-M SWD/JTAG)",
+    "sku": "SEGGER-JLINK-EDU-MINI",
+    "category_id": 6,
+    "subcategory": "OS Development & Embedded",
+    "image_url": "/images/products/segger-jlink-edu-mini-debug-probe.png"
+  },
+  {
+    "id": 339,
+    "slug": "dslogic-plus-16ch-400mhz-usb-logic-analyzer",
+    "name": "DSLogic Plus 16-Channel 400MHz USB Logic Analyzer (Carcasă CNC Aluminiu)",
+    "sku": "DSLOGIC-PLUS-16CH",
+    "category_id": 6,
+    "subcategory": "Reverse Engineering",
+    "image_url": "/images/products/dslogic-plus-16ch-400mhz-usb-logic-analyzer.png"
+  },
+  {
+    "id": 340,
+    "slug": "total-phase-beagle-usb-480-protocol-analyzer",
+    "name": "Total Phase Beagle USB 480 Protocol Analyzer (Captură USB 2.0 480Mbps)",
+    "sku": "TOTALPHASE-BEAGLE-480",
+    "category_id": 6,
+    "subcategory": "Reverse Engineering",
+    "image_url": "/images/products/total-phase-beagle-usb-480-protocol-analyzer.png"
+  },
+  {
+    "id": 341,
+    "slug": "canable-2-pro-isolated-usb-can-fd-adapter",
+    "name": "CANable 2.0 Pro USB-to-CAN / CAN-FD Analyzer (Izolare Galvanică 2.5kV)",
+    "sku": "CANABLE-2-PRO-ISOLATED",
+    "category_id": 6,
+    "subcategory": "Reverse Engineering",
+    "image_url": "/images/products/canable-2-pro-isolated-usb-can-fd-adapter.png"
+  },
+  {
+    "id": 342,
+    "slug": "limesdr-mini-2-0-full-duplex-sdr-transceiver",
+    "name": "LimeSDR Mini 2.0 Full-Duplex RF Software Defined Radio Transceiver",
+    "sku": "LIMESDR-MINI-20",
+    "category_id": 6,
+    "subcategory": "Software Defined Radio (SDR)",
+    "image_url": "/images/products/limesdr-mini-2-0-full-duplex-sdr-transceiver.png"
+  },
+  {
+    "id": 343,
+    "slug": "heltec-wifi-lora-32-v3-esp32s3-sx1262",
+    "name": "Heltec WiFi LoRa 32 V3 (ESP32-S3 + SX1262 LoRa 868MHz + 0.96\" OLED)",
+    "sku": "HELTEC-LORA32-V3-868",
+    "category_id": 6,
+    "subcategory": "Software Defined Radio & LoRa",
+    "image_url": "/images/products/heltec-wifi-lora-32-v3-esp32s3-sx1262.png"
+  },
+  {
+    "id": 344,
+    "slug": "lilygo-t-beam-esp32-lora-868-gps-neo6m",
+    "name": "LilyGO T-Beam ESP32 LoRa 868MHz + GPS NEO-6M (Meshtastic Node Portabil)",
+    "sku": "LILYGO-TBEAM-GPS-868",
+    "category_id": 6,
+    "subcategory": "Software Defined Radio & LoRa",
+    "image_url": "/images/products/lilygo-t-beam-esp32-lora-868-gps-neo6m.png"
+  },
+  {
+    "id": 345,
+    "slug": "coral-m2-dual-edge-tpu-8tops-ekey",
+    "name": "Google Coral M.2 Accelerator with Dual Edge TPU (8 TOPS, M.2 E-Key)",
+    "sku": "CORAL-M2-DUAL-EDGETPU",
+    "category_id": 6,
+    "subcategory": "Compute Accelerators",
+    "image_url": "/images/products/coral-m2-dual-edge-tpu-8tops-ekey.png"
+  },
+  {
+    "id": 346,
+    "slug": "raspberry-pi-ai-hat-plus-26-tops-hailo8",
+    "name": "Raspberry Pi AI HAT+ 26 TOPS (Modul Hailo-8 M.2 Integrat)",
+    "sku": "RPI-AI-HAT-PLUS-26TOPS",
+    "category_id": 6,
+    "subcategory": "Compute Accelerators",
+    "image_url": "/images/products/raspberry-pi-ai-hat-plus-26-tops-hailo8.png"
+  },
+  {
+    "id": 347,
+    "slug": "intel-neural-compute-stick-2-myriad-x-refurb",
+    "name": "Intel Neural Compute Stick 2 (Myriad X VPU Edge AI - Refurbished Lab)",
+    "sku": "INTEL-NCS2-REFURB",
+    "category_id": 6,
+    "subcategory": "Compute Accelerators",
+    "image_url": "/images/products/intel-neural-compute-stick-2-myriad-x-refurb.png"
+  },
+  {
+    "id": 348,
+    "slug": "hak5-shark-jack-automated-pentest-tool",
+    "name": "Hak5 Shark Jack — Automated Portable Ethernet Pentest Tool",
+    "sku": "HAK5-SHARK-JACK",
+    "category_id": 7,
+    "subcategory": "Network Security & Pentest",
+    "image_url": "/images/products/hak5-shark-jack-automated-pentest-tool.png"
+  },
+  {
+    "id": 349,
+    "slug": "hak5-plunder-bug-lan-tap-pocket-sniffer",
+    "name": "Hak5 Plunder Bug LAN TAP Pocket Sniffer (Captură Pasivă USB-C)",
+    "sku": "HAK5-PLUNDER-BUG",
+    "category_id": 7,
+    "subcategory": "Network Security & Pentest",
+    "image_url": "/images/products/hak5-plunder-bug-lan-tap-pocket-sniffer.png"
+  },
+  {
+    "id": 350,
+    "slug": "flipper-zero-wifi-devboard-esp32s2-marauder",
+    "name": "Flipper Zero Wi-Fi Devboard (ESP32-S2 Marauder Pre-Configurat)",
+    "sku": "FLIPPER-WIFI-DEVBOARD",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Security",
+    "image_url": "/images/products/flipper-zero-wifi-devboard-esp32s2-marauder.png"
+  },
+  {
+    "id": 351,
+    "slug": "flipper-zero-video-game-module-rp2040-dvi",
+    "name": "Flipper Zero Video Game Module (RP2040 + Ieșire Video DVI + Senzor IMU)",
+    "sku": "FLIPPER-VGM-RP2040",
+    "category_id": 7,
+    "subcategory": "Hardware Research & Modding",
+    "image_url": "/images/products/flipper-zero-video-game-module-rp2040-dvi.png"
+  },
+  {
+    "id": 352,
+    "slug": "yard-stick-one-sub-1ghz-wireless-transceiver",
+    "name": "Yard Stick One Sub-1GHz Wireless Transceiver (Great Scott Gadgets)",
+    "sku": "GSG-YARD-STICK-ONE",
+    "category_id": 7,
+    "subcategory": "Wireless & RF Security",
+    "image_url": "/images/products/yard-stick-one-sub-1ghz-wireless-transceiver.png"
+  },
+  {
+    "id": 353,
+    "slug": "dell-poweredge-r640-1u-2x-xeon-silver-64gb-ecc-refurb",
+    "name": "Server Rack 1U Dell PowerEdge R640 Refurbished (2x Xeon Silver 4210, 64GB DDR4 ECC, 8x SFF, iDRAC9)",
+    "sku": "DELL-R640-1U-REFURB",
+    "category_id": 5,
+    "subcategory": "Servere Rackmount",
+    "image_url": "/images/products/dell-poweredge-r640-1u-2x-xeon-silver-64gb-ecc-refurb.png"
+  },
+  {
+    "id": 354,
+    "slug": "dell-poweredge-r740-2u-2x-xeon-gold-128gb-ecc-refurb",
+    "name": "Server Rack 2U Dell PowerEdge R740 Refurbished (2x Xeon Gold 6138, 128GB DDR4 ECC, 16x SFF)",
+    "sku": "DELL-R740-2U-REFURB",
+    "category_id": 5,
+    "subcategory": "Servere Rackmount",
+    "image_url": "/images/products/dell-poweredge-r740-2u-2x-xeon-gold-128gb-ecc-refurb.png"
+  },
+  {
+    "id": 355,
+    "slug": "dell-optiplex-7070-micro-tiny-pc-i5-16gb-nvme",
+    "name": "Dell OptiPlex 7070 Micro Tiny PC (Intel Core i5-9500T 6-Core, 16GB RAM, 512GB NVMe - Proxmox Node)",
+    "sku": "DELL-OPTIPLEX-7070-MFF",
+    "category_id": 5,
+    "subcategory": "Mini PC & Thin Clients",
+    "image_url": "/images/products/dell-optiplex-7070-micro-tiny-pc-i5-16gb-nvme.png"
+  },
+  {
+    "id": 356,
+    "slug": "nvidia-tesla-t4-16gb-gddr6-pcie-passive-gpu-refurb",
+    "name": "NVIDIA Tesla T4 16GB GDDR6 PCIe 3.0 x16 Passive GPU (AI Inference & vGPU Lab - Refurbished)",
+    "sku": "NVIDIA-TESLA-T4-16GB",
+    "category_id": 5,
+    "subcategory": "Acceleratoare Grafice & AI",
+    "image_url": "/images/products/nvidia-tesla-t4-16gb-gddr6-pcie-passive-gpu-refurb.png"
+  },
+  {
+    "id": 357,
+    "slug": "seagate-exos-x18-16tb-enterprise-sata-hdd",
+    "name": "Seagate Exos X18 16TB Enterprise SATA 3.5\" HDD 7200RPM 256MB Cache (ST16000NM000J)",
+    "sku": "SEAGATE-EXOS-X18-16TB",
+    "category_id": 2,
+    "subcategory": "Storage & HDD Homelab",
+    "image_url": "/images/products/seagate-exos-x18-16tb-enterprise-sata-hdd.png"
+  },
+  {
+    "id": 358,
+    "slug": "wd-red-plus-8tb-nas-hdd-cmr-5640rpm",
+    "name": "Western Digital Red Plus 8TB NAS HDD 3.5\" CMR 5640RPM 256MB Cache (WD80EFPX)",
+    "sku": "WD-RED-PLUS-8TB-CMR",
+    "category_id": 2,
+    "subcategory": "Storage & HDD Homelab",
+    "image_url": "/images/products/wd-red-plus-8tb-nas-hdd-cmr-5640rpm.png"
+  },
+  {
+    "id": 359,
+    "slug": "crucial-32gb-2x16gb-ddr4-3200-sodimm-kit",
+    "name": "Crucial 32GB (2x16GB) DDR4 3200MHz CL22 SODIMM Kit (Upgrade RAM Homelab)",
+    "sku": "CRUCIAL-DDR4-32GB-KIT",
+    "category_id": 2,
+    "subcategory": "Memorie RAM Homelab",
+    "image_url": "/images/products/crucial-32gb-2x16gb-ddr4-3200-sodimm-kit.png"
+  },
+  {
+    "id": 360,
+    "slug": "patch-panel-19-inch-1u-24-porturi-keystone-ecranat",
+    "name": "Panou Patch Panel 19\" 1U 24 Porturi Ecranate Cat6A Keystone cu Suport Cablu",
+    "sku": "PATCH-PANEL-19-1U-24P",
+    "category_id": 2,
+    "subcategory": "Accesorii Rack 19\"",
+    "image_url": "/images/products/patch-panel-19-inch-1u-24-porturi-keystone-ecranat.png"
+  },
+  {
+    "id": 361,
+    "slug": "pdu-rackmount-19-inch-1u-8-prize-schuko-protectie",
+    "name": "Unitate PDU Rackmount 19\" 1U cu 8 Prize Schuko, Întrerupător și Protecție Supratensiune",
+    "sku": "PDU-19-1U-8-SCHUKO",
+    "category_id": 2,
+    "subcategory": "Alimentare & PDU Rack",
+    "image_url": "/images/products/pdu-rackmount-19-inch-1u-8-prize-schuko-protectie.png"
+  },
+  {
+    "id": 362,
+    "slug": "shelly-plus-1pm-smart-relay-power-metering",
+    "name": "Shelly Plus 1PM — Releu Inteligent Wi-Fi & Bluetooth cu Măsurare Consum Energie",
+    "sku": "SHELLY-PLUS-1PM",
+    "category_id": 3,
+    "subcategory": "Relee Inteligente & Smart Home",
+    "image_url": "/images/products/shelly-plus-1pm-smart-relay-power-metering.png"
+  },
+  {
+    "id": 363,
+    "slug": "hilink-hlk-ld2410c-24ghz-mmwave-presence-radar",
+    "name": "Hi-Link HLK-LD2410C 24GHz mmWave Human Presence Radar Sensor (Bluetooth & UART)",
+    "sku": "HILINK-LD2410C-RADAR",
+    "category_id": 3,
+    "subcategory": "Senzori Prezență & Mișcare",
+    "image_url": "/images/products/hilink-hlk-ld2410c-24ghz-mmwave-presence-radar.png"
+  },
+  {
+    "id": 364,
+    "slug": "apple-macbook-air-13-m1-asahi-linux",
+    "name": "Apple MacBook Air 13\" M1 (16GB RAM, 512GB SSD) [Asahi Linux Gold Tier - Fedora Remix]",
+    "sku": "APPLE-MBA-M1-16G-ASAHI",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-macbook-air-13-m1-asahi-linux.png"
+  },
+  {
+    "id": 365,
+    "slug": "apple-macbook-pro-13-m1-asahi-linux",
+    "name": "Apple MacBook Pro 13\" M1 (16GB RAM, 512GB SSD) [Asahi Linux Gold Tier - Ventilator Activ]",
+    "sku": "APPLE-MBP13-M1-16G-ASAHI",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-macbook-pro-13-m1-asahi-linux.png"
+  },
+  {
+    "id": 366,
+    "slug": "apple-macbook-air-13-m2-asahi-linux",
+    "name": "Apple MacBook Air 13.6\" M2 (16GB RAM, 512GB SSD) [Asahi Linux Certified - MagSafe 3]",
+    "sku": "APPLE-MBA-M2-16G-ASAHI",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-macbook-air-13-m2-asahi-linux.png"
+  },
+  {
+    "id": 367,
+    "slug": "apple-macbook-pro-14-m2-pro-asahi-linux",
+    "name": "Apple MacBook Pro 14\" M2 Pro (16GB RAM, 512GB SSD) [Asahi Linux Edge - 120Hz ProMotion & HDMI]",
+    "sku": "APPLE-MBP14-M2PRO-ASAHI",
+    "category_id": 6,
+    "subcategory": "Apple Hardware Linux",
+    "image_url": "/images/products/apple-macbook-pro-14-m2-pro-asahi-linux.png"
+  },
+  {
+    "id": 368,
+    "slug": "lenovo-thinkpad-x230-coreboot-me-cleaner",
+    "name": "Lenovo ThinkPad X230 (Intel Core i5-3320M, 16GB RAM, 512GB SSD) [Pre-Flashed Coreboot + SeaBIOS / me_cleaner]",
+    "sku": "THINKPAD-X230-COREBOOT",
+    "category_id": 6,
+    "subcategory": "Laptopturi Coreboot & Open Firmware",
+    "image_url": "/images/products/lenovo-thinkpad-x230-coreboot-me-cleaner.png"
+  },
+  {
+    "id": 369,
+    "slug": "lenovo-thinkpad-t440p-coreboot-modular-quad-i7",
+    "name": "Lenovo ThinkPad T440p Modular (Intel Core i7-4700MQ Quad-Core, 16GB RAM, 1080p IPS) [Coreboot Ready / Heads Tested]",
+    "sku": "THINKPAD-T440P-COREBOOT",
+    "category_id": 6,
+    "subcategory": "Laptopturi Coreboot & Open Firmware",
+    "image_url": "/images/products/lenovo-thinkpad-t440p-coreboot-modular-quad-i7.png"
+  },
+  {
+    "id": 370,
+    "slug": "lenovo-thinkpad-x200-libreboot-ryf-certified",
+    "name": "Lenovo ThinkPad X200 (Core 2 Duo P8600, 8GB RAM, SSD 256GB) [100% Libreboot Pre-Installed, FSF RYF Certified]",
+    "sku": "THINKPAD-X200-LIBREBOOT",
+    "category_id": 6,
+    "subcategory": "Laptopturi Coreboot & Open Firmware",
+    "image_url": "/images/products/lenovo-thinkpad-x200-libreboot-ryf-certified.png"
+  },
+  {
+    "id": 371,
+    "slug": "lenovo-thinkpad-t480-quad-core-privacy-coreboot-ready",
+    "name": "Lenovo ThinkPad T480 (Intel Core i5-8350U Quad-Core, 32GB DDR4, 512GB NVMe) [Linux Privacy Edition - Coreboot Ready]",
+    "sku": "THINKPAD-T480-PRIVACY",
+    "category_id": 6,
+    "subcategory": "Laptopturi Coreboot & Open Firmware",
+    "image_url": "/images/products/lenovo-thinkpad-t480-quad-core-privacy-coreboot-ready.png"
+  },
+  {
+    "id": 372,
+    "slug": "kit-profesional-flashing-coreboot-pomona-5250",
+    "name": "Kit Profesional Flashing Coreboot / Libreboot (Programator CH341A v1.7 Fix 3.3V + Clește Original Pomona 5250 SOIC8)",
+    "sku": "COREBOOT-FLASH-KIT-POMONA",
+    "category_id": 6,
+    "subcategory": "Unelte Flashing & Reverse Engineering",
+    "image_url": "/images/products/kit-profesional-flashing-coreboot-pomona-5250.png"
+  },
+  {
+    "id": 373,
+    "slug": "cleste-test-soic16-pomona-5252-cabluri",
+    "name": "Clește Test SOIC16 Pomona 5252 + Cabluri Ecranate pentru Flashing BIOS SOIC-16",
+    "sku": "POMONA-5252-SOIC16",
+    "category_id": 6,
+    "subcategory": "Unelte Flashing & Reverse Engineering",
+    "image_url": "/images/products/cleste-test-soic16-pomona-5252-cabluri.png"
+  },
+  {
+    "id": 374,
+    "slug": "cablu-dedicat-spi-flashing-raspberry-pi-coreboot",
+    "name": "Cablu Dedicat SPI Flashing Raspberry Pi la SOIC8 (Coreboot / Heads / Flashrom Native)",
+    "sku": "RPI-SPI-COREBOOT-CABLE",
+    "category_id": 6,
+    "subcategory": "Unelte Flashing & Reverse Engineering",
+    "image_url": "/images/products/cablu-dedicat-spi-flashing-raspberry-pi-coreboot.png"
+  },
+  {
+    "id": 375,
+    "slug": "google-pixel-8-pro-128gb-grapheneos-hardened",
+    "name": "Google Pixel 8 Pro 128GB Obsidian [GrapheneOS Pre-Installed & Verified Boot Re-Locked]",
+    "sku": "PIXEL8-PRO-GRAPHENE-128G",
+    "category_id": 6,
+    "subcategory": "GrapheneOS & Hardened Mobile Security",
+    "image_url": "/images/products/google-pixel-8-pro-128gb-grapheneos-hardened.png"
+  },
+  {
+    "id": 376,
+    "slug": "google-pixel-8-128gb-grapheneos-hardened",
+    "name": "Google Pixel 8 128GB Obsidian [GrapheneOS Pre-Installed & Verified Boot Re-Locked]",
+    "sku": "PIXEL8-GRAPHENE-128G",
+    "category_id": 6,
+    "subcategory": "GrapheneOS & Hardened Mobile Security",
+    "image_url": "/images/products/google-pixel-8-128gb-grapheneos-hardened.png"
+  },
+  {
+    "id": 377,
+    "slug": "google-pixel-7a-128gb-grapheneos-privacy-phone",
+    "name": "Google Pixel 7a 128GB Charcoal [GrapheneOS Pre-Installed & Re-Locked Bootloader]",
+    "sku": "PIXEL7A-GRAPHENE-128G",
+    "category_id": 6,
+    "subcategory": "GrapheneOS & Hardened Mobile Security",
+    "image_url": "/images/products/google-pixel-7a-128gb-grapheneos-privacy-phone.png"
+  },
+  {
+    "id": 378,
+    "slug": "google-pixel-6a-128gb-grapheneos-burner-phone",
+    "name": "Google Pixel 6a 128GB Charcoal [GrapheneOS Pre-Installed - Burner / Field Unit]",
+    "sku": "PIXEL6A-GRAPHENE-128G",
+    "category_id": 6,
+    "subcategory": "GrapheneOS & Hardened Mobile Security",
+    "image_url": "/images/products/google-pixel-6a-128gb-grapheneos-burner-phone.png"
+  },
+  {
+    "id": 379,
+    "slug": "rakwireless-rak7268v2-wisgate-edge-lite-2-lorawan-gateway",
+    "name": "RAKwireless RAK7268V2 WisGate Edge Lite 2 (8-Channel LoRaWAN Gateway SX1302 cu PoE)",
+    "sku": "RAK7268V2-LORAWAN-GW",
+    "category_id": 3,
+    "subcategory": "Smart City & LoRaWAN",
+    "image_url": "/images/products/rakwireless-rak7268v2-wisgate-edge-lite-2-lorawan-gateway.png"
+  },
+  {
+    "id": 380,
+    "slug": "seeed-sensecap-s2100-lorawan-data-logger-ip66",
+    "name": "Seeed Studio SenseCAP S2100 LoRaWAN Data Logger & Hub (Baterie 19Ah, IP66 Exterior)",
+    "sku": "SENSECAP-S2100-HUB",
+    "category_id": 3,
+    "subcategory": "Smart City & LoRaWAN",
+    "image_url": "/images/products/seeed-sensecap-s2100-lorawan-data-logger-ip66.png"
+  },
+  {
+    "id": 381,
+    "slug": "senzor-calitate-aer-exterior-smart-city-pm-gaze-rs485-ip65",
+    "name": "Senzor Calitate Aer Exterior Smart City (PM2.5 / PM10 / NO2 / CO / SO2, RS485 Modbus, IP65)",
+    "sku": "SMARTCITY-AQ-RS485-IP65",
+    "category_id": 3,
+    "subcategory": "Smart City & Mediu",
+    "image_url": "/images/products/senzor-calitate-aer-exterior-smart-city-pm-gaze-rs485-ip65.png"
+  },
+  {
+    "id": 382,
+    "slug": "senzor-radar-microunde-trafic-viteza-vehicule-24ghz-modbus",
+    "name": "Senzor Radar Microunde Monitorizare Trafic și Viteză Vehicule Smart City (24GHz, Modbus/UART)",
+    "sku": "SMARTCITY-TRAFFIC-RADAR-24G",
+    "category_id": 3,
+    "subcategory": "Smart City & Trafic",
+    "image_url": "/images/products/senzor-radar-microunde-trafic-viteza-vehicule-24ghz-modbus.png"
+  },
+  {
+    "id": 383,
+    "slug": "controler-inteligent-iluminat-public-lorawan-nema-dali",
+    "name": "Controler Inteligent Iluminat Public Smart City LoRaWAN NEMA (IP66, Fotocelulă & DALI/0-10V)",
+    "sku": "SMARTCITY-STREETLIGHT-NEMA",
+    "category_id": 3,
+    "subcategory": "Smart City & Energie",
+    "image_url": "/images/products/controler-inteligent-iluminat-public-lorawan-nema-dali.png"
+  },
+  {
+    "id": 384,
+    "slug": "contor-inteligent-apa-smart-city-lorawan-ultrasonic-dn20",
+    "name": "Contor Inteligent de Apă Smart City LoRaWAN Ultrasonic (DN20, IP68 Submersibil)",
+    "sku": "SMARTCITY-WATERMETER-DN20",
+    "category_id": 3,
+    "subcategory": "Smart City & Utilități",
+    "image_url": "/images/products/contor-inteligent-apa-smart-city-lorawan-ultrasonic-dn20.png"
+  },
+  {
+    "id": 385,
+    "slug": "home-assistant-yellow-hub-cm4-zigbee-matter-poe",
+    "name": "Home Assistant Yellow Hub (Raspberry Pi CM4, Zigbee 3.0, Thread & Matter Integrat, PoE)",
+    "sku": "NABUCASA-HA-YELLOW",
+    "category_id": 3,
+    "subcategory": "Smart Home Hubs",
+    "image_url": "/images/products/home-assistant-yellow-hub-cm4-zigbee-matter-poe.png"
+  },
+  {
+    "id": 386,
+    "slug": "shelly-pro-4pm-4-channel-din-rail-smart-switch-lan-color-screen",
+    "name": "Shelly Pro 4PM — 4-Channel DIN Rail Smart Switch cu Ecran Color & LAN Ethernet",
+    "sku": "SHELLY-PRO-4PM-DIN",
+    "category_id": 3,
+    "subcategory": "Smart Home & Tablouri Electrice",
+    "image_url": "/images/products/shelly-pro-4pm-4-channel-din-rail-smart-switch-lan-color-screen.png"
+  },
+  {
+    "id": 387,
+    "slug": "vana-inteligenta-motorizata-apa-gaz-zigbee-inchidere-automata",
+    "name": "Vană Inteligentă Motorizată de Apă / Gaz cu Închidere Automată la Inundație (Zigbee 3.0)",
+    "sku": "SMARTHOME-VALVE-ZIGBEE",
+    "category_id": 3,
+    "subcategory": "Smart Home Siguranță",
+    "image_url": "/images/products/vana-inteligenta-motorizata-apa-gaz-zigbee-inchidere-automata.png"
+  },
+  {
+    "id": 388,
+    "slug": "aqara-fp2-mmwave-radar-presence-sensor",
+    "name": "Senzor Prezență Umană mmWave Aqara FP2 (Radar 60GHz Multi-Zone, Detecție Căderi & Lumină)",
+    "sku": "AQARA-FP2-MMWAVE-SENSOR",
+    "category_id": 3,
+    "subcategory": "Smart Home & Senzori Prezență",
+    "image_url": "/images/products/aqara-fp2-mmwave-radar-presence-sensor.png"
+  },
+  {
+    "id": 389,
+    "slug": "cap-termostatic-inteligent-calorifer-zigbee-trv-pid",
+    "name": "Cap Termostatic Inteligent pentru Calorifer Zigbee 3.0 (Ecran LED, Control PID, Home Assistant)",
+    "sku": "SMARTHOME-TRV-ZIGBEE",
+    "category_id": 3,
+    "subcategory": "Smart Home Climatizare",
+    "image_url": "/images/products/cap-termostatic-inteligent-calorifer-zigbee-trv-pid.png"
+  },
+  {
+    "id": 390,
+    "slug": "gateway-industrial-modbus-rtu-rs485-la-mqtt-ethernet-waveshare",
+    "name": "Gateway Industrial Modbus RTU / RS485 la MQTT & Ethernet (Șină DIN, Izolare 2.5kV)",
+    "sku": "WAVESHARE-MODBUS-MQTT-GW",
+    "category_id": 3,
+    "subcategory": "Industrial IoT & Modbus",
+    "image_url": "/images/products/gateway-industrial-modbus-rtu-rs485-la-mqtt-ethernet-waveshare.png"
+  },
+  {
+    "id": 391,
+    "slug": "senzor-industrial-umiditate-temperatura-sol-ec-npk-rs485-ip68",
+    "name": "Senzor Industrial Umiditate, Temperatură și Conductivitate Sol (Soil Moisture / EC) RS485 Modbus",
+    "sku": "AGRIIOT-SOIL-EC-TEMP-RS485",
+    "category_id": 3,
+    "subcategory": "AgriTech & Environmental IoT",
+    "image_url": "/images/products/senzor-industrial-umiditate-temperatura-sol-ec-npk-rs485-ip68.png"
+  },
+  {
+    "id": 392,
+    "slug": "statie-meteo-ultrasonica-7-in-1-modbus-rs485-sdi12",
+    "name": "Stație Meteo Ultrasonică Industrială 7-în-1 (Vânt Ultrasonic, Direcție, Precipitații, Temp, Umid, Pres, Solar)",
+    "sku": "SMARTCITY-WEATHER-7IN1",
+    "category_id": 3,
+    "subcategory": "Smart City & Mediu",
+    "image_url": "/images/products/statie-meteo-ultrasonica-7-in-1-modbus-rs485-sdi12.png"
+  },
+  {
+    "id": 393,
+    "slug": "tracker-gps-active-smart-city-lorawan-accelerometru-ip68",
+    "name": "Tracker GPS/GLONASS Industrial de Active Smart City cu Rețea LoRaWAN (IP68, Baterie 5400mAh)",
+    "sku": "SMARTCITY-GPS-ASSET-TRACKER",
+    "category_id": 3,
+    "subcategory": "Smart City & Logistică",
+    "image_url": "/images/products/tracker-gps-active-smart-city-lorawan-accelerometru-ip68.png"
+  },
+  {
+    "id": 394,
+    "slug": "kincony-kc868-a16-esp32-din-rail-smart-home-controller",
+    "name": "Placă Automatizare Industrială & Smart Home KinCony KC868-A16 (ESP32, 16 Relee, 16 DI Optoizolate, LAN Ethernet, RS485)",
+    "sku": "KINCONY-KC868-A16-ESP32",
+    "category_id": 3,
+    "subcategory": "Smart Home & Building Automation",
+    "image_url": "/images/products/kincony-kc868-a16-esp32-din-rail-smart-home-controller.png"
+  }
+]

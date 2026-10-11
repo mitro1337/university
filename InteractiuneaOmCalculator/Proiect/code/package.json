@@ -1,0 +1,17 @@
+{
+  "name": "homelab-ecommerce-root",
+  "version": "1.0.0",
+  "description": "Platforma de E-Commerce pentru Componente Electronice si Homelab - Angular 20 + Node.js MySQL + Netopia Payments",
+  "scripts": {
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "seed": "cd backend && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
