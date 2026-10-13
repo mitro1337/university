@@ -37,12 +37,13 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
           
           <div class="space-y-3">
             <div class="flex items-center gap-2">
-              <div class="w-7 h-7 rounded-lg bg-primary text-primary-contrast flex items-center justify-center font-bold text-xs shadow-xs">
-                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-black flex items-center justify-center font-bold text-xs shadow-[0_2px_10px_rgba(0,210,255,0.4)] border border-cyan-300/40">
+                <svg class="w-3.5 h-3.5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
               </div>
-              <span class="font-bold text-lg text-text-primary tracking-tight">Vexera</span>
+              <span class="font-display text-xl uppercase tracking-wider text-text-primary">Vexera</span>
+              <span class="led-indicator-3d" style="--led-color: #00d2ff; --led-glow: rgba(0, 210, 255, 0.9)"></span>
             </div>
             <p class="text-xs text-text-muted leading-relaxed">
               {{ 'footer_about' | translate }}

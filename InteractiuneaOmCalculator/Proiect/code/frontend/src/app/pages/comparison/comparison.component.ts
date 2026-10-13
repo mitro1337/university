@@ -18,13 +18,15 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
       
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-border">
         <div>
-          <div class="flex items-center gap-2 mb-1">
-            <h1 class="font-display text-2xl sm:text-3xl lg:text-4xl text-text-primary tracking-wide uppercase">
+          <div class="flex items-center gap-3 mb-1.5">
+            <h1 class="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-text-primary tracking-wide uppercase">
               {{ i18n.isRo() ? 'Comparator Tehnic Hardware' : 'Technical Hardware Comparison' }}
             </h1>
-            <app-ui-badge variant="accent">{{ compService.count() }}/4</app-ui-badge>
+            <span class="px-2.5 py-0.5 rounded-full bg-surface-elevated text-cyan-400 font-mono font-bold text-xs border border-cyan-500/30">
+              {{ compService.count() }}/4
+            </span>
           </div>
-          <p class="text-xs text-text-muted">
+          <p class="text-xs text-text-secondary font-sans">
             {{ i18n.isRo() 
               ? 'Analiză comparativă la nivel de magistrală, arhitectură, consum și suport de kernel Linux.' 
               : 'Side-by-side engineering matrix across CPU architecture, bus, thermals, and Linux support.' }}
@@ -36,27 +38,23 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
             <button 
               type="button" 
               (click)="highlightDifferences.set(!highlightDifferences())"
-              class="px-3 py-1.5 rounded-lg border text-xs transition-colors flex items-center gap-1.5 font-medium"
-              [class.bg-primary/10]="highlightDifferences()"
-              [class.border-primary]="highlightDifferences()"
-              [class.text-primary]="highlightDifferences()"
-              [class.bg-surface]="!highlightDifferences()"
-              [class.border-border]="!highlightDifferences()"
-              [class.text-text-muted]="!highlightDifferences()">
-              <svg class="w-3.5 h-3.5 text-primary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              class="btn-3d-secondary text-xs flex items-center gap-1.5 font-bold"
+              [class.border-cyan-400]="highlightDifferences()"
+              [class.text-cyan-400]="highlightDifferences()">
+              <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               <span>{{ i18n.isRo() ? 'Evidențiază Diferențele' : 'Highlight Differences' }}</span>
             </button>
 
             <button 
               type="button" 
               (click)="compService.clear()"
-              class="px-3 py-1.5 rounded-lg text-xs font-medium text-rose-400 hover:bg-rose-950/30 border border-rose-800/60 transition-colors">
+              class="px-3 py-1.5 rounded-lg text-xs font-bold text-rose-400 hover:bg-rose-950/30 border border-rose-800/60 transition-colors">
               {{ i18n.isRo() ? 'Golește' : 'Clear All' }}
             </button>
 
             <a 
               routerLink="/produse" 
-              class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-primary-contrast text-xs font-semibold transition-colors">
+              class="btn-3d-primary text-xs font-bold">
               {{ i18n.isRo() ? '+ Adaugă din Catalog' : '+ Add from Catalog' }}
             </a>
           </div>
@@ -71,7 +69,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
           <div class="space-y-4">
             <a 
               routerLink="/produse" 
-              class="inline-block px-5 py-2 rounded-lg bg-primary hover:bg-primary-hover text-primary-contrast text-xs font-semibold transition-colors">
+              class="btn-3d-primary inline-flex text-xs">
               {{ i18n.isRo() ? 'Explorează Catalogul' : 'Browse Catalog' }}
             </a>
 
@@ -79,36 +77,36 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
               <button 
                 type="button" 
                 (click)="loadPopularComparison('sbc')"
-                class="px-3 py-1.5 rounded bg-surface border border-border hover:bg-surface-elevated text-text-primary text-xs font-medium transition-colors">
+                class="btn-3d-secondary px-3 py-1.5 text-xs font-mono font-bold">
                 RPi 5 vs Radxa Rock 5B (RK3588)
               </button>
               <button 
                 type="button" 
                 (click)="loadPopularComparison('security')"
-                class="px-3 py-1.5 rounded bg-surface border border-border hover:bg-surface-elevated text-text-primary text-xs font-medium transition-colors">
+                class="btn-3d-secondary px-3 py-1.5 text-xs font-mono font-bold">
                 Flipper Zero vs Proxmark3 RDV4
               </button>
             </div>
           </div>
         </app-ui-empty-state>
       } @else {
-        <div class="overflow-x-auto bg-surface rounded-xl border border-border shadow-xs transition-colors">
+        <div class="overflow-x-auto bg-surface rounded-2xl border border-border shadow-3d-card transition-colors">
           <table class="w-full text-xs text-left border-collapse min-w-[720px]">
             
             <thead>
               <tr class="border-b border-border bg-surface-elevated">
-                <th class="p-4 w-52 font-semibold text-xs text-text-muted">
+                <th class="p-4 w-52 font-bold text-xs text-text-muted font-heading uppercase">
                   {{ i18n.isRo() ? 'Parametru Tehnic' : 'Technical Parameter' }}
                 </th>
                 @for (prod of compService.items(); track prod.id) {
                   <th class="p-4 w-64 align-top border-l border-border">
                     <div class="flex flex-col items-center text-center space-y-3">
-                      <div class="relative w-28 h-28 p-2 rounded-lg bg-canvas-subtle border border-border flex items-center justify-center">
+                      <div class="relative w-28 h-28 p-2 rounded-xl bg-surface-sunken border border-border flex items-center justify-center shadow-3d-sunken">
                         <img [src]="prod.image_url" [alt]="prod.name" class="max-w-full max-h-full object-contain">
                         <button 
                           type="button" 
                           (click)="compService.removeProduct(prod.id)"
-                          class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-rose-900/80 hover:bg-rose-800 text-rose-200 border border-rose-700 flex items-center justify-center text-[10px] font-bold"
+                          class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-rose-900/90 hover:bg-rose-800 text-rose-200 border border-rose-700 flex items-center justify-center text-[10px] font-bold shadow-xs"
                           title="Elimină din comparație"
                           aria-label="Elimină din comparație">
                           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -116,13 +114,13 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                       </div>
 
                       <div class="space-y-1">
-                        <a [routerLink]="['/produs', prod.slug]" class="font-heading font-semibold text-text-primary hover:text-primary line-clamp-2">
+                        <a [routerLink]="['/produs', prod.slug]" class="font-heading font-bold text-text-primary hover:text-cyan-400 line-clamp-2 transition-colors">
                           {{ prod.name }}
                         </a>
-                        <div class="text-[10px] text-text-muted">{{ prod.sku }}</div>
+                        <div class="text-[10px] text-text-muted font-mono">{{ prod.sku }}</div>
                       </div>
 
-                      <div class="text-base font-bold text-text-primary tabular-nums">
+                      <div class="text-base font-black text-cyan-400 tabular-nums font-mono">
                         {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-normal text-text-muted">lei</span>
                       </div>
 
@@ -130,7 +128,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                         type="button"
                         (click)="cartService.addToCart(prod)"
                         [disabled]="prod.stock <= 0"
-                        class="w-full py-2 px-3 rounded-lg bg-primary hover:bg-primary-hover text-primary-contrast text-xs font-semibold transition-colors disabled:opacity-40 flex items-center justify-center gap-1.5">
+                        class="btn-3d-primary w-full py-2 px-3 text-xs font-heading font-bold">
                         <span>{{ 'btn_add_to_cart' | translate }}</span>
                       </button>
                     </div>

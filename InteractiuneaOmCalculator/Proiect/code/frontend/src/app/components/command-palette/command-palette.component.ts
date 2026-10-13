@@ -15,16 +15,18 @@ import { Product } from '../../models/product.model';
   template: `
     @if (paletteService.isOpen()) {
       <div 
-        class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-start justify-center pt-20 px-4"
+        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-start justify-center pt-20 px-4"
         (click)="paletteService.close()">
         
         <div 
-          class="w-full max-w-2xl bg-surface border border-border rounded-2xl shadow-overlay overflow-hidden flex flex-col"
+          class="w-full max-w-2xl bg-surface border border-border rounded-2xl shadow-3d-card overflow-hidden flex flex-col relative"
           data-lenis-prevent
           (click)="$event.stopPropagation()">
           
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
           <div class="p-4 border-b border-border flex items-center gap-3 bg-surface-elevated">
-            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input 
@@ -34,58 +36,56 @@ import { Product } from '../../models/product.model';
               (input)="onSearchChange()"
               (keydown)="onKeyDown($event)"
               [placeholder]="i18n.isRo() ? 'Caută componentă, cod SKU (ex: RPI5-8GB, X520-DA2, BME280) sau tag...' : 'Search hardware, SKU code (e.g. RPI5-8GB, X520-DA2, BME280) or tag...'"
-              class="flex-1 bg-transparent border-0 text-text-primary placeholder-text-muted focus:outline-none focus:ring-0 text-sm"
+              class="flex-1 bg-transparent border-0 text-text-primary placeholder-text-muted focus:outline-none focus:ring-0 text-sm font-sans"
               autofocus>
-            <kbd class="px-2 py-0.5 rounded text-[10px] bg-surface-sunken border border-border text-text-muted shadow-xs font-medium">
-              ESC
-            </kbd>
+            <span class="kbd-badge">ESC</span>
           </div>
 
-          <div class="px-4 py-2 border-b border-border bg-surface flex items-center gap-2 overflow-x-auto text-[11px]">
-            <span class="text-text-muted font-medium">{{ i18n.isRo() ? 'Acțiuni rapide:' : 'Quick actions:' }}</span>
+          <div class="px-4 py-2.5 border-b border-border bg-surface flex items-center gap-2 overflow-x-auto text-[11px]">
+            <span class="text-text-muted font-bold font-mono">{{ i18n.isRo() ? 'Acțiuni:' : 'Quick:' }}</span>
             <button 
               type="button" 
               (click)="navigateTo('/build-your-lab')"
-              class="px-2.5 py-1 rounded-md bg-surface-sunken hover:bg-surface-elevated text-text-secondary hover:text-text-primary font-semibold border border-border transition-colors">
+              class="btn-3d-secondary px-2.5 py-1 text-[11px] font-bold">
               Lab Builder
             </button>
             <button 
               type="button" 
               (click)="navigateTo('/build-your-lab', { tab: 'rack' })"
-              class="px-2.5 py-1 rounded-md bg-surface-sunken hover:bg-surface-elevated text-text-secondary hover:text-text-primary font-semibold border border-border transition-colors">
+              class="btn-3d-secondary px-2.5 py-1 text-[11px] font-bold">
               Rack Builder
             </button>
             <button 
               type="button" 
               (click)="navigateTo('/compara')"
-              class="px-2.5 py-1 rounded-md bg-surface-sunken hover:bg-surface-elevated text-text-secondary hover:text-text-primary font-semibold border border-border transition-colors">
+              class="btn-3d-secondary px-2.5 py-1 text-[11px] font-bold">
               {{ i18n.isRo() ? 'Comparator' : 'Compare' }}
             </button>
             <button 
               type="button" 
               (click)="openLabProfile()"
-              class="px-2.5 py-1 rounded-md bg-surface-sunken hover:bg-surface-elevated text-text-secondary hover:text-text-primary font-semibold border border-border transition-colors">
+              class="btn-3d-secondary px-2.5 py-1 text-[11px] font-bold">
               {{ i18n.isRo() ? 'Profil laborator' : 'Lab Profile' }}
             </button>
             <button 
               type="button" 
               (click)="openA11y()"
-              class="px-2.5 py-1 rounded-md bg-surface-sunken hover:bg-surface-elevated text-text-secondary hover:text-text-primary font-semibold border border-border transition-colors">
+              class="btn-3d-secondary px-2.5 py-1 text-[11px] font-bold">
               {{ i18n.isRo() ? 'Accesibilitate' : 'Accessibility' }}
             </button>
           </div>
 
-          <div class="max-h-96 overflow-y-auto p-2 divide-y divide-border">
+          <div class="max-h-96 overflow-y-auto p-2 divide-y divide-border/60">
             @if (loading()) {
-              <div class="p-6 text-center text-xs text-text-muted">
-                {{ i18n.isRo() ? 'Se caută în catalogul tehnic...' : 'Searching technical catalog...' }}
+              <div class="p-6 text-center text-xs text-cyan-400 font-mono animate-pulse">
+                {{ i18n.isRo() ? 'Se scanează catalogul tehnic...' : 'Scanning technical catalog...' }}
               </div>
             } @else if (results().length === 0) {
               <div class="p-8 text-center space-y-2">
-                <p class="text-xs text-text-secondary font-medium">
+                <p class="text-xs text-text-secondary font-medium font-sans">
                   {{ i18n.isRo() ? 'Nicio componentă găsită pentru "' + searchQuery + '".' : 'No components found for "' + searchQuery + '".' }}
                 </p>
-                <p class="text-[11px] text-text-muted">
+                <p class="text-[11px] text-text-muted font-sans">
                   {{ i18n.isRo() ? 'Încearcă termeni generici: SBC, ARM, Rețea, Senzor, 12V, I2C sau cod SKU.' : 'Try generic terms: SBC, ARM, Network, Sensor, 12V, I2C or SKU code.' }}
                 </p>
               </div>
@@ -94,9 +94,10 @@ import { Product } from '../../models/product.model';
                 <div 
                   (click)="selectProduct(prod)"
                   [class.bg-surface-elevated]="idx === selectedIndex"
-                  class="p-2.5 rounded-xl hover:bg-surface-elevated cursor-pointer flex items-center justify-between gap-3 transition-colors group">
+                  [class.border-cyan-500/40]="idx === selectedIndex"
+                  class="p-2.5 rounded-xl hover:bg-surface-elevated cursor-pointer flex items-center justify-between gap-3 transition-colors group border border-transparent">
                   <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-10 h-10 rounded-lg bg-surface-sunken border border-border flex items-center justify-center p-0.5 flex-shrink-0">
+                    <div class="w-10 h-10 rounded-lg bg-surface-sunken border border-border flex items-center justify-center p-0.5 flex-shrink-0 shadow-3d-sunken">
                       <img 
                         [src]="prod.image_url" 
                         [alt]="prod.name" 
@@ -104,25 +105,34 @@ import { Product } from '../../models/product.model';
                     </div>
                     <div class="min-w-0">
                       <div class="flex items-center gap-2">
-                        <span class="text-xs font-bold text-text-primary group-hover:text-accent transition-colors truncate">
+                        <span class="text-xs font-bold text-text-primary group-hover:text-cyan-400 transition-colors truncate font-heading">
                           {{ prod.name }}
                         </span>
-                        <span class="text-[10px] tabular-nums px-1.5 py-0.5 rounded bg-surface-sunken border border-border text-text-muted font-medium">
+                        <span class="text-[10px] tabular-nums px-1.5 py-0.5 rounded bg-surface-sunken border border-border text-cyan-400 font-mono font-medium">
                           {{ prod.sku }}
                         </span>
                       </div>
-                      <div class="text-[11px] text-text-muted truncate mt-0.5">
+                      <div class="text-[11px] text-text-muted truncate mt-0.5 font-sans">
                         {{ prod.short_desc }}
                       </div>
                     </div>
                   </div>
 
                   <div class="text-right flex-shrink-0">
-                    <div class="text-xs font-bold text-accent tabular-nums">
+                    <div class="text-xs font-black text-cyan-400 tabular-nums font-mono">
                       {{ prod.price_ron.toFixed(2) }} lei
                     </div>
-                    <div class="text-[10px]" [class.text-emerald-400]="prod.stock > 5" [class.text-amber-400]="prod.stock <= 5">
-                      {{ prod.stock > 0 ? (prod.stock <= 5 ? prod.stock + ' buc (critic)' : 'În stoc') : 'Epuizat' }}
+                    <div class="text-[10px] flex items-center justify-end gap-1 font-mono font-semibold" [class.text-emerald-400]="prod.stock > 5" [class.text-amber-400]="prod.stock <= 5 && prod.stock > 0" [class.text-rose-400]="prod.stock <= 0">
+                      @if (prod.stock > 5) {
+                        <span class="led-indicator-3d" style="--led-color: #00ff9d; --led-glow: rgba(0,255,157,0.7);"></span>
+                        <span>În stoc</span>
+                      } @else if (prod.stock > 0) {
+                        <span class="led-indicator-3d" style="--led-color: #ffb020; --led-glow: rgba(255,176,32,0.7);"></span>
+                        <span>{{ prod.stock }} buc</span>
+                      } @else {
+                        <span class="led-indicator-3d" style="--led-color: #ff3366; --led-glow: rgba(255,51,102,0.7);"></span>
+                        <span>Epuizat</span>
+                      }
                     </div>
                   </div>
                 </div>
@@ -130,14 +140,15 @@ import { Product } from '../../models/product.model';
             }
           </div>
 
-          <div class="p-3 border-t border-border bg-surface-elevated flex items-center justify-between text-[11px] text-text-muted">
+          <div class="p-3 border-t border-border bg-surface-elevated flex items-center justify-between text-[11px] text-text-muted font-mono">
             <div class="flex items-center gap-3">
-              <span>↑↓ Navigare</span>
-              <span>↵ Deschide</span>
-              <span>ESC Închide</span>
+              <span class="flex items-center gap-1"><span class="kbd-badge">↑↓</span> Navigare</span>
+              <span class="flex items-center gap-1"><span class="kbd-badge">↵</span> Deschide</span>
+              <span class="flex items-center gap-1"><span class="kbd-badge">ESC</span> Închide</span>
             </div>
-            <div class="text-accent font-bold tracking-wider text-[10px]">
-              VEXERA PALETTE Cmd+K / Ctrl+K
+            <div class="text-cyan-400 font-bold tracking-wider text-[10px] flex items-center gap-1.5">
+              <span class="led-indicator-3d" style="--led-color: #00d2ff; --led-glow: rgba(0,210,255,0.7);"></span>
+              <span>VEXERA 3D PALETTE</span>
             </div>
           </div>
 
