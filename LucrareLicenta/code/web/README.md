@@ -19,10 +19,17 @@
 
 Acest modul (`licenta/LL3-LucrareLicenta/code/web`) reprezintă subsistemul de interfață utilizator și backend tranzacțional dezvoltat în cadrul lucrării de licență:
 
-> **„Arhitectura și Securitatea Sistemelor Informatice Bancare: Proiectarea, Implementarea și Auditul Rezilienței Cibernetice într-un Mediu Virtualizat”**  
+> **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
+> **Coordonator Științific:** prof. univ. dr. Georgeta Soava  
 > **Instituție:** Universitatea din Craiova — Facultatea de Economie și Administrarea Afacerilor (FEAA)  
 > **Program de Studii:** Informatică Economică (Promoția 2026)  
-> **Absolvent:** Moană Ștefănuț-Cornel
+> **Absolvent:** Moană Ștefănuț-Cornel  
+> **Inventariere stack:** Lucrare de licență — Inventar inițial
+
+### Context Cercetare & Stack Tehnologic
+* **Tech Stack:** Windows Server, Linux, networking TCP/IP, wire shark, tcpdump, SIEMuri precum Splunk, Elastic, Wazuh sau Sentinel, EDR, IDS/IPS, nmap, nessus, openVAS, burp, powershell, python, git, mașini virtuale, sysmon, sigma, yara, snort, MISP, malware autopsy, volatility, ghidra, IDA sau x64dbg, directiva NIS2, MITRE ATT&CK pentru cartografierea atacurilor, Ansible, Python și Terraform pentru IaC, automatizând izolarea VM-urilor compromise în urma alertelor din SIEM, Kubernetes, AWS.
+* **Practici, simulări și exemple:** Red-teaming ușor (bruteforce, hacking etic pe mașina mea virtuală personală), honeypot pe un OS vechi (Windows Server 2003/2008 sau Windows 7), simularea unui mediu bancar (sisteme Windows 10/11 + Active Directory), analiză malware pe Windows 10 dedicat, vulnerabilitate rețele Wi-Fi (ESP32 Bruce/Marauder) & detecție SOC, simulare atacuri APT, reverse engineering (IDA, Ghidra, x64dbg).
+* **Mențiune obligatorie:** Între VM-urile mele, niciun atac nu va părăsi mașinile mele virtuale; lucrarea de licență va fi efectuată într-un cadru legal.
 
 Modulul integrează trei capacități inginerești fundamentale:
 

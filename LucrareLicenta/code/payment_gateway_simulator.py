@@ -1,6 +1,7 @@
 """
 Sistem de Simulare Payment Gateway & Interbank Settlement (SWIFT / ISO 20022)
-Lucrare de Licență: Arhitectura și Securitatea Sistemelor Informatice Bancare
+Lucrare de Licență: Impactul tehnologiilor inteligente asupra securitatii digitale
+Coordonator: prof. univ. dr. Georgeta Soava
 Autor: Ștefănuț-Cornel Moană | Facultatea de Economie și Administrarea Afacerilor (FEAA), Universitatea din Craiova
 Specializarea: Informatică Economică
 

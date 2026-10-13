@@ -1,6 +1,7 @@
 """
 Simulator și Suită Integrată de Testare a Atacurilor și Mecanismelor de Apărare Bancară
-Lucrare de Licență: Arhitectura și Securitatea Sistemelor Informatice Bancare
+Lucrare de Licență: Impactul tehnologiilor inteligente asupra securitatii digitale
+Coordonator: prof. univ. dr. Georgeta Soava
 Autor: Ștefănuț-Cornel Moană | Facultatea de Economie și Administrarea Afacerilor (FEAA), Universitatea din Craiova
 Specializarea: Informatică Economică
 

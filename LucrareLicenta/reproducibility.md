@@ -2,8 +2,15 @@
 
 This guide describes how to reproduce the software systems, threat simulations, and academic document artifacts for the Bachelor's Thesis:
 
-> **„Arhitectura și Securitatea Sistemelor Informatice Bancare: Proiectarea, Implementarea și Auditul Rezilienței Cibernetice într-un Mediu Virtualizat”**  
+> **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
+> **Coordonator: prof. univ. dr. Georgeta Soava**  
+> **Inventariere stack: Lucrare de licență — Inventar inițial**  
 > **FEAA Craiova · Informatică Economică 2026**
+
+### Tech Stack & Lab Scope
+* **Stack:** Windows Server, Linux, networking TCP/IP, wire shark, tcpdump, SIEMuri precum Splunk, Elastic, Wazuh sau Sentinel, EDR, IDS/IPS, nmap, nessus, openVAS, burp, powershell, python, git, mașini virtuale, sysmon, sigma, yara, snort, MISP, malware autopsy, volatility, ghidra, IDA sau x64dbg, directiva NIS2, MITRE ATT&CK pentru cartografierea atacurilor, Ansible, Python și Terraform pentru IaC, automatizând izolarea VM-urilor compromise în urma alertelor din SIEM, Kubernetes, AWS.
+* **Simulări:** Red-teaming ușor, Honeypot pe OS vechi, mediu bancar (Windows 10/11 + Active Directory), analiză malware, vulnerabilitate rețele Wi-Fi & detecție SOC, simulare atacuri APT, reverse engineering.
+* **Mențiune:** Între VM-urile mele, niciun atac nu va părăsi mașinile mele virtuale; lucrarea de licență va fi efectuată într-un cadru legal.
 
 ---
 
