@@ -97,13 +97,13 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 
                     <a [routerLink]="['/categorie', 'cybersecurity-research']" (click)="categoryMenuOpen.set(false)"
                        class="flex flex-col p-2 rounded-lg hover:bg-surface-elevated text-text-primary transition-colors text-xs border border-transparent hover:border-border">
-                      <div class="font-medium text-accent leading-none">{{ 'cat_cybersecurity' | translate }}</div>
+                      <div class="font-medium text-text-primary leading-none">{{ 'cat_cybersecurity' | translate }}</div>
                       <div class="text-[10px] text-text-muted mt-1">Flipper Zero, HackRF, JTAG</div>
                     </a>
 
                     <a [routerLink]="['/categorie', 'niche-hardware']" (click)="categoryMenuOpen.set(false)"
                        class="flex flex-col p-2 rounded-lg hover:bg-surface-elevated text-text-primary transition-colors text-xs border border-transparent hover:border-border">
-                      <div class="font-medium text-amber-400 leading-none">{{ 'cat_niche' | translate }}</div>
+                      <div class="font-medium text-text-primary leading-none">{{ 'cat_niche' | translate }}</div>
                       <div class="text-[10px] text-text-muted mt-1">ThinkPad Coreboot, Asahi</div>
                     </a>
                   </div>
@@ -111,7 +111,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                   <div class="pt-1.5 border-t border-border mt-0.5">
                     <a [routerLink]="['/categorie', 'power-accessories']" (click)="categoryMenuOpen.set(false)"
                        class="flex items-center justify-between px-2.5 py-1 rounded-lg hover:bg-surface-elevated text-text-muted hover:text-text-primary transition-colors text-[11px]">
-                      <span>{{ 'cat_power' | translate }} (Surse PD 27W-100W, DAC, PDU)</span>
+                      <span>{{ 'cat_power' | translate }} ({{ i18n.isRo() ? 'Surse PD 27W-100W, DAC, PDU' : 'PD 27W-100W Power, DAC, PDU' }})</span>
                       <span>→</span>
                     </a>
                   </div>
@@ -153,7 +153,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             <button 
               type="submit" 
               class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-text-muted hover:text-text-primary transition-colors px-1 py-0.5 rounded border border-border bg-surface leading-none"
-              title="Apasă Enter pentru căutare">
+              [title]="i18n.isRo() ? 'Apasă Enter pentru căutare' : 'Press Enter to search'">
               ↵
             </button>
           </form>
@@ -176,7 +176,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
           <a
             routerLink="/produse"
             class="sm:hidden p-1.5 rounded-md border border-border bg-surface text-text-secondary hover:text-text-primary transition-colors h-7 w-7 flex items-center justify-center"
-            title="Căutare produse">
+            [title]="i18n.isRo() ? 'Căutare produse' : 'Search products'">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
@@ -208,14 +208,14 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 
           <span class="hidden sm:inline w-px h-3.5 bg-border"></span>
 
-          <div class="hidden md:inline-flex items-center rounded-md border border-border bg-surface-sunken p-0.5 text-[10px] font-semibold text-text-primary">
+          <div class="inline-flex items-center rounded-md border border-border bg-surface-sunken p-0.5 text-[10px] font-semibold text-text-primary">
             <button 
               type="button"
               (click)="i18n.setLanguage('ro')"
               [class.bg-surface-elevated]="i18n.isRo()"
               [class.text-accent]="i18n.isRo()"
               [class.text-text-muted]="!i18n.isRo()"
-              class="px-1.5 py-0.5 rounded transition-colors">
+              class="px-1.5 py-0.5 rounded transition-colors cursor-pointer">
               RO
             </button>
             <button 
@@ -224,7 +224,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
               [class.bg-surface-elevated]="i18n.isEn()"
               [class.text-accent]="i18n.isEn()"
               [class.text-text-muted]="!i18n.isEn()"
-              class="px-1.5 py-0.5 rounded transition-colors">
+              class="px-1.5 py-0.5 rounded transition-colors cursor-pointer">
               EN
             </button>
           </div>
@@ -259,7 +259,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             </span>
             @if (cartService.itemsCount() > 0) {
               <span class="hidden md:inline font-semibold text-text-primary tabular-nums text-xs ml-0.5">
-                {{ cartService.subtotal().toFixed(2) }} lei
+                {{ cartService.subtotal().toFixed(2) }} {{ i18n.currencyLabel() }}
               </span>
             }
           </button>
@@ -303,10 +303,10 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
               <a [routerLink]="['/categorie', 'enterprise-hardware']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
                 {{ 'cat_enterprise' | translate }}
               </a>
-              <a [routerLink]="['/categorie', 'cybersecurity-research']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-rose-400 font-medium">
+              <a [routerLink]="['/categorie', 'cybersecurity-research']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
                 {{ 'cat_cybersecurity' | translate }}
               </a>
-              <a [routerLink]="['/categorie', 'niche-hardware']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-amber-400 font-medium">
+              <a [routerLink]="['/categorie', 'niche-hardware']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
                 {{ 'cat_niche' | translate }}
               </a>
               <a [routerLink]="['/categorie', 'power-accessories']" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
@@ -336,8 +336,15 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
               <span>{{ themeService.isDark() ? (i18n.isRo() ? 'Mod Luminos (Alb)' : 'Light Mode (White)') : (i18n.isRo() ? 'Mod Întunecat' : 'Dark Mode') }}</span>
               <span class="text-accent font-semibold text-[11px]">{{ themeService.isDark() ? (i18n.isRo() ? 'Activează' : 'Switch') : (i18n.isRo() ? 'Activează' : 'Switch') }}</span>
             </button>
+            <div class="flex items-center justify-between px-3 py-2 rounded-md bg-surface-elevated border border-border-subtle">
+              <span class="text-text-primary font-medium">{{ i18n.isRo() ? 'Limbă interfață' : 'Interface Language' }}</span>
+              <div class="inline-flex rounded border border-border bg-surface-sunken p-0.5 text-[10px] font-semibold text-text-primary">
+                <button type="button" (click)="i18n.setLanguage('ro')" [class.text-accent]="i18n.isRo()" class="px-2 py-0.5 rounded cursor-pointer">RO</button>
+                <button type="button" (click)="i18n.setLanguage('en')" [class.text-accent]="i18n.isEn()" class="px-2 py-0.5 rounded cursor-pointer">EN</button>
+              </div>
+            </div>
             <div class="font-medium text-text-secondary">{{ i18n.isRo() ? 'Depozit Vexera România' : 'Vexera Hub Romania' }}</div>
-            <div>0720 123 456 • L-V 09:00 - 18:00</div>
+            <div>{{ i18n.isRo() ? '0720 123 456 • L-V 09:00 - 18:00' : '+40 720 123 456 • Mon-Fri 09:00 - 18:00' }}</div>
             <div class="text-[11px] text-emerald-400 font-medium">{{ i18n.isRo() ? 'Livrare Sameday & Easybox' : 'Sameday & Easybox Delivery' }}</div>
           </div>
         </div>

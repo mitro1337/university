@@ -68,7 +68,7 @@ interface EngineeringReview {
           </a>
           <span class="text-border">/</span>
           <a [routerLink]="['/categorie', prod.category_slug]" class="breadcrumb-interactive hover:text-text-primary transition-colors whitespace-nowrap">
-            {{ prod.category_name }}
+            {{ i18n.getCategoryName(prod.category_slug, prod.category_name) }}
           </a>
           <span class="text-border">/</span>
           <a [routerLink]="['/produs', prod.slug]" 
@@ -107,7 +107,7 @@ interface EngineeringReview {
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    <span>Galerie Foto</span>
+                    <span>{{ i18n.isRo() ? 'Galerie Foto' : 'Photo Gallery' }}</span>
                   </button>
                   <button 
                     type="button" 
@@ -119,7 +119,7 @@ interface EngineeringReview {
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
-                    <span>Inspectează 3D WebGL</span>
+                    <span>{{ i18n.isRo() ? 'Inspectează 3D WebGL' : 'Inspect 3D WebGL' }}</span>
                   </button>
                 </div>
                 <span class="text-[10px] font-mono text-cyan-400">360° CAD</span>
@@ -147,7 +147,7 @@ interface EngineeringReview {
                     (click)="wishlistService.toggleWishlist(prod)"
                     class="heart-button absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-xs border border-border flex items-center justify-center text-text-muted hover:text-rose-400 z-10"
                     [class.is-active]="wishlistService.isWishlisted(prod.id)"
-                    [title]="wishlistService.isWishlisted(prod.id) ? 'Elimină din favorite' : 'Adaugă la favorite'">
+                    [title]="wishlistService.isWishlisted(prod.id) ? (i18n.isRo() ? 'Elimină din favorite' : 'Remove from wishlist') : (i18n.isRo() ? 'Adaugă la favorite' : 'Add to wishlist')">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
@@ -165,7 +165,7 @@ interface EngineeringReview {
                       [class.opacity-100]="activeImageIndex() === $index"
                       [class.opacity-60]="activeImageIndex() !== $index"
                       class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-border-strong transition-all overflow-hidden cursor-pointer">
-                      <img [src]="img" [alt]="prod.name + ' unghi ' + ($index + 1)" class="max-h-full max-w-full object-contain">
+                      <img [src]="img" [alt]="prod.name + (i18n.isRo() ? ' unghi ' : ' angle ') + ($index + 1)" class="max-h-full max-w-full object-contain">
                     </button>
                   }
                 </div>
@@ -176,7 +176,7 @@ interface EngineeringReview {
                   type="button"
                   (click)="copyCode(prod.sku, 'SKU')"
                   class="cursor-copy-interactive flex items-center gap-1.5 hover:text-text-primary transition-colors text-left"
-                  title="Apasă pentru a copia SKU">
+                  [title]="i18n.isRo() ? 'Apasă pentru a copia SKU' : 'Click to copy SKU'">
                   <span>{{ 'sku_label' | translate }}</span>
                   <strong class="text-text-primary font-semibold">{{ prod.sku }}</strong>
                   <svg class="w-3.5 h-3.5 text-text-muted hover:text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,7 +188,7 @@ interface EngineeringReview {
                     type="button"
                     (click)="copyCode(prod.mpn, 'MPN')"
                     class="cursor-copy-interactive flex items-center gap-1.5 hover:text-text-primary transition-colors text-left"
-                    title="Apasă pentru a copia MPN">
+                    [title]="i18n.isRo() ? 'Apasă pentru a copia MPN' : 'Click to copy MPN'">
                     <span>MPN:</span>
                     <strong class="text-text-primary font-semibold">{{ prod.mpn }}</strong>
                     <svg class="w-3.5 h-3.5 text-text-muted hover:text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -226,14 +226,14 @@ interface EngineeringReview {
                 <div class="flex flex-wrap items-baseline justify-between gap-3">
                   <div class="flex items-baseline gap-3">
                     <span class="text-3xl font-bold text-text-primary tabular-nums">
-                      {{ prod.price_ron.toFixed(2) }} <span class="text-sm font-medium text-text-muted">lei</span>
+                      {{ prod.price_ron.toFixed(2) }} <span class="text-sm font-medium text-text-muted">{{ i18n.currencyLabel() }}</span>
                     </span>
                     @if (prod.old_price_ron) {
                       <span class="text-sm text-text-muted line-through tabular-nums">
-                        {{ prod.old_price_ron.toFixed(2) }} lei
+                        {{ prod.old_price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                       </span>
                       <app-ui-badge variant="success">
-                        -{{ (prod.old_price_ron - prod.price_ron).toFixed(2) }} lei
+                        -{{ (prod.old_price_ron - prod.price_ron).toFixed(2) }} {{ i18n.currencyLabel() }}
                       </app-ui-badge>
                     }
                   </div>
@@ -264,7 +264,7 @@ interface EngineeringReview {
                     <div class="text-xs">
                       <span class="text-text-primary font-semibold">
                         {{ i18n.isRo() ? 'Plătește în 3 rate de ' : 'Pay in 3 installments of ' }}
-                        <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (prod.price_ron / 3).toFixed(2) }} lei</strong>
+                        <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (prod.price_ron / 3).toFixed(2) }} {{ i18n.currencyLabel() }}</strong>
                       </span>
                       <span class="text-[11px] text-text-muted block">
                         {{ i18n.isRo() ? '0% dobândă • Fără costuri ascunse' : '0% interest • No hidden fees' }}
@@ -484,10 +484,10 @@ interface EngineeringReview {
                   <span class="text-emerald-400 font-bold">● TESTED & CERTIFIED</span>
                 </div>
                 <div class="text-text-primary font-medium">
-                  Kernel minim: <span class="text-primary font-bold">Linux 6.6 LTS+</span> | Bootloader: <span class="text-primary font-bold">U-Boot v2024 / EDK2 UEFI</span>
+                  {{ i18n.isRo() ? 'Kernel minim:' : 'Minimum Kernel:' }} <span class="text-primary font-bold">Linux 6.6 LTS+</span> | {{ i18n.isRo() ? 'Bootloader:' : 'Bootloader:' }} <span class="text-primary font-bold">U-Boot v2024 / EDK2 UEFI</span>
                 </div>
                 <div class="text-[11px] text-text-muted">
-                  Suport nativ FDT / Device Tree overlay inclus în imaginile oficiale Debian, Ubuntu Server și Alpine.
+                  {{ i18n.isRo() ? 'Suport nativ FDT / Device Tree overlay inclus în imaginile oficiale Debian, Ubuntu Server și Alpine.' : 'Native FDT / Device Tree overlay support included in official Debian, Ubuntu Server, and Alpine images.' }}
                 </div>
               </div>
 
@@ -511,8 +511,8 @@ interface EngineeringReview {
                   </button>
                   <div class="accordion-wrapper" [class.is-open]="isAccordionOpen('power')">
                     <div class="accordion-inner p-3.5 pt-0 text-xs text-text-muted border-t border-border/60 space-y-1.5">
-                      <p>Tensiune operațională: <strong class="text-text-primary">{{ prod.technical_specs.operating_voltage || '5V DC / PD 27W' }}</strong>.</p>
-                      <p>Circuite de protecție OVP (Over-Voltage), OCP (Over-Current) și monitorizare termică prin senzori integrați PMIC.</p>
+                      <p>{{ i18n.isRo() ? 'Tensiune operațională:' : 'Operating voltage:' }} <strong class="text-text-primary">{{ prod.technical_specs.operating_voltage || '5V DC / PD 27W' }}</strong>.</p>
+                      <p>{{ i18n.isRo() ? 'Circuite de protecție OVP (Over-Voltage), OCP (Over-Current) și monitorizare termică prin senzori integrați PMIC.' : 'Integrated OVP (Over-Voltage), OCP (Over-Current) protection circuits and PMIC thermal monitoring.' }}</p>
                     </div>
                   </div>
                 </div>
@@ -532,8 +532,8 @@ interface EngineeringReview {
                   </button>
                   <div class="accordion-wrapper" [class.is-open]="isAccordionOpen('bus')">
                     <div class="accordion-inner p-3.5 pt-0 text-xs text-text-muted border-t border-border/60 space-y-1.5">
-                      <p>Magistrale suportate: <strong class="text-text-primary">{{ (prod.technical_specs.interfaces || ['PCIe 2.0 / 3.0', 'I2C', 'SPI', 'UART', 'Gigabit Ethernet']).join(', ') }}</strong>.</p>
-                      <p>Compatibil cu drivere mainline Linux fără module proprietare (out-of-tree) necesare.</p>
+                      <p>{{ i18n.isRo() ? 'Magistrale suportate:' : 'Supported interfaces:' }} <strong class="text-text-primary">{{ (prod.technical_specs.interfaces || ['PCIe 2.0 / 3.0', 'I2C', 'SPI', 'UART', 'Gigabit Ethernet']).join(', ') }}</strong>.</p>
+                      <p>{{ i18n.isRo() ? 'Compatibil cu drivere mainline Linux fără module proprietare (out-of-tree) necesare.' : 'Compatible with mainline Linux drivers with zero proprietary out-of-tree modules needed.' }}</p>
                     </div>
                   </div>
                 </div>
@@ -553,8 +553,8 @@ interface EngineeringReview {
                   </button>
                   <div class="accordion-wrapper" [class.is-open]="isAccordionOpen('qa')">
                     <div class="accordion-inner p-3.5 pt-0 text-xs text-text-muted border-t border-border/60 space-y-1.5">
-                      <p>Fiecare lot este supus testelor automate de burn-in termic (48h la sarcină 100%), integritate memorie ECC/RAM și stabilitate pachete pe interfețele de rețea.</p>
-                      <p>Garanție tehnică comercială de 24 luni cu înlocuire expresă din stocul local.</p>
+                      <p>{{ i18n.isRo() ? 'Fiecare lot este supus testelor automate de burn-in termic (48h la sarcină 100%), integritate memorie ECC/RAM și stabilitate pachete pe interfețele de rețea.' : 'Each production batch undergoes automated 48-hour 100% thermal burn-in, ECC/RAM memory validation, and packet stability benchmarks.' }}</p>
+                      <p>{{ i18n.isRo() ? 'Garanție tehnică comercială de 24 luni cu înlocuire expresă din stocul local.' : '24-month commercial hardware warranty with express dispatch from local inventory.' }}</p>
                     </div>
                   </div>
                 </div>
@@ -586,10 +586,10 @@ interface EngineeringReview {
                 <div class="pt-6 border-t border-border space-y-4">
                   <div class="flex items-center justify-between">
                     <h4 class="font-heading text-xs font-semibold text-text-primary">
-                      {{ 'pinout_title' | translate }} ({{ prod.pinout_info.total_pins }} Pini)
+                      {{ 'pinout_title' | translate }} ({{ prod.pinout_info.total_pins }} {{ i18n.isRo() ? 'Pini' : 'Pins' }})
                     </h4>
                     <span class="text-xs text-text-muted">
-                      Nivel logic: <strong class="text-text-primary font-semibold">{{ prod.pinout_info.logic_level }}</strong>
+                      {{ i18n.isRo() ? 'Nivel logic:' : 'Logic level:' }} <strong class="text-text-primary font-semibold">{{ prod.pinout_info.logic_level }}</strong>
                     </span>
                   </div>
 
@@ -696,7 +696,7 @@ interface EngineeringReview {
                             </a>
                           </h5>
                           <div class="text-xs font-bold text-text-primary mt-0.5 tabular-nums">
-                            {{ comp.price_ron.toFixed(2) }} lei
+                            {{ comp.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                           </div>
                         </div>
                         <a [routerLink]="['/produs', comp.slug]"
@@ -737,22 +737,24 @@ interface EngineeringReview {
                     <span>{{ i18n.isRo() ? 'Descarcă Datasheet PDF' : 'Download PDF' }}</span>
                   </a>
                 } @else {
-                  <span class="text-xs text-text-muted">Datasheet inclus la livrare</span>
+                  <span class="text-xs text-text-muted">{{ i18n.isRo() ? 'Datasheet inclus la livrare' : 'Datasheet included in package' }}</span>
                 }
               </div>
 
               <div class="p-4 rounded-lg bg-canvas-subtle border border-border text-xs space-y-3">
                 <div class="text-primary font-bold uppercase font-heading">QUICK START & FIRMWARE DEPLOYMENT</div>
                 <div class="text-text-muted leading-relaxed">
-                  Pentru scrierea imaginilor OS pe card SD sau NVMe, utilizați utilitarul CLI recomandat:
+                  {{ i18n.isRo() 
+                    ? 'Pentru scrierea imaginilor OS pe card SD sau NVMe, utilizați utilitarul CLI recomandat:' 
+                    : 'To flash official OS images onto SD card or NVMe, use the recommended CLI utility:' }}
                 </div>
                 <div class="p-3 rounded bg-surface border border-border text-emerald-400 select-all text-[11px] font-medium flex items-center justify-between gap-3">
                   <span class="break-all">curl -fsSL https://updates.vexera.ro/boot/install.sh | bash</span>
                   <button 
                     type="button" 
-                    (click)="copyCode('curl -fsSL https://updates.vexera.ro/boot/install.sh | bash', 'Comandă CLI')"
+                    (click)="copyCode('curl -fsSL https://updates.vexera.ro/boot/install.sh | bash', i18n.isRo() ? 'Comandă CLI' : 'CLI Command')"
                     class="px-2.5 py-1 rounded bg-surface-elevated border border-border hover:bg-surface text-text-primary text-[10px] font-medium transition-colors flex items-center gap-1.5 shrink-0"
-                    title="Copiază comanda">
+                    [title]="i18n.isRo() ? 'Copiază comanda' : 'Copy command'">
                     <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                     </svg>
@@ -760,7 +762,9 @@ interface EngineeringReview {
                   </button>
                 </div>
                 <div class="text-[11px] text-text-muted">
-                  Sunt validate checksums SHA256 pentru toate release-urile oficiale.
+                  {{ i18n.isRo() 
+                    ? 'Sunt validate checksums SHA256 pentru toate release-urile oficiale.' 
+                    : 'SHA256 checksums are verified for all official releases.' }}
                 </div>
               </div>
             </div>
@@ -838,7 +842,7 @@ interface EngineeringReview {
                         <span class="text-border">•</span>
                         <span class="text-[11px] text-text-muted font-medium">{{ rev.role }}</span>
                         @if (rev.verifiedBuyer) {
-                          <app-ui-badge variant="success">Verified Purchase</app-ui-badge>
+                          <app-ui-badge variant="success">{{ i18n.isRo() ? 'Achiziție Verificată' : 'Verified Purchase' }}</app-ui-badge>
                         }
                       </div>
                       <div class="flex items-center gap-2 text-xs text-text-muted">
@@ -952,7 +956,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   copyCode(code: string, label: string = 'Cod') {
-    this.uiFeedback.copyToClipboard(code, `${label} copiat`);
+    const msg = this.i18n.isRo() ? `${label} copiat` : `${label} copied`;
+    this.uiFeedback.copyToClipboard(code, msg);
   }
 
   getSkillLevel(prod: Product): string {

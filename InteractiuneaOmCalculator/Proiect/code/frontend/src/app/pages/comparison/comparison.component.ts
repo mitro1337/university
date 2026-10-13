@@ -109,8 +109,8 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                           type="button" 
                           (click)="compService.removeProduct(prod.id)"
                           class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-rose-900/80 hover:bg-rose-800 text-rose-200 border border-rose-700 flex items-center justify-center text-[10px] font-bold"
-                          title="Elimină din comparație"
-                          aria-label="Elimină din comparație">
+                          [title]="i18n.isRo() ? 'Elimină din comparație' : 'Remove from comparison'"
+                          [attr.aria-label]="i18n.isRo() ? 'Elimină din comparație' : 'Remove from comparison'">
                           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                       </div>
@@ -123,7 +123,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                       </div>
 
                       <div class="text-base font-bold text-text-primary tabular-nums">
-                        {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-normal text-text-muted">lei</span>
+                        {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-normal text-text-muted">{{ i18n.currencyLabel() }}</span>
                       </div>
 
                       <button 
@@ -207,7 +207,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                 </td>
                 @for (prod of compService.items(); track prod.id) {
                   <td class="p-4 border-l border-border text-xs text-text-primary tabular-nums">
-                    {{ getSpec(prod, 'ram') || 'Integrat / N/A' }}
+                    {{ getSpec(prod, 'ram') || (i18n.isRo() ? 'Integrat / N/A' : 'Integrated / N/A') }}
                   </td>
                 }
               </tr>
@@ -255,9 +255,9 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                 @for (prod of compService.items(); track prod.id) {
                   <td class="p-4 border-l border-border text-xs text-text-primary tabular-nums">
                     @if (prod.pinout_info) {
-                      <span>{{ prod.pinout_info.total_pins }} Pini ({{ prod.pinout_info.logic_level }})</span>
+                      <span>{{ prod.pinout_info.total_pins }} {{ i18n.isRo() ? 'Pini' : 'Pins' }} ({{ prod.pinout_info.logic_level }})</span>
                     } @else {
-                      <span class="text-text-muted">Fără pini expuși</span>
+                      <span class="text-text-muted">{{ i18n.isRo() ? 'Fără pini expuși' : 'No exposed pins' }}</span>
                     }
                   </td>
                 }
@@ -280,7 +280,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                 </td>
                 @for (prod of compService.items(); track prod.id) {
                   <td class="p-4 border-l border-border text-xs text-text-muted tabular-nums">
-                    {{ getSpec(prod, 'power_consumption') || 'Optimizat 5V/12V' }}
+                    {{ getSpec(prod, 'power_consumption') || (i18n.isRo() ? 'Optimizat 5V/12V' : 'Optimized 5V/12V') }}
                   </td>
                 }
               </tr>
@@ -302,11 +302,12 @@ export class ComparisonComponent {
   highlightDifferences = signal<boolean>(false);
 
   getSkillLabel(prod: Product): string {
+    const isRo = this.i18n.isRo();
     const slug = prod.slug.toLowerCase();
-    if (slug.includes('flipper') || slug.includes('pineapple') || slug.includes('rb5009')) return 'Intermediate';
-    if (slug.includes('glasgow') || slug.includes('fpga') || slug.includes('proxmark') || slug.includes('r640')) return 'Expert';
-    if (slug.includes('rock5') || slug.includes('hba') || slug.includes('crs305')) return 'Advanced';
-    return 'Beginner';
+    if (slug.includes('flipper') || slug.includes('pineapple') || slug.includes('rb5009')) return isRo ? 'Intermediar' : 'Intermediate';
+    if (slug.includes('glasgow') || slug.includes('fpga') || slug.includes('proxmark') || slug.includes('r640')) return isRo ? 'Expert' : 'Expert';
+    if (slug.includes('rock5') || slug.includes('hba') || slug.includes('crs305')) return isRo ? 'Avansat' : 'Advanced';
+    return isRo ? 'Începător' : 'Beginner';
   }
 
   getSpec(prod: Product, key: string): any {

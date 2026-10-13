@@ -38,7 +38,7 @@ import { TranslationService } from '../../services/translation.service';
             <button 
               type="button" 
               (click)="profileService.isDrawerOpen.set(false)"
-              aria-label="Închide"
+              [attr.aria-label]="i18n.isRo() ? 'Închide' : 'Close'"
               class="w-8 h-8 rounded-lg flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-surface-sunken transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -71,14 +71,14 @@ import { TranslationService } from '../../services/translation.service';
                 <option value="ubuntu">Ubuntu Server 24.04 LTS</option>
                 <option value="kali">Kali Linux / Pentest</option>
                 <option value="unraid">UnRAID</option>
-                <option value="other">Alt OS / Custom</option>
+                <option value="other">{{ i18n.isRo() ? 'Alt OS / Custom' : 'Other OS / Custom' }}</option>
               </select>
             </div>
 
             <div class="grid grid-cols-2 gap-3">
               <div>
                 <label class="block text-xs font-bold text-text-primary mb-1">
-                  Arhitectură CPU
+                  {{ i18n.isRo() ? 'Arhitectură CPU' : 'CPU Architecture' }}
                 </label>
                 <select 
                   [ngModel]="profileService.profile().cpuArchitecture"
@@ -92,7 +92,7 @@ import { TranslationService } from '../../services/translation.service';
 
               <div>
                 <label class="block text-xs font-bold text-text-primary mb-1">
-                  RAM Total (GB)
+                  {{ i18n.isRo() ? 'RAM Total (GB)' : 'Total RAM (GB)' }}
                 </label>
                 <input 
                   type="number" 
@@ -140,7 +140,7 @@ import { TranslationService } from '../../services/translation.service';
           </div>
 
           <div class="px-6 py-3 bg-surface-elevated border-t border-border flex items-center justify-between">
-            <span class="text-[11px] text-text-muted">Salvat automat local</span>
+            <span class="text-[11px] text-text-muted">{{ i18n.isRo() ? 'Salvat automat local' : 'Auto-saved locally' }}</span>
             <button 
               type="button" 
               (click)="profileService.isDrawerOpen.set(false)"

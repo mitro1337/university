@@ -613,4 +613,86 @@ export class TranslationService {
   public t(key: string, defaultFallback?: string): string {
     return this.translate(key, defaultFallback);
   }
+
+  public currencyLabel(): string {
+    return this.isRo() ? 'lei' : 'RON';
+  }
+
+  public getCategoryName(slug?: string, fallback?: string): string {
+    if (!slug) return fallback || '';
+    const map: Record<string, { ro: string; en: string }> = {
+      'sbc-microcontrollers': {
+        ro: 'Plăci de Dezvoltare & SBC',
+        en: 'Development Boards & SBCs'
+      },
+      'homelab-networking': {
+        ro: 'Homelab & Echipamente Rețea',
+        en: 'Homelab & Networking Hardware'
+      },
+      'sensors-iot': {
+        ro: 'Senzori & Module IoT',
+        en: 'Sensors & IoT Modules'
+      },
+      'power-accessories': {
+        ro: 'Alimentare, Răcire & Conectică',
+        en: 'Power, Cooling & Connectivity'
+      },
+      'enterprise-hardware': {
+        ro: 'Infrastructură Enterprise & Datacenter',
+        en: 'Enterprise & Datacenter Infrastructure'
+      },
+      'niche-hardware': {
+        ro: 'Hardware Nișat & Cercetare / Lab',
+        en: 'Niche Hardware & Research Lab'
+      },
+      'cybersecurity-research': {
+        ro: 'Cybersecurity & Security Research',
+        en: 'Cybersecurity & Security Research'
+      }
+    };
+    const item = map[slug];
+    if (item) {
+      return item[this.currentLanguage()];
+    }
+    return fallback || slug;
+  }
+
+  public getCategoryDescription(slug?: string, fallback?: string): string {
+    if (!slug) return fallback || '';
+    const map: Record<string, { ro: string; en: string }> = {
+      'sbc-microcontrollers': {
+        ro: 'Calculatoare pe o singură placă (SBC), microcontrolere avansate ARM/RISC-V, plăci Edge AI, module ESP32 Wi-Fi 6 / Zigbee și Arduino.',
+        en: 'Single-board computers (SBC), advanced ARM/RISC-V microcontrollers, Edge AI boards, ESP32 Wi-Fi 6 / Zigbee modules and Arduino.'
+      },
+      'homelab-networking': {
+        ro: 'Noduri Mini PC Proxmox, plăci de rețea 10G/25G SFP28, gateway-uri UniFi, switch-uri MikroTik, transceivere optice și cabinete rack.',
+        en: 'Proxmox Mini PC nodes, 10G/25G SFP28 network cards, UniFi gateways, MikroTik switches, optical transceivers and rack cabinets.'
+      },
+      'sensors-iot': {
+        ro: 'Gateway-uri Home Assistant, coordonatoare Zigbee 3.0, senzori de calitate aer CO2 NDIR/VOC, telemetrie laser ToF, relee SSR și module industriale RS485.',
+        en: 'Home Assistant gateways, Zigbee 3.0 coordinators, NDIR/VOC CO2 air quality sensors, ToF laser telemetry, SSR relays and industrial RS485 modules.'
+      },
+      'power-accessories': {
+        ro: 'Surse industriale Mean Well, surse USB-PD 27W, UPS-uri rackmount, ventilatoare 1U server, regulatoare DC-DC Pololu, injectoare PoE și cabluri Cat6.',
+        en: 'Mean Well industrial power supplies, USB-PD 27W adapters, rackmount UPS units, 1U server fans, Pololu DC-DC regulators, PoE injectors and Cat6 cables.'
+      },
+      'enterprise-hardware': {
+        ro: 'Servere rackmount 1U/2U, plăci de rețea 25G/40G/100G Mellanox, controllere SAS HBA IT-Mode ZFS, SSD-uri Enterprise U.2 PLP și unități PDU administrate.',
+        en: '1U/2U rackmount servers, 25G/40G/100G Mellanox network cards, SAS HBA IT-Mode ZFS controllers, Enterprise U.2 PLP SSDs and managed PDUs.'
+      },
+      'niche-hardware': {
+        ro: 'Dispozitive Apple legacy (A10/A10X) pentru Linux & checkm8, SBC-uri RK3588, plăci RISC-V, kituri FPGA, unelte de reverse engineering, sonde JTAG/SWD și module Software Defined Radio (SDR).',
+        en: 'Legacy Apple hardware (A10/A10X) for Linux & checkm8, RK3588 SBCs, RISC-V development kits, FPGA boards, reverse engineering tools, JTAG/SWD debuggers and SDR modules.'
+      },
+      'cybersecurity-research': {
+        ro: 'Echipamente pentru audit de securitate autorizat și cercetare hardware: Flipper Zero, ecosistem Hak5 (WiFi Pineapple, LAN Turtle, Packet Squirrel, Rubber Ducky), unelte RFID/NFC (Proxmark3, ChameleonUltra), plăci ESP32 Marauder/Bruce, adaptoare monitor mode și TAP-uri hardware de rețea.',
+        en: 'Hardware security audit & research tools: Flipper Zero, Hak5 ecosystem (WiFi Pineapple, LAN Turtle, Packet Squirrel, Rubber Ducky), RFID/NFC tools (Proxmark3, ChameleonUltra), ESP32 Marauder/Bruce, monitor mode adapters and hardware network TAPs.'
+      }
+    };
+    const item = map[slug];
+    if (item) {
+      return item[this.currentLanguage()];
+    }
+    return fallback || '';
+  }
 }

@@ -46,11 +46,11 @@ import { TranslationService } from '../../services/translation.service';
           <div class="p-4 rounded-xl bg-surface-elevated border border-border space-y-2">
             <div class="flex justify-between items-baseline text-xs">
               <span class="text-text-muted">{{ i18n.isRo() ? 'Valoare totală produs / comandă:' : 'Total value:' }}</span>
-              <span class="text-text-primary font-bold tabular-nums text-sm">{{ amount() }} lei</span>
+              <span class="text-text-primary font-bold tabular-nums text-sm">{{ amount() }} {{ i18n.currencyLabel() }}</span>
             </div>
             <div class="flex justify-between items-baseline text-xs">
               <span class="text-[#FFB3C7] font-semibold">{{ i18n.isRo() ? 'Rată lunară (3 tranșe egale):' : 'Monthly installment:' }}</span>
-              <span class="text-[#FFB3C7] font-black text-base tabular-nums">{{ installmentAmount() }} lei / lună</span>
+              <span class="text-[#FFB3C7] font-black text-base tabular-nums">{{ installmentAmount() }} {{ i18n.currencyLabel() }}{{ i18n.isRo() ? ' / lună' : ' / month' }}</span>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ import { TranslationService } from '../../services/translation.service';
                     </div>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-text-primary tabular-nums">{{ installmentAmount() }} lei</span>
+                <span class="text-xs font-bold text-text-primary tabular-nums">{{ installmentAmount() }} {{ i18n.currencyLabel() }}</span>
               </div>
 
               <div class="flex items-center justify-between p-3 rounded-lg bg-surface-elevated border border-border">
@@ -91,7 +91,7 @@ import { TranslationService } from '../../services/translation.service';
                     </div>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-text-primary tabular-nums">{{ installmentAmount() }} lei</span>
+                <span class="text-xs font-bold text-text-primary tabular-nums">{{ installmentAmount() }} {{ i18n.currencyLabel() }}</span>
               </div>
 
               <div class="flex items-center justify-between p-3 rounded-lg bg-surface-elevated border border-border">
@@ -108,7 +108,7 @@ import { TranslationService } from '../../services/translation.service';
                     </div>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-text-primary tabular-nums">{{ lastInstallmentAmount() }} lei</span>
+                <span class="text-xs font-bold text-text-primary tabular-nums">{{ lastInstallmentAmount() }} {{ i18n.currencyLabel() }}</span>
               </div>
             </div>
           </div>

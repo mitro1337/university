@@ -83,7 +83,7 @@ import { LenisService } from '../../services/lenis.service';
                   <span class="w-5 h-5 rounded-full bg-primary text-primary-contrast text-[10px] flex items-center justify-center font-bold">1</span>
                   {{ i18n.isRo() ? 'Obiectivul de laborator (What are you building?)' : 'Select Lab Goal (What are you building?)' }}
                 </h3>
-                <span class="text-xs text-text-muted tabular-nums">{{ presetsService.goals.length }} opțiuni</span>
+                <span class="text-xs text-text-muted tabular-nums">{{ presetsService.goals.length }} {{ i18n.isRo() ? 'opțiuni' : 'options' }}</span>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lenis-reveal-stagger is-revealed">
@@ -154,7 +154,7 @@ import { LenisService } from '../../services/lenis.service';
                   [class.text-text-muted]="selectedBudget() !== 'budget'"
                   class="p-3 rounded-lg border text-center transition-all">
                   <div class="text-xs font-bold uppercase">Budget</div>
-                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">&lt; 1.000 lei</div>
+                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">&lt; 1.000 {{ i18n.currencyLabel() }}</div>
                 </button>
 
                 <button 
@@ -167,7 +167,7 @@ import { LenisService } from '../../services/lenis.service';
                   [class.text-text-muted]="selectedBudget() !== 'balanced'"
                   class="p-3 rounded-lg border text-center transition-all">
                   <div class="text-xs font-bold uppercase">Balanced</div>
-                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">1.000–2.500 lei</div>
+                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">1.000–2.500 {{ i18n.currencyLabel() }}</div>
                 </button>
 
                 <button 
@@ -180,7 +180,7 @@ import { LenisService } from '../../services/lenis.service';
                   [class.text-text-muted]="selectedBudget() !== 'performance'"
                   class="p-3 rounded-lg border text-center transition-all">
                   <div class="text-xs font-bold uppercase">Performance</div>
-                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">2.500–5.000 lei</div>
+                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">2.500–5.000 {{ i18n.currencyLabel() }}</div>
                 </button>
 
                 <button 
@@ -193,7 +193,7 @@ import { LenisService } from '../../services/lenis.service';
                   [class.text-text-muted]="selectedBudget() !== 'enterprise'"
                   class="p-3 rounded-lg border text-center transition-all">
                   <div class="text-xs font-bold uppercase">Enterprise</div>
-                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">5.000+ lei</div>
+                  <div class="text-[10px] opacity-75 mt-0.5 tabular-nums">5.000+ {{ i18n.currencyLabel() }}</div>
                 </button>
               </div>
             </div>
@@ -216,12 +216,12 @@ import { LenisService } from '../../services/lenis.service';
                   <span class="w-5 h-5 rounded-full bg-primary text-primary-contrast text-[10px] flex items-center justify-center font-bold">4</span>
                   {{ i18n.isRo() ? 'Kit Hardware Recomandat' : 'Hardware Package Items' }}
                 </h3>
-                <span class="text-xs text-text-muted tabular-nums">{{ bundleProducts().length }} echipamente</span>
+                <span class="text-xs text-text-muted tabular-nums">{{ bundleProducts().length }} {{ i18n.isRo() ? 'echipamente' : 'items' }}</span>
               </div>
 
               @if (bundleProducts().length === 0) {
                 <div class="p-6 text-center text-xs text-text-muted">
-                  Se încarcă componentele optime din catalog...
+                  {{ i18n.isRo() ? 'Se încarcă componentele optime din catalog...' : 'Loading verified bundle items from catalog...' }}
                 </div>
               } @else {
                 <div class="divide-y divide-border">
@@ -243,9 +243,9 @@ import { LenisService } from '../../services/lenis.service';
 
                       <div class="text-right flex-shrink-0">
                         <div class="text-xs font-bold text-text-primary tabular-nums">
-                          {{ prod.price_ron.toFixed(2) }} lei
+                          {{ prod.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                         </div>
-                        <span class="text-[10px] text-emerald-400 font-medium">● În stoc</span>
+                        <span class="text-[10px] text-emerald-400 font-medium">● {{ i18n.isRo() ? 'În stoc' : 'In stock' }}</span>
                       </div>
                     </div>
                   }
@@ -275,7 +275,7 @@ import { LenisService } from '../../services/lenis.service';
                 <div class="flex items-center justify-between text-xs">
                   <span class="text-text-muted">{{ i18n.isRo() ? 'Total Pachet Hardware:' : 'Bundle Total:' }}</span>
                   <span class="text-lg font-bold text-text-primary tabular-nums">
-                    {{ bundleTotalPrice().toFixed(2) }} lei
+                    {{ bundleTotalPrice().toFixed(2) }} {{ i18n.currencyLabel() }}
                   </span>
                 </div>
 
@@ -314,7 +314,7 @@ import { LenisService } from '../../services/lenis.service';
                   {{ i18n.isRo() ? 'Șasiu Rack 19" Standard EIA-310' : '19" Standard EIA-310 Rack Enclosure' }}
                 </h3>
                 <p class="text-xs text-text-muted mt-0.5">
-                  {{ rackService.usedUnits() }}U ocupat din {{ rackService.totalUnits() }}U total ({{ rackService.freeUnits() }}U libere)
+                  {{ rackService.usedUnits() }}U {{ i18n.isRo() ? 'ocupat din' : 'occupied of' }} {{ rackService.totalUnits() }}U {{ i18n.isRo() ? 'total' : 'total' }} ({{ rackService.freeUnits() }}U {{ i18n.isRo() ? 'libere' : 'free' }})
                 </p>
               </div>
 
@@ -338,8 +338,8 @@ import { LenisService } from '../../services/lenis.service';
 
             <div class="bg-canvas-subtle rounded-xl p-5 border border-border max-w-xl mx-auto shadow-2xl relative">
               <div class="flex justify-between text-[9px] text-text-muted mb-2 px-6 font-medium">
-                <span>◄ ȘINĂ STÂNGA 19"</span>
-                <span>ȘINĂ DREAPTA 19" ►</span>
+                <span>{{ i18n.isRo() ? '◄ ȘINĂ STÂNGA 19"' : '◄ LEFT RAIL 19"' }}</span>
+                <span>{{ i18n.isRo() ? 'ȘINĂ DREAPTA 19" ►' : 'RIGHT RAIL 19" ►' }}</span>
               </div>
 
               <div class="space-y-1.5">
@@ -361,8 +361,8 @@ import { LenisService } from '../../services/lenis.service';
                           type="button" 
                           (click)="rackService.removeItem(idx)"
                           class="w-5 h-5 rounded flex items-center justify-center text-text-muted hover:text-rose-400 hover:bg-surface-elevated transition-colors"
-                          title="Elimină din rack"
-                          aria-label="Elimină din rack">
+                          [title]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'"
+                          [attr.aria-label]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'">
                           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                       </div>
@@ -486,7 +486,7 @@ import { LenisService } from '../../services/lenis.service';
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-emerald-400 font-heading">MikroTik RB5009UG+S+IN / OPNsense</div>
                   <div class="text-[10px] text-text-muted">RouterOS v7 • WireGuard VPN • NAT & Inter-VLAN Routing</div>
-                  <div class="text-[9px] text-emerald-400 font-bold mt-0.5">Port SFP+ 10Gbps Trunk către Core Switch</div>
+                  <div class="text-[9px] text-emerald-400 font-bold mt-0.5">{{ i18n.isRo() ? 'Port SFP+ 10Gbps Trunk către Core Switch' : '10Gbps SFP+ Trunk to Core Switch' }}</div>
                 </div>
               </div>
 
@@ -499,7 +499,7 @@ import { LenisService } from '../../services/lenis.service';
                 <div class="min-w-0 flex-1">
                   <div class="text-xs font-bold text-blue-400 font-heading">MikroTik CRS305 / CRS309 (Core Switch 10G SFP+)</div>
                   <div class="text-[10px] text-text-muted">VLAN 10 (LAN) • VLAN 20 (Homelab) • VLAN 30 (IoT) • VLAN 40 (DMZ)</div>
-                  <div class="text-[9px] text-blue-400 font-bold mt-0.5">8x 10G SFP+ Cuplare Directă DAC 0.5m / 1m</div>
+                  <div class="text-[9px] text-blue-400 font-bold mt-0.5">{{ i18n.isRo() ? '8x 10G SFP+ Cuplare Directă DAC 0.5m / 1m' : '8x 10G SFP+ Direct Attach Copper 0.5m / 1m' }}</div>
                 </div>
               </div>
 
@@ -511,7 +511,7 @@ import { LenisService } from '../../services/lenis.service';
                   <div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border flex items-center justify-center text-text-primary">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="7" rx="1"/><rect x="2" y="14" width="20" height="7" rx="1"/><line x1="6" y1="6.5" x2="6.01" y2="6.5"/><line x1="6" y1="17.5" x2="6.01" y2="17.5"/></svg>
                   </div>
-                  <div class="text-xs font-bold text-text-primary font-heading">Nod Proxmox VE</div>
+                  <div class="text-xs font-bold text-text-primary font-heading">{{ i18n.isRo() ? 'Nod Proxmox VE' : 'Proxmox VE Node' }}</div>
                   <div class="text-[10px] text-text-muted">Dual SFP+ 10G LACP</div>
                   <div class="text-[9px] text-emerald-400 font-bold">LXC & Docker Stacks</div>
                 </div>
@@ -530,7 +530,7 @@ import { LenisService } from '../../services/lenis.service';
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                   </div>
                   <div class="text-xs font-bold text-text-primary font-heading">Hardware Network TAP</div>
-                  <div class="text-[10px] text-text-muted">Inspecție pasivă pcap</div>
+                  <div class="text-[10px] text-text-muted">{{ i18n.isRo() ? 'Inspecție pasivă pcap' : 'Passive pcap analysis' }}</div>
                   <div class="text-[9px] text-rose-400 font-bold">Suricata IDS / Zeek</div>
                 </div>
 

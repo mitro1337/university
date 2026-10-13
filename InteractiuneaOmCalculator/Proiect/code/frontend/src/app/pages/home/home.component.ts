@@ -88,21 +88,21 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
               <span class="text-border">|</span>
               <span class="text-[10px] text-emerald-400 font-medium flex items-center gap-1">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                24/7 Enterprise Validated
+                {{ i18n.isRo() ? 'Validat Enterprise 24/7' : '24/7 Enterprise Validated' }}
               </span>
             </div>
             <h3 class="font-heading text-base font-bold text-text-primary group-hover:text-accent transition-colors truncate">
               Vexera Titan-9 Edge Compute Node
             </h3>
             <p class="text-xs text-text-secondary mt-1 line-clamp-2 leading-relaxed">
-              Procesor 8-Core ARM64 v9, accelerator NPU 6 TOPS, dual 10G SFP+ și carcasă aluminiu frezat CNC cu răcire pasivă 0dB.
+              {{ i18n.isRo() ? 'Procesor 8-Core ARM64 v9, accelerator NPU 6 TOPS, dual 10G SFP+ și carcasă aluminiu frezat CNC cu răcire pasivă 0dB.' : '8-Core ARM64 v9 CPU, 6 TOPS NPU accelerator, dual 10G SFP+, and CNC-milled aluminum chassis with 0dB passive cooling.' }}
             </p>
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="text-sm font-bold text-text-primary tabular-nums">
                 1.849,00 <span class="text-[11px] text-text-muted font-normal">lei</span>
               </div>
               <a routerLink="/build-your-lab" class="text-xs font-semibold text-accent hover:text-accent-hover inline-flex items-center gap-1 transition-colors">
-                Configurează în Lab →
+                {{ i18n.isRo() ? 'Configurează în Lab →' : 'Configure in Lab →' }}
               </a>
             </div>
           </div>
@@ -118,7 +118,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
           </div>
           <div class="inline-flex items-center gap-1.5 text-[11px] text-emerald-400">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            <span>Fără card de credit • Aprobare pe loc</span>
+            <span>{{ i18n.isRo() ? 'Fără card de credit • Aprobare pe loc' : 'No credit card required • Instant approval' }}</span>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
           <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-text-primary">
             {{ i18n.isRo() ? 'Hardware din Depozitul Local' : 'Live Inventory Hardware' }}
           </h2>
-          <p class="text-xs text-text-secondary mt-0.5">Stoc fizic gata de expediere cu parametri tehnici măsurați</p>
+          <p class="text-xs text-text-secondary mt-0.5">{{ i18n.isRo() ? 'Stoc fizic gata de expediere cu parametri tehnici măsurați' : 'Physical stock ready to ship with verified hardware benchmarks' }}</p>
         </div>
 
         <div class="flex items-center gap-1.5 text-xs overflow-x-auto pb-1 sm:pb-0">
@@ -157,7 +157,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             [class.bg-surface-elevated]="activeTab() !== 'cybersecurity'"
             [class.text-text-secondary]="activeTab() !== 'cybersecurity'"
             class="px-3.5 py-1.5 rounded-lg border border-border hover:border-accent/40 active:scale-95 transition-all whitespace-nowrap text-xs font-medium flex items-center gap-1.5">
-            <span>Securitate</span>
+            <span>{{ i18n.isRo() ? 'Securitate' : 'Security' }}</span>
           </button>
           <button 
             type="button"
@@ -165,11 +165,11 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             [class.bg-accent]="activeTab() === 'enterprise'"
             [class.text-white]="activeTab() === 'enterprise'"
             [class.tab-active-spring]="activeTab() === 'enterprise'"
-            [class.shadow-[0_0_12px_rgba(184,104,48,0.35)]]="activeTab() === 'enterprise'"
+            [class.shadow-[0_0_12px_rgba(16,185,129,0.35)]]="activeTab() === 'enterprise'"
             [class.bg-surface-elevated]="activeTab() !== 'enterprise'"
             [class.text-text-secondary]="activeTab() !== 'enterprise'"
             class="px-3.5 py-1.5 rounded-lg border border-border hover:border-accent/40 active:scale-95 transition-all whitespace-nowrap text-xs font-medium flex items-center gap-1.5">
-            <span>Enterprise & Servere</span>
+            <span>{{ i18n.isRo() ? 'Enterprise & Servere' : 'Enterprise & Servers' }}</span>
           </button>
           <button 
             type="button"
@@ -177,11 +177,11 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             [class.bg-accent]="activeTab() === 'niche'"
             [class.text-white]="activeTab() === 'niche'"
             [class.tab-active-spring]="activeTab() === 'niche'"
-            [class.shadow-[0_0_12px_rgba(184,104,48,0.35)]]="activeTab() === 'niche'"
+            [class.shadow-[0_0_12px_rgba(16,185,129,0.35)]]="activeTab() === 'niche'"
             [class.bg-surface-elevated]="activeTab() !== 'niche'"
             [class.text-text-secondary]="activeTab() !== 'niche'"
             class="px-3.5 py-1.5 rounded-lg border border-border hover:border-accent/40 active:scale-95 transition-all whitespace-nowrap text-xs font-medium flex items-center gap-1.5">
-            <span>Hardware Nișat</span>
+            <span>{{ i18n.isRo() ? 'Hardware Nișat' : 'Niche Hardware' }}</span>
           </button>
           <button 
             type="button"
@@ -189,11 +189,11 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             [class.bg-accent]="activeTab() === 'homelab'"
             [class.text-white]="activeTab() === 'homelab'"
             [class.tab-active-spring]="activeTab() === 'homelab'"
-            [class.shadow-[0_0_12px_rgba(184,104,48,0.35)]]="activeTab() === 'homelab'"
+            [class.shadow-[0_0_12px_rgba(16,185,129,0.35)]]="activeTab() === 'homelab'"
             [class.bg-surface-elevated]="activeTab() !== 'homelab'"
             [class.text-text-secondary]="activeTab() !== 'homelab'"
             class="px-3.5 py-1.5 rounded-lg border border-border hover:border-accent/40 active:scale-95 transition-all whitespace-nowrap text-xs font-medium flex items-center gap-1.5">
-            <span>Homelab & Rețea</span>
+            <span>{{ i18n.isRo() ? 'Homelab & Rețea' : 'Homelab & Network' }}</span>
           </button>
         </div>
       </div>
@@ -214,11 +214,11 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                 
                 @if (prod.stock > 0) {
                   <span class="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400">
-                    În stoc ({{ prod.stock }} buc)
+                    {{ i18n.isRo() ? 'În stoc (' + prod.stock + ' buc)' : 'In stock (' + prod.stock + ' pcs)' }}
                   </span>
                 } @else {
                   <span class="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded bg-rose-950/80 text-rose-400">
-                    La comandă
+                    {{ i18n.isRo() ? 'La comandă' : 'Backorder' }}
                   </span>
                 }
 
@@ -227,7 +227,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                   (click)="$event.preventDefault(); $event.stopPropagation(); wishlistService.toggleWishlist(prod)"
                   class="heart-button absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/85 backdrop-blur-xs border border-border flex items-center justify-center text-text-muted hover:text-rose-400 z-10"
                   [class.is-active]="wishlistService.isWishlisted(prod.id)"
-                  [title]="wishlistService.isWishlisted(prod.id) ? 'Elimină din favorite' : 'Adaugă la favorite'">
+                  [title]="wishlistService.isWishlisted(prod.id) ? (i18n.isRo() ? 'Elimină din favorite' : 'Remove from wishlist') : (i18n.isRo() ? 'Adaugă la favorite' : 'Add to wishlist')">
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -238,8 +238,8 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                 <span class="text-[10px] text-text-muted uppercase tracking-wider truncate">{{ prod.subcategory }}</span>
                 <button 
                   type="button"
-                  (click)="$event.stopPropagation(); uiFeedback.copyToClipboard(prod.sku, 'Cod SKU')"
-                  title="Click pentru a copia codul SKU"
+                  (click)="$event.stopPropagation(); uiFeedback.copyToClipboard(prod.sku, i18n.isRo() ? 'Cod SKU' : 'SKU Code')"
+                  [title]="i18n.isRo() ? 'Click pentru a copia codul SKU' : 'Click to copy SKU code'"
                   class="cursor-copy-interactive text-[10px] tabular-nums px-1.5 py-0.5 rounded bg-surface-sunken border border-border text-text-muted font-medium inline-flex items-center gap-1 active:scale-95 flex-shrink-0">
                   <span>{{ prod.sku }}</span>
                   <svg class="w-2.5 h-2.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -262,15 +262,15 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             <div class="pt-3.5 mt-3 border-t border-border flex items-center justify-between">
               <div>
                 <div class="text-base sm:text-lg font-bold text-text-primary tabular-nums leading-none">
-                  {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-normal text-text-muted">lei</span>
+                  {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-normal text-text-muted">{{ i18n.isRo() ? 'lei' : 'RON' }}</span>
                 </div>
-                <div class="text-[10px] text-text-muted mt-0.5">TVA inclus &bull; Factură</div>
+                <div class="text-[10px] text-text-muted mt-0.5">{{ i18n.isRo() ? 'TVA inclus • Factură' : 'VAT included • Invoice' }}</div>
               </div>
 
               <div class="flex items-center gap-1.5">
                 <a [routerLink]="['/produs', prod.slug]"
                    class="px-2.5 py-1.5 rounded-lg bg-surface-elevated hover:bg-surface-sunken text-text-primary text-xs font-medium border border-border hover:border-accent/40 active:scale-95 transition-all">
-                  Fișă
+                  {{ i18n.isRo() ? 'Fișă' : 'Specs' }}
                 </a>
                 <button
                   type="button"
@@ -281,9 +281,9 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                     <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                     </svg>
-                    <span>Adăugat</span>
+                    <span>{{ i18n.isRo() ? 'Adăugat' : 'Added' }}</span>
                   } @else {
-                    <span>+ Coș</span>
+                    <span>{{ i18n.isRo() ? '+ Coș' : '+ Cart' }}</span>
                   }
                 </button>
               </div>
@@ -295,7 +295,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
       <div class="text-center mt-8">
         <a routerLink="/produse" 
            class="btn-pill-secondary inline-flex text-xs">
-          <span>Vezi toate cele {{ totalProductsCount() }} echipamente în Catalog</span>
+          <span>{{ i18n.isRo() ? 'Vezi toate cele ' + totalProductsCount() + ' echipamente în Catalog' : 'View all ' + totalProductsCount() + ' hardware products in Catalog' }}</span>
           <span>→</span>
         </a>
       </div>
@@ -356,7 +356,8 @@ export class HomeComponent implements OnInit {
 
   addToCartWithFeedback(prod: Product) {
     this.cartService.addToCart(prod);
-    this.uiFeedback.showToast(`${prod.name} adăugat în coș`, 'success');
+    const msg = this.i18n.isRo() ? `${prod.name} adăugat în coș` : `${prod.name} added to cart`;
+    this.uiFeedback.showToast(msg, 'success');
     
     // Animate button state transition to "Adăugat ✓"
     this.justAddedProductIds.update(ids => [...ids, prod.id]);

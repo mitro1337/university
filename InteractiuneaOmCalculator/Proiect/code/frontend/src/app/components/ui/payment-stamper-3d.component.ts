@@ -1,6 +1,7 @@
-import { Component, input, output, signal, OnInit, computed } from '@angular/core';
+import { Component, input, output, signal, OnInit, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import confetti from 'canvas-confetti';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-payment-stamper-3d',
@@ -43,7 +44,7 @@ import confetti from 'canvas-confetti';
             
             <!-- Drum 1: Day -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">ZIUA</span>
+              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ZIUA' : 'DAY' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ (selectedDay() - 1 + 31) % 31 || 31 }}</span>
                 <span class="text-xl font-mono font-black text-white select-none drum-active-num">{{ selectedDay() }}</span>
@@ -53,7 +54,7 @@ import confetti from 'canvas-confetti';
 
             <!-- Drum 2: Month -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">LUNA</span>
+              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'LUNA' : 'MONTH' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ prevMonth() }}</span>
                 <span class="text-lg font-mono font-black text-white select-none uppercase drum-active-num">{{ selectedMonth() }}</span>
@@ -63,7 +64,7 @@ import confetti from 'canvas-confetti';
 
             <!-- Drum 3: Year -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">ANUL</span>
+              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ANUL' : 'YEAR' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ selectedYear() - 1 }}</span>
                 <span class="text-lg font-mono font-black text-white select-none drum-active-num">{{ selectedYear() }}</span>
@@ -79,7 +80,7 @@ import confetti from 'canvas-confetti';
 
         <!-- Status Mode Pills -->
         <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1 mb-4">
-          @for (s of statusOptions; track s) {
+          @for (s of currentStatusOptions(); track s) {
             <button 
               type="button"
               (click)="setStatus(s)"
@@ -119,7 +120,7 @@ import confetti from 'canvas-confetti';
             <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
             </svg>
-            <span>{{ isStamped() ? 'Re-Ștampilează' : 'Aprobă & Ștampilează' }}</span>
+            <span>{{ isStamped() ? (i18n.isRo() ? 'Re-Ștampilează' : 'Re-Stamp') : (i18n.isRo() ? 'Aprobă & Ștampilează' : 'Approve & Stamp') }}</span>
           </button>
         </div>
 
@@ -128,7 +129,7 @@ import confetti from 'canvas-confetti';
       <!-- Target Invoice Document Section Receiving the Rubber Stamp -->
       <div class="relative z-10 -mt-3 mx-4 p-6 rounded-2xl bg-slate-900 border border-slate-700 text-center space-y-3 shadow-xl">
         <div class="text-[11px] font-mono text-slate-400">
-          DOCUMENT DE VERIFICARE COMANDĂ // VEXERA SECURE
+          {{ i18n.isRo() ? 'DOCUMENT DE VERIFICARE COMANDĂ // VEXERA SECURE' : 'ORDER VERIFICATION DOCUMENT // VEXERA SECURE' }}
         </div>
 
         <!-- The 3D Ink Stamp Impression -->
@@ -143,12 +144,12 @@ import confetti from 'canvas-confetti';
                 ★ {{ currentStatus() }} ★
               </div>
               <div class="text-[10px] tracking-widest text-slate-300">
-                {{ selectedDay() }} {{ selectedMonth() }} {{ selectedYear() }} // 0% DOBÂNDĂ
+                {{ selectedDay() }} {{ selectedMonth() }} {{ selectedYear() }} // {{ i18n.isRo() ? '0% DOBÂNDĂ' : '0% INTEREST' }}
               </div>
             </div>
           } @else {
             <div class="text-xs font-mono text-slate-600 border border-dashed border-slate-700 rounded-lg p-3">
-              [ Așteaptă aplicarea sigiliului fizic de aprobare ]
+              {{ i18n.isRo() ? '[ Așteaptă aplicarea sigiliului fizic de aprobare ]' : '[ Awaiting digital verification stamp ]' }}
             </div>
           }
         </div>
@@ -204,15 +205,21 @@ import confetti from 'canvas-confetti';
   `]
 })
 export class PaymentStamper3dComponent implements OnInit {
-  defaultStatus = input<string>('KLARNA APROBAT');
+  i18n = inject(TranslationService);
+
+  defaultStatus = input<string>('');
   autoStamp = input<boolean>(true);
   stamped = output<{ status: string; date: string }>();
 
   isStamping = signal<boolean>(false);
   isStamped = signal<boolean>(false);
 
-  statusOptions = ['KLARNA APROBAT', 'ACHITAT', 'SECURIZAT 256-BIT', 'CONFIRMAT'];
-  currentStatus = signal<string>('KLARNA APROBAT');
+  currentStatusOptions = computed(() => 
+    this.i18n.isRo() 
+      ? ['KLARNA APROBAT', 'ACHITAT', 'SECURIZAT 256-BIT', 'CONFIRMAT'] 
+      : ['KLARNA APPROVED', 'PAID', '256-BIT SECURE', 'CONFIRMED']
+  );
+  currentStatus = signal<string>('');
 
   colorOptions = [
     { name: 'Klarna Pink', hex: '#FFB3C7' },
@@ -224,25 +231,32 @@ export class PaymentStamper3dComponent implements OnInit {
 
   // Calendar dates
   now = new Date();
-  months = ['IAN', 'FEB', 'MAR', 'APR', 'MAI', 'IUN', 'IUL', 'AUG', 'SEP', 'OCT', 'NOI', 'DEC'];
+  months = computed(() => 
+    this.i18n.isRo() 
+      ? ['IAN', 'FEB', 'MAR', 'APR', 'MAI', 'IUN', 'IUL', 'AUG', 'SEP', 'OCT', 'NOI', 'DEC'] 
+      : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+  );
 
   selectedDay = signal<number>(this.now.getDate());
-  selectedMonth = signal<string>(this.months[this.now.getMonth()]);
+  selectedMonthIndex = signal<number>(this.now.getMonth());
+  selectedMonth = computed(() => this.months()[this.selectedMonthIndex()]);
   selectedYear = signal<number>(this.now.getFullYear());
 
   prevMonth = computed(() => {
-    const idx = this.months.indexOf(this.selectedMonth());
-    return this.months[(idx - 1 + 12) % 12];
+    const list = this.months();
+    return list[(this.selectedMonthIndex() - 1 + 12) % 12];
   });
 
   nextMonth = computed(() => {
-    const idx = this.months.indexOf(this.selectedMonth());
-    return this.months[(idx + 1) % 12];
+    const list = this.months();
+    return list[(this.selectedMonthIndex() + 1) % 12];
   });
 
   ngOnInit() {
     if (this.defaultStatus()) {
       this.currentStatus.set(this.defaultStatus());
+    } else {
+      this.currentStatus.set(this.i18n.isRo() ? 'KLARNA APROBAT' : 'KLARNA APPROVED');
     }
     if (this.autoStamp()) {
       setTimeout(() => {

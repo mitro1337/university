@@ -74,7 +74,7 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
                   {{ ord.order_number }}
                 </div>
                 <div class="text-[11px] text-text-muted">
-                  Data: {{ ord.created_at ? ord.created_at.slice(0, 10) : 'Astăzi' }}
+                  {{ i18n.isRo() ? 'Data: ' : 'Date: ' }}{{ ord.created_at ? ord.created_at.slice(0, 10) : (i18n.isRo() ? 'Astăzi' : 'Today') }}
                 </div>
               </div>
             </div>
@@ -100,9 +100,9 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
                 </div>
                 <div class="text-text-primary font-bold mt-0.5 truncate">
                   @if (ord.payment_method === 'klarna_bnpl') {
-                    Klarna (Rata 1/3 Achitată)
+                    {{ i18n.isRo() ? 'Klarna (Rata 1/3 Achitată)' : 'Klarna (Payment 1/3 Settled)' }}
                   } @else if (ord.payment_method === 'stripe_card') {
-                    {{ ord.netopia_transaction_id || 'Confirmat Card' }}
+                    {{ ord.netopia_transaction_id || (i18n.isRo() ? 'Confirmat Card' : 'Card Confirmed') }}
                   } @else {
                     {{ i18n.isRo() ? 'Plată la livrare (Ramburs)' : 'Cash on Delivery' }}
                   }
@@ -131,12 +131,12 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
                     <div class="min-w-0">
                       <div class="text-text-primary font-semibold truncate">{{ item.product_name }}</div>
                       <div class="text-[11px] text-text-muted tabular-nums">
-                        SKU: {{ item.sku }} • {{ item.quantity }} × {{ item.unit_price_ron.toFixed(2) }} lei
+                        SKU: {{ item.sku }} • {{ item.quantity }} × {{ item.unit_price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                       </div>
                     </div>
                   </div>
                   <div class="text-right flex-shrink-0 font-bold text-text-primary tabular-nums">
-                    {{ item.subtotal_ron.toFixed(2) }} lei
+                    {{ item.subtotal_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                   </div>
                 </div>
               }
@@ -145,17 +145,17 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
             <div class="pt-4 border-t border-border space-y-1.5 text-xs">
               <div class="flex justify-between text-text-muted">
                 <span>{{ 'summary_subtotal' | translate }}</span>
-                <span class="text-text-primary tabular-nums font-semibold">{{ ord.subtotal_ron.toFixed(2) }} lei</span>
+                <span class="text-text-primary tabular-nums font-semibold">{{ ord.subtotal_ron.toFixed(2) }} {{ i18n.currencyLabel() }}</span>
               </div>
               <div class="flex justify-between text-text-muted">
                 <span>{{ 'summary_shipping' | translate }}</span>
                 <span class="text-text-primary tabular-nums font-semibold">
-                  {{ ord.shipping_ron === 0 ? ('shipping_free' | translate) : ord.shipping_ron.toFixed(2) + ' lei' }}
+                  {{ ord.shipping_ron === 0 ? ('shipping_free' | translate) : (ord.shipping_ron.toFixed(2) + ' ' + i18n.currencyLabel()) }}
                 </span>
               </div>
               <div class="pt-2 border-t border-border flex justify-between text-sm font-bold text-text-primary">
                 <span>{{ 'summary_total' | translate }}</span>
-                <span class="text-text-primary tabular-nums text-lg font-bold">{{ ord.total_ron.toFixed(2) }} lei</span>
+                <span class="text-text-primary tabular-nums text-lg font-bold">{{ ord.total_ron.toFixed(2) }} {{ i18n.currencyLabel() }}</span>
               </div>
             </div>
           </div>

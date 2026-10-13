@@ -119,10 +119,10 @@ import { Product } from '../../models/product.model';
 
                   <div class="text-right flex-shrink-0">
                     <div class="text-xs font-bold text-accent tabular-nums">
-                      {{ prod.price_ron.toFixed(2) }} lei
+                      {{ prod.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                     </div>
                     <div class="text-[10px]" [class.text-emerald-400]="prod.stock > 5" [class.text-amber-400]="prod.stock <= 5">
-                      {{ prod.stock > 0 ? (prod.stock <= 5 ? prod.stock + ' buc (critic)' : 'În stoc') : 'Epuizat' }}
+                      {{ prod.stock > 0 ? (prod.stock <= 5 ? (prod.stock + (i18n.isRo() ? ' buc (critic)' : ' pcs (low)')) : (i18n.isRo() ? 'În stoc' : 'In stock')) : (i18n.isRo() ? 'Epuizat' : 'Out of stock') }}
                     </div>
                   </div>
                 </div>
@@ -132,9 +132,9 @@ import { Product } from '../../models/product.model';
 
           <div class="p-3 border-t border-border bg-surface-elevated flex items-center justify-between text-[11px] text-text-muted">
             <div class="flex items-center gap-3">
-              <span>↑↓ Navigare</span>
-              <span>↵ Deschide</span>
-              <span>ESC Închide</span>
+              <span>{{ i18n.isRo() ? '↑↓ Navigare' : '↑↓ Navigate' }}</span>
+              <span>{{ i18n.isRo() ? '↵ Deschide' : '↵ Open' }}</span>
+              <span>{{ i18n.isRo() ? 'ESC Închide' : 'ESC Close' }}</span>
             </div>
             <div class="text-accent font-bold tracking-wider text-[10px]">
               VEXERA PALETTE Cmd+K / Ctrl+K

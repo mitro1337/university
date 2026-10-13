@@ -113,7 +113,7 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
                     {{ item.product_name }}
                   </div>
                   <div class="text-text-muted flex-shrink-0 tabular-nums">
-                    {{ item.quantity }} buc • {{ item.subtotal_ron.toFixed(2) }} lei
+                    {{ item.quantity }} {{ i18n.isRo() ? 'buc' : 'pcs' }} • {{ item.subtotal_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                   </div>
                 </div>
               }

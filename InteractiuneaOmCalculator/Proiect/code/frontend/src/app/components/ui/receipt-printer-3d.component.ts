@@ -1,6 +1,7 @@
-import { Component, input, signal, OnInit, OnDestroy, computed } from '@angular/core';
+import { Component, input, signal, OnInit, OnDestroy, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderDetails } from '../../models/order.model';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-receipt-printer-3d',
@@ -105,69 +106,69 @@ import { OrderDetails } from '../../models/order.model';
             </div>
           </div>
 
-          <!-- Klarna Special BNPL Schedule Highlight -->
-          @if (isKlarna()) {
-            <div class="p-2.5 rounded bg-[#fff0f4] border border-[#FFB3C7] my-3 space-y-1.5 text-[10px]">
-              <div class="flex items-center justify-between text-black font-extrabold">
-                <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-[9px] tracking-tight">Klarna.</span>
-                <span class="text-[10px] text-[#e04369]">BUY NOW, PAY LATER (3x)</span>
-              </div>
-              <div class="divide-y divide-[#ffd3df] pt-1">
-                <div class="flex justify-between py-0.5 text-emerald-700 font-bold">
-                  <span>[✓] RATA 1/3 (ACHITAT AZI):</span>
-                  <span>{{ klarnaInstallment(1) }} LEI</span>
+              <!-- Klarna Special BNPL Schedule Highlight -->
+              @if (isKlarna()) {
+                <div class="p-2.5 rounded bg-[#fff0f4] border border-[#FFB3C7] my-3 space-y-1.5 text-[10px]">
+                  <div class="flex items-center justify-between text-black font-extrabold">
+                    <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-[9px] tracking-tight">Klarna.</span>
+                    <span class="text-[10px] text-[#e04369]">BUY NOW, PAY LATER (3x)</span>
+                  </div>
+                  <div class="divide-y divide-[#ffd3df] pt-1">
+                    <div class="flex justify-between py-0.5 text-emerald-700 font-bold">
+                      <span>{{ i18n.isRo() ? '[✓] RATA 1/3 (ACHITAT AZI):' : '[✓] INSTALLMENT 1/3 (PAID TODAY):' }}</span>
+                      <span>{{ klarnaInstallment(1) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                    </div>
+                    <div class="flex justify-between py-0.5 text-slate-600">
+                      <span>{{ i18n.isRo() ? '[ ] RATA 2/3 (+30 ZILE):' : '[ ] INSTALLMENT 2/3 (+30 DAYS):' }}</span>
+                      <span>{{ klarnaInstallment(2) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                    </div>
+                    <div class="flex justify-between py-0.5 text-slate-600">
+                      <span>{{ i18n.isRo() ? '[ ] RATA 3/3 (+60 ZILE):' : '[ ] INSTALLMENT 3/3 (+60 DAYS):' }}</span>
+                      <span>{{ klarnaInstallment(3) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                    </div>
+                  </div>
+                  <div class="text-[9px] text-[#b82a4d] text-center font-bold tracking-tight pt-0.5">
+                    {{ i18n.isRo() ? '0% DOBÂNDĂ • COST TOTAL FINANȚARE: 0.00 ' + i18n.currencyLabel().toUpperCase() : '0% INTEREST • TOTAL FINANCING COST: 0.00 ' + i18n.currencyLabel().toUpperCase() }}
+                  </div>
                 </div>
-                <div class="flex justify-between py-0.5 text-slate-600">
-                  <span>[ ] RATA 2/3 (+30 ZILE):</span>
-                  <span>{{ klarnaInstallment(2) }} LEI</span>
-                </div>
-                <div class="flex justify-between py-0.5 text-slate-600">
-                  <span>[ ] RATA 3/3 (+60 ZILE):</span>
-                  <span>{{ klarnaInstallment(3) }} LEI</span>
-                </div>
-              </div>
-              <div class="text-[9px] text-[#b82a4d] text-center font-bold tracking-tight pt-0.5">
-                0% DOBÂNDĂ • COST TOTAL FINANȚARE: 0.00 LEI
-              </div>
-            </div>
-          }
+              }
 
-          <!-- Items Table -->
-          <div class="text-[10px] space-y-2 border-b border-dashed border-slate-400 pb-3 mb-3">
-            <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase">
-              <span>DESCRIERE</span>
-              <span>SUMĂ</span>
-            </div>
-            @for (item of itemsList(); track $index) {
-              <div class="flex justify-between items-start gap-2">
-                <div class="min-w-0">
-                  <div class="truncate text-slate-900 font-medium">{{ item.name }}</div>
-                  <div class="text-[9px] text-slate-500">{{ item.qty }}x @ {{ item.unitPrice.toFixed(2) }} lei</div>
+              <!-- Items Table -->
+              <div class="text-[10px] space-y-2 border-b border-dashed border-slate-400 pb-3 mb-3">
+                <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase">
+                  <span>{{ i18n.isRo() ? 'DESCRIERE' : 'DESCRIPTION' }}</span>
+                  <span>{{ i18n.isRo() ? 'SUMĂ' : 'AMOUNT' }}</span>
                 </div>
-                <span class="font-bold text-slate-950 tabular-nums shrink-0">{{ item.total.toFixed(2) }}</span>
+                @for (item of itemsList(); track $index) {
+                  <div class="flex justify-between items-start gap-2">
+                    <div class="min-w-0">
+                      <div class="truncate text-slate-900 font-medium">{{ item.name }}</div>
+                      <div class="text-[9px] text-slate-500">{{ item.qty }}x @ {{ item.unitPrice.toFixed(2) }} {{ i18n.currencyLabel() }}</div>
+                    </div>
+                    <span class="font-bold text-slate-950 tabular-nums shrink-0">{{ item.total.toFixed(2) }}</span>
+                  </div>
+                }
               </div>
-            }
-          </div>
 
-          <!-- Total Calculation -->
-          <div class="text-[10px] space-y-1 font-bold text-slate-900 border-b border-dashed border-slate-400 pb-3 mb-3">
-            <div class="flex justify-between font-normal text-slate-600">
-              <span>SUBTOTAL NET:</span>
-              <span class="tabular-nums">{{ (order()?.subtotal_ron || 0).toFixed(2) }} LEI</span>
-            </div>
-            <div class="flex justify-between font-normal text-slate-600">
-              <span>TRANSPORT / EXPEDIERE:</span>
-              <span class="tabular-nums">{{ (order()?.shipping_ron || 0).toFixed(2) }} LEI</span>
-            </div>
-            <div class="flex justify-between font-normal text-slate-600">
-              <span>TVA (19% INCLUS):</span>
-              <span class="tabular-nums">{{ ((order()?.total_ron || 0) * 0.19 / 1.19).toFixed(2) }} LEI</span>
-            </div>
-            <div class="flex justify-between text-xs font-black pt-1 text-slate-950">
-              <span>TOTAL GENERAL:</span>
-              <span class="text-sm tabular-nums">{{ (order()?.total_ron || 0).toFixed(2) }} LEI</span>
-            </div>
-          </div>
+              <!-- Total Calculation -->
+              <div class="text-[10px] space-y-1 font-bold text-slate-900 border-b border-dashed border-slate-400 pb-3 mb-3">
+                <div class="flex justify-between font-normal text-slate-600">
+                  <span>{{ i18n.isRo() ? 'SUBTOTAL NET:' : 'NET SUBTOTAL:' }}</span>
+                  <span class="tabular-nums">{{ (order()?.subtotal_ron || 0).toFixed(2) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                </div>
+                <div class="flex justify-between font-normal text-slate-600">
+                  <span>{{ i18n.isRo() ? 'TRANSPORT / EXPEDIERE:' : 'SHIPPING / DELIVERY:' }}</span>
+                  <span class="tabular-nums">{{ (order()?.shipping_ron || 0).toFixed(2) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                </div>
+                <div class="flex justify-between font-normal text-slate-600">
+                  <span>{{ i18n.isRo() ? 'TVA (19% INCLUS):' : 'VAT (19% INCLUDED):' }}</span>
+                  <span class="tabular-nums">{{ ((order()?.total_ron || 0) * 0.19 / 1.19).toFixed(2) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                </div>
+                <div class="flex justify-between text-xs font-black pt-1 text-slate-950">
+                  <span>{{ i18n.isRo() ? 'TOTAL GENERAL:' : 'GRAND TOTAL:' }}</span>
+                  <span class="text-sm tabular-nums">{{ (order()?.total_ron || 0).toFixed(2) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
+                </div>
+              </div>
 
           <!-- Barcode SVG -->
           <div class="text-center pt-2 pb-1 space-y-1">
@@ -201,7 +202,7 @@ import { OrderDetails } from '../../models/order.model';
             <svg class="w-3.5 h-3.5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
             </svg>
-            <span>Printează Chitanță</span>
+            <span>{{ i18n.isRo() ? 'Printează Chitanță' : 'Print Receipt' }}</span>
           </button>
 
           <button 
@@ -211,7 +212,7 @@ import { OrderDetails } from '../../models/order.model';
             <svg class="w-3.5 h-3.5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
             </svg>
-            <span>{{ isTorn() ? 'Reatașează' : 'Rupe Bonul' }}</span>
+            <span>{{ isTorn() ? (i18n.isRo() ? 'Reatașează' : 'Reattach') : (i18n.isRo() ? 'Rupe Bonul' : 'Tear Receipt') }}</span>
           </button>
         </div>
 
@@ -268,6 +269,7 @@ import { OrderDetails } from '../../models/order.model';
 })
 export class ReceiptPrinter3dComponent implements OnInit, OnDestroy {
   order = input<OrderDetails | null>(null);
+  i18n = inject(TranslationService);
 
   isPrinting = signal<boolean>(false);
   isPrinted = signal<boolean>(false);

@@ -126,7 +126,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                       </div>
                     </div>
                     <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
-                      {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : '19.00 lei' }}
+                      {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : ('19.00 ' + i18n.currencyLabel()) }}
                     </span>
                   </label>
 
@@ -150,7 +150,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                       </div>
                     </div>
                     <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
-                      {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : '14.00 lei' }}
+                      {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : ('14.00 ' + i18n.currencyLabel()) }}
                     </span>
                   </label>
 
@@ -254,13 +254,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                           <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[11px] tracking-tight">Klarna.</span>
                           <span>{{ i18n.isRo() ? 'Cumpără acum, plătește mai târziu' : 'Buy Now, Pay Later' }}</span>
                           <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#FFB3C7]/20 text-[#FFB3C7] border border-[#FFB3C7]/40 font-bold">
-                            0% Dobândă
+                            {{ i18n.isRo() ? '0% Dobândă' : '0% Interest' }}
                           </span>
                         </div>
                         <p class="text-[11px] text-text-muted mt-1 leading-relaxed">
                           {{ i18n.isRo() 
-                            ? 'Plătește în 3 rate fără dobândă de ' + (finalTotal() / 3).toFixed(2) + ' lei sau amână plata cu 30 de zile. Fără comisioane.' 
-                            : 'Pay in 3 interest-free installments of ' + (finalTotal() / 3).toFixed(2) + ' lei or in 30 days. No fees.' }}
+                            ? 'Plătește în 3 rate fără dobândă de ' + (finalTotal() / 3).toFixed(2) + ' ' + i18n.currencyLabel() + ' sau amână plata cu 30 de zile. Fără comisioane.' 
+                            : 'Pay in 3 interest-free installments of ' + (finalTotal() / 3).toFixed(2) + ' ' + i18n.currencyLabel() + ' or in 30 days. No fees.' }}
                         </p>
                       </div>
                     </div>
@@ -285,9 +285,9 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                               value="pay_in_3" 
                               [(ngModel)]="formData.klarnaPlan"
                               class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
-                            <span class="font-medium text-text-primary">3 Rate fără dobândă</span>
+                            <span class="font-medium text-text-primary">{{ i18n.isRo() ? '3 Rate fără dobândă' : '3 Interest-free installments' }}</span>
                           </div>
-                          <span class="text-[#FFB3C7] font-bold tabular-nums">{{ (finalTotal() / 3).toFixed(2) }} lei</span>
+                          <span class="text-[#FFB3C7] font-bold tabular-nums">{{ (finalTotal() / 3).toFixed(2) }} {{ i18n.currencyLabel() }}</span>
                         </label>
 
                         <label 
@@ -302,9 +302,9 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                               value="pay_in_30_days" 
                               [(ngModel)]="formData.klarnaPlan"
                               class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
-                            <span class="font-medium text-text-primary">Plătește în 30 zile</span>
+                            <span class="font-medium text-text-primary">{{ i18n.isRo() ? 'Plătește în 30 zile' : 'Pay in 30 days' }}</span>
                           </div>
-                          <span class="text-text-muted font-bold">0 lei azi</span>
+                          <span class="text-text-muted font-bold">{{ i18n.isRo() ? '0 lei azi' : '0 ' + i18n.currencyLabel() + ' today' }}</span>
                         </label>
                       </div>
 
@@ -396,11 +396,11 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                       </div>
                       <div class="min-w-0">
                         <div class="text-text-primary truncate font-semibold">{{ item.product.name }}</div>
-                        <div class="text-[11px] text-text-muted tabular-nums">{{ item.quantity }} × {{ item.product.price_ron.toFixed(2) }} lei</div>
+                        <div class="text-[11px] text-text-muted tabular-nums">{{ item.quantity }} × {{ item.product.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}</div>
                       </div>
                     </div>
                     <div class="text-text-primary font-bold tabular-nums flex-shrink-0">
-                      {{ (item.product.price_ron * item.quantity).toFixed(2) }} lei
+                      {{ (item.product.price_ron * item.quantity).toFixed(2) }} {{ i18n.currencyLabel() }}
                     </div>
                   </div>
                 }
@@ -409,7 +409,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
               <div class="space-y-2 pt-3 border-t border-border text-xs">
                 <div class="flex justify-between text-text-muted">
                   <span>{{ 'summary_subtotal' | translate }}</span>
-                  <span class="text-text-primary tabular-nums font-semibold">{{ cartService.subtotal().toFixed(2) }} lei</span>
+                  <span class="text-text-primary tabular-nums font-semibold">{{ cartService.subtotal().toFixed(2) }} {{ i18n.currencyLabel() }}</span>
                 </div>
                 
                 <div class="flex justify-between text-text-muted">
@@ -417,13 +417,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                   @if (shippingCost() === 0) {
                     <span class="text-emerald-400 font-medium">{{ 'shipping_free' | translate }}</span>
                   } @else {
-                    <span class="text-text-primary tabular-nums font-semibold">{{ shippingCost().toFixed(2) }} lei</span>
+                    <span class="text-text-primary tabular-nums font-semibold">{{ shippingCost().toFixed(2) }} {{ i18n.currencyLabel() }}</span>
                   }
                 </div>
 
                 <div class="pt-3 border-t border-border flex justify-between text-sm font-semibold text-text-primary">
                   <span>{{ 'summary_total' | translate }}</span>
-                  <span class="text-text-primary tabular-nums text-lg font-bold">{{ finalTotal().toFixed(2) }} lei</span>
+                  <span class="text-text-primary tabular-nums text-lg font-bold">{{ finalTotal().toFixed(2) }} {{ i18n.currencyLabel() }}</span>
                 </div>
 
                 <div class="text-[10px] text-text-muted text-right">
@@ -442,7 +442,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 } @else if (formData.paymentMethod === 'klarna_bnpl') {
                   <span class="flex items-center gap-1.5 font-bold">
                     <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
-                    <span>Plătește prin Klarna (3 rate) →</span>
+                    <span>{{ i18n.isRo() ? 'Plătește prin Klarna (3 rate) →' : 'Pay with Klarna (3 installments) →' }}</span>
                   </span>
                 } @else if (formData.paymentMethod === 'stripe_card') {
                   <span>{{ 'btn_pay_stripe' | translate }}</span>

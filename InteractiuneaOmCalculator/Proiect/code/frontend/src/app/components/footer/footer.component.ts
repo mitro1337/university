@@ -88,12 +88,12 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                 </a>
               </li>
               <li>
-                <a [routerLink]="['/categorie', 'niche-hardware']" class="text-amber-400 font-semibold hover:underline transition-colors">
+                <a [routerLink]="['/categorie', 'niche-hardware']" class="hover:text-text-primary transition-colors">
                   {{ 'cat_niche' | translate }}
                 </a>
               </li>
               <li>
-                <a [routerLink]="['/categorie', 'cybersecurity-research']" class="text-rose-400 font-semibold hover:underline transition-colors">
+                <a [routerLink]="['/categorie', 'cybersecurity-research']" class="hover:text-text-primary transition-colors">
                   {{ 'cat_cybersecurity' | translate }}
                 </a>
               </li>
@@ -126,22 +126,22 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
               </li>
               <li>
                 <a routerLink="/compara" class="hover:text-text-primary transition-colors">
-                  Comparator Tehnic
+                  {{ i18n.isRo() ? 'Comparator Tehnic' : 'Hardware Comparison' }}
                 </a>
               </li>
               <li>
-                <button type="button" (click)="labProfileService.isDrawerOpen.set(true)" class="hover:text-text-primary transition-colors text-left">
-                  Profil laborator
+                <button type="button" (click)="labProfileService.isDrawerOpen.set(true)" class="hover:text-text-primary transition-colors text-left cursor-pointer">
+                  {{ i18n.isRo() ? 'Profil laborator' : 'My Lab Profile' }}
                 </button>
               </li>
               <li>
-                <button type="button" (click)="shortcutsService.openModal()" class="hover:text-text-primary transition-colors text-left">
-                  Scurtături de tastatură
+                <button type="button" (click)="shortcutsService.openModal()" class="hover:text-text-primary transition-colors text-left cursor-pointer">
+                  {{ i18n.isRo() ? 'Scurtături de tastatură' : 'Keyboard Shortcuts' }}
                 </button>
               </li>
               <li>
-                <button type="button" (click)="a11yService.openModal()" class="hover:text-text-primary transition-colors text-left">
-                  Accesibilitate
+                <button type="button" (click)="a11yService.openModal()" class="hover:text-text-primary transition-colors text-left cursor-pointer">
+                  {{ i18n.isRo() ? 'Accesibilitate' : 'Accessibility' }}
                 </button>
               </li>
             </ul>
@@ -267,10 +267,10 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             </a>
 
             <div class="text-[10px] text-text-muted flex flex-wrap items-center justify-between gap-2 pt-1">
-              <span>Telefon: <a href="tel:0219551" class="font-bold text-text-primary hover:underline">021 9551</a></span>
+              <span>{{ i18n.isRo() ? 'Telefon:' : 'Phone:' }} <a href="tel:0219551" class="font-bold text-text-primary hover:underline">021 9551</a></span>
               <div class="flex items-center gap-2">
                 <a routerLink="/anpc" class="text-accent font-bold hover:underline">
-                  Ghid ANPC
+                  {{ i18n.isRo() ? 'Ghid ANPC' : 'ANPC Guide' }}
                 </a>
                 <span>•</span>
                 <a href="https://anpc.ro" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">
@@ -285,7 +285,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 
         <div class="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <div>
-            © 2026 S.C. VEXERA HARDWARE S.R.L. {{ 'footer_rights' | translate }} Înregistrat la Registrul Comerțului sub nr. J40/18294/2024.
+            © 2026 S.C. VEXERA HARDWARE S.R.L. {{ 'footer_rights' | translate }} {{ i18n.isRo() ? 'Înregistrat la Registrul Comerțului sub nr. J40/18294/2024.' : 'Registered in the Commercial Register under no. J40/18294/2024.' }}
           </div>
           <div class="flex flex-wrap items-center justify-center gap-3 font-medium">
             <a routerLink="/termeni-si-conditii" class="hover:text-text-primary hover:underline transition-colors">

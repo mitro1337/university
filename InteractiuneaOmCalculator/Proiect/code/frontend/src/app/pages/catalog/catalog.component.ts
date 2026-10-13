@@ -25,7 +25,7 @@ import { Category, Product } from '../../models/product.model';
         <a routerLink="/produse" (click)="resetFilters()" class="breadcrumb-interactive hover:text-text-primary">{{ 'catalog_title' | translate }}</a>
         @if (selectedCategory && currentCategoryObj(); as currentCat) {
           <span class="text-text-muted">/</span>
-          <span class="text-text-primary font-semibold">{{ currentCat.name }}</span>
+          <span class="text-text-primary font-semibold">{{ i18n.getCategoryName(currentCat.slug, currentCat.name) }}</span>
         }
       </nav>
 
@@ -34,14 +34,14 @@ import { Category, Product } from '../../models/product.model';
           <div>
             <div class="flex items-center gap-2.5 mb-1.5">
               <h1 class="font-display text-2xl sm:text-3xl lg:text-4xl text-text-primary tracking-wide uppercase">
-                {{ selectedCategory && currentCategoryObj() ? currentCategoryObj()!.name : ('catalog_title' | translate) }}
+                {{ selectedCategory && currentCategoryObj() ? i18n.getCategoryName(currentCategoryObj()!.slug, currentCategoryObj()!.name) : ('catalog_title' | translate) }}
               </h1>
               <span class="px-2 py-0.5 rounded bg-surface-elevated text-text-muted text-xs font-semibold border border-border">
                 {{ products().length }} {{ i18n.isRo() ? 'echipamente' : 'units' }}
               </span>
             </div>
             <p class="text-xs text-text-secondary max-w-2xl leading-relaxed">
-              {{ selectedCategory && currentCategoryObj() ? currentCategoryObj()!.description : ('catalog_subtitle' | translate) }}
+              {{ selectedCategory && currentCategoryObj() ? i18n.getCategoryDescription(currentCategoryObj()!.slug, currentCategoryObj()!.description) : ('catalog_subtitle' | translate) }}
             </p>
           </div>
 
@@ -67,7 +67,7 @@ import { Category, Product } from '../../models/product.model';
                 [class.text-text-primary]="viewMode() === 'grid'"
                 [class.text-text-muted]="viewMode() !== 'grid'"
                 class="px-2.5 py-1 rounded text-xs transition-colors"
-                title="Afișare Grilă">
+                [title]="i18n.isRo() ? 'Afișare Grilă' : 'Grid View'">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
                 </svg>
@@ -79,7 +79,7 @@ import { Category, Product } from '../../models/product.model';
                 [class.text-text-primary]="viewMode() === 'list'"
                 [class.text-text-muted]="viewMode() !== 'list'"
                 class="px-2.5 py-1 rounded text-xs transition-colors"
-                title="Afișare Listă Tehnică">
+                [title]="i18n.isRo() ? 'Afișare Listă Tehnică' : 'Technical List View'">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -161,7 +161,7 @@ import { Category, Product } from '../../models/product.model';
                   [class.bg-surface-elevated]="selectedCategory !== cat.slug"
                   [class.text-text-secondary]="selectedCategory !== cat.slug"
                   class="w-full text-left px-2.5 py-1.5 rounded-md text-xs hover:text-text-primary hover:bg-surface-elevated active:scale-98 transition-all flex items-center justify-between">
-                  <span class="truncate pr-1">{{ cat.name }}</span>
+                  <span class="truncate pr-1">{{ i18n.getCategoryName(cat.slug, cat.name) }}</span>
                   <span class="text-[10px] tabular-nums" [class.text-white/80]="selectedCategory === cat.slug" [class.text-text-muted]="selectedCategory !== cat.slug">{{ cat.product_count || 12 }}</span>
                 </button>
               }
@@ -267,7 +267,7 @@ import { Category, Product } from '../../models/product.model';
           <div class="space-y-1.5 pt-3 border-t border-border">
             <div class="flex items-center justify-between text-xs font-semibold text-text-primary">
               <span>{{ i18n.isRo() ? 'Preț Maxim:' : 'Max Price:' }}</span>
-              <span class="text-text-primary font-bold tabular-nums">{{ maxPrice }} lei</span>
+              <span class="text-text-primary font-bold tabular-nums">{{ maxPrice }} {{ i18n.currencyLabel() }}</span>
             </div>
             <input 
               type="range"
@@ -278,8 +278,8 @@ import { Category, Product } from '../../models/product.model';
               (change)="applyFilters()"
               class="w-full accent-primary cursor-pointer">
             <div class="flex justify-between text-[10px] text-text-muted tabular-nums">
-              <span>10 lei</span>
-              <span>8000 lei</span>
+              <span>10 {{ i18n.currencyLabel() }}</span>
+              <span>8000 {{ i18n.currencyLabel() }}</span>
             </div>
           </div>
 
@@ -471,11 +471,11 @@ import { Category, Product } from '../../models/product.model';
                       <div class="pt-3 mt-3 border-t border-border flex items-center justify-between gap-2">
                         <div>
                           <div class="text-sm sm:text-base font-bold text-text-primary tabular-nums leading-none">
-                            {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-medium text-text-muted">lei</span>
+                            {{ prod.price_ron.toFixed(2) }} <span class="text-xs font-medium text-text-muted">{{ i18n.currencyLabel() }}</span>
                           </div>
                           @if (prod.old_price_ron) {
                             <div class="text-[10px] text-text-muted line-through tabular-nums mt-0.5">
-                              {{ prod.old_price_ron.toFixed(2) }} lei
+                              {{ prod.old_price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                             </div>
                           }
                         </div>
@@ -488,7 +488,7 @@ import { Category, Product } from '../../models/product.model';
                             [class.text-amber-300]="compService.isInComparison(prod.id)"
                             [class.border-amber-600]="compService.isInComparison(prod.id)"
                             class="p-1.5 rounded-lg bg-surface-elevated hover:bg-surface text-text-secondary hover:text-text-primary active:scale-95 transition-all border border-border"
-                            title="Compară">
+                            [title]="i18n.isRo() ? 'Compară' : 'Compare'">
                             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
                             </svg>
@@ -561,32 +561,32 @@ import { Category, Product } from '../../models/product.model';
                           </td>
                           <td class="p-3">
                             @if (prod.stock > 5) {
-                              <span class="text-emerald-400 font-medium text-xs">● {{ prod.stock }} buc</span>
+                              <span class="text-emerald-400 font-medium text-xs">● {{ prod.stock }} {{ i18n.isRo() ? 'buc' : 'pcs' }}</span>
                             } @else if (prod.stock > 0) {
-                              <span class="text-amber-400 font-medium text-xs">● {{ prod.stock }} buc</span>
+                              <span class="text-amber-400 font-medium text-xs">● {{ prod.stock }} {{ i18n.isRo() ? 'buc' : 'pcs' }}</span>
                             } @else {
                               <span class="text-rose-400 text-xs font-medium">{{ i18n.isRo() ? 'Stoc epuizat' : 'Out of stock' }}</span>
                             }
                           </td>
                           <td class="p-3 text-right">
                             <div class="font-semibold text-text-primary tabular-nums text-sm">
-                              {{ prod.price_ron.toFixed(2) }} lei
+                              {{ prod.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                             </div>
                           </td>
                           <td class="p-3 text-center">
                             <div class="flex items-center justify-center gap-1.5">
                               <button 
-                                type="button"
+                                type="button" 
                                 (click)="$event.stopPropagation(); wishlistService.toggleWishlist(prod)"
                                 [class.is-active]="wishlistService.isWishlisted(prod.id)"
                                 class="heart-button w-7 h-7 rounded-md bg-surface-elevated border border-border flex items-center justify-center text-text-muted hover:text-rose-500 transition-colors"
-                                aria-label="Wishlist">
+                                [attr.aria-label]="i18n.isRo() ? 'Favorite' : 'Wishlist'">
                                 <svg class="w-3.5 h-3.5" [attr.fill]="wishlistService.isWishlisted(prod.id) ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                                 </svg>
                               </button>
                               <button 
-                                type="button"
+                                type="button" 
                                 (click)="addToCartWithFeedback(prod)"
                                 [disabled]="prod.stock <= 0"
                                 [class.btn-added-state]="isJustAdded(prod.id)"
@@ -616,16 +616,16 @@ import { Category, Product } from '../../models/product.model';
                   </div>
                   <div class="flex items-center gap-1.5">
                     <button 
-                      type="button"
+                      type="button" 
                       (click)="setPage(currentPage() - 1)"
                       [disabled]="currentPage() === 1"
                       class="pagination-btn px-2.5 py-1.5 rounded-md border border-border bg-surface-base text-text-primary text-xs disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-elevated transition-colors"
-                      aria-label="Pagina precedentă">
+                      [attr.aria-label]="i18n.isRo() ? 'Pagina precedentă' : 'Previous page'">
                       &larr;
                     </button>
                     @for (p of pagesArray(); track p) {
                       <button 
-                        type="button"
+                        type="button" 
                         (click)="setPage(p)"
                         [class.is-active]="currentPage() === p"
                         class="pagination-btn px-3 py-1.5 rounded-md border border-border bg-surface-base text-text-primary text-xs font-semibold hover:bg-surface-elevated transition-all">
@@ -633,11 +633,11 @@ import { Category, Product } from '../../models/product.model';
                       </button>
                     }
                     <button 
-                      type="button"
+                      type="button" 
                       (click)="setPage(currentPage() + 1)"
                       [disabled]="currentPage() === totalPages()"
                       class="pagination-btn px-2.5 py-1.5 rounded-md border border-border bg-surface-base text-text-primary text-xs disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-elevated transition-colors"
-                      aria-label="Pagina următoare">
+                      [attr.aria-label]="i18n.isRo() ? 'Pagina următoare' : 'Next page'">
                       &rarr;
                     </button>
                   </div>
@@ -658,27 +658,27 @@ import { Category, Product } from '../../models/product.model';
                (click)="$event.stopPropagation()">
             
             <div class="flex items-center justify-between pb-3 border-b border-border">
-              <h3 class="font-heading font-semibold text-text-primary text-sm">Filtre Tehnice Catalog</h3>
-              <button (click)="mobileFiltersOpen.set(false)" class="text-text-muted hover:text-text-primary p-1" aria-label="Închide filtre">
+              <h3 class="font-heading font-semibold text-text-primary text-sm">{{ i18n.isRo() ? 'Filtre Tehnice Catalog' : 'Catalog Technical Filters' }}</h3>
+              <button (click)="mobileFiltersOpen.set(false)" class="text-text-muted hover:text-text-primary p-1" [attr.aria-label]="i18n.isRo() ? 'Închide filtre' : 'Close filters'">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
               </button>
             </div>
 
             <div class="space-y-1">
               <div class="flex justify-between text-xs text-text-secondary">
-                <span>Preț Maxim:</span>
-                <span class="font-bold text-text-primary tabular-nums">{{ maxPrice }} lei</span>
+                <span>{{ i18n.isRo() ? 'Preț Maxim:' : 'Max Price:' }}</span>
+                <span class="font-bold text-text-primary tabular-nums">{{ maxPrice }} {{ i18n.currencyLabel() }}</span>
               </div>
               <input type="range" min="10" max="8000" step="50" [(ngModel)]="maxPrice" (change)="applyFilters()" class="w-full accent-primary">
             </div>
 
             <label class="flex items-center gap-2 text-xs text-text-primary">
               <input type="checkbox" [(ngModel)]="onlyInStock" (change)="applyFilters()" class="rounded bg-surface-sunken border-border text-primary">
-              <span>Doar produse în stoc</span>
+              <span>{{ 'filter_instock_only' | translate }}</span>
             </label>
 
             <div class="space-y-1">
-              <div class="text-[10px] text-text-muted uppercase font-medium">Arhitectură CPU</div>
+              <div class="text-[10px] text-text-muted uppercase font-medium">{{ i18n.isRo() ? 'Arhitectură CPU' : 'CPU Architecture' }}</div>
               <div class="grid grid-cols-2 gap-1 text-xs">
                 @for (arch of ['ARM64', 'x86_64', 'RISC-V', 'ESP32', 'FPGA']; track arch) {
                   <button type="button" (click)="toggleArchitecture(arch)"
@@ -693,10 +693,10 @@ import { Category, Product } from '../../models/product.model';
 
             <div class="pt-3 border-t border-border flex gap-2">
               <button (click)="resetFilters(); mobileFiltersOpen.set(false)" class="w-1/2 py-2 rounded bg-surface-elevated text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors">
-                Resetează
+                {{ i18n.isRo() ? 'Resetează' : 'Reset' }}
               </button>
               <button (click)="mobileFiltersOpen.set(false)" class="w-1/2 py-2 rounded bg-primary hover:bg-primary-hover text-primary-contrast text-xs font-semibold transition-colors">
-                Aplică Filtre
+                {{ i18n.isRo() ? 'Aplică Filtre' : 'Apply Filters' }}
               </button>
             </div>
 
@@ -760,7 +760,7 @@ export class CatalogComponent implements OnInit {
     setTimeout(() => {
       this.justAddedProductIds.update(ids => ids.filter(id => id !== prod.id));
     }, 1800);
-    this.uiFeedback.showToast(`${prod.name} adăugat în coș`, 'success');
+    this.uiFeedback.showToast(this.i18n.isRo() ? `${prod.name} adăugat în coș` : `${prod.name} added to cart`, 'success');
   }
 
   setPage(page: number) {

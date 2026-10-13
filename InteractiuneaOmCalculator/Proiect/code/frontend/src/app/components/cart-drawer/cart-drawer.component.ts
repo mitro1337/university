@@ -65,11 +65,11 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
             } @else {
               <span class="text-text-muted text-[11px]">
                 {{ 'free_shipping_progress' | translate }} 
-                <strong class="text-text-primary tabular-nums">{{ cartService.freeShippingRemaining().toFixed(2) }} lei</strong>
+                <strong class="text-text-primary tabular-nums">{{ cartService.freeShippingRemaining().toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</strong>
                 {{ 'free_shipping_progress_tail' | translate }}
               </span>
             }
-            <span class="text-[11px] text-text-muted tabular-nums">250.00 lei</span>
+            <span class="text-[11px] text-text-muted tabular-nums">250.00 {{ i18n.isRo() ? 'lei' : 'RON' }}</span>
           </div>
           
           <div class="w-full h-1.5 bg-surface border border-border rounded-full overflow-hidden">
@@ -168,11 +168,11 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
 
                     <div class="text-right">
                       <span class="text-xs font-bold text-text-primary tabular-nums">
-                        {{ (item.product.price_ron * item.quantity).toFixed(2) }} lei
+                        {{ (item.product.price_ron * item.quantity).toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}
                       </span>
                       @if (item.quantity > 1) {
                         <div class="text-[10px] text-text-muted tabular-nums">
-                          ({{ item.product.price_ron.toFixed(2) }} lei/buc)
+                          ({{ item.product.price_ron.toFixed(2) }} {{ i18n.isRo() ? 'lei/buc' : 'RON/pc' }})
                         </div>
                       }
                     </div>
@@ -199,19 +199,19 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
             <div class="space-y-1.5 text-xs">
               <div class="flex justify-between text-text-muted">
                 <span>{{ 'cart_subtotal' | translate }}</span>
-                <span class="text-text-primary tabular-nums font-semibold">{{ cartService.subtotal().toFixed(2) }} lei</span>
+                <span class="text-text-primary tabular-nums font-semibold">{{ cartService.subtotal().toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</span>
               </div>
               <div class="flex justify-between text-text-muted">
                 <span>{{ 'cart_shipping' | translate }}</span>
                 @if (cartService.isFreeShipping()) {
                   <span class="text-emerald-400 font-medium">{{ 'shipping_free' | translate }}</span>
                 } @else {
-                  <span class="text-text-primary tabular-nums font-semibold">{{ cartService.shippingEstimate().toFixed(2) }} lei</span>
+                  <span class="text-text-primary tabular-nums font-semibold">{{ cartService.shippingEstimate().toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</span>
                 }
               </div>
               <div class="pt-2 border-t border-border flex justify-between text-sm font-semibold text-text-primary">
                 <span>{{ 'cart_total_estimated' | translate }}</span>
-                <span class="text-text-primary tabular-nums text-base font-bold">{{ cartService.total().toFixed(2) }} lei</span>
+                <span class="text-text-primary tabular-nums text-base font-bold">{{ cartService.total().toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</span>
               </div>
               <div class="text-[10px] text-text-muted text-right">
                 {{ 'summary_vat_note' | translate }}
@@ -223,10 +223,10 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                   <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
                   <span class="text-text-primary font-medium">
                     {{ i18n.isRo() ? 'sau 3 rate de ' : 'or 3 installments of ' }}
-                    <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (cartService.total() / 3).toFixed(2) }} lei</strong>
+                    <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (cartService.total() / 3).toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</strong>
                   </span>
                 </div>
-                <span class="text-[#FFB3C7] text-[10px] font-semibold">0% dobândă</span>
+                <span class="text-[#FFB3C7] text-[10px] font-semibold">{{ i18n.isRo() ? '0% dobândă' : '0% interest' }}</span>
               </div>
             </div>
 

@@ -36,7 +36,7 @@ import { TranslationService } from '../../services/translation.service';
             <button 
               type="button" 
               (click)="a11yService.closeModal()"
-              aria-label="Închide"
+              [attr.aria-label]="i18n.isRo() ? 'Închide' : 'Close'"
               class="w-8 h-8 rounded-lg flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-surface-sunken transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -59,7 +59,7 @@ import { TranslationService } from '../../services/translation.service';
                   [class.text-text-secondary]="a11yService.fontScale() !== 'normal'"
                   [class.border-border]="a11yService.fontScale() !== 'normal'"
                   class="py-2.5 px-3 rounded-xl text-xs font-semibold border transition-colors text-center hover:border-accent">
-                  100% (Normal)
+                  100% ({{ i18n.isRo() ? 'Normal' : 'Normal' }})
                 </button>
                 <button 
                   type="button"
@@ -71,7 +71,7 @@ import { TranslationService } from '../../services/translation.service';
                   [class.text-text-secondary]="a11yService.fontScale() !== 'large'"
                   [class.border-border]="a11yService.fontScale() !== 'large'"
                   class="py-2.5 px-3 rounded-xl text-xs font-semibold border transition-colors text-center hover:border-accent">
-                  115% (Mare)
+                  115% ({{ i18n.isRo() ? 'Mare' : 'Large' }})
                 </button>
                 <button 
                   type="button"
@@ -102,7 +102,7 @@ import { TranslationService } from '../../services/translation.service';
                 (click)="a11yService.toggleHighContrast()"
                 [class.bg-accent]="a11yService.highContrast()"
                 [class.bg-surface-sunken]="!a11yService.highContrast()"
-                aria-label="Comută contrastul ridicat"
+                [attr.aria-label]="i18n.isRo() ? 'Comută contrastul ridicat' : 'Toggle high contrast'"
                 class="w-12 h-6 rounded-full relative transition-colors p-0.5 border border-border flex items-center">
                 <span 
                   [class.translate-x-6]="a11yService.highContrast()"
@@ -126,7 +126,7 @@ import { TranslationService } from '../../services/translation.service';
                 (click)="a11yService.toggleReducedMotion()"
                 [class.bg-accent]="a11yService.reducedMotion()"
                 [class.bg-surface-sunken]="!a11yService.reducedMotion()"
-                aria-label="Comută reducerea animațiilor"
+                [attr.aria-label]="i18n.isRo() ? 'Comută reducerea animațiilor' : 'Toggle reduced motion'"
                 class="w-12 h-6 rounded-full relative transition-colors p-0.5 border border-border flex items-center">
                 <span 
                   [class.translate-x-6]="a11yService.reducedMotion()"
