@@ -233,6 +233,91 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
               </div>
 
               <div class="space-y-3">
+                <!-- Klarna Buy Now Pay Later Option -->
+                <label 
+                  class="p-4 rounded-xl border-2 cursor-pointer block transition-all"
+                  [class.border-[#FFB3C7]]="formData.paymentMethod === 'klarna_bnpl'"
+                  [class.bg-[#fff5f8]/5]="formData.paymentMethod === 'klarna_bnpl'"
+                  [class.shadow-md]="formData.paymentMethod === 'klarna_bnpl'"
+                  [class.border-border]="formData.paymentMethod !== 'klarna_bnpl'"
+                  [class.bg-surface]="formData.paymentMethod !== 'klarna_bnpl'">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                      <input 
+                        type="radio" 
+                        name="paymentMethod" 
+                        value="klarna_bnpl" 
+                        [(ngModel)]="formData.paymentMethod"
+                        class="text-[#FFB3C7] focus:ring-[#FFB3C7] mt-0.5">
+                      <div>
+                        <div class="text-xs font-bold text-text-primary flex items-center gap-2">
+                          <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[11px] tracking-tight">Klarna.</span>
+                          <span>{{ i18n.isRo() ? 'Cumpără acum, plătește mai târziu' : 'Buy Now, Pay Later' }}</span>
+                          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#FFB3C7]/20 text-[#FFB3C7] border border-[#FFB3C7]/40 font-bold">
+                            0% Dobândă
+                          </span>
+                        </div>
+                        <p class="text-[11px] text-text-muted mt-1 leading-relaxed">
+                          {{ i18n.isRo() 
+                            ? 'Plătește în 3 rate fără dobândă de ' + (finalTotal() / 3).toFixed(2) + ' lei sau amână plata cu 30 de zile. Fără comisioane.' 
+                            : 'Pay in 3 interest-free installments of ' + (finalTotal() / 3).toFixed(2) + ' lei or in 30 days. No fees.' }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  @if (formData.paymentMethod === 'klarna_bnpl') {
+                    <div class="mt-3 pt-3 border-t border-border space-y-2.5">
+                      <div class="text-[11px] font-semibold text-text-primary">
+                        {{ i18n.isRo() ? 'Alege planul tău de plată Klarna:' : 'Select your Klarna plan:' }}
+                      </div>
+
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <label 
+                          class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between"
+                          [class.border-[#FFB3C7]]="formData.klarnaPlan === 'pay_in_3'"
+                          [class.bg-surface-elevated]="formData.klarnaPlan === 'pay_in_3'"
+                          [class.border-border]="formData.klarnaPlan !== 'pay_in_3'">
+                          <div class="flex items-center gap-2">
+                            <input 
+                              type="radio" 
+                              name="klarnaPlan" 
+                              value="pay_in_3" 
+                              [(ngModel)]="formData.klarnaPlan"
+                              class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
+                            <span class="font-medium text-text-primary">3 Rate fără dobândă</span>
+                          </div>
+                          <span class="text-[#FFB3C7] font-bold tabular-nums">{{ (finalTotal() / 3).toFixed(2) }} lei</span>
+                        </label>
+
+                        <label 
+                          class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between"
+                          [class.border-[#FFB3C7]]="formData.klarnaPlan === 'pay_in_30_days'"
+                          [class.bg-surface-elevated]="formData.klarnaPlan === 'pay_in_30_days'"
+                          [class.border-border]="formData.klarnaPlan !== 'pay_in_30_days'">
+                          <div class="flex items-center gap-2">
+                            <input 
+                              type="radio" 
+                              name="klarnaPlan" 
+                              value="pay_in_30_days" 
+                              [(ngModel)]="formData.klarnaPlan"
+                              class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
+                            <span class="font-medium text-text-primary">Plătește în 30 zile</span>
+                          </div>
+                          <span class="text-text-muted font-bold">0 lei azi</span>
+                        </label>
+                      </div>
+
+                      <div class="p-2.5 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-muted flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>{{ i18n.isRo() ? 'Aprobare instantanee pe loc la următorul pas prin SMS securizat.' : 'Instant soft check with secure SMS verification.' }}</span>
+                      </div>
+                    </div>
+                  }
+                </label>
+
                 <label 
                   class="p-4 rounded-lg border cursor-pointer block transition-colors"
                   [class.border-accent]="formData.paymentMethod === 'stripe_card'"
@@ -354,6 +439,11 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 @if (submitting()) {
                   <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>{{ 'btn_generating' | translate }}</span>
+                } @else if (formData.paymentMethod === 'klarna_bnpl') {
+                  <span class="flex items-center gap-1.5 font-bold">
+                    <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
+                    <span>Plătește prin Klarna (3 rate) →</span>
+                  </span>
                 } @else if (formData.paymentMethod === 'stripe_card') {
                   <span>{{ 'btn_pay_stripe' | translate }}</span>
                 } @else {
@@ -418,7 +508,8 @@ export class CheckoutComponent {
     county: 'București',
     postalCode: '',
     deliveryMethod: 'curier_sameday' as 'curier_sameday' | 'easybox' | 'ridicare_bucuresti',
-    paymentMethod: 'stripe_card' as 'stripe_card' | 'cash_on_delivery',
+    paymentMethod: 'klarna_bnpl' as 'klarna_bnpl' | 'stripe_card' | 'cash_on_delivery',
+    klarnaPlan: 'pay_in_3' as 'pay_in_3' | 'pay_in_30_days' | 'financing',
     notes: ''
   };
 
@@ -485,7 +576,10 @@ export class CheckoutComponent {
         this.submitting.set(false);
         this.cartService.clearCart();
 
-        if (res.paymentMethod === 'stripe_card' && res.stripe?.paymentUrl) {
+        if (res.paymentMethod === 'klarna_bnpl') {
+          const url = res.klarna?.paymentUrl || `/checkout/klarna-gateway?orderId=${res.orderNumber}&amount=${this.finalTotal()}&plan=${this.formData.klarnaPlan}`;
+          this.router.navigateByUrl(url);
+        } else if (res.paymentMethod === 'stripe_card' && res.stripe?.paymentUrl) {
           this.router.navigateByUrl(res.stripe.paymentUrl);
         } else if (res.redirectUrl) {
           this.router.navigateByUrl(res.redirectUrl);

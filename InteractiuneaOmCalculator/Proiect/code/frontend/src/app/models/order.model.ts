@@ -27,9 +27,11 @@ export interface OrderDetails {
   shipping_ron: number;
   total_ron: number;
   status: 'pending_payment' | 'paid' | 'processing' | 'shipped' | 'cancelled';
-  payment_method: 'stripe_card' | 'netopia_card' | 'cash_on_delivery';
+  payment_method: 'stripe_card' | 'netopia_card' | 'cash_on_delivery' | 'klarna_bnpl';
   netopia_transaction_id?: string;
   netopia_auth_code?: string;
+  klarna_plan?: 'pay_in_3' | 'pay_in_30_days' | 'financing';
+  klarna_installments?: { number: number; amount: number; dueDate: string; paid: boolean }[];
   created_at: string;
   items: OrderItemDetails[];
 }
@@ -43,7 +45,8 @@ export interface CheckoutRequest {
   county: string;
   postalCode?: string;
   deliveryMethod: 'curier_sameday' | 'easybox' | 'ridicare_bucuresti';
-  paymentMethod: 'stripe_card' | 'netopia_card' | 'cash_on_delivery';
+  paymentMethod: 'stripe_card' | 'netopia_card' | 'cash_on_delivery' | 'klarna_bnpl';
+  klarnaPlan?: 'pay_in_3' | 'pay_in_30_days' | 'financing';
   notes?: string;
   items: {
     productId: number;
@@ -70,5 +73,12 @@ export interface CheckoutResponse {
   netopia?: {
     paymentUrl: string;
     token: string;
+  };
+  klarna?: {
+    sessionId: string;
+    clientToken: string;
+    paymentUrl: string;
+    plan: 'pay_in_3' | 'pay_in_30_days' | 'financing';
+    installments: { number: number; amount: number; dueDate: string; paid: boolean }[];
   };
 }

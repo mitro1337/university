@@ -4,6 +4,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { StripeGatewayComponent } from './pages/stripe-gateway/stripe-gateway.component';
+import { KlarnaGatewayComponent } from './pages/klarna-gateway/klarna-gateway.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { OrderTrackingComponent } from './pages/order-tracking/order-tracking.component';
 import { TermsComponent } from './pages/terms/terms.component';
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'compara', component: ComparisonComponent, title: 'Comparator Echipamente | Vexera' },
   { path: 'compare', redirectTo: 'compara' },
   { path: 'checkout', component: CheckoutComponent, title: 'Finalizare Comandă | Vexera' },
+  { path: 'checkout/klarna-gateway', component: KlarnaGatewayComponent, title: 'Klarna Pay Later | Vexera' },
   { path: 'checkout/stripe-gateway', component: StripeGatewayComponent, title: 'Stripe Payments | Vexera' },
   { path: 'checkout/netopia-gateway', redirectTo: 'checkout/stripe-gateway' },
   { path: 'checkout/confirmare', component: OrderConfirmationComponent, title: 'Confirmare Comandă | Vexera' },

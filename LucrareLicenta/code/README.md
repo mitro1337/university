@@ -14,9 +14,9 @@
 
 ---
 
-## 1. Executive Overview
+## 1. Prezentare Generală
 
-Acest director (`licenta/LL3-LucrareLicenta/code`) conține suita autonomă de simulare, procesare financiară și testare a rezilienței cibernetice dezvoltată în cadrul lucrării de licență:
+Acest director conține codul sursă și simulările practice dezvoltate pentru lucrarea de licență:
 
 > **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
 > **Coordonator Științific:** prof. univ. dr. Georgeta Soava  
@@ -30,12 +30,12 @@ Acest director (`licenta/LL3-LucrareLicenta/code`) conține suita autonomă de s
 * **Practici, simulări și exemple:** Red-teaming ușor (bruteforce, hacking etic pe mașina mea virtuală personală), honeypot pe un OS vechi (Windows Server 2003/2008 sau Windows 7), simularea unui mediu bancar (sisteme Windows 10/11 + Active Directory), analiză malware pe Windows 10 dedicat, vulnerabilitate rețele Wi-Fi (ESP32 Bruce/Marauder) & detecție SOC, simulare atacuri APT, reverse engineering (IDA, Ghidra, x64dbg).
 * **Mențiune obligatorie:** Între VM-urile mele, niciun atac nu va părăsi mașinile mele virtuale; lucrarea de licență va fi efectuată într-un cadru legal.
 
-Suita reproduce comportamentul operațional al unui sistem bancar integrat distribuit pe 4 active virtualizate pe platforma de virtualizare **Proxmox VE**, segmentate prin firewall perimetral de nivel L3 (**OPNsense**) și monitorizate continuu prin sisteme de detecție a intruziunilor (**Suricata NIDS/IPS**) și SIEM (**Wazuh HIDS**):
+Aplicația simulează un mediu bancar distribuit pe 4 mașini virtuale în Proxmox VE, segmentate prin firewall OPNsense (L3) și monitorizate cu Suricata și Wazuh:
 
-* **VM 310 (Core-Banking Engine):** Motor central inspirat din modelul de contabilitate bancară *Apache Fineract / Mifos X*, implementând principiul partidei duble (*Debite = Credite*), registrul contabil neschimbabil (General Ledger) protejat prin lanț de hash-uri criptografice SHA-256 și control strict al accesului (RBAC).
-* **VM 311 (Financial Database & Wazuh Auditor):** Bază de date relațională financiară (model PostgreSQL) cu tranzacții atomice (ACID), constrângeri stricte de integritate referențială și un motor de inspecție SIEM capabil să detecteze tentative de SQL Injection și manipulare ilicită a soldurilor (*Balance Tampering* — Regula Nivel 14).
-* **CT 312 (Payment Gateway & SWIFT Simulator):** Microserviciu FastAPI pentru autorizarea plăților electronice cu carduri (Visa, Mastercard, Amex), verificarea sumei de control Luhn (Mod 10), mascare PCI-DSS PAN, verificări de viteză anti-fraudă (*Card Stuffing*) și decontare interbancară de mare valoare (**SWIFT MT103 / ISO 20022 pacs.008** cu identificator unic UETR RFC 4122).
-* **VM 313 (Hardened Bastion Jump-Box):** Punct unic de acces administrativ în rețeaua de management (VLAN 10) securizat prin chei criptografice Ed25519 și autentificare cu doi factori (MFA/TOTP), blocând tentativele de traversare laterală către serverele bancare din VLAN 20.
+* **VM 310 (Core-Banking Engine):** Motor contabil scris în Python/FastAPI, bazat pe principiul partidei duble (*Debite = Credite*). Tranzacțiile sunt salvate într-un registru securizat printr-un lanț de hash-uri SHA-256.
+* **VM 311 (Bază de date financiară & Wazuh):** Bază de date relațională (PostgreSQL) cu tranzacții atomice (ACID). Un script de audit monitorizează interogările și generează alerte Wazuh la detectarea atacurilor de tip SQL Injection sau a modificărilor directe de sold (*Balance Tampering*).
+* **CT 312 (Payment Gateway & SWIFT API):** Serviciu FastAPI pentru procesarea plăților cu cardul (validare Luhn Mod 10, mascare PAN și protecție anti-flood) și mesagerie interbancară pe standardul SWIFT / ISO 20022 (`pacs.008`).
+* **VM 313 (Bastion Jump-Box):** Punct de acces administrativ pentru VLAN-ul de management, securizat cu chei SSH Ed25519 și autentificare MFA (TOTP).
 
 ---
 
@@ -250,11 +250,11 @@ CREATE TABLE audit_log (
 
 ## 4. Securitate, Matricea MITRE ATT&CK și Audit Wazuh SIEM
 
-Sistemul implementează principiul **Defense in Depth** (Apărare în Adâncime), combinând mecanisme preventive, restrictive și detective la fiecare nivel arhitectural.
+Sistemul combină mai multe niveluri de protecție (rețea, sistem de operare și aplicație).
 
 ### 4.1. Matricea de Testare Red Team vs. Blue Team (5 Scenarii Validate)
 
-Toate cele 5 scenarii sunt validate în mod automat prin `banking_attack_simulator.py` și integrate în pipeline-ul CI:
+Cele 5 scenarii sunt testate automat prin `banking_attack_simulator.py` și verificate în pipeline-ul CI:
 
 | ID Scenariu | Denumire Scenariu | Tactică MITRE | Tehnică & ID MITRE | Vector de Atac Simulat | Mecanism Defensiv Implementat | Răspuns Detecție & Regulă Wazuh SIEM | Rezultat Test |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -266,11 +266,11 @@ Toate cele 5 scenarii sunt validate în mod automat prin `banking_attack_simulat
 
 ### 4.2. Integritatea Criptografică a Cărții Mari (General Ledger)
 
-Pentru garantarea integrității datelor contabile împotriva fraudelor interne sau manipulărilor directe de baze de date, fiecare intrare în registru este securizată printr-un lanț de blocuri criptografice:
+Pentru a preveni modificarea neautorizată a istoricului tranzacțiilor direct în baza de date, fiecare înregistrare este legată criptografic de cea anterioară printr-un hash SHA-256:
 
 $$\text{Hash}_n = \text{SHA-256}\left(\text{Hash}_{n-1} \parallel \text{TxID}_n \parallel \text{SourceIBAN} \parallel \text{DestIBAN} \parallel \text{Amount} \parallel \text{Timestamp}\right)$$
 
-La fiecare pornire a serviciului sau interogare pe endpoint-ul `/api/v1/health`, motorul recalculează întregul arbore de hash-uri. Orice modificare la nivel de bit invalidează lanțul și blochează tranzacționarea.
+La pornirea serviciului sau la apelarea endpoint-ului `/api/v1/health`, motorul verifică lanțul complet. Dacă o singură înregistrare a fost alterată, lanțul se rupe și tranzacțiile noi sunt blocate automat.
 
 ---
 

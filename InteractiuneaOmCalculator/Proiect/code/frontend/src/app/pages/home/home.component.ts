@@ -107,6 +107,20 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
             </div>
           </div>
         </div>
+
+        <!-- Klarna BNPL Highlights Bar -->
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-text-muted">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated border border-[#FFB3C7]/40 shadow-xs">
+            <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
+            <span class="text-text-primary font-medium">
+              {{ i18n.isRo() ? 'Cumpără acum, plătește în 3 rate fără dobândă (0% DAE)' : 'Buy now, pay in 3 interest-free installments (0% APR)' }}
+            </span>
+          </div>
+          <div class="inline-flex items-center gap-1.5 text-[11px] text-emerald-400">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span>Fără card de credit • Aprobare pe loc</span>
+          </div>
+        </div>
       </div>
 
     </section>

@@ -150,7 +150,38 @@ checkoutRouter.post('/order', async (req: Request, res: Response) => {
 
     await conn.commit();
 
-        if (paymentMethod === 'stripe_card' || paymentMethod === 'netopia_card') {
+        if (paymentMethod === 'klarna_bnpl') {
+      const plan = req.body.klarnaPlan || 'pay_in_3';
+      const installmentAmount = +(total / 3).toFixed(2);
+      const now = new Date();
+      const d30 = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+      const d60 = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
+
+      const installments = [
+        { number: 1, amount: installmentAmount, dueDate: now.toISOString().slice(0, 10), paid: false },
+        { number: 2, amount: installmentAmount, dueDate: d30.toISOString().slice(0, 10), paid: false },
+        { number: 3, amount: +(total - (installmentAmount * 2)).toFixed(2), dueDate: d60.toISOString().slice(0, 10), paid: false }
+      ];
+
+      return res.status(201).json({
+        success: true,
+        orderNumber,
+        subtotal,
+        shipping,
+        total,
+        paymentMethod: 'klarna_bnpl',
+        redirectUrl: `/checkout/klarna-gateway?orderId=${orderNumber}&amount=${total}&plan=${plan}`,
+        klarna: {
+          sessionId: `klarna_sess_${Date.now()}`,
+          clientToken: `kl_ct_${Math.random().toString(36).substring(7)}`,
+          paymentUrl: `/checkout/klarna-gateway?orderId=${orderNumber}&amount=${total}&plan=${plan}`,
+          plan,
+          installments
+        }
+      });
+    }
+
+    if (paymentMethod === 'stripe_card' || paymentMethod === 'netopia_card') {
       const stripeData = await stripeService.createPaymentIntent({
         orderNumber,
         amount: total,
@@ -277,6 +308,36 @@ checkoutRouter.post('/stripe/confirm', async (req: Request, res: Response) => {
   } catch (error: any) {
     console.error('Error confirming Stripe payment:', error);
     res.status(500).json({ error: error.message || 'Eroare la confirmarea plății Stripe' });
+  }
+});
+
+// POST /api/checkout/klarna/confirm - Process Klarna BNPL authorization
+checkoutRouter.post('/klarna/confirm', async (req: Request, res: Response) => {
+  try {
+    const { orderNumber, status = 'authorized', plan = 'pay_in_3' } = req.body;
+    console.log(`Processing Klarna authorization for order ${orderNumber}: ${status} (${plan})`);
+
+    if (!orderNumber) {
+      return res.status(400).json({ error: 'orderNumber este obligatoriu' });
+    }
+
+    if (status === 'authorized') {
+      await pool.query(
+        `UPDATE orders SET status = 'paid', payment_method = 'klarna_bnpl' WHERE order_number = ?`,
+        [orderNumber]
+      );
+    }
+
+    res.json({
+      success: status === 'authorized',
+      orderNumber,
+      status,
+      plan,
+      message: status === 'authorized' ? 'Aprobare Klarna acordată cu succes.' : 'Cerere Klarna respinsă.'
+    });
+  } catch (error: any) {
+    console.error('Error confirming Klarna payment:', error);
+    res.status(500).json({ error: error.message || 'Eroare la confirmarea plății Klarna' });
   }
 });
 

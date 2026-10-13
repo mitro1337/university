@@ -5,11 +5,12 @@ import { TranslationService } from '../../services/translation.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { OrderDetails } from '../../models/order.model';
 import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
+import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3d.component';
 
 @Component({
   selector: 'app-order-confirmation',
   standalone: true,
-  imports: [RouterLink, TranslatePipe, UiBadgeComponent],
+  imports: [RouterLink, TranslatePipe, UiBadgeComponent, ReceiptPrinter3dComponent],
   template: `
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       
@@ -36,6 +37,9 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
         @let ord = order()!;
         <div class="space-y-6">
           
+          <!-- 3D Tactile POS Receipt Printer Experience -->
+          <app-receipt-printer-3d [order]="ord"></app-receipt-printer-3d>
+
           <div class="p-6 sm:p-8 rounded-xl bg-surface border border-border shadow-xs space-y-4 text-center sm:text-left transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
               <div class="flex items-center gap-4 justify-center sm:justify-start">
@@ -44,7 +48,11 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
                 </div>
                 <div>
                   <div class="mb-1">
-                    @if (ord.status === 'paid') {
+                    @if (ord.payment_method === 'klarna_bnpl') {
+                      <app-ui-badge variant="mono">
+                        <span class="text-[#FFB3C7] font-bold">Klarna Pay in 3</span> • {{ i18n.isRo() ? '0% Dobândă • Autorizat' : '0% Interest • Authorized' }}
+                      </app-ui-badge>
+                    } @else if (ord.status === 'paid') {
                       <app-ui-badge variant="success">{{ i18n.isRo() ? 'Plată Confirmată • Securizat' : 'Payment Confirmed • Secured' }}</app-ui-badge>
                     } @else if (ord.status === 'processing') {
                       <app-ui-badge variant="accent">{{ i18n.isRo() ? 'Comandă Preluată • Plată Ramburs' : 'Order Received • Cash on Delivery' }}</app-ui-badge>
@@ -91,14 +99,16 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
                   {{ i18n.isRo() ? 'Tranzacție / Plată' : 'Transaction / Payment' }}
                 </div>
                 <div class="text-text-primary font-bold mt-0.5 truncate">
-                  @if (ord.payment_method === 'stripe_card') {
+                  @if (ord.payment_method === 'klarna_bnpl') {
+                    Klarna (Rata 1/3 Achitată)
+                  } @else if (ord.payment_method === 'stripe_card') {
                     {{ ord.netopia_transaction_id || 'Confirmat Card' }}
                   } @else {
                     {{ i18n.isRo() ? 'Plată la livrare (Ramburs)' : 'Cash on Delivery' }}
                   }
                 </div>
                 <div class="text-[10px] text-text-muted mt-1">
-                  {{ ord.payment_method === 'stripe_card' ? (ord.netopia_auth_code ? 'Auth: ' + ord.netopia_auth_code : '3D-Secure Verified') : 'Sameday Logistics' }}
+                  {{ ord.payment_method === 'klarna_bnpl' ? 'Klarna Bank AB • 0% DAE' : (ord.payment_method === 'stripe_card' ? (ord.netopia_auth_code ? 'Auth: ' + ord.netopia_auth_code : '3D-Secure Verified') : 'Sameday Logistics') }}
                 </div>
               </div>
             </div>

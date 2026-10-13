@@ -34,20 +34,20 @@ Windows Server, Linux, networking TCP/IP, wire shark, tcpdump, SIEMuri precum Sp
 
 ## 1. Prezentare Generală
 
-Acest director (`licenta/LL3-LucrareLicenta`) găzduiește artefactele software, componentele de simulare financiar-bancară, infrastructura de testare defensivă și documentația academică oficială aferentă lucrării de licență orientate către auditul și reziliența cibernetică a sistemelor digitale.
+Aici se află codul sursă, simulările practice și documentația pentru lucrarea de licență.
 
-Arhitectura reproduce fidel un ecosistem financiar multi-nivel integrat cu standardele **PCI-DSS v4.0**, **PSD2 / EBA RTS**, **DORA (Regulamentul UE 2022/2554)** și **ISO 20022**:
-1. **VM 310 (Core-Banking Engine):** Motor central contabil în partidă dublă (*Debite = Credite*) cu ledger tamper-evident SHA-256.
-2. **VM 311 (Financial Database & Wazuh Auditor):** Bază de date relațională cu auditare tranzacțională ACID și detecție Wazuh SIEM pentru SQLi și *Balance Tampering* (Regula Nivel 14).
-3. **CT 312 (Payment Gateway & SWIFT Simulator):** Microserviciu FastAPI pentru autorizări card (algoritm Luhn Mod 10, mascare PAN) și mesagerie interbancară SWIFT MT103 / ISO 20022 pacs.008 cu UETR RFC 4122.
-4. **VM 313 (Hardened Bastion Jump-Box):** Punct de acces administrativ securizat prin chei criptografice Ed25519 și autentificare MFA.
-5. **Web Banking Kiosk:** Interfață web interactivă de terminal bancar securizat (HTML5/CSS3/Vanilla JS) cu backend Spring Boot 3.2 (Java 17) și telemetrie live către Wazuh SIEM.
+Proiectul conține un laborator de testare a rezilienței bancare conectat la un SIEM (Wazuh), segmentat pe mașini virtuale în Proxmox VE și protejat prin reguli de firewall L3 (OPNsense):
+1. **VM 310 (Core-Banking Engine):** Motor contabil în partidă dublă (*Debite = Credite*) cu registru tranzacțional securizat prin lanț de hash-uri SHA-256.
+2. **VM 311 (Bază de date financiară & Wazuh):** Bază de date relațională (ACID) și agent Wazuh configurat să detecteze tentative de SQL Injection și modificări neautorizate de sold (*Balance Tampering*).
+3. **CT 312 (Payment Gateway & SWIFT):** Serviciu FastAPI pentru validarea plăților cu cardul (Luhn Mod 10, mascare PAN, protecție anti-flood) și mesagerie interbancară pe standardul SWIFT / ISO 20022 (`pacs.008`).
+4. **VM 313 (Bastion Jump-Box):** Punct de acces administrativ prin SSH (chei Ed25519 și autentificare MFA).
+5. **Web Banking Kiosk:** Terminal web de casierie/ATM (Vanilla JS + Spring Boot 3.2 pe Java 17) cu telemetrie JSON trimisă direct către Wazuh.
 
 ---
 
-## 2. CI/CD & DevSecOps Architecture
+## 2. Arhitectură CI/CD & DevSecOps
 
-Pipeline-ul de Integrare Continuă și Livrare Continuă este proiectat la nivel de întreprindere și adaptat pentru repository-ul `stefanutc1/proiecte`. Toate workflow-urile folosesc filtre stricte de cale (`path filters`) pe `licenta/LL3-LucrareLicenta/**`, prevenind execuțiile redundante la modificarea altor proiecte universitare.
+Pipeline-urile din GitHub Actions testează automat codul și compilează documentația LaTeX la fiecare push pe ramura `main` sau deschidere de pull request. Sunt configurate filtre de cale (`path filters`) pe `licenta/LL3-LucrareLicenta/**`, astfel încât workflow-urile să nu ruleze dacă se modifică alte proiecte din repozitoriu.
 
 ### 2.1. Diagrama Arhitecturală a Pipeline-ului
 
@@ -123,9 +123,9 @@ flowchart TD
 
 ---
 
-## 3. Academic Documentation (DOCX & LaTeX)
+## 3. Documentație Academică (DOCX & LaTeX)
 
-Lucrarea de licență beneficiază de o reprezentare completă, versionată și sincronizată atât în format Microsoft Word (`.docx`), cât și în cod sursă modular LaTeX (`.tex` / `.bib`), garantând reproductibilitatea academică, trasabilitatea modificărilor în Git și generarea automată a documentului PDF tipăribil.
+Documentația este disponibilă atât în format Microsoft Word (`.docx`), cât și ca proiect modular LaTeX (`.tex` / `.bib`), permițând versionarea completă a textului în Git și generarea automată a PDF-ului prin CI/CD.
 
 ### 3.1. Structura Fișierelor Academice
 
@@ -163,9 +163,9 @@ python3 scripts/sync_academic_docs.py --verify
 
 ---
 
-## 4. Recomandări Branch Protection & GitHub Settings
+## 4. Recomandări Branch Protection & Setări GitHub
 
-Pentru protejarea ramurii de producție `main` și menținerea standardelor de calitate software, se recomandă activarea următoarelor reguli în setările depozitului GitHub:
+Pentru a proteja ramura `main` și a preveni regresii accidentale, se recomandă activarea următoarelor reguli în setările depozitului:
 
 1. **Branch Protection Rule pe `main`:**
    * **Require a pull request before merging:** Activ (minimum 1 review).

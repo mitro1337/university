@@ -216,6 +216,18 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
               <div class="text-[10px] text-text-muted text-right">
                 {{ 'summary_vat_note' | translate }}
               </div>
+
+              <!-- Klarna Installment Pill in Cart Drawer -->
+              <div class="p-2 rounded-lg bg-surface-elevated border border-[#FFB3C7]/40 flex items-center justify-between text-[11px]">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
+                  <span class="text-text-primary font-medium">
+                    {{ i18n.isRo() ? 'sau 3 rate de ' : 'or 3 installments of ' }}
+                    <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (cartService.total() / 3).toFixed(2) }} lei</strong>
+                  </span>
+                </div>
+                <span class="text-[#FFB3C7] text-[10px] font-semibold">0% dobândă</span>
+              </div>
             </div>
 
             <button 

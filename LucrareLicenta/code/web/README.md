@@ -15,9 +15,9 @@
 
 ---
 
-## 1. Executive Overview
+## 1. Prezentare Generală
 
-Acest modul (`licenta/LL3-LucrareLicenta/code/web`) reprezintă subsistemul de interfață utilizator și backend tranzacțional dezvoltat în cadrul lucrării de licență:
+Acest director conține interfața grafică a terminalului bancar și backend-ul de suport dezvoltat pentru lucrarea de licență:
 
 > **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
 > **Coordonator Științific:** prof. univ. dr. Georgeta Soava  
@@ -31,17 +31,17 @@ Acest modul (`licenta/LL3-LucrareLicenta/code/web`) reprezintă subsistemul de i
 * **Practici, simulări și exemple:** Red-teaming ușor (bruteforce, hacking etic pe mașina mea virtuală personală), honeypot pe un OS vechi (Windows Server 2003/2008 sau Windows 7), simularea unui mediu bancar (sisteme Windows 10/11 + Active Directory), analiză malware pe Windows 10 dedicat, vulnerabilitate rețele Wi-Fi (ESP32 Bruce/Marauder) & detecție SOC, simulare atacuri APT, reverse engineering (IDA, Ghidra, x64dbg).
 * **Mențiune obligatorie:** Între VM-urile mele, niciun atac nu va părăsi mașinile mele virtuale; lucrarea de licență va fi efectuată într-un cadru legal.
 
-Modulul integrează trei capacități inginerești fundamentale:
+Modulul este compus din trei părți:
 
-1. **Backend Enterprise Java Spring Boot 3.2 (Java 17 LTS):** Implementează securitate stateless prin token-uri JWT semnate criptografic (HMAC-SHA256 / JJWT 0.12), control de acces bazat pe roluri (RBAC), servicii tranzacționale în partidă dublă (*Double-Entry Ledger*) și un subsistem de **jurnalizare structurată JSON** orientat către agentul de securitate **Wazuh HIDS / SIEM**.
-2. **Frontend Kiosk Bancar Minimalist (ATM / Self-Service Terminal):** Proiectat conform specificațiilor stricte ale terminalelor ATM securizate:
-   * **Zero Navigation Chrome:** Elimină complet barele de navigare exterioare și elementele de context inutile pentru a preveni devierea sesiunii.
-   * **Tastatură Numerică pe Ecran (On-Screen Touch Keypad):** Protecție nativă împotriva keylogger-elor hardware sau malware-ului instalat pe sistemul gazdă.
-   * **Inactivity Countdown Timer (45s) & Auto-Wipe:** La expirarea timpului de 45 secunde fără activitate, clientul este delogat forțat, token-ul JWT este șters din memorie și din `localStorage`, iar evenimentul este trimis către SIEM.
-   * **Consolă SOC Live Retractabilă:** Consolă integrată la baza ecranului pentru vizualizarea în timp real a telemetriei JSON și simularea atacurilor direct în timpul demonstrației de licență.
-3. **Arhitectură Hibridă Dual-Mode (Live REST & Zero-Dependency Mock):**
-   * **Modul Live (Spring Boot pe Port 8080):** Conectare automată prin `fetch()` asincron la backend-ul Java, persistând evenimentele direct în `/var/log/bank-app/security.log`.
-   * **Modul Demo (Standalone Browser):** Atunci când rulează ca pagină web statică locală fără backend activ, modulul activează automat motorul local `mock-engine.js`, oferind funcționalitate 100% identică în browser fără nicio dependență de infrastructură externă.
+1. **Backend în Spring Boot 3.2 (Java 17):** Folosește autentificare stateless cu token-uri JWT (HMAC-SHA256), autorizare pe roluri (RBAC) și scrie jurnale de audit în format JSON (`/var/log/bank-app/security.log`), monitorizate în timp real de agentul Wazuh.
+2. **Interfață Kiosk (ATM / Self-Service):**
+   * **Interfață curată fără bare de navigare:** Previne părăsirea fluxului de tranzacționare.
+   * **Tastatură pe ecran:** Protejează împotriva keylogger-elor hardware sau la nivel de sistem de operare.
+   * **Deconectare automată (45s) & Auto-Wipe:** Dacă utilizatorul este inactiv timp de 45 de secunde, sesiunea se închide, datele locale sunt șterse, iar evenimentul este trimis către SIEM.
+   * **Consolă SOC integrată:** Afișează telemetria JSON direct în pagină și permite declanșarea atacurilor de test în timpul prezentării.
+3. **Mod de lucru dual (Live REST & Demo Mock):**
+   * **Modul Live:** Trimite cereri HTTP către backend-ul Spring Boot pe portul 8080.
+   * **Modul Demo:** Dacă backend-ul nu este pornit, interfața trece automat pe `mock-engine.js`, permițând demonstrarea tuturor funcționalităților direct din browser, fără alte servicii active.
 
 ---
 

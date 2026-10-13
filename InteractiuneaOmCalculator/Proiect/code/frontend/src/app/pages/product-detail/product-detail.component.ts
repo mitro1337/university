@@ -13,6 +13,8 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { Product } from '../../models/product.model';
 import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
 import { UiAlertComponent } from '../../components/ui/ui-alert.component';
+import { KlarnaModalComponent } from '../../components/ui/klarna-modal.component';
+import { HardwareViewer3dComponent } from '../../components/ui/hardware-viewer-3d.component';
 
 interface EngineeringReview {
   id: string;
@@ -31,7 +33,7 @@ interface EngineeringReview {
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [RouterLink, TranslatePipe, UiBadgeComponent, UiAlertComponent],
+  imports: [RouterLink, TranslatePipe, UiBadgeComponent, UiAlertComponent, KlarnaModalComponent, HardwareViewer3dComponent],
   template: `
     @if (loading()) {
       <div class="max-w-7xl mx-auto px-4 py-24 text-center">
@@ -92,47 +94,82 @@ interface EngineeringReview {
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             <div class="lg:col-span-5 space-y-3">
-              <div data-lenis-parallax="0.06" data-lenis-parallax-scale="0.02" class="relative aspect-square rounded-lg bg-surface-sunken border border-border p-6 sm:p-8 flex items-center justify-center overflow-hidden">
-                <img 
-                  [src]="currentDisplayImage()" 
-                  [alt]="prod.name"
-                  [class.is-switching]="isSwitchingImage()"
-                  data-lenis-parallax="0.04"
-                  class="gallery-crossfade-img lenis-parallax-image max-w-full max-h-full object-contain filter drop-shadow-sm">
-                
-                @if (prod.badge) {
-                  <div class="absolute top-4 left-4">
-                    <app-ui-badge variant="mono">{{ prod.badge }}</app-ui-badge>
-                  </div>
-                }
-
-                <button
-                  type="button"
-                  (click)="wishlistService.toggleWishlist(prod)"
-                  class="heart-button absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-xs border border-border flex items-center justify-center text-text-muted hover:text-rose-400 z-10"
-                  [class.is-active]="wishlistService.isWishlisted(prod.id)"
-                  [title]="wishlistService.isWishlisted(prod.id) ? 'Elimină din favorite' : 'Adaugă la favorite'">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </button>
-              </div>
-
-              <div class="grid grid-cols-4 gap-2">
-                @for (img of galleryImages(); track $index) {
+              <!-- View Mode Switcher: 2D Photos vs 3D WebGL Model -->
+              <div class="flex items-center justify-between pb-1">
+                <div class="flex items-center gap-1 p-1 rounded-lg bg-surface-elevated border border-border">
                   <button 
-                    type="button"
-                    (click)="selectGalleryImage($index)"
-                    [class.border-accent]="activeImageIndex() === $index"
-                    [class.ring-1]="activeImageIndex() === $index"
-                    [class.ring-accent]="activeImageIndex() === $index"
-                    [class.opacity-100]="activeImageIndex() === $index"
-                    [class.opacity-60]="activeImageIndex() !== $index"
-                    class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-border-strong transition-all overflow-hidden cursor-pointer">
-                    <img [src]="img" [alt]="prod.name + ' unghi ' + ($index + 1)" class="max-h-full max-w-full object-contain">
+                    type="button" 
+                    (click)="viewMode.set('photos')"
+                    [class.bg-surface]="viewMode() === 'photos'"
+                    [class.text-text-primary]="viewMode() === 'photos'"
+                    [class.text-text-muted]="viewMode() !== 'photos'"
+                    class="px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span>Galerie Foto</span>
                   </button>
-                }
+                  <button 
+                    type="button" 
+                    (click)="viewMode.set('3d')"
+                    [class.bg-cyan-500]="viewMode() === '3d'"
+                    [class.text-black]="viewMode() === '3d'"
+                    [class.text-text-muted]="viewMode() !== '3d'"
+                    class="px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    <span>Inspectează 3D WebGL</span>
+                  </button>
+                </div>
+                <span class="text-[10px] font-mono text-cyan-400">360° CAD</span>
               </div>
+
+              @if (viewMode() === '3d') {
+                <app-hardware-viewer-3d [productName]="prod.name"></app-hardware-viewer-3d>
+              } @else {
+                <div data-lenis-parallax="0.06" data-lenis-parallax-scale="0.02" class="relative aspect-square rounded-lg bg-surface-sunken border border-border p-6 sm:p-8 flex items-center justify-center overflow-hidden">
+                  <img 
+                    [src]="currentDisplayImage()" 
+                    [alt]="prod.name"
+                    [class.is-switching]="isSwitchingImage()"
+                    data-lenis-parallax="0.04"
+                    class="gallery-crossfade-img lenis-parallax-image max-w-full max-h-full object-contain filter drop-shadow-sm">
+                  
+                  @if (prod.badge) {
+                    <div class="absolute top-4 left-4">
+                      <app-ui-badge variant="mono">{{ prod.badge }}</app-ui-badge>
+                    </div>
+                  }
+
+                  <button
+                    type="button"
+                    (click)="wishlistService.toggleWishlist(prod)"
+                    class="heart-button absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-xs border border-border flex items-center justify-center text-text-muted hover:text-rose-400 z-10"
+                    [class.is-active]="wishlistService.isWishlisted(prod.id)"
+                    [title]="wishlistService.isWishlisted(prod.id) ? 'Elimină din favorite' : 'Adaugă la favorite'">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2">
+                  @for (img of galleryImages(); track $index) {
+                    <button 
+                      type="button"
+                      (click)="selectGalleryImage($index)"
+                      [class.border-accent]="activeImageIndex() === $index"
+                      [class.ring-1]="activeImageIndex() === $index"
+                      [class.ring-accent]="activeImageIndex() === $index"
+                      [class.opacity-100]="activeImageIndex() === $index"
+                      [class.opacity-60]="activeImageIndex() !== $index"
+                      class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-border-strong transition-all overflow-hidden cursor-pointer">
+                      <img [src]="img" [alt]="prod.name + ' unghi ' + ($index + 1)" class="max-h-full max-w-full object-contain">
+                    </button>
+                  }
+                </div>
+              }
 
               <div class="p-3.5 rounded-lg bg-surface-elevated border border-border text-xs text-text-muted flex items-center justify-between gap-3">
                 <button 
@@ -216,6 +253,31 @@ interface EngineeringReview {
                       </app-ui-badge>
                     }
                   </div>
+                </div>
+
+                <!-- Klarna Buy Now Pay Later Widget -->
+                <div class="p-3 rounded-lg bg-surface-sunken border border-[#FFB3C7]/30 flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-6 rounded bg-[#FFB3C7] text-black font-black text-xs flex items-center justify-center tracking-tighter px-1.5 select-none shrink-0 shadow-xs">
+                      Klarna.
+                    </div>
+                    <div class="text-xs">
+                      <span class="text-text-primary font-semibold">
+                        {{ i18n.isRo() ? 'Plătește în 3 rate de ' : 'Pay in 3 installments of ' }}
+                        <strong class="text-[#FFB3C7] tabular-nums font-bold">{{ (prod.price_ron / 3).toFixed(2) }} lei</strong>
+                      </span>
+                      <span class="text-[11px] text-text-muted block">
+                        {{ i18n.isRo() ? '0% dobândă • Fără costuri ascunse' : '0% interest • No hidden fees' }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button 
+                    type="button"
+                    (click)="isKlarnaModalOpen.set(true)"
+                    class="text-xs font-semibold text-[#FFB3C7] hover:underline whitespace-nowrap cursor-pointer">
+                    {{ i18n.isRo() ? 'Află detalii →' : 'Learn more →' }}
+                  </button>
                 </div>
 
                 <div class="pt-4 border-t border-border flex flex-wrap items-center gap-3">
@@ -816,6 +878,12 @@ interface EngineeringReview {
           }
         </section>
 
+        <app-klarna-modal 
+          [isOpen]="isKlarnaModalOpen()" 
+          [amount]="prod.price_ron" 
+          (close)="isKlarnaModalOpen.set(false)">
+        </app-klarna-modal>
+
       </div>
     }
   `
@@ -843,6 +911,9 @@ export class ProductDetailComponent implements OnInit {
   activeImageIndex = signal<number>(0);
   isSwitchingImage = signal<boolean>(false);
   openAccordions = signal<string[]>(['power']);
+
+  isKlarnaModalOpen = signal<boolean>(false);
+  viewMode = signal<'photos' | '3d'>('photos');
 
   toggleAccordion(id: string) {
     this.openAccordions.update(list => 
