@@ -22,7 +22,7 @@ Acest modul (`licenta/LL3-LucrareLicenta/code/web`) reprezintă subsistemul de i
 > **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
 > **Coordonator Științific:** prof. univ. dr. Georgeta Soava  
 > **Instituție:** Universitatea din Craiova — Facultatea de Economie și Administrarea Afacerilor (FEAA)  
-> **Program de Studii:** Informatică Economică (Promoția 2026)  
+> **Program de Studii:** Informatică Economică (Promoția 2027)  
 > **Absolvent:** Moană Ștefănuț-Cornel  
 > **Inventariere stack:** Lucrare de licență — Inventar inițial
 
@@ -64,7 +64,7 @@ flowchart TD
         HTML --> SOC_UI
         UI_PAD --> API_CLIENT
         TIMER --> API_CLIENT
-        API_CLIENT -. "Dacă Backend Indisponibil" .-> MOCK_ENG
+        API_CLIENT -.->|"Dacă Backend Indisponibil"| MOCK_ENG
     end
 
     subgraph BACKEND_TIER ["Backend Java Spring Boot 3.2 (Port 8080)"]
@@ -99,12 +99,12 @@ flowchart TD
         WAZUH_AGENT["Wazuh Agent HIDS (Inspecție Fisiere Locale)"]
         WAZUH_MGR["Wazuh SIEM Manager (Reguli 100101, 100109)"]
         
-        AUDIT_SRV -->|Scriere Imediată (Flush)| LOG_FILE
-        LOG_FILE -->|Monitorizare Inotify| WAZUH_AGENT
-        WAZUH_AGENT -->|Eveniment Criptat Port 1514| WAZUH_MGR
+        AUDIT_SRV -->|"Scriere Imediată (Flush)"| LOG_FILE
+        LOG_FILE -->|"Monitorizare Inotify"| WAZUH_AGENT
+        WAZUH_AGENT -->|"Eveniment Criptat Port 1514"| WAZUH_MGR
     end
 
-    API_CLIENT == "REST / JSON (Port 8080)" ==> SECURITY_FILTER
+    API_CLIENT ==>|"REST / JSON (Port 8080)"| SECURITY_FILTER
 ```
 
 ### 2.2. Mașina de Stări a Sesiunii Kiosk (Lifecycle & Auto-Wipe)
@@ -445,13 +445,13 @@ Modulul web este integrat în workflow-ul GitHub Actions [`.github/workflows/ci.
 
 ```mermaid
 flowchart LR
-    GIT_EVENT([Push pe cod web]) --> MAVEN_BUILD[Compilare Maven Java 17]
-    MAVEN_BUILD --> JUNIT_TESTS[Teste Unitare: JUnit 5 & MockMvc]
-    JUNIT_TESTS --> DOCKER_BUILD[Validare Build Multi-Stage Docker]
-    DOCKER_BUILD --> SMOKE_TEST[Smoke Test: Probing Endpoint-uri Live]
-    SMOKE_TEST --> CI_SUCCESS{CI Passed?}
-    CI_SUCCESS -- DA --> ARTIFACT_BUILD[Construire Pachet JAR & Verificare Frontend]
-    CI_SUCCESS -- NU --> BLOCK[Blocare Deploy & Alertă DevSecOps]
+    GIT_EVENT(["Push pe cod web"]) --> MAVEN_BUILD["Compilare Maven Java 17"]
+    MAVEN_BUILD --> JUNIT_TESTS["Teste Unitare: JUnit 5 & MockMvc"]
+    JUNIT_TESTS --> DOCKER_BUILD["Validare Build Multi-Stage Docker"]
+    DOCKER_BUILD --> SMOKE_TEST["Smoke Test: Probing Endpoint-uri Live"]
+    SMOKE_TEST --> CI_SUCCESS{"CI Passed?"}
+    CI_SUCCESS -- DA --> ARTIFACT_BUILD["Construire Pachet JAR & Verificare Frontend"]
+    CI_SUCCESS -- NU --> BLOCK["Blocare Deploy & Alertă DevSecOps"]
 ```
 
 ---

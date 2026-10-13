@@ -2,7 +2,7 @@
 Test Suite automatizat Pytest pentru Suita de Securitate și Simulare Bancară LL3
 Lucrare de Licență: Impactul tehnologiilor inteligente asupra securitatii digitale
 Coordonator: prof. univ. dr. Georgeta Soava
-FEAA Craiova - Informatică Economică 2026
+FEAA Craiova - Informatică Economică 2027
 """
 
 import pytest

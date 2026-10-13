@@ -1,5 +1,5 @@
 # Dependențe Python pentru Suita de Simulare Bancară și Audit de Securitate
-# Lucrare de Licență: Moană Ștefănuț-Cornel | FEAA UCV Informatică Economică 2026
+# Lucrare de Licență: Moană Ștefănuț-Cornel | FEAA UCV Informatică Economică 2027
 
 fastapi>=0.141.1
 uvicorn[standard]>=0.53.0

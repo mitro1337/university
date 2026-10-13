@@ -5,7 +5,7 @@ This guide describes how to reproduce the software systems, threat simulations, 
 > **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
 > **Coordonator: prof. univ. dr. Georgeta Soava**  
 > **Inventariere stack: Lucrare de licență — Inventar inițial**  
-> **FEAA Craiova · Informatică Economică 2026**
+> **FEAA Craiova · Informatică Economică 2027**
 
 ### Tech Stack & Lab Scope
 * **Stack:** Windows Server, Linux, networking TCP/IP, wire shark, tcpdump, SIEMuri precum Splunk, Elastic, Wazuh sau Sentinel, EDR, IDS/IPS, nmap, nessus, openVAS, burp, powershell, python, git, mașini virtuale, sysmon, sigma, yara, snort, MISP, malware autopsy, volatility, ghidra, IDA sau x64dbg, directiva NIS2, MITRE ATT&CK pentru cartografierea atacurilor, Ansible, Python și Terraform pentru IaC, automatizând izolarea VM-urilor compromise în urma alertelor din SIEM, Kubernetes, AWS.

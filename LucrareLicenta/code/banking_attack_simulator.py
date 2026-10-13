@@ -273,7 +273,7 @@ class BankingAttackDefenseHarness:
         print("\n" + "=" * 80)
         print("RAPORT FINAL DE EVALUARE ȘI AUDIT AL SECURITĂȚII BANCARE")
         print("Universitatea din Craiova | Facultatea de Economie și Administrarea Afacerilor (FEAA)")
-        print("Absolvent: Moană Ștefănuț-Cornel | Specializarea: Informatică Economică, 2026")
+        print("Absolvent: Moană Ștefănuț-Cornel | Specializarea: Informatică Economică, 2027")
         print("=" * 80)
 
         total = len(self.results_matrix)

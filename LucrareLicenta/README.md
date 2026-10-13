@@ -1,8 +1,8 @@
 # Impactul tehnologiilor inteligente asupra securitatii digitale
-## Proiect de Licență & Suită de Securitate Cibernetică (FEAA Craiova 2026)
+## Proiect de Licență & Suită de Securitate Cibernetică (FEAA Craiova 2027)
 
 **Universitatea din Craiova** | **Facultatea de Economie și Administrarea Afacerilor (FEAA)**  
-**Program de Studii:** Informatică Economică (Promoția 2026)  
+**Program de Studii:** Informatică Economică (Promoția 2027)  
 **Absolvent:** Moană Ștefănuț-Cornel  
 **Coordonator Științific:** Prof. univ. dr. Georgeta Soavă  
 
@@ -53,15 +53,15 @@ Pipeline-ul de Integrare Continuă și Livrare Continuă este proiectat la nivel
 
 ```mermaid
 flowchart TD
-    DEV([Developer / Git Push]) --> PR[Pull Request / Main Branch]
+    DEV(["Developer / Git Push"]) --> PR["Pull Request / Main Branch"]
     
     subgraph CI_PIPELINE ["CI Pipeline (ll3-ci.yml)"]
         direction TB
-        PY[Python CI: 5 Scenarii MITRE ATT&CK + Pytest]
-        JVM[Java 17 CI: Spring Boot 3.2 Compile + Package]
-        WEB[Web Frontend: Validare Statică & Lint JS]
-        DOCKER[Docker CI: Buildx Container Validation]
-        SMOKE[Smoke Test: Spring Boot Live REST API Probing]
+        PY["Python CI: 5 Scenarii MITRE ATT&CK + Pytest"]
+        JVM["Java 17 CI: Spring Boot 3.2 Compile + Package"]
+        WEB["Web Frontend: Validare Statică & Lint JS"]
+        DOCKER["Docker CI: Buildx Container Validation"]
+        SMOKE["Smoke Test: Spring Boot Live REST API Probing"]
         
         PY --> CI_GATE{CI Quality Gate}
         JVM --> SMOKE --> CI_GATE
@@ -71,10 +71,10 @@ flowchart TD
 
     subgraph SEC_PIPELINE ["DevSecOps Pipeline (ll3-security.yml)"]
         direction TB
-        SECRETS[Secret Scanning: Gitleaks v2]
-        AUDIT[Dependency Audit: pip-audit]
-        SAST[Python SAST: Bandit Security Scanner]
-        TRIVY[Filesystem & Vulnerability Scan: Aqua Trivy]
+        SECRETS["Secret Scanning: Gitleaks v2"]
+        AUDIT["Dependency Audit: pip-audit"]
+        SAST["Python SAST: Bandit Security Scanner"]
+        TRIVY["Filesystem & Vulnerability Scan: Aqua Trivy"]
         
         SECRETS --> SEC_GATE{Security Gate}
         AUDIT --> SEC_GATE
@@ -84,9 +84,9 @@ flowchart TD
 
     subgraph DOCS_PIPELINE ["Academic Docs Pipeline (ll3-docs.yml)"]
         direction TB
-        PARITY[DOCX ↔ LaTeX Parity Audit]
-        TEX_BUILD[LaTeX Compilation: latexmk / TeXLive]
-        PDF_OUT[Artifact: licenta-pdf (30 Days)]
+        PARITY["DOCX ↔ LaTeX Parity Audit"]
+        TEX_BUILD["LaTeX Compilation: latexmk / TeXLive"]
+        PDF_OUT["Artifact: licenta-pdf (30 Days)"]
         
         PARITY --> TEX_BUILD --> PDF_OUT
     end
@@ -96,8 +96,8 @@ flowchart TD
     PR --> DOCS_PIPELINE
 
     CI_GATE --> DEPLOY_CHECK{CI Success?}
-    DEPLOY_CHECK -- Da (Branch Main) --> READY[Merge Approved / Artifact Ready]
-    DEPLOY_CHECK -- Nu --> REJECT[Block PR / Halt Pipeline]
+    DEPLOY_CHECK -- Da (Branch Main) --> READY["Merge Approved / Artifact Ready"]
+    DEPLOY_CHECK -- Nu --> REJECT["Block PR / Halt Pipeline"]
 ```
 
 ### 2.2. Structura Workflow-urilor GitHub Actions
@@ -159,7 +159,7 @@ python3 scripts/sync_academic_docs.py --sync
 python3 scripts/sync_academic_docs.py --verify
 ```
 
-În GitHub Actions, workflow-ul `ll3-docs.yml` compilează automat `main.tex` utilizând distribuția TeXLive (`xu-cheng/latex-action@v3`) și salvează documentul rezultat sub denumirea `LUCRARE_LICENTA_2026.pdf` ca artefact cu retenție de 30 de zile.
+În GitHub Actions, workflow-ul `ll3-docs.yml` compilează automat `main.tex` utilizând distribuția TeXLive (`xu-cheng/latex-action@v3`) și salvează documentul rezultat sub denumirea `LUCRARE_LICENTA_2027.pdf` ca artefact cu retenție de 30 de zile.
 
 ---
 

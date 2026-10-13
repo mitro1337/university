@@ -21,7 +21,7 @@ Acest director (`licenta/LL3-LucrareLicenta/code`) conține suita autonomă de s
 > **„Impactul tehnologiilor inteligente asupra securitatii digitale”**  
 > **Coordonator Științific:** prof. univ. dr. Georgeta Soava  
 > **Instituție:** Universitatea din Craiova — Facultatea de Economie și Administrarea Afacerilor (FEAA)  
-> **Program de Studii:** Informatică Economică (Promoția 2026)  
+> **Program de Studii:** Informatică Economică (Promoția 2027)  
 > **Absolvent:** Moană Ștefănuț-Cornel  
 > **Inventariere stack:** Lucrare de licență — Inventar inițial
 
@@ -76,19 +76,19 @@ flowchart TB
         WAZUH["Wazuh SIEM Manager & Dashboard<br/>IP: 192.168.1.240<br/>Reguli 100101, 100105, 100109"]
     end
 
-    RULES -- "Port 22/SSH (Doar Admin)" --> VM313
-    RULES -- "Port 8000/HTTP (Plăți)" --> CT312
-    RULES -- "Port 8080/HTTP (Kiosk)" --> KIOSK
-    RULES -- "Drop / Reject Politică L3" -.-> ATTACKER
+    RULES -->|"Port 22/SSH (Doar Admin)"| VM313
+    RULES -->|"Port 8000/HTTP (Plăți)"| CT312
+    RULES -->|"Port 8080/HTTP (Kiosk)"| KIOSK
+    RULES -.->|"Drop / Reject Politică L3"| ATTACKER
 
-    VM313 -. "Tunnel SSH Autorizat" .-> VM310
-    KIOSK -->|Interogare Sold / Transfer| VM310
-    CT312 -->|Decontare Încasări Card / SWIFT| VM310
-    VM310 -->|Persistență Tranzacțională ACID| VM311
+    VM313 -.->|"Tunnel SSH Autorizat"| VM310
+    KIOSK -->|"Interogare Sold / Transfer"| VM310
+    CT312 -->|"Decontare Încasări Card / SWIFT"| VM310
+    VM310 -->|"Persistență Tranzacțională ACID"| VM311
 
-    VM311 -. "Wazuh Agent HIDS (JSON Audit)" .-> WAZUH
-    VM310 -. "Wazuh Agent HIDS (Security Events)" .-> WAZUH
-    KIOSK -. "Jurnal Structurat /var/log/bank-app" .-> WAZUH
+    VM311 -.->|"Wazuh Agent HIDS (JSON Audit)"| WAZUH
+    VM310 -.->|"Wazuh Agent HIDS (Security Events)"| WAZUH
+    KIOSK -.->|"Jurnal Structurat /var/log/bank-app"| WAZUH
 ```
 
 ### 2.2. Diagrama de Secvență: Execuție Tranzacțională și Audit SIEM
@@ -374,14 +374,14 @@ Toate modulele din acest director sunt monitorizate de pipeline-ul de Integrare 
 
 ```mermaid
 flowchart LR
-    COMMIT([Commit / Push pe licenta/LL3/**]) --> TRIG{Path Filter Trigger}
-    TRIG --> LINT[Linter & Syntax Check: Python AST]
-    LINT --> MITRE[Rulare 5 Scenarii: banking_attack_simulator.py]
-    MITRE --> PYTEST[Pytest Suite: test_banking_suite.py]
-    PYTEST --> SEC_SCAN[Scanare SAST: Bandit & pip-audit]
-    SEC_SCAN --> GATE{Quality Gate: 100% Pass?}
-    GATE -- DA --> ARTIFACT[Generare Raport Validare]
-    GATE -- NU --> HALT[Blocare Pipeline & Notificare]
+    COMMIT(["Commit / Push pe licenta/LL3/**"]) --> TRIG{"Path Filter Trigger"}
+    TRIG --> LINT["Linter & Syntax Check: Python AST"]
+    LINT --> MITRE["Rulare 5 Scenarii: banking_attack_simulator.py"]
+    MITRE --> PYTEST["Pytest Suite: test_banking_suite.py"]
+    PYTEST --> SEC_SCAN["Scanare SAST: Bandit & pip-audit"]
+    SEC_SCAN --> GATE{"Quality Gate: 100% Pass?"}
+    GATE -- DA --> ARTIFACT["Generare Raport Validare"]
+    GATE -- NU --> HALT["Blocare Pipeline & Notificare"]
 ```
 
 ---
