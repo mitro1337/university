@@ -16,37 +16,37 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
   template: `
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       
-      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6 font-medium" aria-label="Breadcrumb">
-        <a routerLink="/" class="breadcrumb-interactive hover:text-text-primary transition-colors">{{ i18n.isRo() ? 'Acasă' : 'Home' }}</a>
-        <span class="text-text-muted">/</span>
-        <a routerLink="/produse" class="breadcrumb-interactive hover:text-text-primary transition-colors">{{ 'catalog_title' | translate }}</a>
-        <span class="text-text-muted">/</span>
-        <span class="text-text-primary font-bold">{{ 'checkout_title' | translate }}</span>
+      <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumb">
+        <a routerLink="/" class="hover:text-text-primary transition-colors">{{ i18n.isRo() ? 'Acasă' : 'Home' }}</a>
+        <span class="text-border">/</span>
+        <a routerLink="/produse" class="hover:text-text-primary transition-colors">{{ 'catalog_title' | translate }}</a>
+        <span class="text-border">/</span>
+        <span class="text-text-primary font-medium">{{ 'checkout_title' | translate }}</span>
       </nav>
 
       <div class="mb-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-elevated border border-border text-xs text-text-secondary mb-2.5 shadow-xs font-mono">
-          <span class="led-indicator-3d" style="--led-color: #00ff9d; --led-glow: rgba(0,255,157,0.7);"></span>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface border border-border text-xs text-text-muted mb-2">
+          <span class="text-emerald-400">●</span>
           {{ 'checkout_guest_badge' | translate }}
         </div>
-        <h1 class="font-heading font-black text-2xl sm:text-3xl uppercase tracking-wider text-text-primary">
+        <h1 class="font-display text-2xl sm:text-3xl uppercase tracking-wide text-text-primary">
           {{ 'checkout_title' | translate }}
         </h1>
-        <p class="text-xs text-text-secondary mt-1 font-sans">
+        <p class="text-xs text-text-muted mt-1">
           {{ 'checkout_subtitle' | translate }}
         </p>
       </div>
 
       @if (cartService.items().length === 0) {
-        <div class="p-12 text-center rounded-2xl bg-surface border border-border shadow-3d-card space-y-4 max-w-lg mx-auto transition-colors">
-          <div class="w-16 h-16 rounded-2xl bg-surface-sunken border border-border mx-auto flex items-center justify-center text-cyan-400 shadow-3d-sunken">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="p-12 text-center rounded-xl bg-surface border border-border shadow-xs space-y-4 max-w-lg mx-auto transition-colors">
+          <div class="w-14 h-14 rounded-xl bg-canvas-subtle border border-border mx-auto flex items-center justify-center text-text-muted">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
             </svg>
           </div>
-          <h2 class="text-lg font-bold text-text-primary font-heading">{{ 'cart_empty_title' | translate }}</h2>
-          <p class="text-xs text-text-muted leading-relaxed font-sans">{{ 'cart_empty_desc' | translate }}</p>
-          <a routerLink="/produse" class="btn-3d-primary inline-flex text-xs">
+          <h2 class="text-base font-bold text-text-primary">{{ 'cart_empty_title' | translate }}</h2>
+          <p class="text-xs text-text-muted">{{ 'cart_empty_desc' | translate }}</p>
+          <a routerLink="/produse" class="inline-block px-5 py-2.5 rounded-lg bg-accent hover:bg-accent-hover text-white font-medium text-xs transition-colors shadow-xs">
             {{ 'catalog_title' | translate }}
           </a>
         </div>
@@ -61,58 +61,55 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
               </app-ui-alert>
             }
 
-            <div class="p-6 rounded-2xl bg-surface border border-border shadow-3d-card space-y-5 backdrop-blur-md">
-              <div class="flex items-center gap-3 border-b border-border pb-3">
-                <span class="w-6 h-6 rounded-lg bg-cyan-400 text-[#03101e] font-black text-xs flex items-center justify-center shadow-3d-btn font-mono">
+            <div class="p-6 rounded-xl bg-surface border border-border shadow-xs space-y-5 transition-colors">
+              <div class="flex items-center gap-2.5 border-b border-border pb-3">
+                <span class="w-5 h-5 rounded-full bg-accent text-white font-bold text-xs flex items-center justify-center">
                   1
                 </span>
-                <h2 class="text-sm font-bold text-text-primary font-heading tracking-wide uppercase">
+                <h2 class="text-sm font-semibold text-text-primary">
                   {{ 'step_1_title' | translate }}
                 </h2>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div class="space-y-1 sm:col-span-2">
-                  <label class="text-text-secondary font-bold">{{ 'field_name' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_name' | translate }}</label>
                   <input 
                     type="text" 
                     [(ngModel)]="formData.guestName" 
                     placeholder="ex: Bogdan Ionescu (DevOps Engineer)"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs">
                 </div>
 
                 <div class="space-y-1">
-                  <label class="text-text-secondary font-bold">{{ 'field_email' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_email' | translate }}</label>
                   <input 
                     type="email" 
                     [(ngModel)]="formData.guestEmail" 
                     placeholder="bogdan.ionescu@lab.local"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs">
                 </div>
 
                 <div class="space-y-1">
-                  <label class="text-text-secondary font-bold">{{ 'field_phone' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_phone' | translate }}</label>
                   <input 
                     type="tel" 
                     [(ngModel)]="formData.guestPhone" 
                     placeholder="0740 123 456"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs tabular-nums shadow-3d-sunken font-mono">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs tabular-nums">
                 </div>
               </div>
 
               <div class="pt-4 border-t border-border space-y-3">
-                <label class="text-xs font-bold text-text-primary flex items-center gap-2">
-                  <span class="led-indicator-3d" style="--led-color: #00d2ff; --led-glow: rgba(0,210,255,0.7);"></span>
-                  <span>{{ 'delivery_select_title' | translate }}</span>
+                <label class="text-xs text-text-muted font-semibold">
+                  {{ 'delivery_select_title' | translate }}
                 </label>
                 
-                <div class="space-y-2.5">
+                <div class="space-y-2">
                   <label 
-                    class="p-4 rounded-xl border-2 cursor-pointer flex items-center justify-between transition-all"
-                    [class.border-cyan-400]="formData.deliveryMethod === 'curier_sameday'"
+                    class="p-3.5 rounded-lg border cursor-pointer flex items-center justify-between transition-colors"
+                    [class.border-accent]="formData.deliveryMethod === 'curier_sameday'"
                     [class.bg-surface-elevated]="formData.deliveryMethod === 'curier_sameday'"
-                    [class.shadow-[0_3px_0_#02668c,0_0_15px_rgba(0,210,255,0.2)]]="formData.deliveryMethod === 'curier_sameday'"
-                    [class.translate-y-[-1px]]="formData.deliveryMethod === 'curier_sameday'"
                     [class.border-border]="formData.deliveryMethod !== 'curier_sameday'"
                     [class.bg-surface]="formData.deliveryMethod !== 'curier_sameday'">
                     <div class="flex items-center gap-3">
@@ -122,23 +119,21 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         value="curier_sameday" 
                         [(ngModel)]="formData.deliveryMethod"
                         (change)="onDeliveryChange()"
-                        class="text-cyan-400 focus:ring-cyan-400">
+                        class="text-accent focus:ring-accent">
                       <div>
-                        <div class="text-xs font-bold text-text-primary font-heading">{{ 'delivery_sameday' | translate }}</div>
-                        <div class="text-[11px] text-text-muted font-sans">{{ 'delivery_sameday_sub' | translate }}</div>
+                        <div class="text-xs font-semibold text-text-primary">{{ 'delivery_sameday' | translate }}</div>
+                        <div class="text-[11px] text-text-muted">{{ 'delivery_sameday_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs tabular-nums font-mono font-bold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-cyan-400]="!cartService.isFreeShipping()">
+                    <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
                       {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : '19.00 lei' }}
                     </span>
                   </label>
 
                   <label 
-                    class="p-4 rounded-xl border-2 cursor-pointer flex items-center justify-between transition-all"
-                    [class.border-cyan-400]="formData.deliveryMethod === 'easybox'"
+                    class="p-3.5 rounded-lg border cursor-pointer flex items-center justify-between transition-colors"
+                    [class.border-accent]="formData.deliveryMethod === 'easybox'"
                     [class.bg-surface-elevated]="formData.deliveryMethod === 'easybox'"
-                    [class.shadow-[0_3px_0_#02668c,0_0_15px_rgba(0,210,255,0.2)]]="formData.deliveryMethod === 'easybox'"
-                    [class.translate-y-[-1px]]="formData.deliveryMethod === 'easybox'"
                     [class.border-border]="formData.deliveryMethod !== 'easybox'"
                     [class.bg-surface]="formData.deliveryMethod !== 'easybox'">
                     <div class="flex items-center gap-3">
@@ -148,23 +143,21 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         value="easybox" 
                         [(ngModel)]="formData.deliveryMethod"
                         (change)="onDeliveryChange()"
-                        class="text-cyan-400 focus:ring-cyan-400">
+                        class="text-accent focus:ring-accent">
                       <div>
-                        <div class="text-xs font-bold text-text-primary font-heading">{{ 'delivery_easybox' | translate }}</div>
-                        <div class="text-[11px] text-text-muted font-sans">{{ 'delivery_easybox_sub' | translate }}</div>
+                        <div class="text-xs font-semibold text-text-primary">{{ 'delivery_easybox' | translate }}</div>
+                        <div class="text-[11px] text-text-muted">{{ 'delivery_easybox_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs tabular-nums font-mono font-bold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-cyan-400]="!cartService.isFreeShipping()">
+                    <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
                       {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : '14.00 lei' }}
                     </span>
                   </label>
 
                   <label 
-                    class="p-4 rounded-xl border-2 cursor-pointer flex items-center justify-between transition-all"
-                    [class.border-cyan-400]="formData.deliveryMethod === 'ridicare_bucuresti'"
+                    class="p-3.5 rounded-lg border cursor-pointer flex items-center justify-between transition-colors"
+                    [class.border-accent]="formData.deliveryMethod === 'ridicare_bucuresti'"
                     [class.bg-surface-elevated]="formData.deliveryMethod === 'ridicare_bucuresti'"
-                    [class.shadow-[0_3px_0_#02668c,0_0_15px_rgba(0,210,255,0.2)]]="formData.deliveryMethod === 'ridicare_bucuresti'"
-                    [class.translate-y-[-1px]]="formData.deliveryMethod === 'ridicare_bucuresti'"
                     [class.border-border]="formData.deliveryMethod !== 'ridicare_bucuresti'"
                     [class.bg-surface]="formData.deliveryMethod !== 'ridicare_bucuresti'">
                     <div class="flex items-center gap-3">
@@ -174,13 +167,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         value="ridicare_bucuresti" 
                         [(ngModel)]="formData.deliveryMethod"
                         (change)="onDeliveryChange()"
-                        class="text-cyan-400 focus:ring-cyan-400">
+                        class="text-accent focus:ring-accent">
                       <div>
-                        <div class="text-xs font-bold text-text-primary font-heading">{{ 'delivery_warehouse' | translate }}</div>
-                        <div class="text-[11px] text-text-muted font-sans">{{ 'delivery_warehouse_sub' | translate }}</div>
+                        <div class="text-xs font-semibold text-text-primary">{{ 'delivery_warehouse' | translate }}</div>
+                        <div class="text-[11px] text-text-muted">{{ 'delivery_warehouse_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs font-bold text-emerald-400 font-mono">
+                    <span class="text-xs font-semibold text-emerald-400">
                       {{ 'shipping_free' | translate }}
                     </span>
                   </label>
@@ -189,19 +182,19 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
 
               <div class="pt-4 border-t border-border grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div class="space-y-1 sm:col-span-2">
-                  <label class="text-text-secondary font-bold">{{ 'field_address' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_address' | translate }}</label>
                   <input 
                     type="text" 
                     [(ngModel)]="formData.shippingAddress" 
                     placeholder="ex: Bd. Tudor Vladimirescu nr. 22, Bl. R12, Ap. 45"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs">
                 </div>
 
                 <div class="space-y-1">
-                  <label class="text-text-secondary font-bold">{{ 'field_county' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_county' | translate }}</label>
                   <select 
                     [(ngModel)]="formData.county"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary focus:outline-none focus:border-accent text-xs">
                     <option value="" disabled>{{ i18n.isRo() ? 'Selectează județul...' : 'Select county...' }}</option>
                     @for (c of romanianCounties; track c) {
                       <option [value]="c">{{ c }}</option>
@@ -210,31 +203,31 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 </div>
 
                 <div class="space-y-1">
-                  <label class="text-text-secondary font-bold">{{ 'field_city' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_city' | translate }}</label>
                   <input 
                     type="text" 
                     [(ngModel)]="formData.city" 
                     placeholder="ex: București, Cluj-Napoca..."
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs">
                 </div>
 
                 <div class="space-y-1 sm:col-span-2">
-                  <label class="text-text-secondary font-bold">{{ 'field_notes' | translate }}</label>
+                  <label class="text-text-muted font-medium">{{ 'field_notes' | translate }}</label>
                   <input 
                     type="text" 
                     [(ngModel)]="formData.notes" 
                     placeholder="ex: Sună la interfon 45 sau predare recepție datacenter"
-                    class="w-full bg-surface-sunken border border-border rounded-xl px-3.5 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-400 text-xs shadow-3d-sunken font-sans">
+                    class="w-full bg-surface-elevated border border-border rounded-lg px-3 py-2 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent text-xs">
                 </div>
               </div>
             </div>
 
-            <div class="p-6 rounded-2xl bg-surface border border-border shadow-3d-card space-y-5 backdrop-blur-md">
-              <div class="flex items-center gap-3 border-b border-border pb-3">
-                <span class="w-6 h-6 rounded-lg bg-cyan-400 text-[#03101e] font-black text-xs flex items-center justify-center shadow-3d-btn font-mono">
+            <div class="p-6 rounded-xl bg-surface border border-border shadow-xs space-y-5 transition-colors">
+              <div class="flex items-center gap-2.5 border-b border-border pb-3">
+                <span class="w-5 h-5 rounded-full bg-accent text-white font-bold text-xs flex items-center justify-center">
                   2
                 </span>
-                <h2 class="text-sm font-bold text-text-primary font-heading tracking-wide uppercase">
+                <h2 class="text-sm font-semibold text-text-primary">
                   {{ 'step_2_title' | translate }}
                 </h2>
               </div>
@@ -242,11 +235,10 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
               <div class="space-y-3">
                 <!-- Klarna Buy Now Pay Later Option -->
                 <label 
-                  class="p-4 rounded-2xl border-2 cursor-pointer block transition-all"
+                  class="p-4 rounded-xl border-2 cursor-pointer block transition-all"
                   [class.border-[#FFB3C7]]="formData.paymentMethod === 'klarna_bnpl'"
                   [class.bg-[#fff5f8]/5]="formData.paymentMethod === 'klarna_bnpl'"
-                  [class.shadow-[0_4px_0_#992d4c,0_0_20px_rgba(255,179,199,0.3)]]="formData.paymentMethod === 'klarna_bnpl'"
-                  [class.translate-y-[-2px]]="formData.paymentMethod === 'klarna_bnpl'"
+                  [class.shadow-md]="formData.paymentMethod === 'klarna_bnpl'"
                   [class.border-border]="formData.paymentMethod !== 'klarna_bnpl'"
                   [class.bg-surface]="formData.paymentMethod !== 'klarna_bnpl'">
                   <div class="flex items-start justify-between gap-3">
@@ -259,13 +251,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         class="text-[#FFB3C7] focus:ring-[#FFB3C7] mt-0.5">
                       <div>
                         <div class="text-xs font-bold text-text-primary flex items-center gap-2">
-                          <span class="px-2 py-0.5 rounded-md bg-[#FFB3C7] text-black font-black text-[11px] tracking-tight shadow-xs">Klarna.</span>
-                          <span class="font-heading">{{ i18n.isRo() ? 'Cumpără acum, plătește mai târziu' : 'Buy Now, Pay Later' }}</span>
-                          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#FFB3C7]/20 text-[#FFB3C7] border border-[#FFB3C7]/40 font-mono font-bold">
+                          <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[11px] tracking-tight">Klarna.</span>
+                          <span>{{ i18n.isRo() ? 'Cumpără acum, plătește mai târziu' : 'Buy Now, Pay Later' }}</span>
+                          <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#FFB3C7]/20 text-[#FFB3C7] border border-[#FFB3C7]/40 font-bold">
                             0% Dobândă
                           </span>
                         </div>
-                        <p class="text-[11px] text-text-muted mt-1 leading-relaxed font-sans">
+                        <p class="text-[11px] text-text-muted mt-1 leading-relaxed">
                           {{ i18n.isRo() 
                             ? 'Plătește în 3 rate fără dobândă de ' + (finalTotal() / 3).toFixed(2) + ' lei sau amână plata cu 30 de zile. Fără comisioane.' 
                             : 'Pay in 3 interest-free installments of ' + (finalTotal() / 3).toFixed(2) + ' lei or in 30 days. No fees.' }}
@@ -275,17 +267,16 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                   </div>
 
                   @if (formData.paymentMethod === 'klarna_bnpl') {
-                    <div class="mt-3 pt-3 border-t border-border/80 space-y-2.5">
-                      <div class="text-[11px] font-bold text-text-primary font-heading">
+                    <div class="mt-3 pt-3 border-t border-border space-y-2.5">
+                      <div class="text-[11px] font-semibold text-text-primary">
                         {{ i18n.isRo() ? 'Alege planul tău de plată Klarna:' : 'Select your Klarna plan:' }}
                       </div>
 
                       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         <label 
-                          class="p-3 rounded-xl border cursor-pointer flex items-center justify-between transition-all"
+                          class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between"
                           [class.border-[#FFB3C7]]="formData.klarnaPlan === 'pay_in_3'"
                           [class.bg-surface-elevated]="formData.klarnaPlan === 'pay_in_3'"
-                          [class.shadow-[0_2px_0_#992d4c]]="formData.klarnaPlan === 'pay_in_3'"
                           [class.border-border]="formData.klarnaPlan !== 'pay_in_3'">
                           <div class="flex items-center gap-2">
                             <input 
@@ -294,16 +285,15 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                               value="pay_in_3" 
                               [(ngModel)]="formData.klarnaPlan"
                               class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
-                            <span class="font-bold text-text-primary">3 Rate fără dobândă</span>
+                            <span class="font-medium text-text-primary">3 Rate fără dobândă</span>
                           </div>
-                          <span class="text-[#FFB3C7] font-mono font-black tabular-nums">{{ (finalTotal() / 3).toFixed(2) }} lei</span>
+                          <span class="text-[#FFB3C7] font-bold tabular-nums">{{ (finalTotal() / 3).toFixed(2) }} lei</span>
                         </label>
 
                         <label 
-                          class="p-3 rounded-xl border cursor-pointer flex items-center justify-between transition-all"
+                          class="p-2.5 rounded-lg border cursor-pointer flex items-center justify-between"
                           [class.border-[#FFB3C7]]="formData.klarnaPlan === 'pay_in_30_days'"
                           [class.bg-surface-elevated]="formData.klarnaPlan === 'pay_in_30_days'"
-                          [class.shadow-[0_2px_0_#992d4c]]="formData.klarnaPlan === 'pay_in_30_days'"
                           [class.border-border]="formData.klarnaPlan !== 'pay_in_30_days'">
                           <div class="flex items-center gap-2">
                             <input 
@@ -312,28 +302,26 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                               value="pay_in_30_days" 
                               [(ngModel)]="formData.klarnaPlan"
                               class="text-[#FFB3C7] focus:ring-[#FFB3C7]">
-                            <span class="font-bold text-text-primary">Plătește în 30 zile</span>
+                            <span class="font-medium text-text-primary">Plătește în 30 zile</span>
                           </div>
-                          <span class="text-text-muted font-mono font-bold">0 lei azi</span>
+                          <span class="text-text-muted font-bold">0 lei azi</span>
                         </label>
                       </div>
 
-                      <div class="p-2.5 rounded-xl bg-surface-elevated border border-border text-[11px] text-text-muted flex items-center gap-2 shadow-3d-sunken">
+                      <div class="p-2.5 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-muted flex items-center gap-2">
                         <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
-                        <span>{{ i18n.isRo() ? 'Aprobare instantanee pe loc la pasul următor prin autorizare securizată Klarna.' : 'Instant soft check with secure authorization.' }}</span>
+                        <span>{{ i18n.isRo() ? 'Aprobare instantanee pe loc la următorul pas prin SMS securizat.' : 'Instant soft check with secure SMS verification.' }}</span>
                       </div>
                     </div>
                   }
                 </label>
 
                 <label 
-                  class="p-4 rounded-xl border cursor-pointer block transition-all"
-                  [class.border-cyan-400]="formData.paymentMethod === 'stripe_card'"
+                  class="p-4 rounded-lg border cursor-pointer block transition-colors"
+                  [class.border-accent]="formData.paymentMethod === 'stripe_card'"
                   [class.bg-surface-elevated]="formData.paymentMethod === 'stripe_card'"
-                  [class.shadow-[0_3px_0_#02668c,0_0_15px_rgba(0,210,255,0.2)]]="formData.paymentMethod === 'stripe_card'"
-                  [class.translate-y-[-1px]]="formData.paymentMethod === 'stripe_card'"
                   [class.border-border]="formData.paymentMethod !== 'stripe_card'"
                   [class.bg-surface]="formData.paymentMethod !== 'stripe_card'">
                   <div class="flex items-start justify-between gap-3">
@@ -343,13 +331,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         name="paymentMethod" 
                         value="stripe_card" 
                         [(ngModel)]="formData.paymentMethod"
-                        class="text-cyan-400 focus:ring-cyan-400 mt-0.5">
+                        class="text-accent focus:ring-accent mt-0.5">
                       <div>
-                        <div class="text-xs font-bold text-text-primary flex items-center gap-2 font-heading">
+                        <div class="text-xs font-semibold text-text-primary flex items-center gap-2">
                           <span>{{ 'pay_stripe_title' | translate }}</span>
                           <app-ui-badge variant="accent">{{ 'pay_stripe_badge' | translate }}</app-ui-badge>
                         </div>
-                        <p class="text-[11px] text-text-muted mt-1 leading-relaxed font-sans">
+                        <p class="text-[11px] text-text-muted mt-1 leading-relaxed">
                           {{ 'pay_stripe_desc' | translate }}
                         </p>
                       </div>
@@ -358,18 +346,16 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
 
                   @if (formData.paymentMethod === 'stripe_card') {
                     <div class="mt-3 pt-3 border-t border-border text-[11px] text-text-muted flex items-center gap-2">
-                      <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                       <span>{{ 'pay_stripe_simulator_hint' | translate }}</span>
                     </div>
                   }
                 </label>
 
                 <label 
-                  class="p-4 rounded-xl border cursor-pointer block transition-all"
-                  [class.border-cyan-400]="formData.paymentMethod === 'cash_on_delivery'"
+                  class="p-4 rounded-lg border cursor-pointer block transition-colors"
+                  [class.border-accent]="formData.paymentMethod === 'cash_on_delivery'"
                   [class.bg-surface-elevated]="formData.paymentMethod === 'cash_on_delivery'"
-                  [class.shadow-[0_3px_0_#02668c]]="formData.paymentMethod === 'cash_on_delivery'"
-                  [class.translate-y-[-1px]]="formData.paymentMethod === 'cash_on_delivery'"
                   [class.border-border]="formData.paymentMethod !== 'cash_on_delivery'"
                   [class.bg-surface]="formData.paymentMethod !== 'cash_on_delivery'">
                   <div class="flex items-center gap-3">
@@ -378,10 +364,10 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                       name="paymentMethod" 
                       value="cash_on_delivery" 
                       [(ngModel)]="formData.paymentMethod"
-                      class="text-cyan-400 focus:ring-cyan-400">
+                      class="text-accent focus:ring-accent">
                     <div>
-                      <div class="text-xs font-bold text-text-primary font-heading">{{ 'pay_cod_title' | translate }}</div>
-                      <div class="text-[11px] text-text-muted font-sans">{{ 'pay_cod_desc' | translate }}</div>
+                      <div class="text-xs font-semibold text-text-primary">{{ 'pay_cod_title' | translate }}</div>
+                      <div class="text-[11px] text-text-muted">{{ 'pay_cod_desc' | translate }}</div>
                     </div>
                   </div>
                 </label>
@@ -391,14 +377,12 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
           </div>
 
           <div class="lg:col-span-5 space-y-6">
-            <div class="p-6 rounded-2xl bg-surface border border-border shadow-3d-card space-y-5 sticky top-24 relative overflow-hidden backdrop-blur-md">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
-              
+            <div class="p-6 rounded-xl bg-surface border border-border shadow-xs space-y-5 sticky top-24 transition-colors">
               <div class="flex items-center justify-between border-b border-border pb-3">
-                <h3 class="text-xs font-bold text-text-primary font-heading uppercase tracking-wider">
+                <h3 class="text-xs font-semibold text-text-primary">
                   {{ 'summary_title' | translate }} ({{ cartService.itemsCount() }} {{ i18n.isRo() ? 'echipamente' : 'items' }})
                 </h3>
-                <a routerLink="/produse" class="text-xs text-cyan-400 hover:text-cyan-300 font-bold underline transition-colors">
+                <a routerLink="/produse" class="text-xs text-accent hover:underline">
                   {{ 'summary_modify' | translate }}
                 </a>
               </div>
@@ -407,15 +391,15 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 @for (item of cartService.items(); track item.product.id) {
                   <div class="pt-2 first:pt-0 flex items-center justify-between gap-3 text-xs">
                     <div class="flex items-center gap-2.5 min-w-0">
-                      <div class="w-10 h-10 rounded-lg bg-surface-sunken border border-border flex items-center justify-center p-0.5 flex-shrink-0 shadow-3d-sunken">
+                      <div class="w-10 h-10 rounded bg-canvas-subtle border border-border flex items-center justify-center p-0.5 flex-shrink-0">
                         <img [src]="item.product.image_url" [alt]="item.product.name" class="w-full h-full object-contain">
                       </div>
                       <div class="min-w-0">
-                        <div class="text-text-primary truncate font-bold font-heading">{{ item.product.name }}</div>
-                        <div class="text-[11px] text-text-muted tabular-nums font-mono">{{ item.quantity }} × {{ item.product.price_ron.toFixed(2) }} lei</div>
+                        <div class="text-text-primary truncate font-semibold">{{ item.product.name }}</div>
+                        <div class="text-[11px] text-text-muted tabular-nums">{{ item.quantity }} × {{ item.product.price_ron.toFixed(2) }} lei</div>
                       </div>
                     </div>
-                    <div class="text-cyan-400 font-mono font-bold tabular-nums flex-shrink-0">
+                    <div class="text-text-primary font-bold tabular-nums flex-shrink-0">
                       {{ (item.product.price_ron * item.quantity).toFixed(2) }} lei
                     </div>
                   </div>
@@ -423,26 +407,26 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
               </div>
 
               <div class="space-y-2 pt-3 border-t border-border text-xs">
-                <div class="flex justify-between text-text-muted font-sans">
+                <div class="flex justify-between text-text-muted">
                   <span>{{ 'summary_subtotal' | translate }}</span>
-                  <span class="text-text-primary tabular-nums font-mono font-bold">{{ cartService.subtotal().toFixed(2) }} lei</span>
+                  <span class="text-text-primary tabular-nums font-semibold">{{ cartService.subtotal().toFixed(2) }} lei</span>
                 </div>
                 
-                <div class="flex justify-between text-text-muted font-sans">
+                <div class="flex justify-between text-text-muted">
                   <span>{{ 'summary_shipping' | translate }}</span>
                   @if (shippingCost() === 0) {
-                    <span class="text-emerald-400 font-mono font-bold">{{ 'shipping_free' | translate }}</span>
+                    <span class="text-emerald-400 font-medium">{{ 'shipping_free' | translate }}</span>
                   } @else {
-                    <span class="text-text-primary tabular-nums font-mono font-bold">{{ shippingCost().toFixed(2) }} lei</span>
+                    <span class="text-text-primary tabular-nums font-semibold">{{ shippingCost().toFixed(2) }} lei</span>
                   }
                 </div>
 
-                <div class="pt-3 border-t border-border flex justify-between text-sm font-bold text-text-primary">
-                  <span class="font-heading uppercase tracking-wide">{{ 'summary_total' | translate }}</span>
-                  <span class="text-cyan-400 tabular-nums text-xl font-mono font-black">{{ finalTotal().toFixed(2) }} lei</span>
+                <div class="pt-3 border-t border-border flex justify-between text-sm font-semibold text-text-primary">
+                  <span>{{ 'summary_total' | translate }}</span>
+                  <span class="text-text-primary tabular-nums text-lg font-bold">{{ finalTotal().toFixed(2) }} lei</span>
                 </div>
 
-                <div class="text-[10px] text-text-muted text-right font-sans">
+                <div class="text-[10px] text-text-muted text-right">
                   {{ 'summary_vat_note' | translate }}
                 </div>
               </div>
@@ -451,13 +435,13 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 type="button"
                 (click)="submitOrder()"
                 [disabled]="submitting()"
-                class="btn-3d-primary w-full py-3.5 px-4 rounded-xl text-xs font-heading font-bold tracking-wider uppercase flex items-center justify-center gap-2">
+                class="w-full py-3 px-4 rounded-lg bg-accent hover:bg-accent-hover text-white font-semibold text-xs shadow-xs transition-all disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2">
                 @if (submitting()) {
                   <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>{{ 'btn_generating' | translate }}</span>
                 } @else if (formData.paymentMethod === 'klarna_bnpl') {
                   <span class="flex items-center gap-1.5 font-bold">
-                    <span class="px-2 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
+                    <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
                     <span>Plătește prin Klarna (3 rate) →</span>
                   </span>
                 } @else if (formData.paymentMethod === 'stripe_card') {

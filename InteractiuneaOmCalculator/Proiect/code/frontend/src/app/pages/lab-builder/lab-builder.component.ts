@@ -35,41 +35,38 @@ import { LenisService } from '../../services/lenis.service';
           </p>
         </div>
 
-        <div class="inline-flex p-1 rounded-xl bg-surface-sunken border border-border text-xs shadow-3d-sunken">
+        <div class="inline-flex p-1 rounded-lg bg-surface border border-border text-xs">
           <button 
             type="button" 
             (click)="setMainTab('builder')"
             [class.bg-surface-elevated]="activeMainTab() === 'builder'"
-            [class.text-cyan-400]="activeMainTab() === 'builder'"
+            [class.text-text-primary]="activeMainTab() === 'builder'"
             [class.border]="activeMainTab() === 'builder'"
-            [class.border-cyan-500/40]="activeMainTab() === 'builder'"
-            [class.shadow-xs]="activeMainTab() === 'builder'"
+            [class.border-border]="activeMainTab() === 'builder'"
             [class.text-text-muted]="activeMainTab() !== 'builder'"
-            class="px-4 py-1.5 rounded-lg transition-all flex items-center gap-1.5 font-bold font-heading uppercase text-[11px] tracking-wide active:scale-95">
+            class="px-3.5 py-1.5 rounded transition-colors flex items-center gap-1.5 font-medium">
             <span>{{ i18n.isRo() ? 'Configurator Proiect' : 'Project Configurator' }}</span>
           </button>
           <button 
             type="button" 
             (click)="setMainTab('rack')"
             [class.bg-surface-elevated]="activeMainTab() === 'rack'"
-            [class.text-cyan-400]="activeMainTab() === 'rack'"
+            [class.text-text-primary]="activeMainTab() === 'rack'"
             [class.border]="activeMainTab() === 'rack'"
-            [class.border-cyan-500/40]="activeMainTab() === 'rack'"
-            [class.shadow-xs]="activeMainTab() === 'rack'"
+            [class.border-border]="activeMainTab() === 'rack'"
             [class.text-text-muted]="activeMainTab() !== 'rack'"
-            class="px-4 py-1.5 rounded-lg transition-all flex items-center gap-1.5 font-bold font-heading uppercase text-[11px] tracking-wide active:scale-95">
+            class="px-3.5 py-1.5 rounded transition-colors flex items-center gap-1.5 font-medium">
             <span>{{ i18n.isRo() ? 'Rack Builder 19"' : '19" Rack Builder' }}</span>
           </button>
           <button 
             type="button" 
             (click)="setMainTab('topology')"
             [class.bg-surface-elevated]="activeMainTab() === 'topology'"
-            [class.text-cyan-400]="activeMainTab() === 'topology'"
+            [class.text-text-primary]="activeMainTab() === 'topology'"
             [class.border]="activeMainTab() === 'topology'"
-            [class.border-cyan-500/40]="activeMainTab() === 'topology'"
-            [class.shadow-xs]="activeMainTab() === 'topology'"
+            [class.border-border]="activeMainTab() === 'topology'"
             [class.text-text-muted]="activeMainTab() !== 'topology'"
-            class="px-4 py-1.5 rounded-lg transition-all flex items-center gap-1.5 font-bold font-heading uppercase text-[11px] tracking-wide active:scale-95">
+            class="px-3.5 py-1.5 rounded transition-colors flex items-center gap-1.5 font-medium">
             <span>{{ i18n.isRo() ? 'Topologie Rețea' : 'Network Topology' }}</span>
           </button>
         </div>

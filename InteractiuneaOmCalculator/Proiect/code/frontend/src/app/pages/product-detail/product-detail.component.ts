@@ -90,20 +90,20 @@ interface EngineeringReview {
           }
         </nav>
 
-        <div class="bg-surface/95 backdrop-blur-md rounded-2xl border border-border-strong shadow-[0_1px_0_rgba(255,255,255,0.1)_inset,0_16px_40px_rgba(0,0,0,0.7)] p-6 sm:p-8 mb-8 transition-colors lenis-reveal is-revealed">
+        <div class="bg-surface rounded-xl border border-border shadow-xs p-6 sm:p-8 mb-8 transition-colors lenis-reveal is-revealed">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             <div class="lg:col-span-5 space-y-3">
               <!-- View Mode Switcher: 2D Photos vs 3D WebGL Model -->
               <div class="flex items-center justify-between pb-1">
-                <div class="flex items-center gap-1 p-1 rounded-lg bg-surface-elevated border border-border-strong shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)]">
+                <div class="flex items-center gap-1 p-1 rounded-lg bg-surface-elevated border border-border">
                   <button 
                     type="button" 
                     (click)="viewMode.set('photos')"
                     [class.bg-surface]="viewMode() === 'photos'"
-                    [class.text-cyan-400]="viewMode() === 'photos'"
+                    [class.text-text-primary]="viewMode() === 'photos'"
                     [class.text-text-muted]="viewMode() !== 'photos'"
-                    class="px-2.5 py-1 rounded text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs active:translate-y-0.5">
+                    class="px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
@@ -112,34 +112,29 @@ interface EngineeringReview {
                   <button 
                     type="button" 
                     (click)="viewMode.set('3d')"
-                    [class.bg-gradient-to-r]="viewMode() === '3d'"
-                    [class.from-cyan-400]="viewMode() === '3d'"
-                    [class.to-blue-500]="viewMode() === '3d'"
+                    [class.bg-cyan-500]="viewMode() === '3d'"
                     [class.text-black]="viewMode() === '3d'"
                     [class.text-text-muted]="viewMode() !== '3d'"
-                    class="px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_2px_6px_rgba(0,210,255,0.3)] active:translate-y-0.5">
+                    class="px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
                     <span>Inspectează 3D WebGL</span>
                   </button>
                 </div>
-                <span class="text-[10px] font-mono text-cyan-400 font-bold flex items-center gap-1">
-                  <span class="led-indicator-3d" style="--led-color: #00d2ff; --led-glow: rgba(0, 210, 255, 0.9); width: 6px; height: 6px;"></span>
-                  360° CAD
-                </span>
+                <span class="text-[10px] font-mono text-cyan-400">360° CAD</span>
               </div>
 
               @if (viewMode() === '3d') {
                 <app-hardware-viewer-3d [productName]="prod.name"></app-hardware-viewer-3d>
               } @else {
-                <div data-lenis-parallax="0.06" data-lenis-parallax-scale="0.02" class="relative aspect-square rounded-xl bg-surface-sunken border border-border-strong p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-inner">
+                <div data-lenis-parallax="0.06" data-lenis-parallax-scale="0.02" class="relative aspect-square rounded-lg bg-surface-sunken border border-border p-6 sm:p-8 flex items-center justify-center overflow-hidden">
                   <img 
                     [src]="currentDisplayImage()" 
                     [alt]="prod.name"
                     [class.is-switching]="isSwitchingImage()"
                     data-lenis-parallax="0.04"
-                    class="gallery-crossfade-img lenis-parallax-image max-w-full max-h-full object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]">
+                    class="gallery-crossfade-img lenis-parallax-image max-w-full max-h-full object-contain filter drop-shadow-sm">
                   
                   @if (prod.badge) {
                     <div class="absolute top-4 left-4">
@@ -150,7 +145,7 @@ interface EngineeringReview {
                   <button
                     type="button"
                     (click)="wishlistService.toggleWishlist(prod)"
-                    class="heart-button absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-xs border border-border-strong flex items-center justify-center text-text-muted hover:text-rose-400 z-10 shadow-xs"
+                    class="heart-button absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-xs border border-border flex items-center justify-center text-text-muted hover:text-rose-400 z-10"
                     [class.is-active]="wishlistService.isWishlisted(prod.id)"
                     [title]="wishlistService.isWishlisted(prod.id) ? 'Elimină din favorite' : 'Adaugă la favorite'">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -164,19 +159,19 @@ interface EngineeringReview {
                     <button 
                       type="button"
                       (click)="selectGalleryImage($index)"
-                      [class.border-cyan-400]="activeImageIndex() === $index"
-                      [class.ring-2]="activeImageIndex() === $index"
-                      [class.ring-cyan-400/40]="activeImageIndex() === $index"
+                      [class.border-accent]="activeImageIndex() === $index"
+                      [class.ring-1]="activeImageIndex() === $index"
+                      [class.ring-accent]="activeImageIndex() === $index"
                       [class.opacity-100]="activeImageIndex() === $index"
                       [class.opacity-60]="activeImageIndex() !== $index"
-                      class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-cyan-400/40 transition-all overflow-hidden cursor-pointer shadow-inner">
+                      class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-border-strong transition-all overflow-hidden cursor-pointer">
                       <img [src]="img" [alt]="prod.name + ' unghi ' + ($index + 1)" class="max-h-full max-w-full object-contain">
                     </button>
                   }
                 </div>
               }
 
-              <div class="p-3.5 rounded-lg bg-surface-elevated border border-border-strong text-xs text-text-muted flex items-center justify-between gap-3 shadow-xs font-mono">
+              <div class="p-3.5 rounded-lg bg-surface-elevated border border-border text-xs text-text-muted flex items-center justify-between gap-3">
                 <button 
                   type="button"
                   (click)="copyCode(prod.sku, 'SKU')"
@@ -184,7 +179,7 @@ interface EngineeringReview {
                   title="Apasă pentru a copia SKU">
                   <span>{{ 'sku_label' | translate }}</span>
                   <strong class="text-text-primary font-semibold">{{ prod.sku }}</strong>
-                  <svg class="w-3.5 h-3.5 text-text-muted hover:text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-3.5 h-3.5 text-text-muted hover:text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                   </svg>
                 </button>
@@ -196,7 +191,7 @@ interface EngineeringReview {
                     title="Apasă pentru a copia MPN">
                     <span>MPN:</span>
                     <strong class="text-text-primary font-semibold">{{ prod.mpn }}</strong>
-                    <svg class="w-3.5 h-3.5 text-text-muted hover:text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-3.5 h-3.5 text-text-muted hover:text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                     </svg>
                   </button>
@@ -227,14 +222,14 @@ interface EngineeringReview {
                 </p>
               </div>
 
-              <div class="p-5 rounded-xl bg-surface-elevated border border-border-strong space-y-4 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_8px_20px_rgba(0,0,0,0.5)]">
+              <div class="p-5 rounded-lg bg-surface-elevated border border-border space-y-4">
                 <div class="flex flex-wrap items-baseline justify-between gap-3">
                   <div class="flex items-baseline gap-3">
                     <span class="text-3xl font-bold text-text-primary tabular-nums">
-                      {{ prod.price_ron.toFixed(2) }} <span class="text-sm font-medium text-text-muted font-sans">lei</span>
+                      {{ prod.price_ron.toFixed(2) }} <span class="text-sm font-medium text-text-muted">lei</span>
                     </span>
                     @if (prod.old_price_ron) {
-                      <span class="text-sm text-text-muted line-through tabular-nums font-mono">
+                      <span class="text-sm text-text-muted line-through tabular-nums">
                         {{ prod.old_price_ron.toFixed(2) }} lei
                       </span>
                       <app-ui-badge variant="success">
@@ -261,7 +256,7 @@ interface EngineeringReview {
                 </div>
 
                 <!-- Klarna Buy Now Pay Later Widget -->
-                <div class="p-3 rounded-lg bg-surface-sunken border border-[#FFB3C7]/30 flex items-center justify-between gap-3 shadow-inner">
+                <div class="p-3 rounded-lg bg-surface-sunken border border-[#FFB3C7]/30 flex items-center justify-between gap-3">
                   <div class="flex items-center gap-2.5">
                     <div class="w-10 h-6 rounded bg-[#FFB3C7] text-black font-black text-xs flex items-center justify-center tracking-tighter px-1.5 select-none shrink-0 shadow-xs">
                       Klarna.
@@ -286,35 +281,34 @@ interface EngineeringReview {
                 </div>
 
                 <div class="pt-4 border-t border-border flex flex-wrap items-center gap-3">
-                  <div class="flex items-center border border-border-strong rounded-lg bg-surface p-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
+                  <div class="flex items-center border border-border rounded-lg bg-surface p-1">
                     <button 
                       type="button"
                       (click)="decreaseQty()"
                       [disabled]="selectedQty <= 1"
-                      class="w-8 h-8 rounded flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-all text-sm font-bold active:translate-y-0.5 cursor-pointer">
+                      class="w-8 h-8 rounded flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-colors text-sm font-bold">
                       -
                     </button>
-                    <span class="w-10 text-center text-sm font-bold text-text-primary tabular-nums font-mono">
+                    <span class="w-10 text-center text-sm font-bold text-text-primary tabular-nums">
                       {{ selectedQty }}
                     </span>
                     <button 
                       type="button"
                       (click)="increaseQty()"
                       [disabled]="selectedQty >= prod.stock"
-                      class="w-8 h-8 rounded flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-all text-sm font-bold active:translate-y-0.5 cursor-pointer">
+                      class="w-8 h-8 rounded flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-colors text-sm font-bold">
                       +
                     </button>
                   </div>
 
-                  <!-- 3D Tactile Add to Cart CTA Button -->
                   <button 
                     type="button"
                     (click)="addToCart()"
                     [disabled]="prod.stock <= 0"
                     [class.btn-added-state]="isJustAdded()"
-                    class="flex-1 py-3 px-6 rounded-lg bg-gradient-to-b from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-bold text-xs transition-all disabled:opacity-40 flex items-center justify-center gap-2 shadow-[0_4px_0_#02668c,0_8px_18px_rgba(0,210,255,0.35)] active:translate-y-1 active:shadow-none cursor-pointer min-w-[140px]">
+                    class="flex-1 py-2.5 px-6 rounded-lg bg-accent hover:bg-accent-hover text-white font-semibold text-xs transition-all disabled:opacity-40 flex items-center justify-center gap-2 shadow-xs cursor-pointer min-w-[140px]">
                     @if (isJustAdded()) {
-                      <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                       </svg>
                       <span>{{ i18n.isRo() ? 'Adăugat în Coș' : 'Added to Cart' }}</span>

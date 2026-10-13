@@ -72,9 +72,9 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
             <span class="text-[11px] text-text-muted tabular-nums">250.00 lei</span>
           </div>
           
-          <div class="w-full h-1.5 bg-surface border border-border rounded-full overflow-hidden shadow-inner">
+          <div class="w-full h-1.5 bg-surface border border-border rounded-full overflow-hidden">
             <div 
-              class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300 rounded-full shadow-[0_0_8px_rgba(0,210,255,0.8)]"
+              class="h-full bg-accent transition-all duration-300 rounded-full"
               [style.width.%]="Math.min(100, (cartService.subtotal() / 250) * 100)">
             </div>
           </div>
@@ -83,7 +83,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
         <div class="flex-1 overflow-y-auto p-4 space-y-3 bg-canvas-subtle">
           @if (cartService.items().length === 0) {
             <div class="h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
-              <div class="w-14 h-14 rounded-xl bg-surface border border-border-strong shadow-[0_4px_12px_rgba(0,0,0,0.5)] flex items-center justify-center text-text-muted">
+              <div class="w-14 h-14 rounded-xl bg-surface border border-border flex items-center justify-center text-text-muted">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                 </svg>
@@ -99,14 +99,14 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
               <button 
                 type="button"
                 (click)="cartService.closeCart(); router.navigate(['/produse'])"
-                class="px-4 py-2 rounded-lg bg-surface border border-border-strong hover:bg-surface-elevated text-text-primary font-medium text-xs transition-all shadow-[0_2px_0_#06090e] active:translate-y-0.5">
+                class="px-4 py-2 rounded-lg bg-surface border border-border hover:bg-surface-elevated text-text-primary font-medium text-xs transition-colors">
                 {{ 'catalog_title' | translate }}
               </button>
             </div>
           } @else {
             @for (item of cartService.items(); track item.product.id) {
-              <div class="p-3 rounded-lg bg-surface border border-border-strong flex gap-3 relative group hover:border-cyan-400/40 transition-all shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_4px_12px_rgba(0,0,0,0.5)]">
-                <div class="w-14 h-14 rounded bg-surface-sunken border border-border flex items-center justify-center p-1 flex-shrink-0 shadow-inner">
+              <div class="p-3 rounded-lg bg-surface border border-border flex gap-3 relative group hover:border-border-focus transition-colors">
+                <div class="w-14 h-14 rounded bg-canvas-subtle border border-border flex items-center justify-center p-1 flex-shrink-0">
                   <img 
                     [src]="item.product.image_url" 
                     [alt]="item.product.name"
@@ -116,7 +116,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                 <div class="flex-1 min-w-0">
                   <div class="flex items-start justify-between gap-2">
                     <h4 class="text-xs font-semibold text-text-primary truncate">
-                      <a [routerLink]="['/produs', item.product.slug]" (click)="cartService.closeCart()" class="hover:text-cyan-400 transition-colors">
+                      <a [routerLink]="['/produs', item.product.slug]" (click)="cartService.closeCart()" class="hover:text-accent">
                         {{ item.product.name }}
                       </a>
                     </h4>
@@ -132,7 +132,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                   </div>
 
                   <div class="flex items-center gap-2 mt-1">
-                    <span class="text-[10px] text-text-muted font-mono tabular-nums">
+                    <span class="text-[10px] text-text-muted tabular-nums">
                       SKU: {{ item.product.sku }}
                     </span>
                     @if (item.product.stock <= 5) {
@@ -143,16 +143,16 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                   </div>
 
                   <div class="flex items-center justify-between mt-2 pt-2 border-t border-border">
-                    <div class="flex items-center border border-border-strong rounded-lg bg-surface-elevated shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
+                    <div class="flex items-center border border-border rounded bg-surface-elevated">
                       <button 
                         type="button"
                         (click)="updateQtyWithAnim(item.product.id, item.quantity - 1)"
-                        class="w-6 h-6 flex items-center justify-center text-text-muted hover:text-text-primary transition-all text-xs font-bold active:translate-y-0.5 cursor-pointer"
+                        class="w-6 h-6 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors text-xs font-bold active:scale-90"
                         aria-label="Minus">
                         -
                       </button>
                       <span 
-                        class="quantity-val-pop w-6 text-center text-xs font-bold text-text-primary tabular-nums font-mono"
+                        class="quantity-val-pop w-6 text-center text-xs font-bold text-text-primary tabular-nums"
                         [class.is-changing]="animatingQtyIds().includes(item.product.id)">
                         {{ item.quantity }}
                       </span>
@@ -160,7 +160,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                         type="button"
                         (click)="updateQtyWithAnim(item.product.id, item.quantity + 1)"
                         [disabled]="item.quantity >= item.product.stock"
-                        class="w-6 h-6 flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-all text-xs font-bold active:translate-y-0.5 cursor-pointer"
+                        class="w-6 h-6 flex items-center justify-center text-text-muted hover:text-text-primary disabled:opacity-30 transition-colors text-xs font-bold active:scale-90"
                         aria-label="Plus">
                         +
                       </button>
@@ -218,7 +218,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
               </div>
 
               <!-- Klarna Installment Pill in Cart Drawer -->
-              <div class="p-2 rounded-lg bg-surface-elevated border border-[#FFB3C7]/40 flex items-center justify-between text-[11px] shadow-[0_2px_8px_rgba(255,179,199,0.12)]">
+              <div class="p-2 rounded-lg bg-surface-elevated border border-[#FFB3C7]/40 flex items-center justify-between text-[11px]">
                 <div class="flex items-center gap-1.5">
                   <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-black font-black text-[10px] tracking-tight">Klarna.</span>
                   <span class="text-text-primary font-medium">
@@ -230,13 +230,11 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
               </div>
             </div>
 
-            <!-- 3D Tactile Checkout CTA Button -->
             <button 
               type="button"
               (click)="goToCheckout()"
-              class="w-full py-2.5 px-4 rounded-lg bg-gradient-to-b from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-bold text-xs flex items-center justify-center gap-2 shadow-[0_4px_0_#02668c,0_8px_18px_rgba(0,210,255,0.35)] active:translate-y-1 active:shadow-none transition-all cursor-pointer">
+              class="w-full py-2.5 px-4 rounded-lg bg-accent hover:bg-accent-hover text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-xs transition-all">
               <span>{{ 'cart_checkout_btn' | translate }}</span>
-              <span class="kbd-badge text-[9px] bg-cyan-950/40 text-cyan-200 border-cyan-500/30">↵</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>

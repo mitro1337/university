@@ -16,11 +16,7 @@ export class UiFeedbackService {
   public scrollProgress = signal<number>(0);
   public showBackToTop = signal<boolean>(false);
   public toasts = signal<ToastItem[]>([]);
-  public isSoundEnabled = signal<boolean>(true);
-  public isTiltEnabled = signal<boolean>(true);
-  public latencyMs = signal<number>(2.4);
 
-  private audioCtx: AudioContext | null = null;
   private isListenerInitialized = false;
 
   public initGlobalListeners(): void {
@@ -42,21 +38,6 @@ export class UiFeedbackService {
 
     this.updateScrollMetrics();
 
-    // Global tactile click feedback
-    document.addEventListener('click', (event: MouseEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (target?.closest('button, a, input, select, [role="button"], .spotlight-card, .btn-3d-primary, .btn-3d-secondary')) {
-        this.playTactileClick('click');
-      }
-    }, { passive: true });
-
-    // Jitter latency benchmark simulation
-    setInterval(() => {
-      const base = 2.1;
-      const variation = (Math.random() * 1.8).toFixed(1);
-      this.latencyMs.set(parseFloat((base + parseFloat(variation)).toFixed(1)));
-    }, 4500);
-
     document.addEventListener('mousemove', (event: MouseEvent) => {
       const card = (event.target as HTMLElement | null)?.closest('.spotlight-card') as HTMLElement | null;
       if (card) {
@@ -67,70 +48,6 @@ export class UiFeedbackService {
         card.style.setProperty('--mouse-y', `${y}px`);
       }
     }, { passive: true });
-  }
-
-  public playTactileClick(type: 'click' | 'toggle' | 'add' = 'click'): void {
-    if (!this.isSoundEnabled() || typeof window === 'undefined') return;
-    try {
-      if (!this.audioCtx) {
-        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-        if (AudioContextClass) {
-          this.audioCtx = new AudioContextClass();
-        }
-      }
-      if (!this.audioCtx) return;
-      if (this.audioCtx.state === 'suspended') {
-        this.audioCtx.resume();
-      }
-
-      const now = this.audioCtx.currentTime;
-      const osc = this.audioCtx.createOscillator();
-      const gain = this.audioCtx.createGain();
-
-      osc.connect(gain);
-      gain.connect(this.audioCtx.destination);
-
-      if (type === 'click') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(1400, now);
-        osc.frequency.exponentialRampToValueAtTime(320, now + 0.025);
-        gain.gain.setValueAtTime(0.045, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
-        osc.start(now);
-        osc.stop(now + 0.028);
-      } else if (type === 'add') {
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(580, now);
-        osc.frequency.exponentialRampToValueAtTime(1180, now + 0.06);
-        gain.gain.setValueAtTime(0.07, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
-        osc.start(now);
-        osc.stop(now + 0.075);
-      } else {
-        osc.type = 'square';
-        osc.frequency.setValueAtTime(880, now);
-        osc.frequency.exponentialRampToValueAtTime(440, now + 0.035);
-        gain.gain.setValueAtTime(0.03, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
-        osc.start(now);
-        osc.stop(now + 0.04);
-      }
-    } catch {
-      // AudioContext unavailable or blocked
-    }
-  }
-
-  public toggleSound(): boolean {
-    const next = !this.isSoundEnabled();
-    this.isSoundEnabled.set(next);
-    if (next) this.playTactileClick('toggle');
-    return next;
-  }
-
-  public toggleTilt(): boolean {
-    const next = !this.isTiltEnabled();
-    this.isTiltEnabled.set(next);
-    return next;
   }
 
   private updateScrollMetrics(): void {
