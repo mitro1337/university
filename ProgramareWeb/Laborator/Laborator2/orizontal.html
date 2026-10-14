@@ -2,13 +2,10 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Exercitiul 3.1: Crearea unui Meniu Orizontal in CSS</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Meniu Orizontal</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
-        /* ============================================================
-           PASUL 1: Lista simpla UL neformatata
-           ============================================================ */
         .pas1-lista {
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -16,9 +13,6 @@
             border-radius: 6px;
         }
 
-        /* ============================================================
-           PASUL 2: Eliminarea bullet-urilor si resetarea spatiilor
-           ============================================================ */
         #pas2-meniu ul {
             margin: 0;
             padding: 0;
@@ -29,9 +23,6 @@
             border-radius: 6px;
         }
 
-        /* ============================================================
-           PASUL 3: Trecerea in orizontal prin display: inline
-           ============================================================ */
         #pas3-meniu ul {
             margin: 0;
             padding: 0;
@@ -46,9 +37,6 @@
             margin-right: 15px;
         }
 
-        /* ============================================================
-           PASUL 4: Eliminarea sublinierii si colorarea link-urilor (red)
-           ============================================================ */
         #pas4-meniu ul {
             margin: 0;
             padding: 0;
@@ -68,9 +56,6 @@
             font-weight: bold;
         }
 
-        /* ============================================================
-           PASUL 5: Codul complet din laborator cu efect de hover
-           ============================================================ */
         #meniu-laborator {
             background-color: #1e293b;
             padding: 12px 20px;
@@ -89,18 +74,15 @@
         }
         #meniu-laborator a {
             text-decoration: none;
-            color: #ef4444; /* rosu */
+            color: #ef4444;
             font-weight: bold;
             font-size: 13pt;
             transition: color 0.2s ease;
         }
         #meniu-laborator a:hover {
-            color: #facc15; /* galben */
+            color: #facc15;
         }
 
-        /* ============================================================
-           VARIANTA MODERNA CU PADDING, BORDER-RADIUS SI FUNDAL LA HOVER
-           ============================================================ */
         #meniu-orizontal-modern {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             padding: 8px 16px;
@@ -141,23 +123,21 @@
 <body>
 
     <div class="bara-navigare">
-        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
-        <span class="eticheta-exercitiu">Exercitiul 3.1 - Meniu Orizontal</span>
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Meniu Orizontal</span>
     </div>
 
     <div class="container">
-        <h1>Exercitiul 3.1: Crearea si stilizarea unui meniu orizontal in CSS</h1>
+        <h1>Meniu Orizontal</h1>
         
         <p class="descriere">
-            Conform cerintei din laborator, transformarea unei liste neordonate <code>&lt;ul&gt;</code> intr-un meniu orizontal complet functional 
-            se realizeaza in pasi succesivi. Fiecare pas adauga o noua regula CSS pana la obtinerea meniului final.
+            Etapele de transformare a unei liste <code>&lt;ul&gt;</code> intr-un meniu orizontal in CSS.
         </p>
 
-        <!-- Etapa 1 -->
         <div class="card-etapa">
-            <div class="antet-etapa">Etapa 1: Lista HTML nativa neformatata</div>
+            <div class="antet-etapa">1. Lista HTML nativa</div>
             <div class="continut-etapa">
-                <p>Lista verticala implicita cu marcatori (bullet-uri) si link-uri albastre subliniate:</p>
+                <p>Lista verticala cu marcatori:</p>
                 <div class="pas1-lista">
                     <ul>
                         <li><a href="index.html">HOME</a></li>
@@ -169,9 +149,8 @@
             </div>
         </div>
 
-        <!-- Etapa 2 -->
         <div class="card-etapa">
-            <div class="antet-etapa">Etapa 2: Eliminarea marcatorilor (bullet-urilor) si a spatiilor implicite</div>
+            <div class="antet-etapa">2. Eliminarea marcatorilor (list-style: none)</div>
             <div class="continut-etapa">
                 <pre><code>#meniu ul {
     margin: 0;
@@ -190,9 +169,8 @@
             </div>
         </div>
 
-        <!-- Etapa 3 -->
         <div class="card-etapa">
-            <div class="antet-etapa">Etapa 3: Transformarea listei din verticala in orizontala cu display: inline</div>
+            <div class="antet-etapa">3. Dispunere orizontala (display: inline)</div>
             <div class="continut-etapa">
                 <pre><code>#meniu li {
     display: inline;
@@ -208,9 +186,8 @@
             </div>
         </div>
 
-        <!-- Etapa 4 -->
         <div class="card-etapa">
-            <div class="antet-etapa">Etapa 4: Eliminarea sublinierii si schimbarea culorii implicite</div>
+            <div class="antet-etapa">4. Eliminarea sublinierii (text-decoration: none; color: red)</div>
             <div class="continut-etapa">
                 <pre><code>#meniu a {
     text-decoration: none;
@@ -227,10 +204,9 @@
             </div>
         </div>
 
-        <!-- Etapa 5: Meniul final conform cerintei exacte din laborator -->
         <div class="card-etapa" style="border: 2px solid #ef4444;">
             <div class="antet-etapa" style="background-color: #fee2e2; color: #991b1b;">
-                Etapa 5: Meniul final conform codului din laborator (cu efect de :hover)
+                5. Meniul complet cu efect :hover
             </div>
             <div class="continut-etapa">
                 <pre><code>#meniu ul {
@@ -249,7 +225,6 @@
 #meniu a:hover {
     color: yellow;
 }</code></pre>
-                <p><strong>Incercati interactiunea cu cursorul peste link-uri:</strong></p>
                 <div id="meniu-laborator">
                     <ul>
                         <li><a href="index.html">HOME</a></li>
@@ -261,13 +236,11 @@
             </div>
         </div>
 
-        <!-- Varianta moderna imbunatatita -->
         <div class="card-etapa" style="border: 2px solid #3b82f6;">
             <div class="antet-etapa" style="background-color: #dbeafe; color: #1e40af;">
-                Extensie profesionala: Meniu Orizontal Modern cu Flexbox, Padding si Stare Activa
+                Varianta moderna cu flexbox
             </div>
             <div class="continut-etapa">
-                <p>O versiune imbunatatita cu spatiere interna optima, tranzitie lina si stare vizuala distincta:</p>
                 <nav id="meniu-orizontal-modern">
                     <ul>
                         <li><a href="index.html" class="activ">HOME</a></li>
@@ -280,8 +253,8 @@
         </div>
 
         <div class="sub-navigare">
-            <a href="conflicte.html" class="buton-secundar">&laquo; Inapoi la Rezolvarea Conflictelor</a>
-            <a href="meniu_vertical.html" class="buton-principal">Urmatorul: Creare Meniu Vertical &raquo;</a>
+            <a href="conflicte.html" class="buton-secundar">&laquo; Conflicte CSS</a>
+            <a href="vertical.html" class="buton-principal">Meniu Vertical &raquo;</a>
         </div>
     </div>
 

@@ -2,11 +2,10 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Laborator 2: DHTML - Lucrul cu foi de stiluri in cascada</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Laborator 2</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
-        /* Stiluri specifice pentru panoul principal de navigare din index */
         .antet-laborator {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             color: #ffffff;
@@ -110,7 +109,6 @@
             padding-left: 16px;
         }
 
-        /* Demo live meniu orizontal in pagina principala */
         #meniu-live-container {
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
@@ -152,16 +150,16 @@
 <body>
 
     <header class="antet-laborator">
-        <h1>LABORATOR 2: DHTML</h1>
-        <p>Lucrul cu foi de stiluri in cascada (Cascading Style Sheets - CSS)</p>
+        <h1>Laborator 2</h1>
+        <p>DHTML - Foi de stiluri in cascada (CSS)</p>
     </header>
 
     <div class="container">
         
         <div class="descriere">
-            <strong>Obiective conform fisei de laborator:</strong>
+            <strong>Cerinte:</strong>
             <ol style="margin: 8px 0 0 0; padding-left: 20px;">
-                <li>Verificarea celor trei modalitati de precizare a stilului (inline, intern/antet, extern).</li>
+                <li>Verificarea celor trei modalitati de precizare a stilului (inline, intern, extern).</li>
                 <li>Studierea mostenirii si a rezolvarii conflictelor in cadrul stilurilor CSS.</li>
                 <li>Crearea unui meniu orizontal si a unui meniu vertical.</li>
             </ol>
@@ -169,61 +167,54 @@
 
         <div class="grila-cerinte">
             
-            <!-- Cerinta 1 -->
             <div class="card-cerinta">
                 <div>
                     <span class="numar-cerinta">Cerinta 1</span>
                     <h2>Modalitati de precizare a stilului</h2>
                     <p>
-                        Studiul si testarea celor trei moduri de aplicare a foilor de stil: 
-                        inline (atributul style), intern (tag-ul style in head) si extern (fisier separat legat prin link).
+                        Studiul celor trei moduri de aplicare: inline (atributul style), intern (tag-ul style in head) si extern (fisier legat prin link).
                     </p>
                 </div>
                 <ul class="lista-linkuri-exercitiu">
-                    <li><a href="stil_inline.html">&bull; 1.1 Stil Inline (atributul style)</a></li>
-                    <li><a href="stil_intern.html">&bull; 1.2 Stil in Antet (tag-ul &lt;style&gt;)</a></li>
-                    <li><a href="stil_extern.html">&bull; 1.3 Foaie Externa (css3.css cu &lt;link&gt;)</a></li>
-                    <li><a href="modalitati_stil.html">&bull; Sinteza comparativa a celor 3 metode</a></li>
+                    <li><a href="inline.html">&bull; Stil Inline</a></li>
+                    <li><a href="intern.html">&bull; Stil Intern</a></li>
+                    <li><a href="extern.html">&bull; Stil Extern (css3.css)</a></li>
+                    <li><a href="modalitati.html">&bull; Toate cele 3 modalitati</a></li>
                 </ul>
             </div>
 
-            <!-- Cerinta 2 -->
             <div class="card-cerinta">
                 <div>
                     <span class="numar-cerinta">Cerinta 2</span>
-                    <h2>Mostenire si rezolvarea conflictelor</h2>
+                    <h2>Mostenire si conflicte</h2>
                     <p>
-                        Mecanismul de transmitere ierarhica prin arborele DOM (overriding inheritance), 
-                        regulile de specificitate, prioritatea !important si toate tipurile de selectori din laborator.
+                        Transmiterea prin arborele DOM, specificitatea, prioritatea !important si selectorii din laborator.
                     </p>
                 </div>
                 <ul class="lista-linkuri-exercitiu">
-                    <li><a href="mostenire.html">&bull; 2.1 Arborele DOM si mostenirea culorilor</a></li>
-                    <li><a href="conflicte.html">&bull; 2.2 Rezolvarea conflictelor &amp; Selectori</a></li>
+                    <li><a href="mostenire.html">&bull; Mostenire in CSS</a></li>
+                    <li><a href="conflicte.html">&bull; Rezolvarea conflictelor</a></li>
                 </ul>
             </div>
 
-            <!-- Cerinta 3 -->
             <div class="card-cerinta">
                 <div>
                     <span class="numar-cerinta">Cerinta 3</span>
-                    <h2>Meniu Orizontal si Meniu Vertical</h2>
+                    <h2>Meniu Orizontal si Vertical</h2>
                     <p>
-                        Constructia pas cu pas a meniului orizontal din lista &lt;ul&gt;, transformarea in meniu vertical cu display: block 
-                        si integrarea intr-o macheta completa de site.
+                        Constructia meniului orizontal, a meniului vertical si integrarea lor intr-o macheta de site.
                     </p>
                 </div>
                 <ul class="lista-linkuri-exercitiu">
-                    <li><a href="meniu_orizontal.html">&bull; 3.1 Meniu Orizontal (pasi 1 - 5)</a></li>
-                    <li><a href="meniu_vertical.html">&bull; 3.2 Meniu Vertical (clasic &amp; modern)</a></li>
-                    <li><a href="meniuri.html">&bull; 3.3 Macheta Integrata (Header + Sidebar)</a></li>
+                    <li><a href="orizontal.html">&bull; Meniu Orizontal</a></li>
+                    <li><a href="vertical.html">&bull; Meniu Vertical</a></li>
+                    <li><a href="meniuri.html">&bull; Macheta Meniuri</a></li>
                 </ul>
             </div>
 
         </div>
 
-        <h2>Demonstratie rapida: Meniul din laborator functional</h2>
-        <p>Acesta este meniul orizontal exact asa cum este construit in Sectiunea 4 a indrumarului:</p>
+        <h2>Meniu functional</h2>
         
         <div id="meniu-live-container">
             <div id="meniu-live-demo">
@@ -235,26 +226,26 @@
                 </ul>
             </div>
             <div style="margin-top: 10px; font-size: 9.5pt; color: #64748b;">
-                Treceti cu cursorul peste link-uri pentru a vedea efectul de <code>hover</code> (culoarea se schimba din rosu in galben).
+                Treceti cu cursorul peste link-uri pentru a vedea efectul de hover.
             </div>
         </div>
 
         <div class="sectiune-explicatii">
-            <h2>Structura fisierelor create pe Desktop in folderul L2:</h2>
+            <h2>Fisiere disponibile:</h2>
             <ul style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 9.5pt;">
-                <li><strong>index.html</strong> - Pagina principala de prezentare si navigare</li>
-                <li><strong>stil_inline.html</strong> - Exercitiul 1.1: Atributul style pe elemente</li>
-                <li><strong>stil_intern.html</strong> - Exercitiul 1.2: Tag-ul style in sectiunea head</li>
-                <li><strong>stil_extern.html</strong> - Exercitiul 1.3: Importul fisierului css3.css prin link</li>
-                <li><strong>modalitati_stil.html</strong> - Sinteza si tabelul comparativ al celor 3 modalitati</li>
-                <li><strong>mostenire.html</strong> - Exercitiul 2.1: Arborele DOM si moștenirea proprietatilor</li>
-                <li><strong>conflicte.html</strong> - Exercitiul 2.2: Cascadarea, specificitatea si toti selectorii</li>
-                <li><strong>meniu_orizontal.html</strong> - Exercitiul 3.1: Meniul orizontal detaliat pas cu pas</li>
-                <li><strong>meniu_vertical.html</strong> - Exercitiul 3.2: Meniul vertical</li>
-                <li><strong>meniuri.html</strong> - Exercitiul 3.3: Macheta integrata cu antet si bara laterala</li>
-                <li><strong>produse.html, despre-firma.html, contact.html</strong> - Paginile tinta legate in meniuri</li>
-                <li><strong>css3.css</strong> - Foaia de stil externa ceruta in indrumar</li>
-                <li><strong>stil_laborator.css</strong> - Foaia de stil comuna pentru aspectul didactic modern</li>
+                <li><strong>index.html</strong> - Pagina principala</li>
+                <li><strong>inline.html</strong> - Stil inline</li>
+                <li><strong>intern.html</strong> - Stil intern</li>
+                <li><strong>extern.html</strong> - Stil extern (css3.css)</li>
+                <li><strong>modalitati.html</strong> - Comparatie cele 3 stiluri</li>
+                <li><strong>mostenire.html</strong> - Mostenirea in arborele DOM</li>
+                <li><strong>conflicte.html</strong> - Rezolvarea conflictelor si selectori</li>
+                <li><strong>orizontal.html</strong> - Meniu orizontal</li>
+                <li><strong>vertical.html</strong> - Meniu vertical</li>
+                <li><strong>meniuri.html</strong> - Macheta integrata</li>
+                <li><strong>produse.html, despre-firma.html, contact.html</strong> - Paginile din meniu</li>
+                <li><strong>css3.css</strong> - Foaie de stil externa</li>
+                <li><strong>stil.css</strong> - Foaie de stil generala</li>
             </ul>
         </div>
 

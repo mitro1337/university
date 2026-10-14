@@ -1,8 +1,3 @@
-/* 
-   Laborator 2: DHTML - Lucrul cu foi de stiluri in cascada
-   Foaie de stil generala pentru interfata si paginile didactice
-*/
-
 :root {
     --bg-page: #f8fafc;
     --bg-surface: #ffffff;
@@ -31,7 +26,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Bara superioara de navigare didactica */
 .bara-navigare {
     background-color: #0f172a;
     color: #ffffff;
@@ -67,7 +61,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Container principal de continut */
 .container {
     max-width: 960px;
     margin: 30px auto;
@@ -115,7 +108,6 @@ h3 {
     line-height: 1.6;
 }
 
-/* Casete de cod sursa */
 .caseta-cod {
     background-color: var(--code-bg);
     border-radius: 8px;
@@ -155,7 +147,6 @@ p code, li code, td code {
     font-size: 9.5pt;
 }
 
-/* Panou rezultat */
 .panou-rezultat {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-strong);
@@ -176,7 +167,6 @@ p code, li code, td code {
     padding-bottom: 6px;
 }
 
-/* Sectiune explicatii didactice */
 .sectiune-explicatii {
     background-color: #f1f5f9;
     border: 1px solid #cbd5e1;
@@ -203,7 +193,6 @@ p code, li code, td code {
     margin-bottom: 8px;
 }
 
-/* Butoane de navigare la subsolul paginii */
 .sub-navigare {
     display: flex;
     justify-content: space-between;
@@ -250,7 +239,6 @@ p code, li code, td code {
     color: #0f172a;
 }
 
-/* Carduri pentru etape de lucru */
 .card-etapa {
     background: #ffffff;
     border: 1px solid var(--border-subtle);
@@ -273,7 +261,6 @@ p code, li code, td code {
     padding: 18px;
 }
 
-/* Tabele didactice */
 .tabel-comparativ-wrapper {
     overflow-x: auto;
     margin: 20px 0;
@@ -304,7 +291,6 @@ p code, li code, td code {
     background-color: #f8fafc;
 }
 
-/* Grila demonstratie */
 .grila-demonstratie, .grila-selectori {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -365,7 +351,6 @@ p code, li code, td code {
     color: #0369a1;
 }
 
-/* Panou etape cascadare */
 .panou-etape-cascadare {
     background-color: #f0fdf4;
     border: 1px solid #bbf7d0;

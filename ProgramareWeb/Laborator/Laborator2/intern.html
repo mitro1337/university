@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Stil Intern</title>
+    
+    <style type="text/css">
+        em { 
+            background-color: #8000FF; 
+            color: white; 
+            padding: 2px 6px; 
+            border-radius: 4px;
+            font-style: normal;
+        } 
+        
+        h1.exemplu-indrumar { 
+            font-family: Arial, sans-serif; 
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p.exemplu-indrumar { 
+            font-size: 18pt; 
+            margin: 10px 0;
+        }
+        
+        .blue { 
+            color: blue; 
+        }
+    </style>
+
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Stil Intern</span>
+    </div>
+
+    <div class="container">
+        <h1>Stil Intern</h1>
+        
+        <p class="descriere">
+            Specificarea stilului in interiorul sectiunii <code>&lt;head&gt;</code> folosind eticheta <code>&lt;style&gt;</code>.
+        </p>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Cod sursa:</div>
+            <pre><code>&lt;style type="text/css"&gt;
+    em { background-color: #8000FF; color: white }
+    h1 { font-family: Arial, sans-serif }
+    p { font-size: 18pt }
+    .blue { color: blue }
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <div class="panou-rezultat">
+            <div class="titlu-rezultat">Rezultat:</div>
+            <h1 class="blue exemplu-indrumar">Un antet</h1>
+            <p class="exemplu-indrumar">Un paragraf</p>
+            <h1 class="exemplu-indrumar">Alt antet</h1>
+            <p class="blue exemplu-indrumar">Alt <em>paragraf</em></p>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Observatii:</h2>
+            <ul>
+                <li><strong>Centralizare locala:</strong> Regulile se definesc o singura data in antet si se aplica tuturor elementelor corespunzatoare din pagina.</li>
+                <li><strong>Elementul <code>&lt;em&gt;</code>:</strong> Are fundal violet (<code>#8000FF</code>) si text alb (<code>color: white</code>).</li>
+                <li><strong>Limitare:</strong> Regulile se aplica doar documentului HTML curent.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="inline.html" class="buton-secundar">&laquo; Stil Inline</a>
+            <a href="extern.html" class="buton-principal">Stil Extern &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

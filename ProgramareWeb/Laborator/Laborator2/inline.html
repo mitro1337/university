@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Stil Inline</title>
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Stil Inline</span>
+    </div>
+
+    <div class="container">
+        <h1>Stil Inline</h1>
+        
+        <p class="descriere">
+            Specificarea stilului prin intermediul atributului <code>style</code> atasat direct elementului HTML.
+        </p>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Cod sursa:</div>
+            <pre><code>&lt;p style="font-size: 20pt"&gt;Text&lt;/p&gt;
+&lt;p style="font-size: 20pt; color: #0000FF"&gt;Text&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="panou-rezultat">
+            <div class="titlu-rezultat">Rezultat:</div>
+            <p style="font-size: 20pt">Text (marime font 20pt, culoare implicita)</p>
+            <p style="font-size: 20pt; color: #0000FF">Text (marime font 20pt, culoare #0000FF - albastru)</p>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Observatii:</h2>
+            <ul>
+                <li><strong>Atributul <code>style</code>:</strong> Permite specificarea uneia sau mai multor perechi <code>proprietate: valoare;</code> direct in tag-ul HTML.</li>
+                <li><strong>Sintaxa:</strong> Fiecare declaratie este separata prin punct si virgula (<code>;</code>), iar proprietatea este separata de valoare prin doua puncte (<code>:</code>).</li>
+                <li><strong>Dezavantaj:</strong> Nu permite reutilizarea regulilor de stil pentru mai multe elemente.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="modalitati.html" class="buton-secundar">Toate cele 3 modalitati</a>
+            <a href="intern.html" class="buton-principal">Stil Intern &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

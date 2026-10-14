@@ -2,11 +2,10 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Pagina Produse - Laborator 2 DHTML</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Produse</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
-        /* Meniu orizontal standard conform cerintei din laborator */
         #meniu-nav {
             background-color: #0f172a;
             padding: 12px 20px;
@@ -42,7 +41,6 @@
             background-color: #2563eb;
         }
 
-        /* Grila de produse demonstrativa */
         .grila-produse {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -77,13 +75,12 @@
 <body>
 
     <div class="bara-navigare">
-        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
-        <span class="eticheta-exercitiu">Pagina demonstrativa a meniului</span>
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Produse</span>
     </div>
 
     <div class="container">
         
-        <!-- Meniul orizontal functional -->
         <nav id="meniu-nav">
             <ul>
                 <li><a href="index.html">HOME</a></li>
@@ -93,11 +90,10 @@
             </ul>
         </nav>
 
-        <h1>Catalog Produse (Pagina tinta a meniului)</h1>
+        <h1>Produse</h1>
         
         <p class="descriere">
-            Aceasta pagina demonstreaza functionarea navigarii din meniu. 
-            Elementul <strong>PRODUSE</strong> din meniul de sus are clasa <code>.activ</code>, semnalizand pozitia curenta a utilizatorului.
+            Exemplu de catalog conectat la meniul de navigare.
         </p>
 
         <div class="grila-produse">
@@ -127,8 +123,8 @@
         </div>
 
         <div class="sub-navigare">
-            <a href="meniu_orizontal.html" class="buton-secundar">&laquo; Inapoi la Meniu Orizontal</a>
-            <a href="despre-firma.html" class="buton-principal">Mergi la pagina Despre Noi &raquo;</a>
+            <a href="orizontal.html" class="buton-secundar">&laquo; Meniu Orizontal</a>
+            <a href="despre-firma.html" class="buton-principal">Despre Noi &raquo;</a>
         </div>
     </div>
 

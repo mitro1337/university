@@ -2,21 +2,15 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Studiul Rezolvarii Conflictelor si Selectorilor in DHTML / CSS</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Conflicte CSS</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
-        /* ============================================================
-           REGULI SPECIFICE CONFORM INDRUMARULUI DE LABORATOR
-           ============================================================ */
-
-        /* 1. Selector bazat pe tipul elementelor si gruparea selectorilor */
         .exemplu-tip h2, 
         .exemplu-tip h3 {
             color: #0369a1;
         }
 
-        /* 2. Selector bazat pe clasa */
         .IMPORTANT {
             color: #dc2626;
             font-weight: bold;
@@ -26,7 +20,6 @@
             border-left: 3px solid #dc2626;
         }
 
-        /* 3. Selector bazat pe ID */
         #COPYRIGHT {
             font-size: small;
             color: #64748b;
@@ -36,7 +29,6 @@
             margin-top: 15px;
         }
 
-        /* 4. Selector contextual (descendent) */
         .context-demo li p {
             margin-top: 0mm;
             color: #4338ca;
@@ -51,7 +43,6 @@
             font-weight: 600;
         }
 
-        /* 5. Pseudoclase pentru legaturi (link-uri) */
         .demo-legaturi a:link {
             color: green;
             text-decoration: underline;
@@ -69,7 +60,6 @@
             color: red;
         }
 
-        /* 6. Pseudoelemente first-letter si first-line */
         p.INITIAL:first-letter {
             font-size: 200%;
             float: left;
@@ -86,104 +76,91 @@
             color: #1e1b4b;
         }
 
-        /* 7. Combinarea tipurilor de selectori */
         table.tabel-combinat p.INITIAL:first-letter {
             font-size: 220%;
             float: left;
             color: #ea580c;
         }
 
-        /* ============================================================
-           DEMONSTRATIA CONFLICTELOR DE SPECIFICITATE SI !IMPORTANT
-           ============================================================ */
-
-        /* Scenariul 1: Specificitate Tip vs Clasa vs ID */
         .conflict-box p {
-            color: gray; /* Specificitate (0, 0, 1) */
+            color: gray;
         }
         .conflict-box .text-evidentiat {
-            color: blue; /* Specificitate (0, 1, 0) - bate clasa pe tip */
+            color: blue;
         }
         .conflict-box #text-special {
-            color: green; /* Specificitate (1, 0, 0) - bate ID pe clasa */
+            color: green;
         }
 
-        /* Scenariul 2: Directiva !important */
         .conflict-box .fortat-important {
-            color: #b91c1c !important; /* Castiga in fata oricarui alt selector normal */
+            color: #b91c1c !important;
             font-weight: bold;
         }
 
-        /* Scenariul 3: Ordinea declaratiilor (aceeasi specificitate) */
         .regula-duplicata {
             color: red;
         }
         .regula-duplicata {
-            color: #0d9488; /* Declarata mai tarziu -> o suprascrie pe cea de dinainte */
+            color: #0d9488;
         }
     </style>
 </head>
 <body>
 
     <div class="bara-navigare">
-        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
-        <span class="eticheta-exercitiu">Exercitiul 2.2 - Rezolvarea Conflictelor</span>
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Conflicte CSS</span>
     </div>
 
     <div class="container">
-        <h1>Studiul rezolvarii conflictelor si a selectorilor CSS</h1>
+        <h1>Rezolvarea conflictelor in CSS</h1>
         
         <p class="descriere">
-            Cand mai multe reguli CSS se aplica aceluiasi element, apare un conflict. 
-            Mecanismul de cascadare (Cascading) rezolva conflictele aplicand strict 5 pasi succesivi:
+            Mecanismul de cascadare stabileste ordinea de aplicare a regulilor atunci cand exista declaratii multiple concurente.
         </p>
 
-        <!-- Caseta cu cei 5 pasi de cascadare din indrumar -->
         <div class="panou-etape-cascadare">
-            <h2>Algoritmul de rezolvare a conflictelor (W3C / Indrumar):</h2>
+            <h2>Etapele rezolvarii conflictelor:</h2>
             <ol>
                 <li>
                     <strong>Determinarea tuturor regulilor aplicabile:</strong> 
-                    Navigatorul cauta toate regulile din toate sursele (stiluri externe, stiluri interne, stiluri inline) care se potrivesc elementului respectiv.
+                    Navigatorul identifica toate regulile din toate sursele (inline, intern, extern).
                 </li>
                 <li>
                     <strong>Sortarea dupa importanta (<code>!important</code>):</strong> 
-                    Declaratiile marcate cu <code>!important</code> au prioritate maxima fata de declaratiile normale.
+                    Declaratiile marcate cu <code>!important</code> au prioritate maxima.
                 </li>
                 <li>
                     <strong>Sortarea dupa originea foii de stil:</strong> 
-                    Regulile definite de <em>proiectant / autor</em> au prioritate fata de stilurile definite de <em>utilizator</em>, care la randul lor au prioritate fata de stilul implicit al <em>navigatorului (user agent)</em>.
+                    Autor &gt; Utilizator &gt; Navigator.
                 </li>
                 <li>
                     <strong>Sortarea dupa specificitate:</strong> 
-                    Un selector mai specific castiga in fata unuia generic:
-                    <br>
-                    <code>Stil Inline (1,0,0,0) &gt; ID (0,1,0,0) &gt; Clasa/Pseudoclasa (0,0,1,0) &gt; Tip element (0,0,0,1)</code>.
+                    <code>Inline (1,0,0,0) &gt; ID (0,1,0,0) &gt; Clasa/Pseudoclasa (0,0,1,0) &gt; Tip element (0,0,0,1)</code>.
                 </li>
                 <li>
                     <strong>Sortarea dupa ordinea specificarii:</strong> 
-                    Daca doua reguli au aceeasi importanta, aceeasi origine si aceeasi specificitate, castiga regula care <em>apare mai tarziu</em> in document (regula de la sfarsit suprascrie regula de la inceput).
+                    La aceeasi specificitate, regula declarata mai tarziu suprascrie regula anterioara.
                 </li>
             </ol>
         </div>
 
-        <h2>Demonstratie live 1: Conflict de Specificitate (Tip vs Clasa vs ID)</h2>
+        <h2>Demonstratie: Specificitate</h2>
         <div class="panou-rezultat conflict-box">
-            <p>Paragraf obisnuit: Stilizat prin selector de tip <code>p</code> (culoare gri).</p>
-            <p class="text-evidentiat">Paragraf cu clasa: Clasa <code>.text-evidentiat</code> suprascrie tipul <code>p</code> (culoare albastra).</p>
-            <p id="text-special" class="text-evidentiat">Paragraf cu ID si clasa: ID-ul <code>#text-special</code> suprascrie clasa (culoare verde).</p>
-            <p id="text-special" class="fortat-important">Paragraf cu regula <code>!important</code>: Desi are ID, clasa cu <code>!important</code> invinge totul (culoare visinie).</p>
+            <p>Paragraf obisnuit: selector tip p (gri).</p>
+            <p class="text-evidentiat">Paragraf cu clasa: clasa .text-evidentiat (albastru).</p>
+            <p id="text-special" class="text-evidentiat">Paragraf cu ID si clasa: ID-ul #text-special (verde).</p>
+            <p id="text-special" class="fortat-important">Paragraf cu !important: clasa cu !important suprascrie ID-ul (rosu inchis).</p>
         </div>
 
-        <h2>Demonstratie live 2: Ordinea de declarare (aceeasi specificitate)</h2>
+        <h2>Demonstratie: Ordinea de declarare</h2>
         <div class="panou-rezultat">
             <p class="regula-duplicata">
-                Acest paragraf are clasa <code>.regula-duplicata</code>. Desi prima declaratie specifica <code>color: red</code>, 
-                a doua declaratie ulterioara specifica <code>color: #0d9488 (turcoaz)</code>. Castiga a doua declaratie!
+                Acest paragraf are clasa .regula-duplicata. A doua declaratie din CSS (turcoaz) o suprascrie pe prima (rosu).
             </p>
         </div>
 
-        <h2>Demonstratie live 3: Toti selectorii exemplificati in laborator</h2>
+        <h2>Selectori din laborator</h2>
         
         <div class="grila-selectori">
             
@@ -192,8 +169,8 @@
                 <div class="corp-card-demo">
                     <pre><code>H1 { color: blue }
 H1, H2 { color: blue }</code></pre>
-                    <h3>Titlu H3 stilizat prin selector grupat</h3>
-                    <p>Ambele etichete h2 si h3 primesc aceeasi culoare din declaratia comuna.</p>
+                    <h3>Titlu H3</h3>
+                    <p>Ambele etichete primesc aceeasi culoare din declaratia comuna.</p>
                 </div>
             </div>
 
@@ -209,12 +186,12 @@ H1, H2 { color: blue }</code></pre>
                 <div class="antet-card-demo">3. Selector bazat pe ID</div>
                 <div class="corp-card-demo">
                     <pre><code>#COPYRIGHT { font-size: small }</code></pre>
-                    <div id="COPYRIGHT">Toate drepturile rezervate. Element unic identificat prin ID #COPYRIGHT.</div>
+                    <div id="COPYRIGHT">Toate drepturile rezervate (#COPYRIGHT).</div>
                 </div>
             </div>
 
             <div class="card-demo context-demo">
-                <div class="antet-card-demo">4. Selector contextual (Descendent)</div>
+                <div class="antet-card-demo">4. Selector contextual</div>
                 <div class="corp-card-demo">
                     <pre><code>LI P { margin-top: 0mm }
 TABLE .SMALL P { font-size: small }</code></pre>
@@ -226,7 +203,7 @@ TABLE .SMALL P { font-size: small }</code></pre>
                     <table class="tabel-context" border="1" cellpadding="6" style="width: 100%; border-collapse: collapse; margin-top: 8px;">
                         <tr>
                             <td class="SMALL">
-                                <p>Text in celula cu clasa SMALL (stilizat prin TABLE .SMALL P)</p>
+                                <p>Celula cu clasa SMALL (TABLE .SMALL P)</p>
                             </td>
                         </tr>
                     </table>
@@ -234,15 +211,14 @@ TABLE .SMALL P { font-size: small }</code></pre>
             </div>
 
             <div class="card-demo demo-legaturi">
-                <div class="antet-card-demo">5. Pseudoclase pentru legaturi (A:LINK, A:HOVER, A:ACTIVE)</div>
+                <div class="antet-card-demo">5. Pseudoclase pentru legaturi</div>
                 <div class="corp-card-demo">
                     <pre><code>A:LINK { color: green }
 A:ACTIVE { color: red }
 A:VISITED { color: blue }
 A:HOVER { color: orange }</code></pre>
                     <p>
-                        Interactiuni cu link-urile:<br>
-                        <a href="#test-link-activ">Plimba cursorul aici (hover - portocaliu) si da click (active - rosu)</a>
+                        <a href="#test-link">Treceti cu cursorul (hover) sau dati click (active)</a>
                     </p>
                 </div>
             </div>
@@ -253,22 +229,21 @@ A:HOVER { color: orange }</code></pre>
                     <pre><code>P.INITIAL:FIRST-LETTER { font-size: 200%; float: left }
 P.INITIAL:FIRST-LINE { text-transform: uppercase }</code></pre>
                     <p class="INITIAL">
-                        acesta este un paragraf demonstrativ initial. Prima litera este o letrina marita de 200% cu float left, 
-                        iar intreaga prima linie a paragrafului este transformata automat in majuscule.
+                        acesta este un paragraf initial. Prima litera este letrina marita de 200%, 
+                        iar prima linie a paragrafului este transformata in majuscule.
                     </p>
                 </div>
             </div>
 
             <div class="card-demo" style="grid-column: 1 / -1;">
-                <div class="antet-card-demo">7. Combinarea tipurilor de selectori</div>
+                <div class="antet-card-demo">7. Combinarea selectorilor</div>
                 <div class="corp-card-demo">
                     <pre><code>TABLE P.INITIAL:FIRST-LETTER { font-size: 220%; float: left }</code></pre>
                     <table class="tabel-combinat" border="1" cellpadding="8" style="width: 100%; border-collapse: collapse;">
                         <tr>
                             <td>
                                 <p class="INITIAL">
-                                    text inclus intr-un tabel HTML caruia i se aplica selectorul combinat complex. 
-                                    Doar paragrafele cu clasa INITIAL aflate in interiorul unui TABLE primesc aceasta letrina portocalie.
+                                    text inclus intr-un tabel caruia i se aplica selectorul combinat complex.
                                 </p>
                             </td>
                         </tr>
@@ -279,8 +254,8 @@ P.INITIAL:FIRST-LINE { text-transform: uppercase }</code></pre>
         </div>
 
         <div class="sub-navigare">
-            <a href="mostenire.html" class="buton-secundar">&laquo; Inapoi la Mostenire</a>
-            <a href="meniu_orizontal.html" class="buton-principal">Treci la Cerinta 3: Meniu Orizontal &raquo;</a>
+            <a href="mostenire.html" class="buton-secundar">&laquo; Mostenire</a>
+            <a href="orizontal.html" class="buton-principal">Meniu Orizontal &raquo;</a>
         </div>
     </div>
 

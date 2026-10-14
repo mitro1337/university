@@ -2,8 +2,8 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Contact - Laborator 2 DHTML</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Contact</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
         #meniu-nav {
@@ -41,7 +41,6 @@
             background-color: #2563eb;
         }
 
-        /* Formular de contact stilizat */
         .formular-contact {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -95,13 +94,12 @@
 <body>
 
     <div class="bara-navigare">
-        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
-        <span class="eticheta-exercitiu">Pagina demonstrativa a meniului</span>
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Contact</span>
     </div>
 
     <div class="container">
         
-        <!-- Meniul orizontal functional -->
         <nav id="meniu-nav">
             <ul>
                 <li><a href="index.html">HOME</a></li>
@@ -111,35 +109,34 @@
             </ul>
         </nav>
 
-        <h1>Formular de Contact (Pagina tinta a meniului)</h1>
+        <h1>Contact</h1>
         
         <p class="descriere">
-            Aceasta este a patra pagina din structura meniului din laborator. 
-            Demonstreaza stilizarea campurilor de formular folosind reguli CSS pentru elemente, etichete si pseudoclase precum <code>:focus</code> si <code>:hover</code>.
+            Exemplu de formular integrat in structura meniului.
         </p>
 
-        <form class="formular-contact" action="#" method="post" onsubmit="alert('Mesaj receptionat in modul demonstrativ!'); return false;">
+        <form class="formular-contact" action="#" method="post" onsubmit="alert('Mesaj receptionat!'); return false;">
             <div class="grup-formular">
-                <label for="nume">Nume si prenume:</label>
-                <input type="text" id="nume" name="nume" placeholder="Ex: Popescu Ion" required>
+                <label for="nume">Nume:</label>
+                <input type="text" id="nume" name="nume" placeholder="Nume si prenume" required>
             </div>
 
             <div class="grup-formular">
-                <label for="email">Adresa de email:</label>
-                <input type="email" id="email" name="email" placeholder="ion.popescu@student.ro" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="adresa@exemplu.ro" required>
             </div>
 
             <div class="grup-formular">
-                <label for="mesaj">Mesaj sau intrebare:</label>
-                <textarea id="mesaj" name="mesaj" rows="4" placeholder="Introduceti intrebarea sau observatiile dumneavoastra..."></textarea>
+                <label for="mesaj">Mesaj:</label>
+                <textarea id="mesaj" name="mesaj" rows="4" placeholder="Introduceti mesajul..."></textarea>
             </div>
 
-            <button type="submit" class="buton-trimitere">Trimite Mesajul</button>
+            <button type="submit" class="buton-trimitere">Trimite</button>
         </form>
 
         <div class="sub-navigare">
-            <a href="despre-firma.html" class="buton-secundar">&laquo; Inapoi la Despre Noi</a>
-            <a href="index.html" class="buton-principal">Inapoi la Pagina Principala &raquo;</a>
+            <a href="despre-firma.html" class="buton-secundar">&laquo; Despre Noi</a>
+            <a href="index.html" class="buton-principal">Inapoi la Index &raquo;</a>
         </div>
     </div>
 

@@ -2,13 +2,10 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Exercitiul 3.2: Crearea unui Meniu Vertical in CSS</title>
-    <link rel="stylesheet" href="stil_laborator.css">
+    <title>Meniu Vertical</title>
+    <link rel="stylesheet" href="stil.css">
     
     <style type="text/css">
-        /* ============================================================
-           MENIU VERTICAL CLASIC CONFORM METODOLOGIEI CSS
-           ============================================================ */
         #meniu-vertical-clasic {
             width: 260px;
             background-color: #ffffff;
@@ -33,7 +30,6 @@
             border-bottom: none;
         }
 
-        /* Elementul cheie: display: block face intregul rand clickabil */
         #meniu-vertical-clasic a {
             display: block;
             text-decoration: none;
@@ -49,7 +45,7 @@
             color: #2563eb;
             background-color: #f8fafc;
             border-left-color: #2563eb;
-            padding-left: 22px; /* Deplasare subtila spre dreapta */
+            padding-left: 22px;
         }
 
         #meniu-vertical-clasic a.activ {
@@ -58,9 +54,6 @@
             border-left-color: #1d4ed8;
         }
 
-        /* ============================================================
-           MENIU VERTICAL CU DESIGN MODERN INTUNECAT (DARK SIDEBAR)
-           ============================================================ */
         #meniu-vertical-dark {
             width: 280px;
             background-color: #0f172a;
@@ -131,41 +124,32 @@
 <body>
 
     <div class="bara-navigare">
-        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
-        <span class="eticheta-exercitiu">Exercitiul 3.2 - Meniu Vertical</span>
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Meniu Vertical</span>
     </div>
 
     <div class="container">
-        <h1>Exercitiul 3.2: Crearea si stilizarea unui meniu vertical in CSS</h1>
+        <h1>Meniu Vertical</h1>
         
         <p class="descriere">
-            Spre deosebire de meniul orizontal (care utilizeaza <code>display: inline</code> sau <code>display: inline-block</code>), 
-            meniul vertical pastreaza orientarea implicita pe coloana a listei <code>&lt;ul&gt;</code>, dar aplica 
-            <code>display: block</code> pe elementele de legatura <code>&lt;a&gt;</code>. 
-            Acest lucru asigura ca intreaga latime a casetei devine zona interactiva clickabila, nu doar textul propriu-zis.
+            Construirea unui meniu vertical utilizand <code>display: block</code> pe elementele de legatura <code>&lt;a&gt;</code>.
         </p>
 
         <div class="sectiune-explicatii">
-            <h2>Principiile fundamentale de constructie a unui meniu vertical:</h2>
+            <h2>Principii de constructie:</h2>
             <ol>
-                <li><strong>Eliminarea stilului de lista:</strong> <code>list-style: none; margin: 0; padding: 0;</code> pentru a curata indentarea nativa a browserului.</li>
-                <li><strong>Transformarea link-urilor in blocuri (<code>display: block</code>):</strong> Permite aplicarea de <code>padding</code> vertical si orizontal si extinde zona clickabila pe toata latimea containerului.</li>
-                <li><strong>Feedback vizual la hover:</strong> Schimbarea culorii de fundal, deplasarea usoara cu <code>padding-left</code> sau <code>transform: translateX()</code> si evidentierea cu o bordura laterala (accent border).</li>
-                <li><strong>Starea activa:</strong> Marcarea vizuala a paginii pe care se afla utilizatorul in prezent (clasa <code>.activ</code>).</li>
+                <li><strong>Eliminarea stilului de lista:</strong> <code>list-style: none; margin: 0; padding: 0;</code></li>
+                <li><strong>Transformarea link-urilor in blocuri (display: block):</strong> extinde zona interactiva pe toata latimea.</li>
+                <li><strong>Efect hover:</strong> schimbarea fundalului si deplasare usoara cu <code>padding-left</code> sau <code>transform: translateX()</code>.</li>
             </ol>
         </div>
 
-        <h2>Demonstratie practica: Doua stiluri de meniuri verticale</h2>
+        <h2>Demonstratie: Doua stiluri de meniuri verticale</h2>
 
         <div class="grila-meniuri-verticale" style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 25px;">
             
-            <!-- Varianta 1: Meniu Vertical Clasic -->
             <div style="flex: 1; min-width: 280px;">
-                <h3>Varianta 1: Meniu Vertical Clasic (Light)</h3>
-                <p style="font-size: 10pt; color: #64748b; margin-bottom: 12px;">
-                    Stil curat de navigare laterala cu bordura stanga la hover:
-                </p>
-
+                <h3>Varianta 1: Clasic</h3>
                 <div id="meniu-vertical-clasic">
                     <ul>
                         <li><a href="index.html">HOME</a></li>
@@ -176,7 +160,7 @@
                 </div>
 
                 <div class="caseta-cod" style="margin-top: 15px;">
-                    <div class="titlu-caseta">Codul CSS cheie:</div>
+                    <div class="titlu-caseta">Cod CSS:</div>
                     <pre><code>#meniu-vertical-clasic a {
     display: block;
     text-decoration: none;
@@ -194,15 +178,10 @@
                 </div>
             </div>
 
-            <!-- Varianta 2: Meniu Vertical Modern (Dark Sidebar) -->
             <div style="flex: 1; min-width: 280px;">
-                <h3>Varianta 2: Bara Laterala Moderna (Dark)</h3>
-                <p style="font-size: 10pt; color: #64748b; margin-bottom: 12px;">
-                    Design cu fundal intunecat, colturi rotunjite si indicator de elemente:
-                </p>
-
+                <h3>Varianta 2: Dark</h3>
                 <nav id="meniu-vertical-dark">
-                    <div class="titlu-sectiune">Navigare Proiect</div>
+                    <div class="titlu-sectiune">Navigare</div>
                     <ul>
                         <li>
                             <a href="index.html">
@@ -232,7 +211,7 @@
                 </nav>
 
                 <div class="caseta-cod" style="margin-top: 15px;">
-                    <div class="titlu-caseta">Codul CSS cheie:</div>
+                    <div class="titlu-caseta">Cod CSS:</div>
                     <pre><code>#meniu-vertical-dark a {
     display: flex;
     justify-content: space-between;
@@ -253,8 +232,8 @@
         </div>
 
         <div class="sub-navigare">
-            <a href="meniu_orizontal.html" class="buton-secundar">&laquo; Inapoi la Meniu Orizontal</a>
-            <a href="meniuri.html" class="buton-principal">Vezi Pagina Integrata cu Ambele Meniuri &raquo;</a>
+            <a href="orizontal.html" class="buton-secundar">&laquo; Meniu Orizontal</a>
+            <a href="meniuri.html" class="buton-principal">Macheta Meniuri &raquo;</a>
         </div>
     </div>
 

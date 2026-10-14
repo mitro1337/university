@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Stil Extern</title>
+    <link rel="stylesheet" type="text/css" href="css3.css">
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Index</a>
+        <span class="eticheta-exercitiu">Stil Extern</span>
+    </div>
+
+    <div class="container">
+        <h1>Stil Extern</h1>
+        
+        <p class="descriere">
+            Importul unei foi de stil pastrata intr-un fisier separat (<code>css3.css</code>) folosind eticheta <code>&lt;link&gt;</code>.
+        </p>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Continut css3.css:</div>
+            <pre><code>em { background-color: #8000FF; color: white }
+h1 { font-family: Arial, sans-serif }
+p { font-size: 18pt }
+.blue { color: blue }</code></pre>
+        </div>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Legarea in &lt;head&gt;:</div>
+            <pre><code>&lt;link rel="stylesheet" type="text/css" href="css3.css"/&gt;</code></pre>
+        </div>
+
+        <div class="panou-rezultat">
+            <div class="titlu-rezultat">Rezultat:</div>
+            <h1 class="blue">Un antet</h1>
+            <p>Un paragraf</p>
+            <h1>Alt antet</h1>
+            <p class="blue">Alt <em>paragraf</em></p>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Avantaje:</h2>
+            <ul>
+                <li><strong>Separare totala:</strong> Structura HTML ramane complet separata de regulile vizuale CSS.</li>
+                <li><strong>Reutilizare globala:</strong> Acelasi fisier CSS poate fi partajat intre sute de pagini.</li>
+                <li><strong>Cache:</strong> Browserul descarca fisierul o singura data si il retine in cache.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="intern.html" class="buton-secundar">&laquo; Stil Intern</a>
+            <a href="modalitati.html" class="buton-principal">Toate cele 3 modalitati &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

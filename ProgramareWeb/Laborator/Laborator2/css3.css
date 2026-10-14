@@ -1,12 +1,3 @@
-/* 
-   Laborator 2 - Foaie de stil externa (css3.css)
-   Conform cerintelor din indrumar:
-   EM { background-color: #8000FF; color: white }
-   H1 { font-family: Arial, sans-serif }
-   P { font-size: 18pt }
-   .blue { color: blue }
-*/
-
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -37,13 +28,4 @@ em {
 
 .blue {
     color: blue;
-}
-
-.nota-laborator {
-    font-size: 12pt;
-    background-color: #e0f2fe;
-    border-left: 4px solid #0284c7;
-    padding: 10px 14px;
-    margin-top: 25px;
-    border-radius: 4px;
 }
