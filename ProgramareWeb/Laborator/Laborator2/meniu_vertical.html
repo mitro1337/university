@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitiul 3.2: Crearea unui Meniu Vertical in CSS</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        /* ============================================================
+           MENIU VERTICAL CLASIC CONFORM METODOLOGIEI CSS
+           ============================================================ */
+        #meniu-vertical-clasic {
+            width: 260px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        #meniu-vertical-clasic ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            list-style-image: none;
+        }
+
+        #meniu-vertical-clasic li {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #meniu-vertical-clasic li:last-child {
+            border-bottom: none;
+        }
+
+        /* Elementul cheie: display: block face intregul rand clickabil */
+        #meniu-vertical-clasic a {
+            display: block;
+            text-decoration: none;
+            color: #1e293b;
+            padding: 12px 18px;
+            font-size: 11pt;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        #meniu-vertical-clasic a:hover {
+            color: #2563eb;
+            background-color: #f8fafc;
+            border-left-color: #2563eb;
+            padding-left: 22px; /* Deplasare subtila spre dreapta */
+        }
+
+        #meniu-vertical-clasic a.activ {
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border-left-color: #1d4ed8;
+        }
+
+        /* ============================================================
+           MENIU VERTICAL CU DESIGN MODERN INTUNECAT (DARK SIDEBAR)
+           ============================================================ */
+        #meniu-vertical-dark {
+            width: 280px;
+            background-color: #0f172a;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+        }
+
+        #meniu-vertical-dark .titlu-sectiune {
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-left: 8px;
+        }
+
+        #meniu-vertical-dark ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        #meniu-vertical-dark a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #cbd5e1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 11pt;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        #meniu-vertical-dark a:hover {
+            color: #ffffff;
+            background-color: #1e293b;
+            transform: translateX(4px);
+        }
+
+        #meniu-vertical-dark a.activ {
+            color: #ffffff;
+            background-color: #3b82f6;
+            font-weight: 600;
+        }
+
+        #meniu-vertical-dark .numarator {
+            background-color: #334155;
+            color: #e2e8f0;
+            font-size: 8pt;
+            font-weight: bold;
+            padding: 2px 7px;
+            border-radius: 9999px;
+        }
+
+        #meniu-vertical-dark a.activ .numarator {
+            background-color: #1d4ed8;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Exercitiul 3.2 - Meniu Vertical</span>
+    </div>
+
+    <div class="container">
+        <h1>Exercitiul 3.2: Crearea si stilizarea unui meniu vertical in CSS</h1>
+        
+        <p class="descriere">
+            Spre deosebire de meniul orizontal (care utilizeaza <code>display: inline</code> sau <code>display: inline-block</code>), 
+            meniul vertical pastreaza orientarea implicita pe coloana a listei <code>&lt;ul&gt;</code>, dar aplica 
+            <code>display: block</code> pe elementele de legatura <code>&lt;a&gt;</code>. 
+            Acest lucru asigura ca intreaga latime a casetei devine zona interactiva clickabila, nu doar textul propriu-zis.
+        </p>
+
+        <div class="sectiune-explicatii">
+            <h2>Principiile fundamentale de constructie a unui meniu vertical:</h2>
+            <ol>
+                <li><strong>Eliminarea stilului de lista:</strong> <code>list-style: none; margin: 0; padding: 0;</code> pentru a curata indentarea nativa a browserului.</li>
+                <li><strong>Transformarea link-urilor in blocuri (<code>display: block</code>):</strong> Permite aplicarea de <code>padding</code> vertical si orizontal si extinde zona clickabila pe toata latimea containerului.</li>
+                <li><strong>Feedback vizual la hover:</strong> Schimbarea culorii de fundal, deplasarea usoara cu <code>padding-left</code> sau <code>transform: translateX()</code> si evidentierea cu o bordura laterala (accent border).</li>
+                <li><strong>Starea activa:</strong> Marcarea vizuala a paginii pe care se afla utilizatorul in prezent (clasa <code>.activ</code>).</li>
+            </ol>
+        </div>
+
+        <h2>Demonstratie practica: Doua stiluri de meniuri verticale</h2>
+
+        <div class="grila-meniuri-verticale" style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 25px;">
+            
+            <!-- Varianta 1: Meniu Vertical Clasic -->
+            <div style="flex: 1; min-width: 280px;">
+                <h3>Varianta 1: Meniu Vertical Clasic (Light)</h3>
+                <p style="font-size: 10pt; color: #64748b; margin-bottom: 12px;">
+                    Stil curat de navigare laterala cu bordura stanga la hover:
+                </p>
+
+                <div id="meniu-vertical-clasic">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="produse.html" class="activ">PRODUSE</a></li>
+                        <li><a href="despre-firma.html">DESPRE NOI</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+
+                <div class="caseta-cod" style="margin-top: 15px;">
+                    <div class="titlu-caseta">Codul CSS cheie:</div>
+                    <pre><code>#meniu-vertical-clasic a {
+    display: block;
+    text-decoration: none;
+    color: #1e293b;
+    padding: 12px 18px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+#meniu-vertical-clasic a:hover {
+    color: #2563eb;
+    background-color: #f8fafc;
+    border-left-color: #2563eb;
+    padding-left: 22px;
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Varianta 2: Meniu Vertical Modern (Dark Sidebar) -->
+            <div style="flex: 1; min-width: 280px;">
+                <h3>Varianta 2: Bara Laterala Moderna (Dark)</h3>
+                <p style="font-size: 10pt; color: #64748b; margin-bottom: 12px;">
+                    Design cu fundal intunecat, colturi rotunjite si indicator de elemente:
+                </p>
+
+                <nav id="meniu-vertical-dark">
+                    <div class="titlu-sectiune">Navigare Proiect</div>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <span>HOME</span>
+                                <span class="numarator">Start</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="produse.html" class="activ">
+                                <span>PRODUSE</span>
+                                <span class="numarator">12</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="despre-firma.html">
+                                <span>DESPRE NOI</span>
+                                <span class="numarator">Info</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html">
+                                <span>CONTACT</span>
+                                <span class="numarator">&commat;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="caseta-cod" style="margin-top: 15px;">
+                    <div class="titlu-caseta">Codul CSS cheie:</div>
+                    <pre><code>#meniu-vertical-dark a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+#meniu-vertical-dark a:hover {
+    color: #ffffff;
+    background-color: #1e293b;
+    transform: translateX(4px);
+}</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sub-navigare">
+            <a href="meniu_orizontal.html" class="buton-secundar">&laquo; Inapoi la Meniu Orizontal</a>
+            <a href="meniuri.html" class="buton-principal">Vezi Pagina Integrata cu Ambele Meniuri &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

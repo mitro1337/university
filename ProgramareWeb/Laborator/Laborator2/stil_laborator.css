@@ -1,0 +1,395 @@
+/* 
+   Laborator 2: DHTML - Lucrul cu foi de stiluri in cascada
+   Foaie de stil generala pentru interfata si paginile didactice
+*/
+
+:root {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --code-bg: #0f172a;
+    --code-text: #f8fafc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Bara superioara de navigare didactica */
+.bara-navigare {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3b82f6;
+}
+
+.buton-inapoi {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 10pt;
+    transition: color 0.15s;
+}
+
+.buton-inapoi:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.eticheta-exercitiu {
+    background-color: #1e293b;
+    color: #38bdf8;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    border: 1px solid #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Container principal de continut */
+.container {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 22pt;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 15pt;
+    color: #1e293b;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 6px;
+}
+
+h3 {
+    font-size: 12.5pt;
+    color: #334155;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.descriere {
+    font-size: 11pt;
+    color: var(--text-secondary);
+    background-color: #ffffff;
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    border-left-width: 4px;
+    border-left-color: var(--primary);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* Casete de cod sursa */
+.caseta-cod {
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.titlu-caseta {
+    background-color: #1e293b;
+    color: #94a3b8;
+    font-size: 9pt;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-bottom: 1px solid #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 10pt;
+    color: #38bdf8;
+}
+
+p code, li code, td code {
+    background-color: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 9.5pt;
+}
+
+/* Panou rezultat */
+.panou-rezultat {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.titlu-rezultat {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    border-bottom: 1px dashed var(--border-subtle);
+    padding-bottom: 6px;
+}
+
+/* Sectiune explicatii didactice */
+.sectiune-explicatii {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 24px 0;
+}
+
+.sectiune-explicatii h2 {
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+    font-size: 13pt;
+    color: #0f172a;
+}
+
+.sectiune-explicatii ul, .sectiune-explicatii ol {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.sectiune-explicatii li {
+    margin-bottom: 8px;
+}
+
+/* Butoane de navigare la subsolul paginii */
+.sub-navigare {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+}
+
+.buton-principal {
+    display: inline-block;
+    background-color: var(--primary);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 10.5pt;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+}
+
+.buton-principal:hover {
+    background-color: var(--primary-hover);
+}
+
+.buton-secundar {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid var(--border-strong);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 10.5pt;
+    padding: 9px 18px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.buton-secundar:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+/* Carduri pentru etape de lucru */
+.card-etapa {
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.antet-etapa {
+    background-color: #f8fafc;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 10.5pt;
+    color: #1e293b;
+}
+
+.continut-etapa {
+    padding: 18px;
+}
+
+/* Tabele didactice */
+.tabel-comparativ-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.tabel-didactic {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    font-size: 10pt;
+}
+
+.tabel-didactic th, .tabel-didactic td {
+    padding: 12px 14px;
+    border: 1px solid var(--border-subtle);
+    text-align: left;
+}
+
+.tabel-didactic th {
+    background-color: #0f172a;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.tabel-didactic tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Grila demonstratie */
+.grila-demonstratie, .grila-selectori {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.card-demo {
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.antet-card-demo {
+    background-color: #f1f5f9;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 10pt;
+    color: #1e293b;
+}
+
+.corp-card-demo {
+    padding: 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.link-pagina-dedicata {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.link-pagina-dedicata:hover {
+    text-decoration: underline;
+}
+
+.box-extern-demo {
+    background-color: #f0f9ff;
+    border-left: 4px solid #0284c7;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.badge-extern {
+    font-size: 8pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #0369a1;
+}
+
+/* Panou etape cascadare */
+.panou-etape-cascadare {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #16a34a;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.panou-etape-cascadare h2 {
+    color: #15803d;
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+    font-size: 13pt;
+}
+
+.panou-etape-cascadare ol {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+    color: #166534;
+}
+
+.panou-etape-cascadare li {
+    margin-bottom: 10px;
+    font-size: 10.5pt;
+}

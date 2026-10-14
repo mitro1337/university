@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Macheta Integrata: Meniu Orizontal si Meniu Vertical in CSS</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        /* Structura paginii integrate */
+        .layout-site {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            margin: 25px 0;
+        }
+
+        /* Antetul paginii cu meniu orizontal integrat */
+        .antet-site {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 3px solid #3b82f6;
+        }
+
+        .logo-site {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-site span {
+            color: #38bdf8;
+        }
+
+        /* Meniul orizontal din antet conform cerintei */
+        #meniu-orizontal-header ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #meniu-orizontal-header li {
+            display: inline-block;
+        }
+
+        #meniu-orizontal-header a {
+            display: inline-block;
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 10.5pt;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        #meniu-orizontal-header a:hover {
+            color: #ffffff;
+            background-color: #1e293b;
+        }
+
+        #meniu-orizontal-header a.activ {
+            color: #ffffff;
+            background-color: #2563eb;
+        }
+
+        /* Corpul principal impartit in bara laterala si continut */
+        .corp-site {
+            display: flex;
+            min-height: 380px;
+        }
+
+        /* Bara laterala cu meniul vertical */
+        .bara-laterala {
+            width: 250px;
+            background-color: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 20px 15px;
+            flex-shrink: 0;
+        }
+
+        .titlu-sidebar {
+            font-size: 9pt;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #64748b;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+        }
+
+        #meniu-vertical-sidebar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #meniu-vertical-sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 600;
+            font-size: 10pt;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border-left: 3px solid transparent;
+            transition: all 0.15s ease;
+        }
+
+        #meniu-vertical-sidebar a:hover {
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border-left-color: #3b82f6;
+            padding-left: 18px;
+        }
+
+        #meniu-vertical-sidebar a.activ {
+            color: #1e40af;
+            background-color: #dbeafe;
+            border-left-color: #1d4ed8;
+        }
+
+        /* Zona de continut principal */
+        .continut-principal {
+            flex: 1;
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .continut-principal h2 {
+            margin-top: 0;
+            color: #0f172a;
+        }
+
+        /* Subsolul paginii */
+        .subsol-site {
+            background-color: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            padding: 14px 24px;
+            font-size: 9.5pt;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Exercitiul 3.3 - Macheta Integrata Meniuri</span>
+    </div>
+
+    <div class="container">
+        <h1>Macheta Integrata: Meniu Orizontal (Header) si Meniu Vertical (Sidebar)</h1>
+        
+        <p class="descriere">
+            Aceasta pagina demonstreaza modul in care cele doua tipuri de meniuri cerute de laborator colaboreaza 
+            intr-un layout web modern: meniul orizontal asigura navigarea globala de nivel inalt la nivel de antet, 
+            iar meniul vertical ofera navigare structurala in bara laterala.
+        </p>
+
+        <!-- Macheta de site cu ambele meniuri -->
+        <div class="layout-site">
+            
+            <!-- Antet cu meniu orizontal -->
+            <header class="antet-site">
+                <a href="index.html" class="logo-site">PROIECT <span>DHTML</span></a>
+                
+                <nav id="meniu-orizontal-header">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="produse.html">PRODUSE</a></li>
+                        <li><a href="despre-firma.html">DESPRE NOI</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Corp: Sidebar cu meniu vertical + Continut -->
+            <div class="corp-site">
+                
+                <aside class="bara-laterala">
+                    <div class="titlu-sidebar">Meniu Vertical</div>
+                    <nav id="meniu-vertical-sidebar">
+                        <ul>
+                            <li><a href="index.html">HOME (Acasa)</a></li>
+                            <li><a href="produse.html">PRODUSE (Catalog)</a></li>
+                            <li><a href="despre-firma.html">DESPRE NOI (Firma)</a></li>
+                            <li><a href="contact.html">CONTACT (Formular)</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="titlu-sidebar" style="margin-top: 25px;">Laborator DHTML</div>
+                    <nav id="meniu-vertical-sidebar">
+                        <ul>
+                            <li><a href="stil_inline.html">1.1 Stil Inline</a></li>
+                            <li><a href="stil_intern.html">1.2 Stil Intern</a></li>
+                            <li><a href="stil_extern.html">1.3 Stil Extern</a></li>
+                            <li><a href="mostenire.html">2.1 Mostenire CSS</a></li>
+                            <li><a href="conflicte.html">2.2 Conflicte CSS</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <main class="continut-principal">
+                    <h2>Panou de testare interactiva</h2>
+                    <p>
+                        Faceti click pe oricare din link-urile din antet sau din bara laterala. 
+                        Toate cele patru pagini cerute de meniu (<code>index.html</code>, <code>produse.html</code>, <code>despre-firma.html</code>, <code>contact.html</code>) 
+                        sunt complet implementate si legate functional.
+                    </p>
+
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-top: 20px;">
+                        <h3 style="margin-top: 0; color: #1e293b; font-size: 12pt;">Sumar al tehnicilor CSS utilizate:</h3>
+                        <ul style="font-size: 10.5pt; color: #475569; margin: 0; padding-left: 20px;">
+                            <li><strong>Resetare liste:</strong> <code>list-style: none; margin: 0; padding: 0;</code></li>
+                            <li><strong>Meniu orizontal:</strong> <code>display: inline-block;</code> / <code>flex</code> pe container pentru aliniere fluida pe un singur rand.</li>
+                            <li><strong>Meniu vertical:</strong> <code>display: block;</code> pe tag-ul <code>&lt;a&gt;</code> pentru acoperirea completa a zonei orizontale.</li>
+                            <li><strong>Stilizare pseudoclasa :hover:</strong> Schimbare de contrast a culorii de text si a fundalului, cu tranzitie fina <code>transition: all 0.2s ease</code>.</li>
+                        </ul>
+                    </div>
+                </main>
+
+            </div>
+
+            <!-- Subsol -->
+            <footer class="subsol-site">
+                <div>Laborator 2 - DHTML: Lucrul cu foi de stiluri in cascada</div>
+                <div>Universitatea Tehnica - Programare Web</div>
+            </footer>
+
+        </div>
+
+        <div class="sub-navigare">
+            <a href="meniu_vertical.html" class="buton-secundar">&laquo; Inapoi la Meniu Vertical</a>
+            <a href="index.html" class="buton-principal">Inapoi la Pagina Principala a Laboratorului &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

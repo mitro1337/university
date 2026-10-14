@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina Produse - Laborator 2 DHTML</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        /* Meniu orizontal standard conform cerintei din laborator */
+        #meniu-nav {
+            background-color: #0f172a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        #meniu-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        #meniu-nav li {
+            display: inline;
+        }
+        #meniu-nav a {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 11pt;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        #meniu-nav a:hover {
+            color: #facc15;
+            background-color: #1e293b;
+        }
+        #meniu-nav a.activ {
+            color: #ffffff;
+            background-color: #2563eb;
+        }
+
+        /* Grila de produse demonstrativa */
+        .grila-produse {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card-produs {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-produs:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: #93c5fd;
+        }
+        .card-produs h3 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 13pt;
+        }
+        .card-produs .pret {
+            font-size: 14pt;
+            color: #059669;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Pagina demonstrativa a meniului</span>
+    </div>
+
+    <div class="container">
+        
+        <!-- Meniul orizontal functional -->
+        <nav id="meniu-nav">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="produse.html" class="activ">PRODUSE</a></li>
+                <li><a href="despre-firma.html">DESPRE NOI</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Catalog Produse (Pagina tinta a meniului)</h1>
+        
+        <p class="descriere">
+            Aceasta pagina demonstreaza functionarea navigarii din meniu. 
+            Elementul <strong>PRODUSE</strong> din meniul de sus are clasa <code>.activ</code>, semnalizand pozitia curenta a utilizatorului.
+        </p>
+
+        <div class="grila-produse">
+            <div class="card-produs">
+                <h3>Placa de Dezvoltare ARM Cortex-M4</h3>
+                <p>Microcontroler pe 32 de biti, 180 MHz, conectivitate USB si SPI, consum redus de energie.</p>
+                <div class="pret">185 lei</div>
+            </div>
+
+            <div class="card-produs">
+                <h3>Modul Wi-Fi 6 si Bluetooth 5.3</h3>
+                <p>Modul wireless industrial cu antena PCB integrata si suport pentru protocoale IoT moderne.</p>
+                <div class="pret">45 lei</div>
+            </div>
+
+            <div class="card-produs">
+                <h3>Senzor Calitate Aer NDIR CO2</h3>
+                <p>Senzor optic cu infrarosu pentru masurarea concentratiei de dioxid de carbon si temperatura.</p>
+                <div class="pret">120 lei</div>
+            </div>
+
+            <div class="card-produs">
+                <h3>Switch Managed 8 Porturi Gigabit</h3>
+                <p>Echipament de retea homelab cu suport VLAN 802.1Q, QoS si interfata web de administrare.</p>
+                <div class="pret">290 lei</div>
+            </div>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="meniu_orizontal.html" class="buton-secundar">&laquo; Inapoi la Meniu Orizontal</a>
+            <a href="despre-firma.html" class="buton-principal">Mergi la pagina Despre Noi &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

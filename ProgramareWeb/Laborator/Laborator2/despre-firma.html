@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Despre Noi - Laborator 2 DHTML</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        #meniu-nav {
+            background-color: #0f172a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        #meniu-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        #meniu-nav li {
+            display: inline;
+        }
+        #meniu-nav a {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 11pt;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        #meniu-nav a:hover {
+            color: #facc15;
+            background-color: #1e293b;
+        }
+        #meniu-nav a.activ {
+            color: #ffffff;
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Pagina demonstrativa a meniului</span>
+    </div>
+
+    <div class="container">
+        
+        <!-- Meniul orizontal functional -->
+        <nav id="meniu-nav">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="produse.html">PRODUSE</a></li>
+                <li><a href="despre-firma.html" class="activ">DESPRE NOI</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Despre Noi (Pagina tinta a meniului)</h1>
+        
+        <p class="descriere">
+            Aceasta pagina este a treia tinta din meniul definit in cadrul laboratorului. 
+            Demonstreaza consistenta vizuala a meniului si comutarea automata a starii active.
+        </p>
+
+        <div class="sectiune-explicatii">
+            <h2>Misiunea Laboratorului de Programare Web:</h2>
+            <p>
+                In cadrul cursului si laboratorului de <strong>Programare Web</strong> si <strong>DHTML</strong>, 
+                obiectivele principale includ insusirea standardelor W3C pentru separarea riguroasa a structurii logice 
+                (HTML) de prezentarea stilistica (CSS) si comportamentul dinamic (DOM, JavaScript).
+            </p>
+            <ul>
+                <li><strong>HTML:</strong> Defineste ce reprezinta datele (paragrafe, tabele, liste, legaturi, formulare).</li>
+                <li><strong>CSS:</strong> Defineste cum arata datele (culori, fonturi, margini, aliniamente, machetare).</li>
+                <li><strong>DOM:</strong> Asigura reprezentarea programatica a documentului ca un arbore ierarhic de obiecte.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="produse.html" class="buton-secundar">&laquo; Inapoi la Produse</a>
+            <a href="contact.html" class="buton-principal">Mergi la pagina Contact &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

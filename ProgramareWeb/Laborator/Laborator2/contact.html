@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Laborator 2 DHTML</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        #meniu-nav {
+            background-color: #0f172a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        #meniu-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        #meniu-nav li {
+            display: inline;
+        }
+        #meniu-nav a {
+            text-decoration: none;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 11pt;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        #meniu-nav a:hover {
+            color: #facc15;
+            background-color: #1e293b;
+        }
+        #meniu-nav a.activ {
+            color: #ffffff;
+            background-color: #2563eb;
+        }
+
+        /* Formular de contact stilizat */
+        .formular-contact {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .grup-formular {
+            margin-bottom: 16px;
+        }
+        .grup-formular label {
+            display: block;
+            font-weight: 600;
+            font-size: 10pt;
+            margin-bottom: 6px;
+            color: #334155;
+        }
+        .grup-formular input,
+        .grup-formular textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            box-sizing: border-box;
+        }
+        .grup-formular input:focus,
+        .grup-formular textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .buton-trimitere {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 11pt;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .buton-trimitere:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Pagina demonstrativa a meniului</span>
+    </div>
+
+    <div class="container">
+        
+        <!-- Meniul orizontal functional -->
+        <nav id="meniu-nav">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="produse.html">PRODUSE</a></li>
+                <li><a href="despre-firma.html">DESPRE NOI</a></li>
+                <li><a href="contact.html" class="activ">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Formular de Contact (Pagina tinta a meniului)</h1>
+        
+        <p class="descriere">
+            Aceasta este a patra pagina din structura meniului din laborator. 
+            Demonstreaza stilizarea campurilor de formular folosind reguli CSS pentru elemente, etichete si pseudoclase precum <code>:focus</code> si <code>:hover</code>.
+        </p>
+
+        <form class="formular-contact" action="#" method="post" onsubmit="alert('Mesaj receptionat in modul demonstrativ!'); return false;">
+            <div class="grup-formular">
+                <label for="nume">Nume si prenume:</label>
+                <input type="text" id="nume" name="nume" placeholder="Ex: Popescu Ion" required>
+            </div>
+
+            <div class="grup-formular">
+                <label for="email">Adresa de email:</label>
+                <input type="email" id="email" name="email" placeholder="ion.popescu@student.ro" required>
+            </div>
+
+            <div class="grup-formular">
+                <label for="mesaj">Mesaj sau intrebare:</label>
+                <textarea id="mesaj" name="mesaj" rows="4" placeholder="Introduceti intrebarea sau observatiile dumneavoastra..."></textarea>
+            </div>
+
+            <button type="submit" class="buton-trimitere">Trimite Mesajul</button>
+        </form>
+
+        <div class="sub-navigare">
+            <a href="despre-firma.html" class="buton-secundar">&laquo; Inapoi la Despre Noi</a>
+            <a href="index.html" class="buton-principal">Inapoi la Pagina Principala &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

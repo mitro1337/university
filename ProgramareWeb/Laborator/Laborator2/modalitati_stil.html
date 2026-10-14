@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Studiu Comparativ: Cele 3 Modalitati de Precizare a Stilului CSS</title>
+    
+    <!-- Modalitatea 2: Stil intern in antet -->
+    <style type="text/css">
+        .intern-exemplu {
+            background-color: #f1f5f9;
+            border-left: 4px solid #6366f1;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .intern-titlu {
+            color: #4338ca;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Modalitatea 3: Stil extern legat prin link -->
+    <link rel="stylesheet" href="stil_laborator.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Meniul Principal</a>
+        <span class="eticheta-exercitiu">Sinteza Exercitiul 1 - Cele 3 Modalitati CSS</span>
+    </div>
+
+    <div class="container">
+        <h1>Studiu comparativ: Cele trei modalitati de precizare a stilului</h1>
+        
+        <p class="descriere">
+            Standardul CSS permite aplicarea stilului asupra unui document HTML in trei moduri distincte. 
+            Mai jos este prezentat un tabel comparativ complet, insotit de exemple interactive direct in pagina.
+        </p>
+
+        <div class="tabel-comparativ-wrapper">
+            <table class="tabel-didactic">
+                <thead>
+                    <tr>
+                        <th>Criteriu</th>
+                        <th>1. Stil Inline</th>
+                        <th>2. Stil Intern (Antet)</th>
+                        <th>3. Foaie de Stil Externa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Unde se declara</strong></td>
+                        <td>In cadrul tag-ului HTML, prin atributul <code>style="..."</code></td>
+                        <td>In interiorul <code>&lt;head&gt;</code>, prin tag-ul <code>&lt;style&gt;</code></td>
+                        <td>Intr-un fisier extern <code>.css</code>, legat prin <code>&lt;link&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sfera de aplicare</strong></td>
+                        <td>Exclusiv elementul respectiv</td>
+                        <td>Toate elementele din pagina curenta</td>
+                        <td>Toate paginile site-ului care includ fisierul</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prioritate (Specificitate)</strong></td>
+                        <td>Foarte mare (suprascrie stilul intern si extern)</td>
+                        <td>Medie (suprascrie stilul extern de specificitate egala)</td>
+                        <td>Baza de stilizare (prioritate normala)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Separare continut / stil</strong></td>
+                        <td>Slaba (amesteca marcajul cu stilul)</td>
+                        <td>Medie (sunt in acelasi fisier, dar in zone diferite)</td>
+                        <td>Excelenta (separare perfecta de responsabilitati)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cache in navigator</strong></td>
+                        <td>Nu exista cache separat</td>
+                        <td>Nu exista cache separat</td>
+                        <td>Da, fisierul <code>.css</code> este salvat in cache</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recomandare practica</strong></td>
+                        <td>Doar pentru teste rapide sau stiluri dinamice JS</td>
+                        <td>Pentru stiluri specifice unei singure pagini izolate</td>
+                        <td>Standardul industrial pentru toate proiectele web</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Demonstratie live in aceeasi pagina:</h2>
+
+        <div class="grila-demonstratie">
+            
+            <div class="card-demo">
+                <div class="antet-card-demo">Modalitatea 1: Stil Inline</div>
+                <div class="corp-card-demo">
+                    <!-- Stil Inline -->
+                    <p style="color: #b91c1c; font-size: 14pt; font-weight: bold; background-color: #fef2f2; padding: 10px; border-radius: 6px; border: 1px solid #fecaca;">
+                        Acest paragraf este stilizat inline cu style="color: #b91c1c; font-size: 14pt; ..."
+                    </p>
+                    <a href="stil_inline.html" class="link-pagina-dedicata">Vezi pagina dedicata stilului inline &raquo;</a>
+                </div>
+            </div>
+
+            <div class="card-demo">
+                <div class="antet-card-demo">Modalitatea 2: Stil Intern (Antet)</div>
+                <div class="corp-card-demo">
+                    <!-- Stil Intern definit in head -->
+                    <div class="intern-exemplu">
+                        <div class="intern-titlu">Titlu stilizat din &lt;style&gt; in &lt;head&gt;</div>
+                        <p style="margin: 6px 0 0 0; font-size: 11pt; color: #334155;">
+                            Regulile sunt definite in tag-ul style din antetul documentului.
+                        </p>
+                    </div>
+                    <a href="stil_intern.html" class="link-pagina-dedicata">Vezi pagina dedicata stilului intern &raquo;</a>
+                </div>
+            </div>
+
+            <div class="card-demo">
+                <div class="antet-card-demo">Modalitatea 3: Foaie de stil externa</div>
+                <div class="corp-card-demo">
+                    <!-- Stil extern legat prin css3.css si stil_laborator.css -->
+                    <div class="box-extern-demo">
+                        <span class="badge-extern">Regula externa</span>
+                        <p style="margin: 6px 0 0 0; font-size: 11pt; color: #0369a1;">
+                            Stilurile provin din fisierul extern <code>css3.css</code> conectat cu eticheta <code>&lt;link&gt;</code>.
+                        </p>
+                    </div>
+                    <a href="stil_extern.html" class="link-pagina-dedicata">Vezi pagina dedicata foii externe (css3.css) &raquo;</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sub-navigare">
+            <a href="index.html" class="buton-secundar">&laquo; Inapoi la Index</a>
+            <a href="mostenire.html" class="buton-principal">Treci la Cerinta 2: Mostenire si Conflicte &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

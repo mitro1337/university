@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Modalitatea 1: Stil Inline in cadrul elementului HTML</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Exercitiul 1.1 - Stiluri Inline</span>
+    </div>
+
+    <div class="container">
+        <h1>Modalitatea 1: Specificarea stilului in cadrul unui element HTML</h1>
+        
+        <p class="descriere">
+            Aceasta modalitate utilizeaza atributul <code>style</code> atasat direct tag-ului HTML. 
+            Stilul afecteaza exclusiv elementul respectiv, avand cea mai mare specificitate la nivel de element (fara <code>!important</code>), 
+            dar incalca principiul separarii continutului de prezentare si ingreuneaza mentenanta.
+        </p>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Codul sursa din indrumar:</div>
+            <pre><code>&lt;p style="font-size: 20pt"&gt;Text&lt;/p&gt;
+&lt;p style="font-size: 20pt; color: #0000FF"&gt;Text&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="panou-rezultat">
+            <div class="titlu-rezultat">Rezultatul randarii in navigator:</div>
+            
+            <!-- Elemente conform exemplului din indrumar -->
+            <p style="font-size: 20pt">Text (marime font 20pt, culoare implicita)</p>
+            <p style="font-size: 20pt; color: #0000FF">Text (marime font 20pt, culoare #0000FF - albastru)</p>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Observatii didactice:</h2>
+            <ul>
+                <li><strong>Atributul <code>style</code>:</strong> Permite specificarea uneia sau mai multor perechi <code>proprietate: valoare;</code> direct in tag-ul HTML.</li>
+                <li><strong>Sintaxa:</strong> Fiecare declaratie este separata prin punct si virgula (<code>;</code>), iar proprietatea este separata de valoare prin doua puncte (<code>:</code>).</li>
+                <li><strong>Dezavantaj:</strong> Daca se doreste modificarea culorii pe 50 de paragrafe, fiecare paragraf trebuie editat individual. Nu permite reutilizarea regulilor de stil.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="modalitati_stil.html" class="buton-secundar">Compara toate cele 3 modalitati</a>
+            <a href="stil_intern.html" class="buton-principal">Urmatorul: Stil in antet (Intern) &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

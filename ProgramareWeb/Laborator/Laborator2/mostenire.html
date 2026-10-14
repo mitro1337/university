@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Studiul Mostenirii in DHTML / CSS</title>
+    <link rel="stylesheet" href="stil_laborator.css">
+    
+    <style type="text/css">
+        /* Reguli dedicate pentru demonstratia arborelui din laborator */
+        .zona-demo-mostenire {
+            background-color: #ffffff;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: green; /* Regula de baza pe parinte: verde */
+            font-size: 14pt;
+        }
+
+        /* Reguli specifice pentru ramurile arborelui conform schemei din laborator */
+        .nod-li-albastru {
+            color: blue; /* Suprascrie verdele mostenit */
+        }
+
+        .nod-p-rosu {
+            color: red; /* Paragraf direct in corp cu rosu */
+        }
+
+        .nod-p-alb {
+            color: #475569; /* In loc de alb pe fundal alb, folosim gri-inchis sau fundal negru cu text alb */
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .nod-li-galben {
+            color: #d97706; /* Galben/auriu lizibil pe alb conform diagramei */
+            font-weight: bold;
+        }
+
+        /* Diagrama vizuala arbore */
+        .arbore-vizual {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .nivel-arbore {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            border-left: 2px dashed #94a3b8;
+        }
+
+        .nod-eticheta {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11pt;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bg-verde { background-color: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+        .bg-albastru { background-color: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
+        .bg-rosu { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+        .bg-alb { background-color: #1e293b; color: #ffffff; border: 1px solid #0f172a; }
+        .bg-galben { background-color: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    </style>
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Exercitiul 2.1 - Mostenirea Proprietatilor</span>
+    </div>
+
+    <div class="container">
+        <h1>Studiul mostenirii proprietatilor (Overriding Inheritance)</h1>
+        
+        <p class="descriere">
+            Un document HTML este structurat sub forma unui arbore ierarhic de noduri (DOM). 
+            Proprietatile CSS (in special cele de tipare si text, precum <code>color</code>, <code>font-family</code>) 
+            se transmit automat de la nodurile parinte catre nodurile copil (mostenire). 
+            La intalnirea unei reguli explicite pentru un nod descendent, noua valoare o suprascrie pe cea mostenita (suprascriere).
+        </p>
+
+        <h2>1. Schema arborelui de mostenire din indrumar</h2>
+        <p>
+            Indrumarul de laborator propune urmatoarea distributie ierarhica a culorilor, in care radacina este <code>&lt;body&gt; (green)</code>:
+        </p>
+
+        <div class="arbore-vizual">
+            <div style="margin-bottom: 15px;">
+                <span class="nod-eticheta bg-verde">&lt;BODY&gt; [color: green] (Radacina arborelui)</span>
+            </div>
+
+            <!-- Ramura 1: UL -->
+            <div class="nivel-arbore">
+                <span class="nod-eticheta bg-verde">&lt;UL&gt; [color: green - mostenit din BODY]</span>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div>
+                        <span class="nod-eticheta bg-albastru">&lt;LI&gt; [color: blue - regula explicita]</span>
+                        &rarr; <span class="nod-eticheta bg-albastru">&lt;P&gt; [color: blue - mostenit din LI]</span>
+                    </div>
+                    <div>
+                        <span class="nod-eticheta bg-verde">&lt;LI&gt; [color: green - mostenit din UL]</span>
+                        &rarr; <span class="nod-eticheta bg-verde">&lt;P&gt; [color: green - mostenit din LI]</span>
+                    </div>
+                    <div>
+                        <span class="nod-eticheta bg-verde">&lt;LI&gt; [color: green - mostenit din UL]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ramura 2: P direct -->
+            <div class="nivel-arbore">
+                <span class="nod-eticheta bg-rosu">&lt;P&gt; [color: red - regula explicita, copil direct BODY]</span>
+            </div>
+
+            <!-- Ramura 3: OL -->
+            <div class="nivel-arbore">
+                <span class="nod-eticheta bg-verde">&lt;OL&gt; [color: green - mostenit din BODY]</span>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div>
+                        <span class="nod-eticheta bg-verde">&lt;LI&gt; [color: green - mostenit]</span>
+                        &rarr; <span class="nod-eticheta bg-alb">&lt;P&gt; [color: white pe fundal negru - regula explicita]</span>
+                    </div>
+                    <div>
+                        <span class="nod-eticheta bg-verde">&lt;LI&gt; [color: green - mostenit]</span>
+                        &rarr; <span class="nod-eticheta bg-verde">&lt;P&gt; [color: green - mostenit din LI]</span>
+                    </div>
+                    <div>
+                        <span class="nod-eticheta bg-galben">&lt;LI&gt; [color: yellow / auriu - regula explicita]</span>
+                        &rarr; <span class="nod-eticheta bg-galben">&lt;P&gt; [color: yellow - mostenit din LI]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>2. Demonstratie practica HTML + CSS real</h2>
+        <p>Mai jos este redat un fragment DOM real care ilustreaza exact acest comportament:</p>
+
+        <div class="zona-demo-mostenire">
+            <p class="nod-p-rosu">&lt;P&gt; direct in radacina: Eu am color: red definit explicit.</p>
+            
+            <ul>
+                <li class="nod-li-albastru">
+                    &lt;LI&gt; cu regula explicita color: blue.
+                    <p>Acest &lt;P&gt; este copilul lui LI si a mostenit automat culoarea blue.</p>
+                </li>
+                <li>
+                    &lt;LI&gt; fara regula proprie (a mostenit green de la radacina).
+                    <p>Acest &lt;P&gt; a mostenit culoarea green de la parintele sau.</p>
+                </li>
+                <li>&lt;LI&gt; simplu (mosteneste green).</li>
+            </ul>
+
+            <ol>
+                <li>
+                    &lt;LI&gt; in lista ordonata (mosteneste green):
+                    <p><span class="nod-p-alb">&lt;P&gt; copil cu regula explicita color: white pe fundal contrastant.</span></p>
+                </li>
+                <li>
+                    &lt;LI&gt; in lista ordonata:
+                    <p>&lt;P&gt; copil care mosteneste culoarea green.</p>
+                </li>
+                <li class="nod-li-galben">
+                    &lt;LI&gt; cu regula explicita color: yellow (auriu).
+                    <p>Acest &lt;P&gt; copil mosteneste culoarea yellow a parintelui sau direct.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Concluzii asupra moștenirii:</h2>
+            <ul>
+                <li><strong>Proprietati mostenite implicit:</strong> <code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>line-height</code>, <code>text-align</code>, <code>letter-spacing</code>.</li>
+                <li><strong>Proprietati care NU se mostenesc:</strong> <code>border</code>, <code>margin</code>, <code>padding</code>, <code>background-image</code>, <code>width</code>, <code>height</code>, <code>position</code> (ar crea haos vizual daca marginile si bordurile s-ar replica la toti copiii).</li>
+                <li><strong>Fortarea mostenirii:</strong> Se poate folosi cuvantul cheie <code>inherit</code> (ex: <code>border: inherit;</code>) pentru a forta mostenirea oricarei proprietati.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="modalitati_stil.html" class="buton-secundar">&laquo; Inapoi la Modalitati Stil</a>
+            <a href="conflicte.html" class="buton-principal">Urmatorul: Rezolvarea Conflictelor in CSS &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>

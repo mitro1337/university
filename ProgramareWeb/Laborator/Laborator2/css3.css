@@ -1,0 +1,49 @@
+/* 
+   Laborator 2 - Foaie de stil externa (css3.css)
+   Conform cerintelor din indrumar:
+   EM { background-color: #8000FF; color: white }
+   H1 { font-family: Arial, sans-serif }
+   P { font-size: 18pt }
+   .blue { color: blue }
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+p {
+    font-size: 18pt;
+    line-height: 1.5;
+}
+
+em {
+    background-color: #8000FF;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-style: normal;
+}
+
+.blue {
+    color: blue;
+}
+
+.nota-laborator {
+    font-size: 12pt;
+    background-color: #e0f2fe;
+    border-left: 4px solid #0284c7;
+    padding: 10px 14px;
+    margin-top: 25px;
+    border-radius: 4px;
+}

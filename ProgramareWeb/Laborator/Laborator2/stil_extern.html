@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Modalitatea 3: Importul unei foi de stil externe (css3.css)</title>
+    
+    <!-- Importul foii de stil externe conform indrumarului -->
+    <link rel="stylesheet" type="text/css" href="css3.css">
+    <link rel="stylesheet" href="stil_laborator.css">
+</head>
+<body>
+
+    <div class="bara-navigare">
+        <a href="index.html" class="buton-inapoi">&laquo; Inapoi la Pagina Principala</a>
+        <span class="eticheta-exercitiu">Exercitiul 1.3 - Foaie de Stil Externa</span>
+    </div>
+
+    <div class="container">
+        <h1>Modalitatea 3: Importul unei foi de stil pastrata intr-un fisier separat</h1>
+        
+        <p class="descriere">
+            O foaie de stil externa se salveaza intr-un fisier cu extensia <code>.css</code> (in cazul nostru <code>css3.css</code>) 
+            si se conecteaza la documentul HTML prin intermediul etichetei <code>&lt;link rel="stylesheet" type="text/css" href="css3.css"&gt;</code>.
+            Aceasta este modalitatea recomandata conform standardelor web pentru separarea completa a prezentarii de continut.
+        </p>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Continutul fisierului extern css3.css:</div>
+            <pre><code>em { background-color: #8000FF; color: white }
+h1 { font-family: Arial, sans-serif }
+p { font-size: 18pt }
+.blue { color: blue }</code></pre>
+        </div>
+
+        <div class="caseta-cod">
+            <div class="titlu-caseta">Legarea in &lt;head&gt; prin elementul &lt;link&gt;:</div>
+            <pre><code>&lt;link rel="stylesheet" type="text/css" href="css3.css"/&gt;</code></pre>
+        </div>
+
+        <div class="panou-rezultat">
+            <div class="titlu-rezultat">Rezultatul randarii in navigator (stilizat direct prin css3.css):</div>
+            
+            <h1 class="blue">Un antet</h1>
+            <p>Un paragraf</p>
+            <h1>Alt antet</h1>
+            <p class="blue">Alt <em>paragraf</em></p>
+        </div>
+
+        <div class="sectiune-explicatii">
+            <h2>Avantajele majore ale foilor de stil externe:</h2>
+            <ul>
+                <li><strong>Separare totala:</strong> Structura logica ramane in fisierul <code>.html</code>, iar regulile vizuale raman in fisierul <code>.css</code>.</li>
+                <li><strong>Reutilizare globala:</strong> O singura foaie de stil poate controla aspectul a sute de pagini din intregul site web.</li>
+                <li><strong>Performanta si memorare cache:</strong> Navigatorul descarca fisierul <code>.css</code> o singura data si il pastreaza in memoria cache pentru toate paginile vizitate ulterior.</li>
+                <li><strong>Mentenanta rapida:</strong> Schimbarea paletei de culori sau a fontului pentru tot site-ul se face printr-o singura modificare in fisierul CSS.</li>
+            </ul>
+        </div>
+
+        <div class="sub-navigare">
+            <a href="stil_intern.html" class="buton-secundar">&laquo; Anteriorul: Stil in Antet</a>
+            <a href="modalitati_stil.html" class="buton-principal">Compara cele 3 modalitati &raquo;</a>
+        </div>
+    </div>
+
+</body>
+</html>
