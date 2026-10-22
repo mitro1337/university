@@ -365,7 +365,7 @@ mvn spring-boot:run
 ```
 
 Aplicația pornește pe portul `8080`, iar interfața web completă este accesibilă la adresa:  
-👉 `http://localhost:8080/`
+`http://localhost:8080/`
 
 ---
 

@@ -84,7 +84,7 @@ flowchart TD
 
     subgraph DOCS_PIPELINE ["Academic Docs Pipeline (ll3-docs.yml)"]
         direction TB
-        PARITY["DOCX ↔ LaTeX Parity Audit"]
+        PARITY["DOCX <-> LaTeX Parity Audit"]
         TEX_BUILD["LaTeX Compilation: latexmk / TeXLive"]
         PDF_OUT["Artifact: licenta-pdf (30 Days)"]
         
@@ -106,7 +106,7 @@ flowchart TD
 | :--- | :--- | :--- | :--- |
 | **Continuous Integration** | `.github/workflows/ci.yml` | Validare bytecode Python, 5 scenarii MITRE ATT&CK, compilare Maven Java 17, build Docker, smoke test REST live. | `push`, `pull_request`, `workflow_dispatch` |
 | **DevSecOps & Security** | `.github/workflows/security.yml` | Scanare secrete Gitleaks, auditare dependențe `pip-audit`, analiză statică SAST Bandit, scanare Trivy. | `push`, `pull_request`, `workflow_dispatch` |
-| **Academic Documentation** | `.github/workflows/latex.yml` | Verificare paritate DOCX ↔ LaTeX, compilare TeXLive în PDF și generare artefact `licenta-pdf`. | `push`, `pull_request`, `workflow_dispatch` |
+| **Academic Documentation** | `.github/workflows/latex.yml` | Verificare paritate DOCX <-> LaTeX, compilare TeXLive în PDF și generare artefact `licenta-pdf`. | `push`, `pull_request`, `workflow_dispatch` |
 
 ### 2.3. Politica de Securitate și Porți Blocante (Quality Gates)
 
@@ -148,7 +148,7 @@ licenta/LL3-LucrareLicenta/
         └── anexe.tex                     # Anexele A, B, C (Scheme SQL DDL, Python, JSON Wazuh)
 ```
 
-### 3.2. Automatizare și Verificare Paritate (DOCX ↔ LaTeX)
+### 3.2. Automatizare și Verificare Paritate (DOCX <-> LaTeX)
 
 Pentru a menține corespondența bijectivă între orice versiune DOCX și sursele LaTeX, a fost dezvoltat utilitarul:
 ```bash
