@@ -8,53 +8,53 @@
 html.dark {
   color-scheme: dark;
   
-  --bg-canvas: #090e0c;
-  --bg-surface: #111a16;
-  --bg-surface-elevated: #17241f;
-  --bg-surface-sunken: #050807;
+  --bg-canvas: #0c0d10;
+  --bg-surface: #14161d;
+  --bg-surface-elevated: #1b1e27;
+  --bg-surface-sunken: #07080a;
 
-  --border-subtle: #1e3027;
-  --border-strong: #2c4538;
+  --border-subtle: #262a36;
+  --border-strong: #383e4f;
 
-  --text-primary: #f0fdf4;
-  --text-secondary: #9cb5a5;
-  --text-muted: #647d6e;
+  --text-primary: #f8f9fa;
+  --text-secondary: #9fa6b6;
+  --text-muted: #636b7b;
 
-  --accent-primary: #10b981;
-  --accent-hover: #059669;
-  --accent-subtle: rgba(16, 185, 129, 0.16);
-  --accent-glow: rgba(16, 185, 129, 0.40);
+  --accent-primary: #ff6b2b;
+  --accent-hover: #f25816;
+  --accent-subtle: rgba(255, 107, 43, 0.14);
+  --accent-glow: rgba(255, 107, 43, 0.35);
 
-  --status-success: #10b981;
+  --status-success: #ff6b2b;
   --status-warning: #f59e0b;
   --status-error: #ef4444;
-  --status-info: #10b981;
+  --status-info: #ff854d;
 }
 
 html.light {
   color-scheme: light;
 
-  --bg-canvas: #f8faf9;
+  --bg-canvas: #f8f9fa;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #f0f5f2;
-  --bg-surface-sunken: #e4ece7;
+  --bg-surface-elevated: #f1f3f5;
+  --bg-surface-sunken: #e5e7eb;
 
-  --border-subtle: #dbe4df;
-  --border-strong: #c2d2c8;
+  --border-subtle: #e5e7eb;
+  --border-strong: #d1d5db;
 
-  --text-primary: #0f1913;
-  --text-secondary: #3b4e42;
-  --text-muted: #64776c;
+  --text-primary: #0f1115;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
 
-  --accent-primary: #059669;
-  --accent-hover: #047857;
-  --accent-subtle: rgba(5, 150, 105, 0.10);
-  --accent-glow: rgba(5, 150, 105, 0.25);
+  --accent-primary: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-subtle: rgba(234, 88, 12, 0.10);
+  --accent-glow: rgba(234, 88, 12, 0.25);
 
-  --status-success: #059669;
+  --status-success: #ea580c;
   --status-warning: #d97706;
   --status-error: #dc2626;
-  --status-info: #059669;
+  --status-info: #f97316;
 }
 
 /* Border normalization */
@@ -95,8 +95,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .font-display, .big-title, .hero-display {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.035em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 800;
 }
 
 .tabular-nums {

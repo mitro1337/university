@@ -58,8 +58,8 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
         <div class="px-5 py-3 bg-surface-elevated border-b border-border">
           <div class="flex items-center justify-between text-xs mb-1.5">
             @if (cartService.isFreeShipping()) {
-              <span class="text-emerald-400 font-medium flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-accent font-medium flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 {{ 'free_shipping_unlocked' | translate }}
               </span>
             } @else {
@@ -204,7 +204,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
               <div class="flex justify-between text-text-muted">
                 <span>{{ 'cart_shipping' | translate }}</span>
                 @if (cartService.isFreeShipping()) {
-                  <span class="text-emerald-400 font-medium">{{ 'shipping_free' | translate }}</span>
+                  <span class="text-accent font-medium">{{ 'shipping_free' | translate }}</span>
                 } @else {
                   <span class="text-text-primary tabular-nums font-semibold">{{ cartService.shippingEstimate().toFixed(2) }} {{ i18n.isRo() ? 'lei' : 'RON' }}</span>
                 }
@@ -241,7 +241,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
             </button>
 
             <div class="flex items-center justify-center gap-1.5 text-[11px] text-text-muted pt-1">
-              <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               <span>{{ i18n.isRo() ? 'Garanție tehnică 24 luni • Retur 14 zile' : '24-month warranty • 14-day guaranteed returns' }}</span>
             </div>
           </div>

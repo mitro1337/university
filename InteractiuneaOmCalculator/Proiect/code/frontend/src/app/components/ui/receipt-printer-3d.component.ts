@@ -14,29 +14,29 @@ import { TranslationService } from '../../services/translation.service';
       <div class="relative z-20 rounded-2xl bg-gradient-to-b from-[#1e232e] via-[#151922] to-[#0d1017] p-5 border border-slate-700/60 shadow-2xl overflow-hidden printer-bezel">
         <div class="flex items-center justify-between mb-3 border-b border-slate-800/80 pb-2.5">
           <div class="flex items-center gap-2.5">
-            <div class="w-3 h-3 rounded-full border border-cyan-400/30 flex items-center justify-center">
+            <div class="w-3 h-3 rounded-full border border-accent/40 flex items-center justify-center">
               <span 
                 class="w-1.5 h-1.5 rounded-full transition-all duration-300"
-                [class.bg-cyan-400]="isPrinting()"
+                [class.bg-accent]="isPrinting()"
                 [class.animate-ping]="isPrinting()"
-                [class.bg-emerald-400]="!isPrinting() && isPrinted()"
-                [class.bg-amber-400]="!isPrinting() && !isPrinted()">
+                [class.bg-amber-400]="!isPrinting() && isPrinted()"
+                [class.bg-slate-400]="!isPrinting() && !isPrinted()">
               </span>
             </div>
-            <span class="font-mono text-[10px] tracking-widest text-slate-300 font-bold uppercase">
+            <span class="text-[11px] font-bold tracking-widest text-slate-300 uppercase">
               VEX-THERMAL POS // PRN-80
             </span>
           </div>
 
           <div class="flex items-center gap-2">
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
               {{ isPrinting() ? 'PRINTING...' : 'ONLINE' }}
             </span>
             <button 
               type="button"
               (click)="triggerPrintAnimation()"
               [disabled]="isPrinting()"
-              class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-mono text-[10px] transition-all flex items-center gap-1 active:scale-95 disabled:opacity-40 cursor-pointer"
+              class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-[10px] font-bold transition-all flex items-center gap-1 active:scale-95 disabled:opacity-40 cursor-pointer"
               title="Replay printing animation">
               <svg class="w-3 h-3" [class.animate-spin]="isPrinting()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -46,14 +46,14 @@ import { TranslationService } from '../../services/translation.service';
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono mb-2">
+        <div class="flex items-center justify-between text-[11px] text-slate-400 mb-2">
           <span>STATUS: {{ order()?.status?.toUpperCase() || 'PAID' }}</span>
-          <span>ORD: {{ order()?.order_number || 'VEX-2026-X' }}</span>
+          <span class="tabular-nums">ORD: {{ order()?.order_number || 'VEX-2026-X' }}</span>
         </div>
 
         <!-- Dispenser Slot Mouth with Metal Bevel -->
         <div class="relative w-full h-3.5 bg-black rounded-sm border-t border-b border-slate-950 shadow-inner overflow-hidden flex items-center justify-center">
-          <div class="w-full h-[1px] bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.5)]"></div>
+          <div class="w-full h-[1px] bg-accent/30 shadow-[0_0_8px_rgba(255,107,43,0.5)]"></div>
           <div class="absolute inset-x-2 top-0 h-[2px] bg-slate-800/80"></div>
         </div>
       </div>
@@ -65,7 +65,7 @@ import { TranslationService } from '../../services/translation.service';
         [class.is-printing]="isPrinting()"
         [class.is-torn]="isTorn()">
         
-        <div class="receipt-paper bg-[#fcfdfa] text-slate-900 font-mono p-6 sm:p-7 shadow-2xl border-x border-slate-300 rounded-b-xs relative">
+        <div class="receipt-paper bg-[#fcfdfa] text-slate-900 font-sans tabular-nums p-6 sm:p-7 shadow-2xl border-x border-slate-300 rounded-b-xs relative">
           
           <!-- Subtle Paper Texture & Top Shadow -->
           <div class="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"></div>
@@ -73,7 +73,7 @@ import { TranslationService } from '../../services/translation.service';
           <!-- Header -->
           <div class="text-center space-y-1 border-b border-dashed border-slate-400 pb-4 mb-4">
             <div class="font-extrabold text-sm tracking-wider uppercase text-slate-950">
-              * VEXERA CYBERSTORE *
+              VEXERA HARDWARE & LAB
             </div>
             <div class="text-[10px] text-slate-600">
               HARDWARE PENTEST & HOMELAB RO
@@ -114,8 +114,8 @@ import { TranslationService } from '../../services/translation.service';
                     <span class="text-[10px] text-[#e04369]">BUY NOW, PAY LATER (3x)</span>
                   </div>
                   <div class="divide-y divide-[#ffd3df] pt-1">
-                    <div class="flex justify-between py-0.5 text-emerald-700 font-bold">
-                      <span>{{ i18n.isRo() ? '[✓] RATA 1/3 (ACHITAT AZI):' : '[✓] INSTALLMENT 1/3 (PAID TODAY):' }}</span>
+                    <div class="flex justify-between py-0.5 text-accent font-bold">
+                      <span>{{ i18n.isRo() ? '[CONFIRMAT] RATA 1/3 (ACHITAT AZI):' : '[CONFIRMED] INSTALLMENT 1/3 (PAID TODAY):' }}</span>
                       <span>{{ klarnaInstallment(1) }} {{ i18n.currencyLabel().toUpperCase() }}</span>
                     </div>
                     <div class="flex justify-between py-0.5 text-slate-600">
@@ -181,7 +181,7 @@ import { TranslationService } from '../../services/translation.service';
                 </div>
               }
             </div>
-            <div class="text-[9px] font-mono tracking-widest text-slate-700">
+            <div class="text-[9px] font-heading font-bold tabular-nums tracking-widest text-slate-700">
               * {{ order()?.order_number || 'VEX-2026-0042' }} *
             </div>
           </div>

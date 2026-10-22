@@ -90,7 +90,7 @@ import { PaymentStamper3dComponent } from '../../components/ui/payment-stamper-3
                   [(ngModel)]="smsCode" 
                   maxlength="6"
                   placeholder="ex: 784291"
-                  class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-center text-lg font-mono font-bold tracking-widest text-slate-900 focus:outline-none focus:border-[#FFB3C7] focus:ring-2 focus:ring-[#FFB3C7]/40">
+                  class="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-center text-lg font-heading font-bold tabular-nums tracking-widest text-slate-900 focus:outline-none focus:border-[#FFB3C7] focus:ring-2 focus:ring-[#FFB3C7]/40">
                 
                 <button 
                   type="button"

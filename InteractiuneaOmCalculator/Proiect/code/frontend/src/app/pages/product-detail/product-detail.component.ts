@@ -112,8 +112,8 @@ interface EngineeringReview {
                   <button 
                     type="button" 
                     (click)="viewMode.set('3d')"
-                    [class.bg-cyan-500]="viewMode() === '3d'"
-                    [class.text-black]="viewMode() === '3d'"
+                    [class.bg-accent-500]="viewMode() === '3d'"
+                    [class.text-white]="viewMode() === '3d'"
                     [class.text-text-muted]="viewMode() !== '3d'"
                     class="px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs">
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -122,7 +122,7 @@ interface EngineeringReview {
                     <span>{{ i18n.isRo() ? 'Inspectează 3D WebGL' : 'Inspect 3D WebGL' }}</span>
                   </button>
                 </div>
-                <span class="text-[10px] font-mono text-cyan-400">360° CAD</span>
+                <span class="text-[10px] font-heading font-bold text-accent-500 tracking-wider">360° CAD</span>
               </div>
 
               @if (viewMode() === '3d') {
@@ -459,7 +459,7 @@ interface EngineeringReview {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                   @for (pt of getWhyPoints(prod); track pt) {
                     <div class="spotlight-card p-3.5 rounded-lg bg-surface-elevated border border-border flex items-start gap-2.5 text-xs text-text-muted transition-all">
-                      <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      <svg class="w-4 h-4 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                       <p class="leading-relaxed">{{ pt }}</p>
                     </div>
                   }
@@ -481,7 +481,7 @@ interface EngineeringReview {
               <div class="p-4 rounded-lg bg-canvas-subtle border border-border text-xs space-y-2">
                 <div class="flex items-center justify-between text-text-muted text-[11px] font-medium">
                   <span>MAINLINE KERNEL & FIRMWARE STATUS</span>
-                  <span class="text-emerald-400 font-bold">● TESTED & CERTIFIED</span>
+                  <span class="text-accent font-bold">● TESTED & CERTIFIED</span>
                 </div>
                 <div class="text-text-primary font-medium">
                   {{ i18n.isRo() ? 'Kernel minim:' : 'Minimum Kernel:' }} <span class="text-primary font-bold">Linux 6.6 LTS+</span> | {{ i18n.isRo() ? 'Bootloader:' : 'Bootloader:' }} <span class="text-primary font-bold">U-Boot v2024 / EDK2 UEFI</span>
@@ -658,7 +658,7 @@ interface EngineeringReview {
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
                   @for (os of getWorksWith(prod); track os) {
                     <div class="p-2.5 rounded-lg bg-surface-elevated border border-border flex items-center gap-2 text-xs text-text-primary font-medium">
-                      <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                       <span>{{ os }}</span>
                     </div>
                   }
@@ -748,7 +748,7 @@ interface EngineeringReview {
                     ? 'Pentru scrierea imaginilor OS pe card SD sau NVMe, utilizați utilitarul CLI recomandat:' 
                     : 'To flash official OS images onto SD card or NVMe, use the recommended CLI utility:' }}
                 </div>
-                <div class="p-3 rounded bg-surface border border-border text-emerald-400 select-all text-[11px] font-medium flex items-center justify-between gap-3">
+                <div class="p-3 rounded bg-surface border border-border text-accent select-all text-[11px] font-semibold tabular-nums flex items-center justify-between gap-3">
                   <span class="break-all">curl -fsSL https://updates.vexera.ro/boot/install.sh | bash</span>
                   <button 
                     type="button" 

@@ -268,7 +268,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                   {{ i18n.isRo() ? 'Suport Linux' : 'Linux Support' }}
                 </td>
                 @for (prod of compService.items(); track prod.id) {
-                  <td class="p-4 border-l border-border text-xs text-emerald-500 font-medium">
+                  <td class="p-4 border-l border-border text-xs text-accent font-semibold">
                     Mainline LTS (Debian/Ubuntu/Armbian)
                   </td>
                 }

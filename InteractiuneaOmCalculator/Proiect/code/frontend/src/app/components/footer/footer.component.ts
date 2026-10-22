@@ -154,12 +154,12 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 
           <div>
             <h4 class="text-text-primary font-semibold text-xs mb-3 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
               {{ i18n.isRo() ? 'Drepturile Consumatorului & Legislație' : 'Consumer Rights & EU Compliance' }}
             </h4>
             <ul class="space-y-2 text-xs">
               <li class="flex items-start gap-2">
-                <svg class="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <div>
                   <a [routerLink]="['/termeni-si-conditii']" fragment="retur" class="hover:underline">
                     <strong class="text-text-primary hover:text-accent transition-colors">{{ i18n.isRo() ? 'Retur Garantat 14 Zile' : '14-Day Return Right' }}</strong>
@@ -170,7 +170,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                 </div>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <div>
                   <a [routerLink]="['/termeni-si-conditii']" fragment="garantie" class="hover:underline">
                     <strong class="text-text-primary hover:text-accent transition-colors">{{ i18n.isRo() ? 'Garanție Tehnică 24 Luni' : '24-Month Legal Warranty' }}</strong>

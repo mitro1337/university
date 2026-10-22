@@ -43,8 +43,8 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
           <div class="p-6 sm:p-8 rounded-xl bg-surface border border-border shadow-xs space-y-4 text-center sm:text-left transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
               <div class="flex items-center gap-4 justify-center sm:justify-start">
-                <div class="w-12 h-12 rounded-lg bg-emerald-950/40 border border-emerald-800/80 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div class="w-12 h-12 rounded-lg bg-accent/15 border border-accent/40 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </div>
                 <div>
                   <div class="mb-1">
@@ -85,7 +85,7 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
                   {{ i18n.isRo() ? 'Curier & Expediere' : 'Courier & Shipping' }}
                 </div>
                 <div class="text-text-primary font-bold mt-0.5">Sameday Curier 24H</div>
-                <div class="text-[10px] text-emerald-400 mt-1">AWB: 184910283401RO</div>
+                <div class="text-[10px] text-accent mt-1 tabular-nums font-semibold">AWB: 184910283401RO</div>
               </div>
               <div class="p-3.5 rounded-lg bg-surface-elevated border border-border">
                 <div class="text-[11px] text-text-muted uppercase font-semibold">

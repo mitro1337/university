@@ -245,7 +245,7 @@ import { LenisService } from '../../services/lenis.service';
                         <div class="text-xs font-bold text-text-primary tabular-nums">
                           {{ prod.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                         </div>
-                        <span class="text-[10px] text-emerald-400 font-medium">● {{ i18n.isRo() ? 'În stoc' : 'In stock' }}</span>
+                        <span class="text-[10px] text-accent font-medium">● {{ i18n.isRo() ? 'În stoc' : 'In stock' }}</span>
                       </div>
                     </div>
                   }
@@ -279,8 +279,8 @@ import { LenisService } from '../../services/lenis.service';
                   </span>
                 </div>
 
-                <div class="text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div class="text-[11px] text-accent font-medium flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>{{ i18n.isRo() ? 'Livrare Sameday Gratuită Inclusă' : 'Free Express Courier Delivery Included' }}</span>
                 </div>
 
@@ -414,7 +414,7 @@ import { LenisService } from '../../services/lenis.service';
                 </div>
                 <div class="flex items-center justify-between p-2 rounded bg-surface-elevated border border-border">
                   <span class="text-text-muted">{{ i18n.isRo() ? 'Grad Ocupare:' : 'Occupancy Rate:' }}</span>
-                  <span class="font-bold text-emerald-400 tabular-nums">
+                  <span class="font-bold text-accent tabular-nums">
                     {{ ((rackService.usedUnits() / rackService.totalUnits()) * 100).toFixed(0) }}%
                   </span>
                 </div>
@@ -479,27 +479,27 @@ import { LenisService } from '../../services/lenis.service';
 
               <div class="w-0.5 h-6 bg-border"></div>
 
-              <div class="flex items-center gap-4 px-6 py-3.5 rounded-lg bg-surface border border-emerald-500/80 shadow-md max-w-md w-full">
-                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+              <div class="flex items-center gap-4 px-6 py-3.5 rounded-lg bg-surface border border-accent/60 shadow-md max-w-md w-full">
+                <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent flex-shrink-0">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-emerald-400 font-heading">MikroTik RB5009UG+S+IN / OPNsense</div>
+                  <div class="text-xs font-bold text-accent font-heading">MikroTik RB5009UG+S+IN / OPNsense</div>
                   <div class="text-[10px] text-text-muted">RouterOS v7 • WireGuard VPN • NAT & Inter-VLAN Routing</div>
-                  <div class="text-[9px] text-emerald-400 font-bold mt-0.5">{{ i18n.isRo() ? 'Port SFP+ 10Gbps Trunk către Core Switch' : '10Gbps SFP+ Trunk to Core Switch' }}</div>
+                  <div class="text-[9px] text-accent font-bold mt-0.5">{{ i18n.isRo() ? 'Port SFP+ 10Gbps Trunk către Core Switch' : '10Gbps SFP+ Trunk to Core Switch' }}</div>
                 </div>
               </div>
 
               <div class="w-0.5 h-6 bg-border"></div>
 
-              <div class="flex items-center gap-4 px-6 py-3.5 rounded-lg bg-surface border border-blue-500/80 shadow-md max-w-md w-full">
-                <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 flex-shrink-0">
+              <div class="flex items-center gap-4 px-6 py-3.5 rounded-lg bg-surface border border-border-focus shadow-md max-w-md w-full">
+                <div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border flex items-center justify-center text-text-primary flex-shrink-0">
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <div class="text-xs font-bold text-blue-400 font-heading">MikroTik CRS305 / CRS309 (Core Switch 10G SFP+)</div>
+                  <div class="text-xs font-bold text-text-primary font-heading">MikroTik CRS305 / CRS309 (Core Switch 10G SFP+)</div>
                   <div class="text-[10px] text-text-muted">VLAN 10 (LAN) • VLAN 20 (Homelab) • VLAN 30 (IoT) • VLAN 40 (DMZ)</div>
-                  <div class="text-[9px] text-blue-400 font-bold mt-0.5">{{ i18n.isRo() ? '8x 10G SFP+ Cuplare Directă DAC 0.5m / 1m' : '8x 10G SFP+ Direct Attach Copper 0.5m / 1m' }}</div>
+                  <div class="text-[9px] text-accent font-bold mt-0.5">{{ i18n.isRo() ? '8x 10G SFP+ Cuplare Directă DAC 0.5m / 1m' : '8x 10G SFP+ Direct Attach Copper 0.5m / 1m' }}</div>
                 </div>
               </div>
 
@@ -513,7 +513,7 @@ import { LenisService } from '../../services/lenis.service';
                   </div>
                   <div class="text-xs font-bold text-text-primary font-heading">{{ i18n.isRo() ? 'Nod Proxmox VE' : 'Proxmox VE Node' }}</div>
                   <div class="text-[10px] text-text-muted">Dual SFP+ 10G LACP</div>
-                  <div class="text-[9px] text-emerald-400 font-bold">LXC & Docker Stacks</div>
+                  <div class="text-[9px] text-accent font-bold">LXC & Docker Stacks</div>
                 </div>
 
                 <div class="p-3.5 rounded-lg bg-surface border border-border text-center space-y-1.5 flex flex-col items-center">
@@ -522,7 +522,7 @@ import { LenisService } from '../../services/lenis.service';
                   </div>
                   <div class="text-xs font-bold text-text-primary font-heading">TrueNAS ZFS Storage</div>
                   <div class="text-[10px] text-text-muted">10GbE SFP+ iSCSI & NFS</div>
-                  <div class="text-[9px] text-blue-400 font-bold">ZFS Pool NVMe Cache</div>
+                  <div class="text-[9px] text-accent font-bold">ZFS Pool NVMe Cache</div>
                 </div>
 
                 <div class="p-3.5 rounded-lg bg-surface border border-border text-center space-y-1.5 flex flex-col items-center">

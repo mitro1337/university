@@ -72,11 +72,11 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
           </div>
 
           <div class="grid grid-cols-4 gap-2 text-center text-xs">
-            <div class="p-2.5 rounded-lg bg-surface-elevated border border-emerald-800/80 text-emerald-400">
+            <div class="p-2.5 rounded-lg bg-accent/10 border border-accent/40 text-accent">
               <div class="font-bold">{{ 'track_step_1' | translate }}</div>
               <div class="text-[10px] opacity-80">{{ 'track_step_1_sub' | translate }}</div>
             </div>
-            <div class="p-2.5 rounded-lg bg-surface-elevated border border-emerald-800/80 text-emerald-400">
+            <div class="p-2.5 rounded-lg bg-accent/10 border border-accent/40 text-accent">
               <div class="font-bold">{{ 'track_step_2' | translate }}</div>
               <div class="text-[10px] opacity-80">{{ 'track_step_2_sub' | translate }}</div>
             </div>

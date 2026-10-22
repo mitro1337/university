@@ -19,7 +19,7 @@ import { TranslationService } from '../../services/translation.service';
         <!-- Top Status Indicator & Power LED -->
         <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-800">
           <div class="flex items-center gap-2">
-            <span class="text-[11px] font-mono tracking-widest uppercase font-extrabold" [style.color]="selectedColor().hex">
+            <span class="text-[11px] font-heading font-bold tracking-widest uppercase" [style.color]="selectedColor().hex">
               {{ currentStatus() }}
             </span>
           </div>
@@ -30,7 +30,7 @@ import { TranslationService } from '../../services/translation.service';
               [style.background-color]="selectedColor().hex"
               [class.animate-pulse]="isStamping()">
             </div>
-            <span class="text-[10px] font-mono text-slate-400">READY</span>
+            <span class="text-[10px] font-medium text-slate-400">READY</span>
           </div>
         </div>
 
@@ -44,30 +44,30 @@ import { TranslationService } from '../../services/translation.service';
             
             <!-- Drum 1: Day -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ZIUA' : 'DAY' }}</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ZIUA' : 'DAY' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ (selectedDay() - 1 + 31) % 31 || 31 }}</span>
-                <span class="text-xl font-mono font-black text-white select-none drum-active-num">{{ selectedDay() }}</span>
+                <span class="text-xl font-heading font-black text-white select-none drum-active-num tabular-nums">{{ selectedDay() }}</span>
                 <span class="text-xs text-slate-600 select-none">{{ (selectedDay() % 31) + 1 }}</span>
               </div>
             </div>
 
             <!-- Drum 2: Month -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'LUNA' : 'MONTH' }}</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'LUNA' : 'MONTH' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ prevMonth() }}</span>
-                <span class="text-lg font-mono font-black text-white select-none uppercase drum-active-num">{{ selectedMonth() }}</span>
+                <span class="text-lg font-heading font-black text-white select-none uppercase drum-active-num">{{ selectedMonth() }}</span>
                 <span class="text-xs text-slate-600 select-none">{{ nextMonth() }}</span>
               </div>
             </div>
 
             <!-- Drum 3: Year -->
             <div class="drum-column">
-              <span class="text-[9px] uppercase font-mono tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ANUL' : 'YEAR' }}</span>
+              <span class="text-[9px] uppercase font-bold tracking-wider text-slate-500 block mb-1">{{ i18n.isRo() ? 'ANUL' : 'YEAR' }}</span>
               <div class="drum-cylinder relative h-16 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex flex-col items-center justify-center">
                 <span class="text-xs text-slate-600 select-none">{{ selectedYear() - 1 }}</span>
-                <span class="text-lg font-mono font-black text-white select-none drum-active-num">{{ selectedYear() }}</span>
+                <span class="text-lg font-heading font-black text-white select-none drum-active-num tabular-nums">{{ selectedYear() }}</span>
                 <span class="text-xs text-slate-600 select-none">{{ selectedYear() + 1 }}</span>
               </div>
             </div>
@@ -75,7 +75,7 @@ import { TranslationService } from '../../services/translation.service';
           </div>
 
           <!-- Horizontal Highlight Track -->
-          <div class="absolute inset-x-2 top-1/2 -translate-y-1/2 h-8 border-t border-b border-cyan-400/25 pointer-events-none rounded bg-cyan-400/5"></div>
+          <div class="absolute inset-x-2 top-1/2 -translate-y-1/2 h-8 border-t border-b border-accent/40 pointer-events-none rounded bg-accent/10"></div>
         </div>
 
         <!-- Status Mode Pills -->
@@ -88,7 +88,7 @@ import { TranslationService } from '../../services/translation.service';
               [class.text-black]="currentStatus() === s"
               [class.bg-slate-800]="currentStatus() !== s"
               [class.text-slate-300]="currentStatus() !== s"
-              class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold transition-all border border-slate-700/80 hover:border-slate-500 cursor-pointer active:scale-95">
+              class="px-2.5 py-1 rounded-full text-[10px] font-bold transition-all border border-slate-700/80 hover:border-slate-500 cursor-pointer active:scale-95">
               {{ s }}
             </button>
           }
@@ -128,7 +128,7 @@ import { TranslationService } from '../../services/translation.service';
 
       <!-- Target Invoice Document Section Receiving the Rubber Stamp -->
       <div class="relative z-10 -mt-3 mx-4 p-6 rounded-2xl bg-slate-900 border border-slate-700 text-center space-y-3 shadow-xl">
-        <div class="text-[11px] font-mono text-slate-400">
+        <div class="text-[11px] font-bold text-slate-400">
           {{ i18n.isRo() ? 'DOCUMENT DE VERIFICARE COMANDĂ // VEXERA SECURE' : 'ORDER VERIFICATION DOCUMENT // VEXERA SECURE' }}
         </div>
 
@@ -136,19 +136,19 @@ import { TranslationService } from '../../services/translation.service';
         <div class="h-20 flex items-center justify-center relative">
           @if (isStamped()) {
             <div 
-              class="stamp-impression inline-block px-6 py-2.5 rounded-xl border-4 font-mono font-black tracking-widest uppercase transition-all"
+              class="stamp-impression inline-block px-6 py-2.5 rounded-xl border-4 font-heading font-black tracking-widest uppercase transition-all"
               [style.color]="selectedColor().hex"
               [style.border-color]="selectedColor().hex"
               [style.box-shadow]="'0 0 20px ' + selectedColor().hex + '40'">
               <div class="text-sm sm:text-base leading-none mb-1">
-                ★ {{ currentStatus() }} ★
+                {{ currentStatus() }}
               </div>
               <div class="text-[10px] tracking-widest text-slate-300">
                 {{ selectedDay() }} {{ selectedMonth() }} {{ selectedYear() }} // {{ i18n.isRo() ? '0% DOBÂNDĂ' : '0% INTEREST' }}
               </div>
             </div>
           } @else {
-            <div class="text-xs font-mono text-slate-600 border border-dashed border-slate-700 rounded-lg p-3">
+            <div class="text-xs text-slate-400 border border-dashed border-slate-700 rounded-lg p-3">
               {{ i18n.isRo() ? '[ Așteaptă aplicarea sigiliului fizic de aprobare ]' : '[ Awaiting digital verification stamp ]' }}
             </div>
           }
@@ -222,12 +222,12 @@ export class PaymentStamper3dComponent implements OnInit {
   currentStatus = signal<string>('');
 
   colorOptions = [
-    { name: 'Klarna Pink', hex: '#FFB3C7' },
-    { name: 'Emerald Green', hex: '#10B981' },
-    { name: 'Cyber Cyan', hex: '#06B6D4' },
-    { name: 'Neon Purple', hex: '#A855F7' }
+    { name: 'Klarna Coral Pink', hex: '#FFB3C7' },
+    { name: 'Signal Orange', hex: '#FF6B2B' },
+    { name: 'Safety Amber', hex: '#F59E0B' },
+    { name: 'Titanium White', hex: '#F8F9FA' }
   ];
-  selectedColor = signal(this.colorOptions[0]);
+  selectedColor = signal(this.colorOptions[1]);
 
   // Calendar dates
   now = new Date();

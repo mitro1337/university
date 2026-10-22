@@ -41,7 +41,7 @@ import { UiBadgeComponent } from './ui-badge.component';
               [class.dark:border-rose-800/80]="res.score < 70">
               <span class="inline-flex items-center">
                 @if (res.score >= 90) {
-                  <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 } @else if (res.score >= 70) {
                   <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 } @else {
@@ -66,7 +66,7 @@ import { UiBadgeComponent } from './ui-badge.component';
             @if (res.issues.length > 0) {
               <span class="text-amber-600 dark:text-amber-400 font-semibold">{{ res.issues.length }} {{ i18n.isRo() ? 'avize tehnice' : 'advisories' }}</span>
             } @else {
-              <span class="text-emerald-600 dark:text-emerald-400 font-semibold">0 {{ i18n.isRo() ? 'conflicte' : 'conflicts' }}</span>
+              <span class="text-accent font-semibold">0 {{ i18n.isRo() ? 'conflicte' : 'conflicts' }}</span>
             }
           </div>
         </div>
@@ -142,8 +142,8 @@ import { UiBadgeComponent } from './ui-badge.component';
             </div>
             <div class="space-y-1.5">
               @for (match of (i18n.isRo() ? res.positiveMatches : res.positiveMatchesEn); track match) {
-                <div class="flex items-start gap-2 text-xs text-emerald-700 dark:text-emerald-400">
-                  <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div class="flex items-start gap-2 text-xs text-accent">
+                  <svg class="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span class="text-text-secondary font-sans text-[11px]">{{ match }}</span>
                 </div>
               }

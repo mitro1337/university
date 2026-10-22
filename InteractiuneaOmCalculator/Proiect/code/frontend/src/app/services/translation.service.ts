@@ -31,7 +31,7 @@ export const DICTIONARY: Translations = {
   },
   free_shipping_notice: {
     ro: 'Transport Gratuit peste 250 lei',
-    en: 'Free Shipping over 250 lei'
+    en: 'Free Shipping over 250 RON'
   },
   secure_payments: {
     ro: 'Plăți Securizate Stripe',
@@ -44,8 +44,8 @@ export const DICTIONARY: Translations = {
 
   // Search & Header
   search_placeholder: {
-    ro: 'Cauta un produs..',
-    en: 'Search for a product..'
+    ro: 'Caută un produs...',
+    en: 'Search for a product...'
   },
   search_btn_title: {
     ro: 'Caută',
@@ -197,7 +197,7 @@ export const DICTIONARY: Translations = {
   },
   filter_price: {
     ro: 'Interval Preț (lei)',
-    en: 'Price Range (lei)'
+    en: 'Price Range (RON)'
   },
   filter_reset: {
     ro: 'Resetează filtrele',
@@ -329,7 +329,7 @@ export const DICTIONARY: Translations = {
   },
   free_shipping_progress_tail: {
     ro: 'lei pentru transport gratuit!',
-    en: 'lei for free shipping!'
+    en: 'RON for free delivery!'
   },
   free_shipping_unlocked: {
     ro: 'Felicitări! Beneficiezi de transport gratuit prin Sameday!',
@@ -338,8 +338,8 @@ export const DICTIONARY: Translations = {
 
   // Checkout Page
   checkout_guest_badge: {
-    ro: 'COMANDĂ RAPIDĂ FĂRĂ CONT OBLIGATORIU (GUEST CHECKOUT)',
-    en: 'FAST ORDER WITHOUT MANDATORY ACCOUNT (GUEST CHECKOUT)'
+    ro: 'COMANDĂ RAPIDĂ FĂRĂ CONT OBLIGATORIU',
+    en: 'EXPRESS CHECKOUT WITHOUT MANDATORY ACCOUNT'
   },
   checkout_title: {
     ro: 'Finalizare Comandă Securizată',
@@ -459,7 +459,7 @@ export const DICTIONARY: Translations = {
   },
   summary_vat_note: {
     ro: 'Preț final în lei • TVA inclus',
-    en: 'Final price in lei • VAT included'
+    en: 'Final price in RON • VAT included'
   },
   btn_pay_stripe: {
     ro: 'Plătește prin Stripe →',

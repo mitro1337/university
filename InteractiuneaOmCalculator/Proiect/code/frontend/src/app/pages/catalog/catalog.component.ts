@@ -224,7 +224,7 @@ import { Category, Product } from '../../models/product.model';
           <div class="space-y-1.5 pt-3 border-t border-border">
             <label class="text-xs font-medium text-text-secondary flex items-center justify-between">
               <span>{{ i18n.isRo() ? 'Suport OS / Linux' : 'OS & Kernel Support' }}</span>
-              <span class="text-[10px] text-emerald-400 font-medium">Kernel 6.x+</span>
+              <span class="text-[10px] text-accent font-semibold">Kernel 6.x+</span>
             </label>
             <div class="flex flex-wrap gap-1 text-[10px]">
               @for (os of ['Linux Mainline', 'Proxmox', 'TrueNAS', 'Kali Linux', 'Home Assistant', 'OpenWrt', 'Asahi Linux', 'GrapheneOS', 'Coreboot']; track os) {
@@ -450,8 +450,8 @@ import { Category, Product } from '../../models/product.model';
 
                         <div class="mt-2.5 text-[11px] font-medium flex items-center gap-1.5">
                           @if (prod.stock > 5) {
-                            <span class="text-emerald-400 flex items-center gap-1">
-                              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span class="text-accent flex items-center gap-1">
+                              <span class="w-1.5 h-1.5 rounded-full bg-accent-500"></span>
                               {{ i18n.isRo() ? 'În stoc (' + prod.stock + ' buc)' : 'In stock (' + prod.stock + ' pcs)' }}
                             </span>
                           } @else if (prod.stock > 0) {
@@ -561,7 +561,7 @@ import { Category, Product } from '../../models/product.model';
                           </td>
                           <td class="p-3">
                             @if (prod.stock > 5) {
-                              <span class="text-emerald-400 font-medium text-xs">● {{ prod.stock }} {{ i18n.isRo() ? 'buc' : 'pcs' }}</span>
+                              <span class="text-accent font-medium text-xs">● {{ prod.stock }} {{ i18n.isRo() ? 'buc' : 'pcs' }}</span>
                             } @else if (prod.stock > 0) {
                               <span class="text-amber-400 font-medium text-xs">● {{ prod.stock }} {{ i18n.isRo() ? 'buc' : 'pcs' }}</span>
                             } @else {

@@ -121,7 +121,7 @@ import { Product } from '../../models/product.model';
                     <div class="text-xs font-bold text-accent tabular-nums">
                       {{ prod.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                     </div>
-                    <div class="text-[10px]" [class.text-emerald-400]="prod.stock > 5" [class.text-amber-400]="prod.stock <= 5">
+                    <div class="text-[10px]" [class.text-accent]="prod.stock > 5" [class.text-amber-400]="prod.stock <= 5">
                       {{ prod.stock > 0 ? (prod.stock <= 5 ? (prod.stock + (i18n.isRo() ? ' buc (critic)' : ' pcs (low)')) : (i18n.isRo() ? 'În stoc' : 'In stock')) : (i18n.isRo() ? 'Epuizat' : 'Out of stock') }}
                     </div>
                   </div>

@@ -354,7 +354,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             </div>
             <div class="font-medium text-text-secondary">{{ i18n.isRo() ? 'Depozit Vexera România' : 'Vexera Hub Romania' }}</div>
             <div>{{ i18n.isRo() ? '0720 123 456 • L-V 09:00 - 18:00' : '+40 720 123 456 • Mon-Fri 09:00 - 18:00' }}</div>
-            <div class="text-[11px] text-emerald-400 font-medium">{{ i18n.isRo() ? 'Livrare Sameday & Easybox' : 'Sameday & Easybox Delivery' }}</div>
+            <div class="text-[11px] text-accent font-medium">{{ i18n.isRo() ? 'Livrare Sameday & Easybox' : 'Sameday & Easybox Delivery' }}</div>
           </div>
         </div>
       }

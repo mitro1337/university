@@ -26,7 +26,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
 
       <div class="mb-8">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface border border-border text-xs text-text-muted mb-2">
-          <span class="text-emerald-400">●</span>
+          <span class="text-accent">●</span>
           {{ 'checkout_guest_badge' | translate }}
         </div>
         <h1 class="font-display text-2xl sm:text-3xl uppercase tracking-wide text-text-primary">
@@ -125,7 +125,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         <div class="text-[11px] text-text-muted">{{ 'delivery_sameday_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
+                    <span class="text-xs tabular-nums font-semibold" [class.text-accent]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
                       {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : ('19.00 ' + i18n.currencyLabel()) }}
                     </span>
                   </label>
@@ -149,7 +149,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         <div class="text-[11px] text-text-muted">{{ 'delivery_easybox_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs tabular-nums font-semibold" [class.text-emerald-400]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
+                    <span class="text-xs tabular-nums font-semibold" [class.text-accent]="cartService.isFreeShipping()" [class.text-text-primary]="!cartService.isFreeShipping()">
                       {{ cartService.isFreeShipping() ? ('shipping_free' | translate) : ('14.00 ' + i18n.currencyLabel()) }}
                     </span>
                   </label>
@@ -173,7 +173,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                         <div class="text-[11px] text-text-muted">{{ 'delivery_warehouse_sub' | translate }}</div>
                       </div>
                     </div>
-                    <span class="text-xs font-semibold text-emerald-400">
+                    <span class="text-xs font-semibold text-accent">
                       {{ 'shipping_free' | translate }}
                     </span>
                   </label>
@@ -309,7 +309,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                       </div>
 
                       <div class="p-2.5 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-muted flex items-center gap-2">
-                        <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                         <span>{{ i18n.isRo() ? 'Aprobare instantanee pe loc la următorul pas prin SMS securizat.' : 'Instant soft check with secure SMS verification.' }}</span>
@@ -415,7 +415,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                 <div class="flex justify-between text-text-muted">
                   <span>{{ 'summary_shipping' | translate }}</span>
                   @if (shippingCost() === 0) {
-                    <span class="text-emerald-400 font-medium">{{ 'shipping_free' | translate }}</span>
+                    <span class="text-accent font-medium">{{ 'shipping_free' | translate }}</span>
                   } @else {
                     <span class="text-text-primary tabular-nums font-semibold">{{ shippingCost().toFixed(2) }} {{ i18n.currencyLabel() }}</span>
                   }
@@ -464,7 +464,7 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
 
               <div class="p-3.5 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-muted space-y-1.5">
                 <div class="flex items-center gap-2 text-text-primary font-semibold">
-                  <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <svg class="w-3.5 h-3.5 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                   <span>{{ 'security_guarantee_title' | translate }}</span>
                 </div>
                 <p>
