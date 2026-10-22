@@ -144,6 +144,11 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                   {{ i18n.isRo() ? 'Accesibilitate' : 'Accessibility' }}
                 </button>
               </li>
+              <li>
+                <a routerLink="/arhitectura" class="hover:text-text-primary transition-colors">
+                  {{ i18n.isRo() ? 'Arhitectura Sistemului (5.11)' : 'System Architecture (5.11)' }}
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -310,6 +315,10 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             <span>•</span>
             <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" class="hover:text-text-primary hover:underline transition-colors">
               Comisia Europeană - SOL
+            </a>
+            <span>•</span>
+            <a routerLink="/arhitectura" class="hover:text-text-primary hover:underline transition-colors">
+              {{ i18n.isRo() ? 'Arhitectură & Documentație (5.11)' : 'Architecture & Specs (5.11)' }}
             </a>
           </div>
         </div>

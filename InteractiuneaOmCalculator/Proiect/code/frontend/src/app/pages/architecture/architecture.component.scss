@@ -1,0 +1,53 @@
+/* Architecture & Documentation Page Styling */
+
+.architecture-page {
+  /* Using design tokens */
+  --card-border: var(--border-subtle);
+  --card-bg: var(--bg-surface);
+  --card-bg-elevated: var(--bg-surface-elevated);
+  --card-bg-sunken: var(--bg-surface-sunken);
+}
+
+.sim-node {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sim-node.active-tier {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px var(--accent-primary), 0 8px 24px var(--accent-subtle);
+  transform: translateY(-2px);
+}
+
+.glow-step {
+  animation: pulse-step 1.5s infinite;
+}
+
+@keyframes pulse-step {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.04);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-surface-sunken);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}

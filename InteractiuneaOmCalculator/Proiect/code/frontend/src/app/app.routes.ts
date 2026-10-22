@@ -13,6 +13,7 @@ import { CookiePolicyComponent } from './pages/cookies/cookies.component';
 import { LabBuilderComponent } from './pages/lab-builder/lab-builder.component';
 import { ComparisonComponent } from './pages/comparison/comparison.component';
 import { AnpcComponent } from './pages/anpc/anpc.component';
+import { ArchitectureComponent } from './pages/architecture/architecture.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Vexera' },
@@ -42,5 +43,8 @@ export const routes: Routes = [
   { path: 'cookies', redirectTo: 'politica-cookies' },
   { path: 'anpc', component: AnpcComponent, title: 'Protecția Consumatorilor (ANPC & SOL) | Vexera' },
   { path: 'protectia-consumatorului', redirectTo: 'anpc' },
+  { path: 'arhitectura', component: ArchitectureComponent, title: 'Arhitectura Sistemului (5.11) | Vexera' },
+  { path: 'documentatie', redirectTo: 'arhitectura' },
+  { path: 'arhitectura-sistemului', redirectTo: 'arhitectura' },
   { path: '**', redirectTo: '' }
 ];

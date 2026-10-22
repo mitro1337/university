@@ -134,6 +134,12 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                 </span>
               }
             </a>
+
+            <a routerLink="/arhitectura"
+               class="px-2.5 py-1 rounded-md hover:bg-surface-elevated hover:text-text-primary transition-colors flex items-center gap-1.5"
+               [title]="i18n.isRo() ? 'Documentație și Arhitectura Sistemului (5.11)' : 'System Architecture & Documentation (5.11)'">
+              <span>{{ i18n.isRo() ? 'Arhitectură' : 'Architecture' }}</span>
+            </a>
           </nav>
         </div>
 
@@ -321,6 +327,9 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
               </a>
               <a routerLink="/compara" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
                 {{ i18n.isRo() ? 'Comparator Hardware' : 'Hardware Comparison' }}
+              </a>
+              <a routerLink="/arhitectura" (click)="mobileMenuOpen.set(false)" class="block px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
+                {{ i18n.isRo() ? 'Arhitectura Sistemului (5.11)' : 'System Architecture (5.11)' }}
               </a>
               <button type="button" (click)="mobileMenuOpen.set(false); labProfileService.isDrawerOpen.set(true)" class="w-full text-left px-3 py-2 rounded-md hover:bg-surface-elevated text-text-secondary hover:text-text-primary">
                 {{ i18n.isRo() ? 'Profilul laboratorului meu' : 'My Lab Profile' }}

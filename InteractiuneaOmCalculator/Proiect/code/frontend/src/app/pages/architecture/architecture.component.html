@@ -1,0 +1,1339 @@
+<div class="architecture-page min-h-screen py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-colors">
+  
+  <!-- Breadcrumb Navigation -->
+  <nav class="flex items-center gap-2 text-xs text-text-muted mb-6" aria-label="Breadcrumb">
+    <a routerLink="/" class="hover:text-text-primary transition-colors">{{ i18n.isRo() ? 'Acasă' : 'Home' }}</a>
+    <span>/</span>
+    <span class="text-text-primary font-medium">{{ i18n.isRo() ? 'Documentație & Arhitectură Sistem' : 'System Architecture & Documentation' }}</span>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs mb-8 transition-colors">
+    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-[11px] font-semibold text-accent uppercase tracking-wide mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          {{ i18n.isRo() ? 'Caiet Tehnic & Lucrare de Licență / Proiect HCI' : 'Technical Specification & HCI Architecture Thesis' }}
+        </div>
+        <h1 class="font-display text-2xl sm:text-4xl uppercase tracking-wide text-text-primary">
+          {{ i18n.isRo() ? 'Arhitectura Sistemului & Documentație Tehnică' : 'System Architecture & Technical Documentation' }}
+        </h1>
+        <p class="text-xs sm:text-sm text-text-muted mt-2 max-w-3xl leading-relaxed">
+          {{ i18n.isRo() 
+              ? 'Specificația completă a sistemului e-commerce Vexera: modelul arhitectural pe trei nivele (Three-Tier), descrierea modulelor, principiile ergonomice de interfață utilizator (HCI), securitatea rolurilor și perspectivele de dezvoltare ulterioară.' 
+              : 'Complete specification of the Vexera e-commerce platform: Three-Tier architectural pattern, application modules, ergonomic Human-Computer Interaction (HCI) heuristics, role-based security, and future technical roadmap.' }}
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:items-end gap-2 text-xs text-text-muted tabular-nums">
+        <div class="px-3 py-1.5 rounded-lg bg-surface-elevated border border-border flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>{{ i18n.isRo() ? 'Versiune Sistem: 2.4.0 (Angular 18+)' : 'System Version: 2.4.0 (Angular 18+)' }}</span>
+        </div>
+        <div class="text-[11px]">
+          {{ i18n.isRo() ? 'Secțiuni Lucrare: 5.11.3 - 5.11.9' : 'Thesis Sections: 5.11.3 - 5.11.9' }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Table of Contents / Sticky Navigation Pills -->
+    <div class="pt-5">
+      <div class="text-[11px] font-semibold uppercase tracking-wider text-text-muted mb-3">
+        {{ i18n.isRo() ? 'Săritură Rapidă la Secțiuni' : 'Quick Section Jump' }}
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-3')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.3 {{ i18n.isRo() ? 'Arhitectura Sistemului (Three-Tier)' : 'System Architecture (Three-Tier)' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-4')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.4 {{ i18n.isRo() ? 'Descrierea Aplicației (15.1, 15.2, 15.3)' : 'Application Description (15.1, 15.2, 15.3)' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-5')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.5 {{ i18n.isRo() ? 'Interfața Utilizator (6 Direcții)' : 'User Interface (6 Directions)' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-6')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.6 {{ i18n.isRo() ? 'Principii Ergonomice & HCI' : 'Ergonomic Principles & HCI' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-7')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.7 {{ i18n.isRo() ? 'Realizarea Obiectivelor & Roluri' : 'Objective Fulfillment & Roles' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-8')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.8 {{ i18n.isRo() ? 'Dezvoltări Ulterioare & Chat' : 'Future Work & Chat' }}
+        </button>
+        <button 
+          type="button"
+          (click)="scrollToSection('sec-5-11-9')"
+          class="px-3 py-1.5 rounded-lg border border-border bg-surface-elevated hover:bg-surface-sunken hover:border-accent text-text-secondary hover:text-text-primary transition-all cursor-pointer font-medium">
+          5.11.9 {{ i18n.isRo() ? 'Concluzii' : 'Conclusions' }}
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.3. ARHITECTURA SISTEMULUI -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-3" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.3
+        </span>
+        <span class="text-xs text-text-muted font-medium">Three-Tier Architecture Pattern</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.3. {{ i18n.isRo() ? 'ARHITECTURA SISTEMULUI' : 'SYSTEM ARCHITECTURE' }}
+      </h2>
+
+      <!-- Exact Thesis Text Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'Sistemul prezentat în această lucrare are la baza modelul arhitectural pe trei nivele (Three-tier).' 
+              : 'The system presented in this paper is based on the Three-tier architectural model.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'Arhitectura three-tier este un model de arhitectură software client-server, care prezintă module independente și adesea dezvoltate pe platforme diferite, acestea sunt:' 
+              : 'Three-tier architecture is a client-server software architecture model featuring independent modules often developed on different platforms, namely:' }}
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 font-medium text-text-primary">
+          <li>
+            <strong>Presentation Tier</strong> {{ i18n.isRo() ? 'care este reprezentat de interfața cu utilizatorul;' : 'represented by the user interface;' }}
+          </li>
+          <li>
+            <strong>Business Tier</strong> {{ i18n.isRo() ? 'care se ocupă de logica de proces funcțional și;' : 'handling functional business process logic and;' }}
+          </li>
+          <li>
+            <strong>Data Access Layer</strong> {{ i18n.isRo() ? 'care se ocupă de stocarea datelor și accesul la baza de date.' : 'handling data storage and database access.' }}
+          </li>
+        </ul>
+        <p>
+          {{ i18n.isRo()
+              ? 'Prin intermediul acestei arhitecturi, logica aplicației este eliminată din client și este executată pe un sistem între interfața utilizator și sistemul de stocare a datelor.'
+              : 'Through this architecture, application logic is decoupled from the client and executed on an intermediate system between the user interface and data storage.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Aplicația client pune la dispoziție interfața pentru utilizatorii sistemului.'
+              : 'The client application provides the user interface for system users.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Serverul este intermediarul între client și stocarea datelor, iar sarcina lui este de a se asigura că toată logica de business este efectuată corect. Acest tip de sistem permite modificarea oricărei părți a sistemului fără să fie necesar să se efectueze schimbări în celelalte părți.'
+              : 'The server serves as intermediary between client and data storage, ensuring all business logic executes correctly. This system design allows modifying any part of the system without necessitating changes in the other layers.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Nivelul de prezentare este stratul de front-end și constă din interfața cu utilizatorul. Acesta răspunde de prelucrarea datelor introduse de utilizator și returnarea răspunsului corect către utilizator. Nivelul de prezentare este reprezentat de aplicația client, care are la bază framework-ul Angular, structurat pe modelul Model-ViewController (Component-based).'
+              : 'The presentation tier is the front-end layer consisting of the user interface. It handles processing user input and returning appropriate responses. The presentation tier is represented by the client application based on the Angular framework, structured on the Model-ViewController component pattern.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Comunicarea între nivelul de prezentare și nivelul logic se realizează prin intermediul mesajelor de tip request/response.'
+              : 'Communication between presentation tier and logic tier is executed via request/response message passing.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Deoarece acest nivel reprezintă punctul de acces la aplicație, este necesar să se folosească autentificarea pentru a preveni accesul utilizatorilor neautorizați.'
+              : 'Because this level constitutes the access point to the application, authentication must be employed to prevent unauthorized user access.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Nivelul logic deține logica de business a aplicației și face legătura între nivelul de prezentare și nivelul de acces la date. Acest nivel deține toată logica de business a sistemului, aici putem găsi toate serviciile utilizate de către controllerele din nivelul de prezentare, aceste servicii accesează nivelul de acces la date. Serviciile au scopul de a executa o serie de operații asupra bazei de date, precum operații de inserare, operații de extragere a datelor, operații de ștergere sau operații de actualizare.'
+              : 'The logic tier holds application business logic and bridges presentation and data access. Hosting all business logic, here reside all services consumed by presentation controllers, which access the data layer to perform database operations such as insert, retrieve, delete, or update.' }}
+        </p>
+        <p>
+          {{ i18n.isRo()
+              ? 'Nivelul de stocare a datelor este format din servere de baze de date. Aici informațiile sunt stocate și preluate. La acest nivel se execută operații precum inserare, extragere a datelor, operații de ștergere sau operații de actualizare. Acest nivel efectuează operații la cererea nivelului logic sau furnizează acestuia datele cerute din baza de date.'
+              : 'The data storage tier consists of database servers where information is stored and retrieved. It executes operations like insertion, retrieval, deletion, or updating at the request of the logic tier, providing queried data back to it.' }}
+        </p>
+      </div>
+
+      <!-- Diagrama Arhitecturala Interactiva a Sistemului Realizat -->
+      <div class="mt-8 border border-border rounded-xl p-5 sm:p-6 bg-surface-sunken">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6 border-b border-border pb-4">
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-text-primary flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              {{ i18n.isRo() ? 'Diagrama Arhitecturală a Sistemului Realizat (Three-Tier)' : 'Architectural Diagram of the Implemented System (Three-Tier)' }}
+            </h3>
+            <p class="text-xs text-text-muted mt-0.5">
+              {{ i18n.isRo() ? 'Reprezentare vizuală a fluxului decuplat de date și componente' : 'Visual representation of decoupled data flow and component tiers' }}
+            </p>
+          </div>
+
+          <!-- Interactive Simulator Controls -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-[11px] font-semibold text-text-muted mr-1">{{ i18n.isRo() ? 'Simulare Flux:' : 'Simulate Flow:' }}</span>
+            <button 
+              type="button" 
+              (click)="runSimulation('catalog')" 
+              [disabled]="simIsRunning()"
+              class="px-2.5 py-1 rounded border border-border bg-surface hover:bg-surface-elevated text-[11px] font-medium text-text-primary transition-all disabled:opacity-50 cursor-pointer">
+              {{ i18n.isRo() ? '1. Căutare Catalog' : '1. Catalog Query' }}
+            </button>
+            <button 
+              type="button" 
+              (click)="runSimulation('klarna')" 
+              [disabled]="simIsRunning()"
+              class="px-2.5 py-1 rounded border border-border bg-surface hover:bg-surface-elevated text-[11px] font-medium text-text-primary transition-all disabled:opacity-50 cursor-pointer">
+              {{ i18n.isRo() ? '2. Checkout Klarna BNPL' : '2. Klarna BNPL Order' }}
+            </button>
+            <button 
+              type="button" 
+              (click)="runSimulation('auth')" 
+              [disabled]="simIsRunning()"
+              class="px-2.5 py-1 rounded border border-border bg-surface hover:bg-surface-elevated text-[11px] font-medium text-text-primary transition-all disabled:opacity-50 cursor-pointer">
+              {{ i18n.isRo() ? '3. Autentificare & Criptare' : '3. Auth & Hash Verify' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Three Tier Visualization Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+          
+          <!-- TIER 1: Presentation Tier -->
+          <div 
+            class="sim-node bg-surface rounded-xl p-5 border border-border flex flex-col justify-between"
+            [class.active-tier]="simActiveStep() === 1 || simActiveStep() === 4">
+            <div>
+              <div class="flex items-center justify-between mb-3 border-b border-border pb-2.5">
+                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase">
+                  Nivelul 1: Client Front-End
+                </span>
+                <span class="text-[11px] font-semibold text-text-muted">Angular 18+ SPA</span>
+              </div>
+              <h4 class="font-bold text-sm text-text-primary mb-2">Presentation Tier</h4>
+              <p class="text-xs text-text-muted mb-4 leading-relaxed">
+                {{ i18n.isRo() 
+                    ? 'Interfața grafică cu utilizatorul, structurată pe componente reactive (MVC/Signals), gestiunea stării în browser și prelucrarea input-urilor utilizatorului.' 
+                    : 'Graphical User Interface built on reactive components (MVC/Signals), managing client state and processing user inputs.' }}
+              </p>
+
+              <div class="space-y-2 text-xs">
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Componente Vizuale</div>
+                  <div class="text-[11px] text-text-muted">Catalog, Product Detail, Rack Builder, Comparator, Checkout</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Validare Input Client</div>
+                  <div class="text-[11px] text-text-muted">Formulare reactive, filtre parametrice, validare CNP/IBAN/Adresă</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Ergonomie & Accesibilitate</div>
+                  <div class="text-[11px] text-text-muted">Dark/Light Mode, font scalabil, navigare din tastatură (A11Y)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-[11px]">
+              <span class="text-text-muted">Protocol de ieșire:</span>
+              <span class="font-bold text-accent">HTTP POST / GET / JSON</span>
+            </div>
+          </div>
+
+          <!-- TIER 2: Business Tier -->
+          <div 
+            class="sim-node bg-surface rounded-xl p-5 border border-border flex flex-col justify-between"
+            [class.active-tier]="simActiveStep() === 2">
+            <div>
+              <div class="flex items-center justify-between mb-3 border-b border-border pb-2.5">
+                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">
+                  Nivelul 2: Logică de Business
+                </span>
+                <span class="text-[11px] font-semibold text-text-muted">REST API & Services</span>
+              </div>
+              <h4 class="font-bold text-sm text-text-primary mb-2">Business Tier (Middleware)</h4>
+              <p class="text-xs text-text-muted mb-4 leading-relaxed">
+                {{ i18n.isRo() 
+                    ? 'Intermediarul care procesează regulile de afaceri, calculează compatibilitatea hardware, orchestrează tranzacțiile Klarna/Stripe și aplică rolurile.' 
+                    : 'The intermediary executing core business rules, calculating hardware compatibility, orchestrating Klarna/Stripe transactions, and enforcing roles.' }}
+              </p>
+
+              <div class="space-y-2 text-xs">
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Servicii Tranzacționale</div>
+                  <div class="text-[11px] text-text-muted">Motor Klarna Pay Later (3 Rate), Gateway Stripe, Calcul Taxe & Transport</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Motor de Reguli Homelab</div>
+                  <div class="text-[11px] text-text-muted">Calcul consum TDP, adâncime șasiu rack, compatibilitate socket & PCIe</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Control Securitate & Roluri</div>
+                  <div class="text-[11px] text-text-muted">Auth Guards, verificare token JWT, criptare hash SHA-256 / bcrypt</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-[11px]">
+              <span class="text-text-muted">Comunicare DAL:</span>
+              <span class="font-bold text-accent">SQL CRUD / ORM Repositories</span>
+            </div>
+          </div>
+
+          <!-- TIER 3: Data Access Layer -->
+          <div 
+            class="sim-node bg-surface rounded-xl p-5 border border-border flex flex-col justify-between"
+            [class.active-tier]="simActiveStep() === 3">
+            <div>
+              <div class="flex items-center justify-between mb-3 border-b border-border pb-2.5">
+                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 uppercase">
+                  Nivelul 3: Stocare & Date
+                </span>
+                <span class="text-[11px] font-semibold text-text-muted">Database Engine</span>
+              </div>
+              <h4 class="font-bold text-sm text-text-primary mb-2">Data Access Layer</h4>
+              <p class="text-xs text-text-muted mb-4 leading-relaxed">
+                {{ i18n.isRo() 
+                    ? 'Servere de baze de date securizate unde informațiile sunt persistate, indexate și gestionate prin operații atomice CRUD.' 
+                    : 'Secure database servers where information is persisted, indexed, and retrieved via atomic CRUD transactions.' }}
+              </p>
+
+              <div class="space-y-2 text-xs">
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Tabele Catalog & Inventar</div>
+                  <div class="text-[11px] text-text-muted">180+ produse hardware, stocuri în timp real, specificații tehnice JSONB</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Tabel Utilizatori & Credențiale</div>
+                  <div class="text-[11px] text-text-muted">Conturi, roluri (admin/standard), hash-uri bcrypt, jurnale de audit</div>
+                </div>
+                <div class="p-2 rounded bg-surface-elevated border border-border">
+                  <div class="font-semibold text-text-primary">Tabele Comenzi & Finanțări</div>
+                  <div class="text-[11px] text-text-muted">Comenzi plasate, planuri de rate Klarna, AWB-uri de urmărire Sameday</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-[11px]">
+              <span class="text-text-muted">Integritate ACID:</span>
+              <span class="font-bold text-accent">PostgreSQL / In-Memory Store</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Step Indicator / Simulation Output Bar -->
+        <div class="mt-6 p-4 rounded-xl border border-border bg-surface flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full" [class.bg-emerald-500]="simIsRunning()" [class.bg-text-muted]="!simIsRunning()"></span>
+            <span class="font-semibold text-text-primary">
+              {{ simIsRunning() ? (i18n.isRo() ? 'Simulare în execuție...' : 'Simulation in progress...') : (i18n.isRo() ? 'Sistem pregătit pentru simulare' : 'System ready for simulation') }}
+            </span>
+          </div>
+
+          <div class="text-text-secondary text-center sm:text-right">
+            @if (simScenario() === 'catalog') {
+              <span>{{ i18n.isRo() ? 'Pas curent: Request Client GET /api/products -> Filtrare Business Tier -> Index Scan Data Access Layer -> Răspuns JSON către UI' : 'Current step: Client GET /api/products -> Business Tier Filter -> DAL Index Scan -> JSON Response to UI' }}</span>
+            } @else if (simScenario() === 'klarna') {
+              <span>{{ i18n.isRo() ? 'Pas curent: Formular Checkout -> Verificare eligibilitate 3 rate Klarna -> Creare sesiune plată -> Persistență comandă în BD' : 'Current step: Checkout Form -> Klarna 3-installment eligibility -> Payment session -> Order persistence in DB' }}</span>
+            } @else {
+              <span>{{ i18n.isRo() ? 'Pas curent: Input Utilizator/Parolă -> Hashing SHA-256 / bcrypt -> Căutare utilizator în DAL -> Verificare hash & Emis Token' : 'Current step: User/Password input -> Bcrypt hashing -> User query in DAL -> Hash verification & Token issue' }}</span>
+            }
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.4. DESCRIEREA APLICAȚIEI -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-4" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.4
+        </span>
+        <span class="text-xs text-text-muted font-medium">Application Specification</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.4. {{ i18n.isRo() ? 'DESCRIEREA APLICAȚIEI' : 'APPLICATION DESCRIPTION' }}
+      </h2>
+
+      <!-- 15.1. Înregistrare și logare în sistem -->
+      <div class="border border-border rounded-xl p-5 sm:p-6 bg-surface-elevated/50 mb-8">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-text-primary border border-border">
+            15.1
+          </span>
+          <h3 class="text-base font-bold text-text-primary">
+            {{ i18n.isRo() ? '15.1. Înregistrare și logare în sistem' : '15.1. System Registration and Login' }}
+          </h3>
+        </div>
+
+        <div class="text-xs sm:text-sm text-text-secondary space-y-2 mb-6 leading-relaxed">
+          <p>
+            {{ i18n.isRo() 
+                ? 'Înregistrarea utilizatorilor în sistem este realizată de către administrator.' 
+                : 'User registration in the system is performed by the administrator.' }}
+          </p>
+          <p>
+            {{ i18n.isRo() 
+                ? 'Utilizatorii înregistrați vor primi un e-mail cu datele contului, iar cu username-ul și parola se vor putea conecta la sistem.' 
+                : 'Registered users receive an email with account credentials, enabling them to connect to the system using their username and password.' }}
+          </p>
+          <p>
+            {{ i18n.isRo() 
+                ? 'Se va prezenta pagina de înregistrare, unde administratorul introduce datele personale ale utilizatorului, iar dacă acestea sunt valide, utilizatorul este înregistrat în cadrul sistemului.' 
+                : 'The registration view is provided where the administrator inputs personal user details; upon validation, the user is registered into the system.' }}
+          </p>
+          <p>
+            {{ i18n.isRo() 
+                ? 'Se va prezenta pagina de Login, unde utilizatorul își introduce username-ul și parola în câmpurile specifice, iar dacă acestea sunt valide utilizatorul are acces la sistem.' 
+                : 'The Login view is provided where the user enters credentials into specific fields; upon validation, the user receives access to the system.' }}
+          </p>
+        </div>
+
+        <!-- Interactive Auth Simulator (15.1) -->
+        <div class="bg-surface rounded-xl border border-border p-5">
+          <div class="flex items-center justify-between border-b border-border pb-3 mb-4">
+            <div class="flex gap-2">
+              <button 
+                type="button" 
+                (click)="authTab.set('admin-register')"
+                [class.bg-accent]="authTab() === 'admin-register'"
+                [class.text-white]="authTab() === 'admin-register'"
+                [class.bg-surface-elevated]="authTab() !== 'admin-register'"
+                [class.text-text-secondary]="authTab() !== 'admin-register'"
+                class="px-3 py-1 rounded-md text-xs font-semibold border border-border cursor-pointer transition-colors">
+                {{ i18n.isRo() ? 'Flux 1: Înregistrare Utilizator (Panou Admin)' : 'Flow 1: Admin User Registration' }}
+              </button>
+              <button 
+                type="button" 
+                (click)="authTab.set('user-login')"
+                [class.bg-accent]="authTab() === 'user-login'"
+                [class.text-white]="authTab() === 'user-login'"
+                [class.bg-surface-elevated]="authTab() !== 'user-login'"
+                [class.text-text-secondary]="authTab() !== 'user-login'"
+                class="px-3 py-1 rounded-md text-xs font-semibold border border-border cursor-pointer transition-colors">
+                {{ i18n.isRo() ? 'Flux 2: Autentificare în Sistem (Login Utilizator)' : 'Flow 2: User Login Authentication' }}
+              </button>
+            </div>
+            <span class="text-[11px] text-text-muted hidden sm:inline">
+              {{ i18n.isRo() ? 'Simulare Interactivă Securitate' : 'Interactive Security Simulation' }}
+            </span>
+          </div>
+
+          <!-- TAB 1: Admin Registration -->
+          @if (authTab() === 'admin-register') {
+            <form (ngSubmit)="handleAdminRegister()" class="space-y-4 max-w-xl">
+              <div class="text-xs text-text-muted">
+                {{ i18n.isRo() ? 'Formular accesat exclusiv de Administrator pentru crearea de noi conturi autorizate în cadrul laboratorului:' : 'Form accessed strictly by the Administrator to issue new authorized lab accounts:' }}
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Nume și Prenume' : 'Full Name' }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="registerName" 
+                    name="regName"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Adresă E-mail Oficială' : 'Official Email Address' }}</label>
+                  <input 
+                    type="email" 
+                    [(ngModel)]="registerEmail" 
+                    name="regEmail"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Departament / Proiect' : 'Department / Project' }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="registerDepartment" 
+                    name="regDept"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Rol Alocat' : 'Assigned Role' }}</label>
+                  <select 
+                    [(ngModel)]="registerRole" 
+                    name="regRole"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                    <option value="standard">{{ i18n.isRo() ? 'Utilizator Standard' : 'Standard User' }}</option>
+                    <option value="admin">{{ i18n.isRo() ? 'Administrator Sistem' : 'System Administrator' }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center gap-3">
+                <button 
+                  type="submit" 
+                  class="px-4 py-2 rounded-lg bg-accent text-white font-semibold text-xs hover:opacity-95 transition-all shadow-xs cursor-pointer">
+                  {{ i18n.isRo() ? 'Înregistrează Utilizator & Trimite Email cu Credențiale' : 'Register User & Send Credentials Email' }}
+                </button>
+              </div>
+
+              @if (registerSuccess()) {
+                <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs leading-relaxed">
+                  {{ registerFeedback() }}
+                </div>
+              }
+            </form>
+          }
+
+          <!-- TAB 2: User Login -->
+          @if (authTab() === 'user-login') {
+            <form (ngSubmit)="handleUserLogin()" class="space-y-4 max-w-xl">
+              <div class="text-xs text-text-muted">
+                {{ i18n.isRo() ? 'Pagina de conectare unde utilizatorul introduce credențialele primite pe e-mail:' : 'Login interface where the user submits credentials received via automated email:' }}
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Nume Utilizator (Username)' : 'Username' }}</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="loginUsername" 
+                    name="logUser"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-text-primary mb-1">{{ i18n.isRo() ? 'Parolă' : 'Password' }}</label>
+                  <input 
+                    type="password" 
+                    [(ngModel)]="loginPassword" 
+                    name="logPass"
+                    class="w-full text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center gap-3">
+                <button 
+                  type="submit" 
+                  class="px-4 py-2 rounded-lg bg-accent text-white font-semibold text-xs hover:opacity-95 transition-all shadow-xs cursor-pointer">
+                  {{ i18n.isRo() ? 'Autentificare în Sistem' : 'Login to System' }}
+                </button>
+              </div>
+
+              @if (loginSuccess()) {
+                <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs leading-relaxed">
+                  {{ loginFeedback() }}
+                </div>
+              }
+            </form>
+          }
+        </div>
+
+      </div>
+
+      <!-- 15.2. Detalierea funcționalităților și a facilităților -->
+      <div class="border border-border rounded-xl p-5 sm:p-6 bg-surface-elevated/50 mb-8">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-text-primary border border-border">
+            15.2
+          </span>
+          <h3 class="text-base font-bold text-text-primary">
+            {{ i18n.isRo() ? '15.2. Detalierea funcționalităților și a facilităților' : '15.2. Detailed System Features and Facilities' }}
+          </h3>
+        </div>
+
+        <p class="text-xs sm:text-sm text-text-secondary mb-4 leading-relaxed">
+          {{ i18n.isRo() 
+              ? 'În continuare sunt detaliate principalele funcționalități puse la dispoziție de aplicația realizată:' 
+              : 'The following section details the primary functionalities provided by the implemented platform:' }}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Catalog Parametric & Căutare Live</span>
+              <span class="text-[10px] text-accent font-semibold">180+ Produse</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Filtrare avansată după categorie, gamă de preț, stoc instant și căutare în timp real după cuvinte cheie, soclu, magistrală PCIe și interfețe de comunicare.' 
+                  : 'Advanced parametric filtering by vertical, price range, instant stock status, and real-time keyword search for sockets, PCIe bus, and interfaces.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Visual 19" Rack Builder</span>
+              <span class="text-[10px] text-accent font-semibold">Configurator Lab</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Amplasare vizuală a echipamentelor pe unități de rack (1U-4U), calcul dinamic al consumului energetic total (TDP), verificare adâncime șasiu și export BOM.' 
+                  : 'Visual equipment placement in 1U-4U rack slots, dynamic total power/TDP calculation, chassis depth conflict checking, and BOM export.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Comparator Tehnic Hardware</span>
+              <span class="text-[10px] text-accent font-semibold">Până la 4 Produse</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Comparație tabelară side-by-side a specificațiilor tehnice, evidențierea diferențelor critice de arhitectură, consum și preț unitar.' 
+                  : 'Side-by-side tabular comparison of technical specifications, highlighting architectural differences, power draw, and unit pricing.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Klarna Buy Now Pay Later</span>
+              <span class="text-[10px] text-accent font-semibold">3 Rate Fără Dobândă</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Integrare checkout cu finanțare flexibilă prin Klarna: plată în 3 rate egale fără dobândă, verificare instantanee a eligibilității și transparență totală a scadențarului.' 
+                  : 'Checkout integration with flexible Klarna BNPL: 3 equal interest-free installments, instant eligibility check, and full payment schedule visibility.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Profil Echipamente My Lab</span>
+              <span class="text-[10px] text-accent font-semibold">Panou Lateral</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Salvarea preferințelor de laborator, a tensiunii de alimentare (12V/24V/230V), a istoricului componentelor deținute și a bugetului alocat proiectelor.' 
+                  : 'Persistence of laboratory specs, supply voltages (12V/24V/230V), existing hardware inventory, and allocated project budgets.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-text-primary">Accesibilitate Universală (A11Y)</span>
+              <span class="text-[10px] text-accent font-semibold">WCAG 2.1 AA</span>
+            </div>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Mod de contrast înalt, scalare tipografică adaptivă, mod luminos (alb pur) / mod întunecat (carbon smarald) și scurtături complete de tastatură.' 
+                  : 'High contrast modes, adaptive font scaling, light mode (pure white) / dark mode (carbon emerald), and full keyboard shortcut mapping.' }}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 15.3. Descrierea modulelor aplicaţiei -->
+      <div class="border border-border rounded-xl p-5 sm:p-6 bg-surface-elevated/50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-bold px-2 py-0.5 rounded bg-primary/10 text-text-primary border border-border">
+            15.3
+          </span>
+          <h3 class="text-base font-bold text-text-primary">
+            {{ i18n.isRo() ? '15.3. Descrierea modulelor aplicaţiei' : '15.3. Application Modules Breakdown' }}
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="font-bold text-text-primary text-sm mb-1">Modulul de Prezentare & Navigare</div>
+            <div class="text-accent text-[11px] font-semibold mb-2">HomeComponent, CatalogComponent, ProductDetailComponent</div>
+            <p class="text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Responsabil de randarea interfeței grafice pe baza Angular Router, căutare globală integrată în antet, meniu mega-dropdown pe categorii de laborator și comutator de temă/limbă.' 
+                  : 'Handles GUI rendering via Angular Router, global search header, category mega-dropdown, and real-time theme/language toggle.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="font-bold text-text-primary text-sm mb-1">Modulul Configurator & Rack Homelab</div>
+            <div class="text-accent text-[11px] font-semibold mb-2">LabBuilderComponent, LabProfileService</div>
+            <p class="text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Oferă vizualizatorul interactiv de rack 19", drag-and-drop / inserare directă pe șasiu, calcul în timp real al unităților ocupate și sincronizare cu coșul de cumpărături.' 
+                  : 'Provides visual 19" rack builder, slot allocation, live unit balance calculations, and shopping cart item synchronization.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="font-bold text-text-primary text-sm mb-1">Modulul de Tranzacționare & Plăți</div>
+            <div class="text-accent text-[11px] font-semibold mb-2">CheckoutComponent, KlarnaGateway, StripeGateway, OrderTracking</div>
+            <p class="text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Gestiunea coșului de cumpărături, validarea adresei de livrare Sameday/Easybox, selectarea opțiunii Klarna BNPL (3 rate) sau Stripe Card, generare număr comandă și urmărire AWB.' 
+                  : 'Shopping cart lifecycle, shipping validation (Sameday/Easybox), Klarna 3-installment BNPL or Stripe Card checkout, order confirmation, and AWB tracking.' }}
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface border border-border">
+            <div class="font-bold text-text-primary text-sm mb-1">Modulul Servicii de Bază & Gestiune Stare</div>
+            <div class="text-accent text-[11px] font-semibold mb-2">CartService, TranslationService, ThemeService, AccessibilityService</div>
+            <p class="text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Servicii singleton injectabile bazate pe semnale reactive (Angular Signals), asigurând consistența datelor pe durata întregii sesiuni de navigare fără reîncărcarea paginii.' 
+                  : 'Injectable singleton services powered by reactive Angular Signals, ensuring persistent cross-page state without full page reloads.' }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.5. INTERFAȚA UTILIZATOR -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-5" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.5
+        </span>
+        <span class="text-xs text-text-muted font-medium">HCI & Ergonomic Specialization</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.5. {{ i18n.isRo() ? 'INTERFAȚA UTILIZATOR' : 'USER INTERFACE' }}
+      </h2>
+
+      <!-- Thesis Paragraph Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'Reprezintă un detaliu de o importanță deosebită și hotărâtor pentru dezvoltarea unei aplicații, deoarece acest aspect se leagă în prima fază de succesul aplicației.' 
+              : 'Represents a detail of paramount importance and decisive weight for application success, as this aspect directly governs initial user adoption and long-term utility.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'Utilizatorii trebuie să poată înțelege aplicația și să poată efectua acțiuni în acea aplicație, din aceste considerente reiese nevoia pentru o interfață clară.' 
+              : 'Users must intuitively comprehend the application and execute tasks effortlessly, creating a non-negotiable requirement for an uncluttered and transparent interface.' }}
+        </p>
+        <p class="font-semibold text-text-primary">
+          {{ i18n.isRo() 
+              ? 'Direcțiile în care se poate specializa interfața cu utilizatorul sunt:' 
+              : 'The key directions for user interface specialization include:' }}
+        </p>
+      </div>
+
+      <!-- The 6 Specialization Directions in Detail -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- Direction 1 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              1
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Adăugarea de funcționalități de creare de rapoarte' : 'Report Generation Capabilities' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Implementată în Vexera prin generarea automată a listei de componente (Bill of Materials - BOM) din rack-ul 19", calculul consumului total în wați (TDP) și generarea rezumatului tehnic al laboratorului.' 
+                  : 'Implemented via automated Bill of Materials (BOM) exports from the 19" rack builder, total wattage/TDP aggregation, and lab configuration technical summaries.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Lab Builder & BOM Export' : 'Module: Lab Builder & BOM Export' }}
+          </div>
+        </div>
+
+        <!-- Direction 2 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              2
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Filtrări complexe' : 'Complex Faceted Filtering' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Filtrare multi-criterială parametrică: căutare simultană după socket procesor, viteză interfață (1GbE / 2.5GbE / 10GbE SFP+), bus PCIe, factor de formă rackabil, plajă de preț și disponibilitate imediată în depozit.' 
+                  : 'Multi-criteria faceted filtering: simultaneous evaluation of CPU socket, link speed (10GbE SFP+), PCIe bus width, rackable chassis form factor, price range, and verified warehouse stock.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Catalog & Filtru Parametric' : 'Module: Parametric Catalog Filter' }}
+          </div>
+        </div>
+
+        <!-- Direction 3 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              3
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Lucrul cu mai multe tabele în același timp' : 'Simultaneous Multi-Table Manipulation' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Matricea tehnică de comparare gestionează concomitent până la 4 tabele de specificații pe coloane paralele, corelând datele de consum, dimensiuni și conectori fără a pierde contextul de navigare.' 
+                  : 'Technical comparison engine processes up to 4 specification tables simultaneously in parallel columns, correlating power, dimensions, and interfaces without loss of context.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Comparator Hardware' : 'Module: Hardware Comparator' }}
+          </div>
+        </div>
+
+        <!-- Direction 4 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              4
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Editarea view-urilor cu efecte în tabelele de bază' : 'View Editing with Underlying Effects' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Modificarea sloturilor de rack sau a cantităților din coș actualizează instantaneu variabilele reactive, stocul disponibil afișat în catalog și calculul scadențelor Klarna fără refresh de pagină.' 
+                  : 'Modifying rack slots or cart quantities instantly updates reactive state signals, catalog stock counters, and Klarna installment calculations without page refreshes.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Two-Way Data Binding & Signals' : 'Module: Two-Way Data Binding & Signals' }}
+          </div>
+        </div>
+
+        <!-- Direction 5 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              5
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Extinderea suportului pentru mai multe browsere și servere' : 'Multi-Browser & Cross-Platform Support' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Design complet responsive testat pe motoarele Chromium (Chrome/Edge), Gecko (Firefox) și WebKit (Safari pe macOS/iOS), optimizat pentru ecrane de la 360px la 4K.' 
+                  : 'Fully responsive architecture certified on Chromium (Chrome/Edge), Gecko (Firefox), and WebKit (Safari on macOS/iOS), scaling smoothly from 360px to 4K displays.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Responsive Grid & CSS Tokens' : 'Module: Responsive Grid & CSS Tokens' }}
+          </div>
+        </div>
+
+        <!-- Direction 6 -->
+        <div class="p-5 rounded-xl bg-surface-elevated border border-border hover:border-accent/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 text-accent font-bold text-xs flex items-center justify-center mb-3">
+              6
+            </div>
+            <h3 class="font-bold text-sm text-text-primary mb-2">
+              {{ i18n.isRo() ? 'Aspecte multimedia și de marketing' : 'Multimedia & Marketing Integration' }}
+            </h3>
+            <p class="text-xs text-text-muted leading-relaxed">
+              {{ i18n.isRo() 
+                  ? 'Integrarea elementelor vizuale interactive 3D, badge-uri de stoc și campanii, widget oficial Klarna Buy Now Pay Later și suport media tehnic.' 
+                  : 'Incorporation of interactive 3D product previews, dynamic stock badges, verified Klarna Buy Now Pay Later financing widgets, and rich technical media.' }}
+            </p>
+          </div>
+          <div class="mt-4 pt-2 border-t border-border text-[11px] text-accent font-semibold">
+            {{ i18n.isRo() ? 'Modul: Klarna BNPL & 3D WebGL Canvas' : 'Module: Klarna BNPL & 3D WebGL Canvas' }}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.6. PRINCIPII DE CONSTRUIRE A UNEI INTERFEȚE EFICIENTE SI ERGONOMICE -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-6" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.6
+        </span>
+        <span class="text-xs text-text-muted font-medium">HCI Ergonomic Principles & Heuristics</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.6. {{ i18n.isRo() ? 'PRINCIPII DE CONSTRUIRE A UNEI INTERFEȚE EFICIENTE SI ERGONOMICE' : 'PRINCIPLES FOR BUILDING AN EFFICIENT AND ERGONOMIC INTERFACE' }}
+      </h2>
+
+      <!-- Thesis Paragraph Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'În acest capitol se va realiza o analiză a aplicațiilor similare care există. Această analiză se va efectua cu scopul de a face posibilă identificarea ideilor esențiale care stau la baza aplicației propuse. Astfel, se va realiza o comparație a tuturor sistemelor similare și a sistemului propus pentru implementare.' 
+              : 'In this chapter, an analysis of existing similar applications is conducted to identify the core ergonomic principles grounding the proposed platform, presenting a direct comparative matrix between traditional systems and the proposed solution.' }}
+        </p>
+      </div>
+
+      <!-- Comparative Analysis Table -->
+      <div class="overflow-x-auto border border-border rounded-xl bg-surface-sunken mb-8">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-border bg-surface-elevated text-text-primary">
+              <th class="p-3 sm:p-4 font-bold">{{ i18n.isRo() ? 'Dimensiune Ergonomică / Criteriu HCI' : 'Ergonomic Dimension / HCI Metric' }}</th>
+              <th class="p-3 sm:p-4 font-bold text-text-muted">{{ i18n.isRo() ? 'Platforme Clasice E-Commerce Hardware' : 'Traditional Hardware Stores' }}</th>
+              <th class="p-3 sm:p-4 font-bold text-accent">{{ i18n.isRo() ? 'Sistemul Propus Vexera (HCI Avansat)' : 'Proposed Vexera System (HCI)' }}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border text-text-secondary">
+            <tr>
+              <td class="p-3 sm:p-4 font-semibold text-text-primary">Sarcina Cognitivă a Utilizatorului</td>
+              <td class="p-3 sm:p-4 text-text-muted">Ridicată: utilizatorul trebuie să rețină manual compatibilitatea pinilor, a sloturilor PCIe și adâncimea carcaselor.</td>
+              <td class="p-3 sm:p-4 text-accent font-medium">Redusă: asistentul vizual de rack 19" calculează automat TDP-ul, unitățile libere și compatibilitatea de format.</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-semibold text-text-primary">Timpul de Decizie (Legea lui Hick)</td>
+              <td class="p-3 sm:p-4 text-text-muted">Lent: zeci de subcategorii adânci și meniuri imbricate greu accesibile pe mobil.</td>
+              <td class="p-3 sm:p-4 text-accent font-medium">Optimizat: 6 verticale hardware clare, căutare parametrică instantanee cu tastatură rapidă.</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-semibold text-text-primary">Viteza de Interacțiune (Legea lui Fitts)</td>
+              <td class="p-3 sm:p-4 text-text-muted">Ineficientă: butoane mici de acțiune, link-uri text dense plasate în colțuri inaccesibile.</td>
+              <td class="p-3 sm:p-4 text-accent font-medium">Ergonomică: butoane mari tactile cu feedback imediat, drawer lateral persistent My Lab.</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-semibold text-text-primary">Finanțare & Flexibilitate Plată</td>
+              <td class="p-3 sm:p-4 text-text-muted">Ridicată ca fricțiune: procese lungi de creditare bancară cu redirecționări externe multiple.</td>
+              <td class="p-3 sm:p-4 text-accent font-medium">Transparentă: integrare directă Klarna BNPL (3 rate fără dobândă) cu calcul live la fiecare produs.</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-semibold text-text-primary">Accesibilitate Universală & Mod Vizual</td>
+              <td class="p-3 sm:p-4 text-text-muted">Inexistentă sau limitată la contrast implicit fără opțiuni de scalare tipografică.</td>
+              <td class="p-3 sm:p-4 text-accent font-medium">Completă: WCAG 2.1 AA, mod alb pur / mod dark carbon smarald, scurtături tastatură (A11Y).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Heuristic Application Breakdown -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-surface-elevated border border-border">
+          <div class="font-bold text-text-primary text-sm mb-1.5 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Legea lui Fitts & Target Acquisition
+          </div>
+          <p class="text-text-muted leading-relaxed">
+            {{ i18n.isRo() 
+                ? 'Timpul necesar atingerii unei ținte este o funcție între distanță și dimensiunea țintei. În Vexera, butoanele de adăugare în coș, de deschidere a comparatorului și de finalizare comandă au o înălțime de minim 40px și sunt amplasate în zone cu accesibilitate motorie maximă pe desktop și mobile.' 
+                : 'Target acquisition time depends on target distance and size. Key CTAs in Vexera measure at least 40px in touch height, positioned for optimal motor reachability across desktop and mobile viewports.' }}
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-elevated border border-border">
+          <div class="font-bold text-text-primary text-sm mb-1.5 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Legea lui Hick & Reducerea Încărcării Cognitive
+          </div>
+          <p class="text-text-muted leading-relaxed">
+            {{ i18n.isRo() 
+                ? 'Timpul de luare a unei decizii crește proporțional cu numărul și complexitatea opțiunilor. Catalogul Vexera structurează cele 180+ echipamente în 6 verticale principale, completate de filtre instant și un comparator capabil să sintetizeze diferențele într-un format simplificat.' 
+                : 'Decision time increases logarithmically with choice count. Vexera structures 180+ components into 6 clear verticals, backed by instant parametric filtering and side-by-side spec synthesis.' }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.7. REALIZAREA OBIECTIVELOR PROPUSE -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-7" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.7
+        </span>
+        <span class="text-xs text-text-muted font-medium">Objective Achievement & Role-Based Access</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.7. {{ i18n.isRo() ? 'REALIZAREA OBIECTIVELOR PROPUSE' : 'ACHIEVING PROPOSED OBJECTIVES' }}
+      </h2>
+
+      <!-- Exact Thesis Text Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'Sistemul realizat reușește să își atingă obiectivul propus, realizând cu succes platforma completă de interacțiune om-calculator pentru echipamente de laborator și homelab.' 
+              : 'The implemented system successfully achieves its proposed objective, delivering a complete human-computer interaction platform for hardware and homelab infrastructure.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'Obiectivele propuse pentru acest proiect au fost îndeplinite, astfel sistemul oferă posibilitatea de management a conturilor utilizatorilor, pot fi vizualizate rapoarte care ajută la stabilirea unor concluzii și luarea unor decizii corespunzătoare.' 
+              : 'Proposed objectives have been satisfied: the system provides user account management capabilities and reports assisting in deriving conclusions and sound operational decisions.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'După cum s-a propus, în cadrul sistemului există două tipuri de utilizatori, pentru fiecare tip existând câte un meniu cu resursele disponibile rolului deținut de utilizator.' 
+              : 'As designed, the system incorporates two distinct user types, each provided with a dedicated navigation menu reflecting the resources accessible to that role.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'Securitatea aplicației a fost asigurată prin folosirea autentificării și reținerea parolelor criptate în baza de date.' 
+              : 'Application security was established via robust authentication and encrypted password persistence in the database.' }}
+        </p>
+        <p>
+          {{ i18n.isRo() 
+              ? 'Sistemul reușește să pună la dispoziția utilizatorilor o interfață grafică intuitivă, prietenoasă și ușor de învățat. În concluzie, se poate spune că sistemul realizat conferă utilizatorilor posibilitatea de a-și desfășura mai ușor munca și de a obține performanțe.' 
+              : 'The system provides an intuitive, friendly, and easy-to-learn graphical interface, empowering users to streamline their workflow and achieve peak operational performance.' }}
+        </p>
+      </div>
+
+      <!-- Interactive Dual-Role Showcase (5.11.7) -->
+      <div class="border border-border rounded-xl p-5 sm:p-6 bg-surface-sunken">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6 border-b border-border pb-4">
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-text-primary flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              {{ i18n.isRo() ? 'Demonstrator Interactiv: Meniuri Personalizate per Rol' : 'Interactive Demo: Tailored Menus per Role' }}
+            </h3>
+            <p class="text-xs text-text-muted mt-0.5">
+              {{ i18n.isRo() ? 'Comutați rolul activ pentru a observa resursele autorizate dedicate fiecărui tip de utilizator' : 'Toggle the active role to observe authorized resources tailored to each user type' }}
+            </p>
+          </div>
+
+          <!-- Role Toggle Buttons -->
+          <div class="inline-flex rounded-lg border border-border bg-surface p-1">
+            <button 
+              type="button" 
+              (click)="activeRole.set('admin')"
+              [class.bg-accent]="activeRole() === 'admin'"
+              [class.text-white]="activeRole() === 'admin'"
+              [class.text-text-secondary]="activeRole() !== 'admin'"
+              class="px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-colors">
+              {{ i18n.isRo() ? 'Rol: Administrator' : 'Role: Administrator' }}
+            </button>
+            <button 
+              type="button" 
+              (click)="activeRole.set('standard')"
+              [class.bg-accent]="activeRole() === 'standard'"
+              [class.text-white]="activeRole() === 'standard'"
+              [class.text-text-secondary]="activeRole() !== 'standard'"
+              class="px-3 py-1.5 rounded-md text-xs font-semibold cursor-pointer transition-colors">
+              {{ i18n.isRo() ? 'Rol: Utilizator Standard' : 'Role: Standard User' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Role View Rendering -->
+        @if (activeRole() === 'admin') {
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-xs font-semibold text-accent">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              <span>{{ i18n.isRo() ? 'Meniu & Resurse Active pentru Administratorul de Sistem:' : 'Active Menu & Resources for System Administrator:' }}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Management Conturi</div>
+                <div class="text-[11px] text-text-muted">Creare conturi, generare automată parole, expediere e-mail credențiale, revocare acces.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Rapoarte & Analitice</div>
+                <div class="text-[11px] text-text-muted">Sumare comenzi, statistici stocuri, volume plăți Klarna/Stripe, decizii de aprovizionare.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Inventar & Catalog</div>
+                <div class="text-[11px] text-text-muted">Editare specificații produse, actualizare cote stoc în timp real, ajustare prețuri.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Jurnale Securitate & Server</div>
+                <div class="text-[11px] text-text-muted">Monitorizare acces neautorizat, loguri tranzacții, audit parole criptate bcrypt.</div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-secondary flex items-center justify-between">
+              <span>Nivel Autorizare: <strong>SUPER_ADMIN (Acces Deplin CRUD)</strong></span>
+              <span class="text-emerald-400 font-semibold">Sesiune Criptată TLS 1.3</span>
+            </div>
+          </div>
+        } @else {
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-xs font-semibold text-accent">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              <span>{{ i18n.isRo() ? 'Meniu & Resurse Active pentru Utilizatorul Standard:' : 'Active Menu & Resources for Standard User:' }}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Catalog & Căutare</div>
+                <div class="text-[11px] text-text-muted">Navigare prin 180+ produse, filtre pe categorii hardware, verificare disponibilitate stoc.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Build Your Lab (Rack 19")</div>
+                <div class="text-[11px] text-text-muted">Configurator vizual pe unități de rack (1U-4U), calcul consum TDP, export deviz tehnic.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Comparator Echipamente</div>
+                <div class="text-[11px] text-text-muted">Comparație tehnică multi-produs side-by-side a parametrilor hardware și prețurilor.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-surface border border-border">
+                <div class="font-bold text-text-primary mb-1">Comenzi & Profil My Lab</div>
+                <div class="text-[11px] text-text-muted">Checkout cu finanțare Klarna (3 rate) / card, urmărire status expediere Sameday, wishlist.</div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-surface-elevated border border-border text-[11px] text-text-secondary flex items-center justify-between">
+              <span>Nivel Autorizare: <strong>STANDARD_USER (Consumator Catalog & Builder)</strong></span>
+              <span class="text-emerald-400 font-semibold">Profil Persistat în Browser</span>
+            </div>
+          </div>
+        }
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.8. DEZVOLTĂRI ULTERIOARE -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-8" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.8
+        </span>
+        <span class="text-xs text-text-muted font-medium">Future Enhancements & Roadmap</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.8. {{ i18n.isRo() ? 'DEZVOLTĂRI ULTERIOARE' : 'FUTURE DEVELOPMENTS' }}
+      </h2>
+
+      <!-- Exact Thesis Text Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'Sistemele informatice sunt frecvent supuse la dezvoltări ulterioare, motiv pentru care sistemul realizat a fost proiectat astfel încât să permită eventualele dezvoltări ulterioare. În continuare se vor descrie unele dintre posibilele îmbunătățiri care pot fi aduse sistemului.' 
+              : 'Software systems undergo continual enhancement, which is why the implemented architecture was designed to seamlessly facilitate future extensions. The following sections outline key anticipated improvements.' }}
+        </p>
+        <p>
+          <strong>{{ i18n.isRo() ? 'O primă îmbunătățire care poate fi adusă sistemului' : 'A first potential improvement' }}</strong> {{ i18n.isRo() ? 'este de a face posibilă integrarea telemetriei senzoriale IoT în timp real și sincronizarea directă cu homelab-ul fizic al utilizatorului prin intermediul protocoalelor MQTT și WebSockets.' : 'is integrating real-time IoT sensor telemetry and live synchronization with physical homelab deployments via MQTT and WebSockets.' }}
+        </p>
+        <p>
+          <strong>{{ i18n.isRo() ? 'O altă posibilitate de dezvoltare ulterioară' : 'A second future development' }}</strong> {{ i18n.isRo() ? 'este reprezentată de adăugarea unui asistent inteligent de optimizare termică și compatibilitate hardware bazat pe algoritmi euristici și modele AI pentru dezvoltarea acestora și recomandarea optimă a fluxului de aer (airflow).' : 'is adding an intelligent thermal optimization and compatibility assistant based on AI models and heuristics to optimize rack airflow and energy distribution.' }}
+        </p>
+        <p>
+          <strong>{{ i18n.isRo() ? 'O a treia îmbunătățire a sistemului' : 'A third major improvement' }}</strong> {{ i18n.isRo() ? 'este reprezentată de adăugarea unui chat online prin intermediul căruia utilizatorilor le este permisă comunicarea cu orice persoană înregistrată în sistem, precum și comunicarea de grup. Scopul acestei îmbunătățiri este de a permite comunicarea rapidă între utilizatori, fără a fi necesară o întâlnire pentru rezolvarea unor probleme care pot fi soluționate online într-un timp mai scurt.' : 'is adding an integrated online chat permitting communication with any registered user or technical specialist, alongside group project channels, expediting fast troubleshooting without requiring in-person meetings.' }}
+        </p>
+      </div>
+
+      <!-- Interactive Online Chat Simulator (Improvement 3) -->
+      <div class="border border-border rounded-xl p-5 sm:p-6 bg-surface-sunken">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-border pb-3">
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-text-primary flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              {{ i18n.isRo() ? 'Simulator Demonstrativ: Modul Chat Online Integrat' : 'Interactive Demo: Integrated Online Chat Module' }}
+            </h3>
+            <p class="text-xs text-text-muted mt-0.5">
+              {{ i18n.isRo() ? 'Demonstrație funcțională a celei de-a 3-a îmbunătățiri: comunicație 1-la-1 și de grup' : 'Working prototype of the 3rd enhancement: direct 1-on-1 and team homelab messaging' }}
+            </p>
+          </div>
+
+          <!-- Channel Selector -->
+          <div class="inline-flex rounded-lg border border-border bg-surface p-1">
+            <button 
+              type="button" 
+              (click)="chatChannel.set('direct')"
+              [class.bg-accent]="chatChannel() === 'direct'"
+              [class.text-white]="chatChannel() === 'direct'"
+              [class.text-text-secondary]="chatChannel() !== 'direct'"
+              class="px-3 py-1 rounded-md text-xs font-semibold cursor-pointer transition-colors">
+              {{ i18n.isRo() ? 'Suport Tehnic 1-la-1' : '1-on-1 Tech Support' }}
+            </button>
+            <button 
+              type="button" 
+              (click)="chatChannel.set('group')"
+              [class.bg-accent]="chatChannel() === 'group'"
+              [class.text-white]="chatChannel() === 'group'"
+              [class.text-text-secondary]="chatChannel() !== 'group'"
+              class="px-3 py-1 rounded-md text-xs font-semibold cursor-pointer transition-colors">
+              {{ i18n.isRo() ? 'Grup Proiect Homelab' : 'Homelab Group Channel' }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="bg-surface rounded-xl border border-border overflow-hidden flex flex-col h-80">
+          
+          <!-- Message Thread -->
+          <div class="flex-1 p-4 overflow-y-auto space-y-3 custom-scrollbar">
+            @for (msg of getFilteredMessages(); track msg.id) {
+              <div 
+                class="flex flex-col max-w-[85%]"
+                [class.ml-auto]="msg.role === 'user' || (msg.role === 'admin' && activeRole() === 'admin')"
+                [class.items-end]="msg.role === 'user' || (msg.role === 'admin' && activeRole() === 'admin')"
+                [class.mr-auto]="msg.role !== 'user' && !(msg.role === 'admin' && activeRole() === 'admin')">
+                
+                <div class="flex items-center gap-2 mb-1 text-[11px] text-text-muted">
+                  <span class="font-bold text-text-primary">{{ msg.sender }}</span>
+                  <span>{{ msg.time }}</span>
+                </div>
+
+                <div 
+                  class="p-2.5 rounded-xl text-xs leading-relaxed"
+                  [class.bg-accent]="msg.role === 'user' || (msg.role === 'admin' && activeRole() === 'admin')"
+                  [class.text-white]="msg.role === 'user' || (msg.role === 'admin' && activeRole() === 'admin')"
+                  [class.bg-surface-elevated]="msg.role !== 'user' && !(msg.role === 'admin' && activeRole() === 'admin')"
+                  [class.text-text-primary]="msg.role !== 'user' && !(msg.role === 'admin' && activeRole() === 'admin')"
+                  [class.border]="msg.role !== 'user' && !(msg.role === 'admin' && activeRole() === 'admin')"
+                  [class.border-border]="msg.role !== 'user' && !(msg.role === 'admin' && activeRole() === 'admin')">
+                  {{ msg.text }}
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Chat Input Bar -->
+          <form (ngSubmit)="sendChatMessage()" class="p-3 border-t border-border bg-surface-elevated flex items-center gap-2">
+            <input 
+              type="text" 
+              [(ngModel)]="chatInput" 
+              name="chatMsg"
+              [placeholder]="chatChannel() === 'direct' ? (i18n.isRo() ? 'Scrie un mesaj către inginerul de suport tehnic...' : 'Type a message to technical support engineer...') : (i18n.isRo() ? 'Scrie un mesaj către membrii grupului de laborator...' : 'Type a message to lab project members...')"
+              class="flex-1 text-xs p-2 rounded-lg bg-surface-sunken border border-border text-text-primary focus:outline-none focus:border-accent">
+            
+            <button 
+              type="submit" 
+              class="px-4 py-2 rounded-lg bg-accent text-white font-semibold text-xs hover:opacity-95 transition-all shadow-xs cursor-pointer">
+              {{ i18n.isRo() ? 'Trimite' : 'Send' }}
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5.11.9. CONCLUZII -->
+  <!-- ======================================================== -->
+  <section id="sec-5-11-9" class="mb-12 scroll-mt-20">
+    <div class="bg-surface rounded-2xl p-6 sm:p-8 border border-border shadow-xs transition-colors">
+      
+      <div class="flex items-center gap-2 mb-3">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-accent/15 text-accent border border-accent/30 uppercase">
+          Capitolul 5.11.9
+        </span>
+        <span class="text-xs text-text-muted font-medium">Final Conclusions & Synthesis</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary tracking-tight mb-4">
+        5.11.9. {{ i18n.isRo() ? 'CONCLUZII' : 'CONCLUSIONS' }}
+      </h2>
+
+      <!-- Exact Thesis Text Presentation -->
+      <div class="prose prose-sm max-w-none text-text-secondary space-y-3 leading-relaxed text-xs sm:text-sm border-l-2 border-accent pl-4 py-1 mb-8 bg-surface-elevated/40 rounded-r-xl">
+        <p>
+          {{ i18n.isRo() 
+              ? 'În cadrul acestui capitol se vor prezenta realizările și obiectivele care au fost atinse prin acest proiect, precum și o descriere a eventualelor dezvoltări ulterioare.' 
+              : 'This chapter synthesizes the accomplishments and objectives achieved through this project, concluding with validation of the architectural and ergonomic design roadmap.' }}
+        </p>
+      </div>
+
+      <!-- Synthesis Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        
+        <div class="p-4 rounded-xl bg-surface-elevated border border-border">
+          <div class="font-bold text-text-primary text-sm mb-2 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            {{ i18n.isRo() ? 'Model Arhitectural Decuplat' : 'Decoupled Three-Tier Architecture' }}
+          </div>
+          <p class="text-text-muted leading-relaxed">
+            {{ i18n.isRo() 
+                ? 'Separarea strictă a Nivelului de Prezentare (Angular), Nivelului Logic (Servicii REST & Klarna/Stripe) și Nivelului de Acces la Date asigură mentenabilitate, scalabilitate și securitate fără interferențe între straturi.' 
+                : 'Rigorous decoupling across Presentation (Angular), Business Logic (REST & Klarna/Stripe), and Data Access layers ensures modular scalability, maintainability, and clean code boundaries.' }}
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-elevated border border-border">
+          <div class="font-bold text-text-primary text-sm mb-2 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            {{ i18n.isRo() ? 'Validarea Principiilor HCI' : 'Validation of HCI Principles' }}
+          </div>
+          <p class="text-text-muted leading-relaxed">
+            {{ i18n.isRo() 
+                ? 'Aplicarea euristicilor Nielsen, reducerea sarcinii cognitive prin Visual Rack Builder, navigarea rapidă prin Legea lui Hick și optimizarea zonelor de clic (Fitts) fac sistemul intuitiv și ușor de utilizat.' 
+                : 'Integration of Nielsen heuristics, cognitive load relief via Visual Rack Builder, quick decision paths (Hick), and ergonomic touch targets (Fitts) confirm exceptional user experience.' }}
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-elevated border border-border">
+          <div class="font-bold text-text-primary text-sm mb-2 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            {{ i18n.isRo() ? 'Evolutivitate & Extensibilitate' : 'Scalability & Extension Readiness' }}
+          </div>
+          <p class="text-text-muted leading-relaxed">
+            {{ i18n.isRo() 
+                ? 'Infrastructura modulară pregătește integrarea viitoare a telemetriei senzoriale IoT prin MQTT, a asistentului de optimizare termică AI și a modulului de mesagerie în timp real 1-la-1 și de grup.' 
+                : 'Modular infrastructure lays the foundation for future live MQTT IoT sensor feeds, generative AI thermal balance assistance, and full real-time team messaging.' }}
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Action Navigation Buttons -->
+      <div class="mt-8 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4">
+        <div class="text-xs text-text-muted">
+          {{ i18n.isRo() ? 'Explorați funcționalitățile direct în aplicație:' : 'Explore features directly within the application:' }}
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <a routerLink="/produse" class="px-4 py-2 rounded-lg bg-surface-elevated border border-border hover:bg-surface-sunken text-xs font-semibold text-text-primary transition-colors">
+            {{ i18n.isRo() ? 'Catalog Echipamente (180)' : 'Hardware Catalog (180)' }}
+          </a>
+          <a routerLink="/build-your-lab" class="px-4 py-2 rounded-lg bg-surface-elevated border border-border hover:bg-surface-sunken text-xs font-semibold text-text-primary transition-colors">
+            {{ i18n.isRo() ? 'Visual Rack Builder' : 'Visual Rack Builder' }}
+          </a>
+          <a routerLink="/compara" class="px-4 py-2 rounded-lg bg-surface-elevated border border-border hover:bg-surface-sunken text-xs font-semibold text-text-primary transition-colors">
+            {{ i18n.isRo() ? 'Comparator Tehnic' : 'Hardware Comparator' }}
+          </a>
+          <a routerLink="/checkout" class="px-4 py-2 rounded-lg bg-accent text-white text-xs font-semibold hover:opacity-95 transition-colors shadow-xs">
+            {{ i18n.isRo() ? 'Checkout & Plată Klarna' : 'Checkout & Klarna Pay' }}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
