@@ -75,7 +75,7 @@ interface EngineeringReview {
              class="breadcrumb-interactive hover:text-text-primary transition-colors whitespace-nowrap truncate max-w-[280px]"
              [class.text-text-primary]="activeTab() === 'overview'"
              [class.font-medium]="activeTab() === 'overview'">
-            {{ prod.name }}
+            {{ i18n.getProductName(prod) }}
           </a>
           @if (activeTab() !== 'overview') {
             <span class="text-border">/</span>
@@ -126,12 +126,12 @@ interface EngineeringReview {
               </div>
 
               @if (viewMode() === '3d') {
-                <app-hardware-viewer-3d [productName]="prod.name"></app-hardware-viewer-3d>
+                <app-hardware-viewer-3d [productName]="i18n.getProductName(prod)"></app-hardware-viewer-3d>
               } @else {
                 <div data-lenis-parallax="0.06" data-lenis-parallax-scale="0.02" class="relative aspect-square rounded-lg bg-surface-sunken border border-border p-6 sm:p-8 flex items-center justify-center overflow-hidden">
                   <img 
                     [src]="currentDisplayImage()" 
-                    [alt]="prod.name"
+                    [alt]="i18n.getProductName(prod)"
                     [class.is-switching]="isSwitchingImage()"
                     data-lenis-parallax="0.04"
                     class="gallery-crossfade-img lenis-parallax-image max-w-full max-h-full object-contain filter drop-shadow-sm">
@@ -165,7 +165,7 @@ interface EngineeringReview {
                       [class.opacity-100]="activeImageIndex() === $index"
                       [class.opacity-60]="activeImageIndex() !== $index"
                       class="h-16 rounded-lg bg-surface-sunken border border-border p-1.5 flex items-center justify-center hover:opacity-100 hover:border-border-strong transition-all overflow-hidden cursor-pointer">
-                      <img [src]="img" [alt]="prod.name + (i18n.isRo() ? ' unghi ' : ' angle ') + ($index + 1)" class="max-h-full max-w-full object-contain">
+                      <img [src]="img" [alt]="i18n.getProductName(prod) + (i18n.isRo() ? ' unghi ' : ' angle ') + ($index + 1)" class="max-h-full max-w-full object-contain">
                     </button>
                   }
                 </div>
@@ -202,7 +202,7 @@ interface EngineeringReview {
             <div class="lg:col-span-7 space-y-6">
               <div>
                 <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <app-ui-badge variant="accent">{{ prod.subcategory }}</app-ui-badge>
+                  <app-ui-badge variant="accent">{{ i18n.getSubcategoryName(prod.subcategory) }}</app-ui-badge>
                   <app-ui-badge variant="neutral">{{ i18n.isRo() ? 'Nivel: ' : 'Level: ' }}{{ getSkillLevel(prod) }}</app-ui-badge>
                   <div class="flex items-center gap-1.5 text-xs text-text-muted ml-1">
                     <svg class="w-3.5 h-3.5 text-amber-500 fill-amber-500 shrink-0" viewBox="0 0 20 20">
@@ -214,11 +214,11 @@ interface EngineeringReview {
                 </div>
 
                 <h1 class="font-heading text-xl sm:text-2xl font-bold text-text-primary leading-snug">
-                  {{ prod.name }}
+                  {{ i18n.getProductName(prod) }}
                 </h1>
                 
                 <p class="text-xs sm:text-sm text-text-muted mt-3 leading-relaxed">
-                  {{ prod.short_desc }}
+                  {{ i18n.getProductShortDesc(prod) }}
                 </p>
               </div>
 
@@ -443,7 +443,7 @@ interface EngineeringReview {
           @if (activeTab() === 'overview') {
             <div class="space-y-6">
               <div class="prose max-w-none text-xs leading-relaxed text-text-muted space-y-3">
-                <p class="text-sm font-medium text-text-primary leading-normal">{{ prod.full_desc }}</p>
+                <p class="text-sm font-medium text-text-primary leading-normal">{{ i18n.isRo() ? prod.full_desc : (i18n.getProductShortDesc(prod) || prod.full_desc) }}</p>
                 <p>
                   {{ i18n.isRo() 
                     ? 'Echipamentul este selectat și verificat individual în laboratorul tehnic Vexera pentru sarcini continue 24/7, eficiență termică optimă și interoperabilitate garantată în topologii de rețea, clustere de calcul sau sisteme embedded.' 
@@ -480,8 +480,8 @@ interface EngineeringReview {
 
               <div class="p-4 rounded-lg bg-canvas-subtle border border-border text-xs space-y-2">
                 <div class="flex items-center justify-between text-text-muted text-[11px] font-medium">
-                  <span>MAINLINE KERNEL & FIRMWARE STATUS</span>
-                  <span class="text-accent font-bold">● TESTED & CERTIFIED</span>
+                  <span>{{ i18n.isRo() ? 'STATUS KERNEL MAINLINE & FIRMWARE' : 'MAINLINE KERNEL & FIRMWARE STATUS' }}</span>
+                  <span class="text-accent font-bold">● {{ i18n.isRo() ? 'TESTAT & CERTIFICAT' : 'TESTED & CERTIFIED' }}</span>
                 </div>
                 <div class="text-text-primary font-medium">
                   {{ i18n.isRo() ? 'Kernel minim:' : 'Minimum Kernel:' }} <span class="text-primary font-bold">Linux 6.6 LTS+</span> | {{ i18n.isRo() ? 'Bootloader:' : 'Bootloader:' }} <span class="text-primary font-bold">U-Boot v2024 / EDK2 UEFI</span>
@@ -639,7 +639,7 @@ interface EngineeringReview {
               @let labEval = labProfileService.evaluateProductAgainstLab(prod);
               <app-ui-alert 
                 [variant]="labEval.status === 'compatible' ? 'success' : 'warning'"
-                [title]="'My Lab Profile Evaluation (' + labProfileService.profile().name + ')'">
+                [title]="i18n.isRo() ? ('Evaluare Profil Laborator (' + labProfileService.profile().name + ')') : ('My Lab Profile Evaluation (' + labProfileService.profile().name + ')')">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span>{{ i18n.isRo() ? labEval.messageRo : labEval.messageEn }}</span>
                   <button 
@@ -742,7 +742,7 @@ interface EngineeringReview {
               </div>
 
               <div class="p-4 rounded-lg bg-canvas-subtle border border-border text-xs space-y-3">
-                <div class="text-primary font-bold uppercase font-heading">QUICK START & FIRMWARE DEPLOYMENT</div>
+                <div class="text-primary font-bold uppercase font-heading">{{ i18n.isRo() ? 'GHID RAPID & DEPLOYMENT FIRMWARE' : 'QUICK START & FIRMWARE DEPLOYMENT' }}</div>
                 <div class="text-text-muted leading-relaxed">
                   {{ i18n.isRo() 
                     ? 'Pentru scrierea imaginilor OS pe card SD sau NVMe, utilizați utilitarul CLI recomandat:' 
@@ -1154,10 +1154,11 @@ export class ProductDetailComponent implements OnInit {
       default:
         tabLabel = '';
     }
+    const prodName = this.i18n.getProductName(prod);
     if (tabLabel) {
-      this.titleService.setTitle(`${prod.name} - ${tabLabel} | Vexera`);
+      this.titleService.setTitle(`${prodName} - ${tabLabel} | Vexera`);
     } else {
-      this.titleService.setTitle(`${prod.name} | Vexera Hardware`);
+      this.titleService.setTitle(`${prodName} | Vexera Hardware`);
     }
   }
 

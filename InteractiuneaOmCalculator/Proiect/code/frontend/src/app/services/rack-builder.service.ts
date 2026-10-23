@@ -5,6 +5,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-patch-1u',
     name: 'Patch Panel Cat6 24 Porturi 1U UTP',
+    nameEn: 'Cat6 24-Port 1U UTP Patch Panel',
     uSize: 1,
     category: 'patch_panel',
     productSlug: 'patch-panel-cat6-24-porturi-1u',
@@ -16,6 +17,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-sw-mtk-1u',
     name: 'Switch MikroTik CRS309-1G-8S+IN 10G SFP+ (1U Rack)',
+    nameEn: 'MikroTik CRS309-1G-8S+IN 10G SFP+ Switch (1U Rack)',
     uSize: 1,
     category: 'switch',
     productSlug: 'mikrotik-crs309-1g-8s-in-switch-10g',
@@ -27,6 +29,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-shelf-rpi-1u',
     name: 'Tavă Rack 1U pentru 4x Raspberry Pi 5 / Mini PC',
+    nameEn: '1U Rack Shelf for 4x Raspberry Pi 5 / Mini PC',
     uSize: 1,
     category: 'shelf',
     productSlug: 'raspberry-pi-5-8gb',
@@ -38,6 +41,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-pdu-1u',
     name: 'Unitate PDU APC 1U Rackmount 8 Prize Schuko C13',
+    nameEn: 'APC 1U Rackmount PDU 8x C13 Outlets',
     uSize: 1,
     category: 'pdu',
     productSlug: 'apc-pdu-1u-rackmount-8-outlets',
@@ -49,6 +53,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-srv-dell-1u',
     name: 'Server Enterprise Dell PowerEdge R640 1U Dual Xeon',
+    nameEn: 'Dell PowerEdge R640 1U Dual Xeon Enterprise Server',
     uSize: 1,
     category: 'server',
     productSlug: 'dell-poweredge-r640-1u-dual-xeon',
@@ -60,6 +65,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-nas-2u',
     name: 'Șasiu Stocare ZFS TrueNAS 2U 12-Bay SAS3',
+    nameEn: 'TrueNAS 2U 12-Bay SAS3 ZFS Storage Chassis',
     uSize: 2,
     category: 'nas',
     productSlug: 'lsi-broadcom-sas-9300-8i-12gbps-hba',
@@ -71,6 +77,7 @@ export const CATALOG_RACK_ITEMS: RackUnitItem[] = [
   {
     id: 'rack-ups-2u',
     name: 'UPS CyberPower 1000VA / 900W 2U Rackmount Sinus Pur',
+    nameEn: 'CyberPower 1000VA / 900W 2U Rackmount Pure Sine UPS',
     uSize: 2,
     category: 'ups',
     productSlug: 'cyberpower-ups-rackmount-1000va-sinus-pur',

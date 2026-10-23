@@ -30,25 +30,25 @@ import { TranslationService } from '../../services/translation.service';
 
           <div class="flex items-center gap-2">
             <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-              {{ isPrinting() ? 'PRINTING...' : 'ONLINE' }}
+              {{ isPrinting() ? (i18n.isRo() ? 'SE IMPRIMĂ...' : 'PRINTING...') : (i18n.isRo() ? 'CONECTAT' : 'ONLINE') }}
             </span>
             <button 
               type="button"
               (click)="triggerPrintAnimation()"
               [disabled]="isPrinting()"
               class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-[10px] font-bold transition-all flex items-center gap-1 active:scale-95 disabled:opacity-40 cursor-pointer"
-              title="Replay printing animation">
+              [title]="i18n.isRo() ? 'Reia animația de tipărire' : 'Replay printing animation'">
               <svg class="w-3 h-3" [class.animate-spin]="isPrinting()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
               </svg>
-              <span>Replay</span>
+              <span>{{ i18n.isRo() ? 'Reia' : 'Replay' }}</span>
             </button>
           </div>
         </div>
 
         <div class="flex items-center justify-between text-[11px] text-slate-400 mb-2">
-          <span>STATUS: {{ order()?.status?.toUpperCase() || 'PAID' }}</span>
-          <span class="tabular-nums">ORD: {{ order()?.order_number || 'VEX-2026-X' }}</span>
+          <span>STATUS: {{ (order()?.status === 'paid' ? (i18n.isRo() ? 'ACHITAT' : 'PAID') : order()?.status?.toUpperCase()) || (i18n.isRo() ? 'ACHITAT' : 'PAID') }}</span>
+          <span class="tabular-nums">{{ i18n.isRo() ? 'COM:' : 'ORD:' }} {{ order()?.order_number || 'VEX-2026-X' }}</span>
         </div>
 
         <!-- Dispenser Slot Mouth with Metal Bevel -->
@@ -76,33 +76,33 @@ import { TranslationService } from '../../services/translation.service';
               VEXERA HARDWARE & LAB
             </div>
             <div class="text-[10px] text-slate-600">
-              HARDWARE PENTEST & HOMELAB RO
+              {{ i18n.isRo() ? 'HARDWARE PENTEST & HOMELAB RO' : 'HARDWARE PENTEST & HOMELAB EU' }}
             </div>
             <div class="text-[9px] text-slate-500">
               BUCHAREST DATACENTER HUB // CIF: RO48920192
             </div>
             <div class="text-[10px] font-bold text-slate-800 pt-1">
-              FISCAL RECEIPT / NOTĂ LIVRARE
+              {{ i18n.isRo() ? 'BON FISCAL // NOTĂ LIVRARE' : 'FISCAL RECEIPT // DISPATCH SLIP' }}
             </div>
           </div>
 
           <!-- Order Metadata -->
           <div class="text-[10px] space-y-1 border-b border-dashed border-slate-400 pb-3 mb-3 text-slate-700">
             <div class="flex justify-between">
-              <span>ORDER NO:</span>
+              <span>{{ i18n.isRo() ? 'COMANDĂ NR:' : 'ORDER NO:' }}</span>
               <strong class="text-slate-950 font-bold">{{ order()?.order_number || 'VEX-2026-0042' }}</strong>
             </div>
             <div class="flex justify-between">
-              <span>DATE / TIME:</span>
+              <span>{{ i18n.isRo() ? 'DATA / ORA:' : 'DATE / TIME:' }}</span>
               <span>{{ printDate() }}</span>
             </div>
             <div class="flex justify-between">
-              <span>CLIENT:</span>
-              <span class="truncate max-w-[170px] text-right font-medium">{{ order()?.guest_name || 'Anonymous Engineer' }}</span>
+              <span>{{ i18n.isRo() ? 'CLIENT:' : 'CUSTOMER:' }}</span>
+              <span class="truncate max-w-[170px] text-right font-medium">{{ order()?.guest_name || (i18n.isRo() ? 'Inginer Anonim' : 'Anonymous Engineer') }}</span>
             </div>
             <div class="flex justify-between">
-              <span>DISPATCH:</span>
-              <span>{{ order()?.delivery_method === 'easybox' ? 'SAMEDAY EASYBOX' : 'SAMEDAY 24H COURIER' }}</span>
+              <span>{{ i18n.isRo() ? 'EXPEDIERE:' : 'DISPATCH:' }}</span>
+              <span>{{ order()?.delivery_method === 'easybox' ? (i18n.isRo() ? 'LOCKER SAMEDAY EASYBOX' : 'SAMEDAY EASYBOX LOCKER') : (i18n.isRo() ? 'CURIER RAPID SAMEDAY 24H' : 'SAMEDAY 24H COURIER') }}</span>
             </div>
           </div>
 
@@ -111,7 +111,7 @@ import { TranslationService } from '../../services/translation.service';
                 <div class="p-2.5 rounded bg-[#fff0f4] border border-[#FFB3C7] my-3 space-y-1.5 text-[10px]">
                   <div class="flex items-center justify-between text-black font-extrabold">
                     <span class="px-1.5 py-0.5 rounded bg-[#FFB3C7] text-[9px] tracking-tight">Klarna.</span>
-                    <span class="text-[10px] text-[#e04369]">BUY NOW, PAY LATER (3x)</span>
+                    <span class="text-[10px] text-[#e04369]">{{ i18n.isRo() ? 'CUMPĂRĂ ACUM, PLĂTEȘTE MAI TÂRZIU (3x)' : 'BUY NOW, PAY LATER (3x)' }}</span>
                   </div>
                   <div class="divide-y divide-[#ffd3df] pt-1">
                     <div class="flex justify-between py-0.5 text-accent font-bold">

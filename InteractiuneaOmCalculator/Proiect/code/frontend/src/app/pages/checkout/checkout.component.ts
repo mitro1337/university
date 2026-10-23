@@ -392,10 +392,10 @@ import { UiAlertComponent } from '../../components/ui/ui-alert.component';
                   <div class="pt-2 first:pt-0 flex items-center justify-between gap-3 text-xs">
                     <div class="flex items-center gap-2.5 min-w-0">
                       <div class="w-10 h-10 rounded bg-canvas-subtle border border-border flex items-center justify-center p-0.5 flex-shrink-0">
-                        <img [src]="item.product.image_url" [alt]="item.product.name" class="w-full h-full object-contain">
+                        <img [src]="item.product.image_url" [alt]="i18n.getProductName(item.product)" class="w-full h-full object-contain">
                       </div>
                       <div class="min-w-0">
-                        <div class="text-text-primary truncate font-semibold">{{ item.product.name }}</div>
+                        <div class="text-text-primary truncate font-semibold">{{ i18n.getProductName(item.product) }}</div>
                         <div class="text-[11px] text-text-muted tabular-nums">{{ item.quantity }} × {{ item.product.price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}</div>
                       </div>
                     </div>

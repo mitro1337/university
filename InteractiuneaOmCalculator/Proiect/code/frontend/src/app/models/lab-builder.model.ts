@@ -45,6 +45,7 @@ export interface CompatibilityResult {
 export interface RackUnitItem {
   id: string;
   name: string;
+  nameEn?: string;
   uSize: number; // e.g. 1U, 2U, 4U
   category: 'switch' | 'server' | 'nas' | 'ups' | 'pdu' | 'patch_panel' | 'shelf';
   productSlug?: string;

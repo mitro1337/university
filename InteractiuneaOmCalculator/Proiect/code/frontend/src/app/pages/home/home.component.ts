@@ -104,7 +104,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                 <span class="font-bold text-text-primary">Titan-9 Edge Compute Node</span>
               </div>
               <div class="text-accent font-bold tabular-nums">
-                1.849,00 RON
+                1.849,00 {{ i18n.currencyLabel() }}
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
                  class="relative h-44 w-full bg-surface-sunken rounded-lg p-3 flex items-center justify-center mb-3 block overflow-hidden">
                 <img 
                   [src]="prod.image_url" 
-                  [alt]="prod.name"
+                  [alt]="i18n.getProductName(prod)"
                   data-lenis-parallax="0.035"
                   class="lenis-parallax-image max-h-full max-w-full object-contain filter drop-shadow-sm">
                 
@@ -228,7 +228,7 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
               </a>
 
               <div class="flex items-center justify-between mb-1 gap-2">
-                <span class="text-[10px] text-text-muted uppercase tracking-wider truncate font-semibold">{{ prod.subcategory }}</span>
+                <span class="text-[10px] text-text-muted uppercase tracking-wider truncate font-semibold">{{ i18n.getSubcategoryName(prod.subcategory) }}</span>
                 <button 
                   type="button"
                   (click)="$event.stopPropagation(); uiFeedback.copyToClipboard(prod.sku, i18n.isRo() ? 'Cod SKU' : 'SKU Code')"
@@ -244,11 +244,11 @@ export type HomeTab = 'all' | 'cybersecurity' | 'enterprise' | 'niche' | 'homela
 
               <h4 class="font-heading text-xs sm:text-sm font-bold text-text-primary group-hover:text-accent transition-colors leading-snug line-clamp-2">
                 <a [routerLink]="['/produs', prod.slug]">
-                  {{ prod.name }}
+                  {{ i18n.getProductName(prod) }}
                 </a>
               </h4>
               <p class="text-xs text-text-secondary mt-1.5 line-clamp-2 leading-relaxed font-normal">
-                {{ prod.short_desc || prod.full_desc }}
+                {{ i18n.getProductShortDesc(prod) }}
               </p>
             </div>
 
@@ -338,7 +338,8 @@ export class HomeComponent implements OnInit {
 
   addToCartWithFeedback(prod: Product) {
     this.cartService.addToCart(prod);
-    const msg = this.i18n.isRo() ? `${prod.name} adăugat în coș` : `${prod.name} added to cart`;
+    const prodName = this.i18n.getProductName(prod);
+    const msg = this.i18n.isRo() ? `${prodName} adăugat în coș` : `${prodName} added to cart`;
     this.uiFeedback.showToast(msg, 'success');
     
     this.justAddedProductIds.update(ids => [...ids, prod.id]);

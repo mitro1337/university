@@ -104,7 +104,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                   <th class="p-4 w-64 align-top border-l border-border">
                     <div class="flex flex-col items-center text-center space-y-3">
                       <div class="relative w-28 h-28 p-2 rounded-lg bg-canvas-subtle border border-border flex items-center justify-center">
-                        <img [src]="prod.image_url" [alt]="prod.name" class="max-w-full max-h-full object-contain">
+                        <img [src]="prod.image_url" [alt]="i18n.getProductName(prod)" class="max-w-full max-h-full object-contain">
                         <button 
                           type="button" 
                           (click)="compService.removeProduct(prod.id)"
@@ -117,7 +117,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
 
                       <div class="space-y-1">
                         <a [routerLink]="['/produs', prod.slug]" class="font-heading font-semibold text-text-primary hover:text-primary line-clamp-2">
-                          {{ prod.name }}
+                          {{ i18n.getProductName(prod) }}
                         </a>
                         <div class="text-[10px] text-text-muted">{{ prod.sku }}</div>
                       </div>
@@ -127,7 +127,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                       </div>
 
                       <button 
-                        type="button"
+                        type="button" 
                         (click)="cartService.addToCart(prod)"
                         [disabled]="prod.stock <= 0"
                         class="w-full py-2 px-3 rounded-lg bg-primary hover:bg-primary-hover text-primary-contrast text-xs font-semibold transition-colors disabled:opacity-40 flex items-center justify-center gap-1.5">
@@ -147,7 +147,7 @@ import { UiEmptyStateComponent } from '../../components/ui/ui-empty-state.compon
                 </td>
                 @for (prod of compService.items(); track prod.id) {
                   <td class="p-4 border-l border-border text-text-primary">
-                    {{ prod.subcategory }}
+                    {{ i18n.getSubcategoryName(prod.subcategory) }}
                   </td>
                 }
               </tr>

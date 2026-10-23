@@ -99,20 +99,20 @@ import { Product } from '../../models/product.model';
                     <div class="w-10 h-10 rounded-lg bg-surface-sunken border border-border flex items-center justify-center p-0.5 flex-shrink-0">
                       <img 
                         [src]="prod.image_url" 
-                        [alt]="prod.name" 
+                        [alt]="i18n.getProductName(prod)" 
                         class="w-full h-full object-contain">
                     </div>
                     <div class="min-w-0">
                       <div class="flex items-center gap-2">
                         <span class="text-xs font-bold text-text-primary group-hover:text-accent transition-colors truncate">
-                          {{ prod.name }}
+                          {{ i18n.getProductName(prod) }}
                         </span>
                         <span class="text-[10px] tabular-nums px-1.5 py-0.5 rounded bg-surface-sunken border border-border text-text-muted font-medium">
                           {{ prod.sku }}
                         </span>
                       </div>
                       <div class="text-[11px] text-text-muted truncate mt-0.5">
-                        {{ prod.short_desc }}
+                        {{ i18n.getProductShortDesc(prod) }}
                       </div>
                     </div>
                   </div>

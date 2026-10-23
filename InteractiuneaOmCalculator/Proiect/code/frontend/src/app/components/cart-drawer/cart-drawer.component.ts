@@ -109,7 +109,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                 <div class="w-14 h-14 rounded bg-canvas-subtle border border-border flex items-center justify-center p-1 flex-shrink-0">
                   <img 
                     [src]="item.product.image_url" 
-                    [alt]="item.product.name"
+                    [alt]="i18n.getProductName(item.product)"
                     class="w-full h-full object-contain">
                 </div>
 
@@ -117,7 +117,7 @@ import { UiBadgeComponent } from '../ui/ui-badge.component';
                   <div class="flex items-start justify-between gap-2">
                     <h4 class="text-xs font-semibold text-text-primary truncate">
                       <a [routerLink]="['/produs', item.product.slug]" (click)="cartService.closeCart()" class="hover:text-accent">
-                        {{ item.product.name }}
+                        {{ i18n.getProductName(item.product) }}
                       </a>
                     </h4>
                     <button 

@@ -9,6 +9,7 @@ import { LabProfileService } from '../../services/lab-profile.service';
 import { KeyboardShortcutsService } from '../../services/keyboard-shortcuts.service';
 import { AccessibilityService } from '../../services/accessibility.service';
 import { WishlistService } from '../../services/wishlist.service';
+import { AudioFeedbackService } from '../../services/audio-feedback.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
@@ -251,6 +252,24 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
             }
           </button>
 
+          <!-- Teenage Engineering Inspired Tactile Web Audio Toggle -->
+          <button 
+            type="button"
+            (click)="audioService.toggleMute()"
+            class="flex p-1 rounded-md border border-border bg-surface text-text-muted hover:text-text-primary transition-colors h-7 w-7 items-center justify-center cursor-pointer"
+            [title]="audioService.isMuted() ? (i18n.isRo() ? 'Activează feedback tactil audio (Teenage Engineering)' : 'Unmute tactile audio feedback') : (i18n.isRo() ? 'Dezactivează sunet tactil' : 'Mute tactile audio feedback')">
+            @if (audioService.isMuted()) {
+              <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+              </svg>
+            } @else {
+              <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              </svg>
+            }
+          </button>
+
           <button 
             type="button"
             (click)="cartService.toggleCart()"
@@ -365,6 +384,7 @@ export class NavbarComponent {
   cartService = inject(CartService);
   i18n = inject(TranslationService);
   themeService = inject(ThemeService);
+  audioService = inject(AudioFeedbackService);
   compService = inject(ComparisonService);
   labProfileService = inject(LabProfileService);
   shortcutsService = inject(KeyboardShortcutsService);

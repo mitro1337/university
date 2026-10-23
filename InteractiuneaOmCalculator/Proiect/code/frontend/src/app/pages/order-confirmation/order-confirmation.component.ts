@@ -125,11 +125,11 @@ import { ReceiptPrinter3dComponent } from '../../components/ui/receipt-printer-3
                   <div class="flex items-center gap-3 min-w-0">
                     <div class="w-12 h-12 rounded bg-canvas-subtle border border-border flex items-center justify-center p-0.5 flex-shrink-0">
                       <img [src]="item.image_url" 
-                           [alt]="item.product_name"
+                           [alt]="i18n.getProductNameBySku(item.sku) || item.product_name"
                            class="w-full h-full object-contain">
                     </div>
                     <div class="min-w-0">
-                      <div class="text-text-primary font-semibold truncate">{{ item.product_name }}</div>
+                      <div class="text-text-primary font-semibold truncate">{{ i18n.getProductNameBySku(item.sku) || item.product_name }}</div>
                       <div class="text-[11px] text-text-muted tabular-nums">
                         SKU: {{ item.sku }} • {{ item.quantity }} × {{ item.unit_price_ron.toFixed(2) }} {{ i18n.currencyLabel() }}
                       </div>

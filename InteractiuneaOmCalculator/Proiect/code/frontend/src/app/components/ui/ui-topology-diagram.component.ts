@@ -1,5 +1,7 @@
-import { Component, signal, computed, output } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../services/translation.service';
+import { AudioFeedbackService } from '../../services/audio-feedback.service';
 
 export type TopologyPath = 'all' | 'compute' | 'networking' | 'iot' | 'security';
 
@@ -7,12 +9,15 @@ export interface TopologyNodeInfo {
   id: string;
   name: string;
   titleRo: string;
+  titleEn: string;
   category: string;
+  categoryEn: string;
   protocol: string;
   hardwareExample: string;
   categorySlug: string;
   goalType: string;
   descriptionRo: string;
+  descriptionEn: string;
 }
 
 @Component({
@@ -25,7 +30,7 @@ export interface TopologyNodeInfo {
       <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-6">
         <button
           type="button"
-          (click)="selectedPath.set('all')"
+          (click)="setPath('all')"
           [class.bg-accent]="selectedPath() === 'all'"
           [class.text-white]="selectedPath() === 'all'"
           [class.border-accent]="selectedPath() === 'all'"
@@ -33,55 +38,55 @@ export interface TopologyNodeInfo {
           [class.text-text-secondary]="selectedPath() !== 'all'"
           class="px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold border border-border transition-all flex items-center gap-1.5 shadow-2xs hover:border-accent">
           <span class="w-1.5 h-1.5 rounded-full bg-accent-primary" [class.bg-white]="selectedPath() === 'all'"></span>
-          <span>Toată Arhitectura</span>
+          <span>{{ i18n.isRo() ? 'Toată Arhitectura' : 'Full Architecture' }}</span>
         </button>
 
         <button
           type="button"
-          (click)="selectedPath.set('compute')"
+          (click)="setPath('compute')"
           [class.bg-accent]="selectedPath() === 'compute'"
           [class.text-white]="selectedPath() === 'compute'"
           [class.border-accent]="selectedPath() === 'compute'"
           [class.bg-surface-elevated]="selectedPath() !== 'compute'"
           [class.text-text-secondary]="selectedPath() !== 'compute'"
           class="px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold border border-border transition-all flex items-center gap-1.5 shadow-2xs hover:border-accent">
-          <span>Virtualizare Proxmox</span>
+          <span>{{ i18n.isRo() ? 'Virtualizare Proxmox' : 'Proxmox Virtualization' }}</span>
         </button>
 
         <button
           type="button"
-          (click)="selectedPath.set('networking')"
+          (click)="setPath('networking')"
           [class.bg-accent]="selectedPath() === 'networking'"
           [class.text-white]="selectedPath() === 'networking'"
           [class.border-accent]="selectedPath() === 'networking'"
           [class.bg-surface-elevated]="selectedPath() !== 'networking'"
           [class.text-text-secondary]="selectedPath() !== 'networking'"
           class="px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold border border-border transition-all flex items-center gap-1.5 shadow-2xs hover:border-accent">
-          <span>Rețelistică 10G/25G</span>
+          <span>{{ i18n.isRo() ? 'Rețelistică 10G/25G' : '10G/25G Networking' }}</span>
         </button>
 
         <button
           type="button"
-          (click)="selectedPath.set('iot')"
+          (click)="setPath('iot')"
           [class.bg-accent]="selectedPath() === 'iot'"
           [class.text-white]="selectedPath() === 'iot'"
           [class.border-accent]="selectedPath() === 'iot'"
           [class.bg-surface-elevated]="selectedPath() !== 'iot'"
           [class.text-text-secondary]="selectedPath() !== 'iot'"
           class="px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold border border-border transition-all flex items-center gap-1.5 shadow-2xs hover:border-accent">
-          <span>IoT & LoRaWAN</span>
+          <span>{{ i18n.isRo() ? 'IoT & LoRaWAN' : 'IoT & LoRaWAN' }}</span>
         </button>
 
         <button
           type="button"
-          (click)="selectedPath.set('security')"
+          (click)="setPath('security')"
           [class.bg-accent]="selectedPath() === 'security'"
           [class.text-white]="selectedPath() === 'security'"
           [class.border-accent]="selectedPath() === 'security'"
           [class.bg-surface-elevated]="selectedPath() !== 'security'"
           [class.text-text-secondary]="selectedPath() !== 'security'"
           class="px-3 sm:px-4 py-1.5 rounded-full text-xs font-semibold border border-border transition-all flex items-center gap-1.5 shadow-2xs hover:border-accent">
-          <span>Securitate & SDR</span>
+          <span>{{ i18n.isRo() ? 'Securitate & SDR' : 'Security & SDR' }}</span>
         </button>
       </div>
 
@@ -349,7 +354,7 @@ export interface TopologyNodeInfo {
             <line x1="896" y1="411" x2="914" y2="411" stroke="#c2ada0" stroke-width="1" />
             <circle cx="906" cy="430" r="2" fill="#fcf8f4" />
 
-            <text x="790" y="470" text-anchor="middle" fill="#fcf8f4" font-size="12" font-weight="600" font-family="'Plus Jakarta Sans', sans-serif">Consolă & Observabilitate</text>
+            <text x="790" y="470" text-anchor="middle" fill="#fcf8f4" font-size="12" font-weight="600" font-family="'Plus Jakarta Sans', sans-serif">{{ i18n.isRo() ? 'Consolă & Observabilitate' : 'Console & Telemetry' }}</text>
             <text x="790" y="485" text-anchor="middle" fill="#c2ada0" font-size="10" font-family="'Manrope', sans-serif">Grafana &bull; Proxmox GUI &bull; Home Assistant</text>
           </g>
 
@@ -357,7 +362,7 @@ export interface TopologyNodeInfo {
 
         <div class="absolute top-4 right-4 sm:top-6 sm:right-6 bg-surface-elevated/90 backdrop-blur-md border border-border px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs text-text-primary shadow-xs">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="font-medium text-[11px] text-text-secondary">Automație & Telemetrie Live</span>
+          <span class="font-medium text-[11px] text-text-secondary">{{ i18n.isRo() ? 'Automație & Telemetrie Live' : 'Live Automation & Telemetry' }}</span>
         </div>
       </div>
 
@@ -388,13 +393,13 @@ export interface TopologyNodeInfo {
               <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent border border-accent/20">
                 {{ node.protocol }}
               </span>
-              <span class="text-xs text-text-muted">Hardware Recomandat: <strong class="text-text-primary font-medium">{{ node.hardwareExample }}</strong></span>
+              <span class="text-xs text-text-muted">{{ i18n.isRo() ? 'Hardware Recomandat:' : 'Recommended Hardware:' }} <strong class="text-text-primary font-medium">{{ node.hardwareExample }}</strong></span>
             </div>
             <h4 class="font-heading text-sm sm:text-base font-semibold text-text-primary mt-1">
-              {{ node.titleRo }}
+              {{ i18n.isRo() ? node.titleRo : node.titleEn }}
             </h4>
             <p class="text-xs text-text-secondary mt-0.5 max-w-2xl font-normal leading-relaxed">
-              {{ node.descriptionRo }}
+              {{ i18n.isRo() ? node.descriptionRo : node.descriptionEn }}
             </p>
           </div>
         </div>
@@ -402,11 +407,11 @@ export interface TopologyNodeInfo {
         <div class="flex items-center gap-2.5 flex-shrink-0 self-end md:self-center">
           <a [routerLink]="['/build-your-lab']" [queryParams]="{ goal: node.goalType }"
              class="px-4 py-2 rounded-lg bg-surface-elevated hover:bg-surface-sunken text-text-primary text-xs font-semibold border border-border transition-colors">
-            Configurează în Builder
+            {{ i18n.isRo() ? 'Configurează în Builder' : 'Configure in Lab Builder' }}
           </a>
           <a [routerLink]="['/produse']" [queryParams]="{ category: node.categorySlug }"
              class="px-4 py-2 rounded-lg bg-accent hover:bg-accent-hover text-white text-xs font-semibold transition-all shadow-xs flex items-center gap-1.5">
-            <span>Catalog Dedicat</span>
+            <span>{{ i18n.isRo() ? 'Catalog Dedicat' : 'Dedicated Catalog' }}</span>
             <span>→</span>
           </a>
         </div>
@@ -416,6 +421,9 @@ export interface TopologyNodeInfo {
   `
 })
 export class UiTopologyDiagramComponent {
+  readonly i18n = inject(TranslationService);
+  private readonly audioService = inject(AudioFeedbackService);
+
   readonly selectedPath = signal<TopologyPath>('all');
   readonly activeNodeId = signal<string>('compute');
 
@@ -424,111 +432,141 @@ export class UiTopologyDiagramComponent {
       id: 'compute',
       name: 'Compute Core',
       titleRo: 'Nod de Compute & Virtualizare Proxmox VE',
+      titleEn: 'Compute Node & Proxmox VE Virtualization Cluster',
       category: 'Enterprise Hardware & Homelab',
+      categoryEn: 'Enterprise Hardware & Homelab',
       protocol: 'PCIe 4.0 x16 • 64GB DDR5 • KVM/LXC',
       hardwareExample: 'Minisforum MS-01 (Intel i9-13900H, 2x 10G SFP+)',
       categorySlug: 'enterprise-hardware',
       goalType: 'homelab',
-      descriptionRo: 'Nod central x86-64 capabil să ruleze simultan zeci de mașini virtuale și containere Docker, cu interfețe duale 10Gbps SFP+ pentru tranzit de date de mare viteză fără gâtuiri.'
+      descriptionRo: 'Nod central x86-64 capabil să ruleze simultan zeci de mașini virtuale și containere Docker, cu interfețe duale 10Gbps SFP+ pentru tranzit de date de mare viteză fără gâtuiri.',
+      descriptionEn: 'Central high-density x86-64 compute node engineered to concurrently host dozens of isolated virtual machines and Docker containers, equipped with dual 10Gbps SFP+ uplinks for zero-bottleneck data throughput.'
     },
     network: {
       id: 'network',
       name: '10G/25G Network Core',
       titleRo: 'Switch & Routing Core 10G/25G SFP28 Managed',
+      titleEn: 'Switch & Routing Core 10G/25G SFP28 Managed',
       category: 'Networking & Infrastructure',
+      categoryEn: 'Networking & Infrastructure',
       protocol: '25Gbps SFP28 • WireGuard • VLANs 802.1Q',
       hardwareExample: 'MikroTik CRS305 / CRS309 + Cabluri DAC 10G',
       categorySlug: 'homelab-networking',
       goalType: 'router_firewall',
-      descriptionRo: 'Distanțează traficul critic de rețea prin magistrale optice dedicate de 10G/25G, cu segmentare avansată de VLAN-uri pentru izolarea laboratorului de securitate și a dispozitivelor IoT.'
+      descriptionRo: 'Distanțează traficul critic de rețea prin magistrale optice dedicate de 10G/25G, cu segmentare avansată de VLAN-uri pentru izolarea laboratorului de securitate și a dispozitivelor IoT.',
+      descriptionEn: 'Segregates mission-critical network throughput via dedicated 10G/25G optical backbones, featuring multi-tenant 802.1Q VLAN isolation between homelab compute, security research rigs, and untrusted IoT devices.'
     },
     storage: {
       id: 'storage',
       name: 'Storage NAS Pool',
       titleRo: 'Storage Server ZFS All-Flash & Backup Pool',
+      titleEn: 'ZFS All-Flash Storage Server & High-Integrity Backup Pool',
       category: 'Power & Storage',
+      categoryEn: 'Power & Storage',
       protocol: 'ZFS RAID-Z2 • SAS 12Gbps HBA • NVMe Gen4',
       hardwareExample: 'SAS HBA LSI 9300-8i IT-Mode + SSD-uri U.2 / NVMe',
       categorySlug: 'power-accessories',
       goalType: 'nas',
-      descriptionRo: 'Arhitectură de stocare de înaltă integritate bazată pe ZFS, cu protecție automată la degradarea siliciului (bit rot) și snapshot-uri atomice la nivel de nanosecundă.'
+      descriptionRo: 'Arhitectură de stocare de înaltă integritate bazată pe ZFS, cu protecție automată la degradarea siliciului (bit rot) și snapshot-uri atomice la nivel de nanosecundă.',
+      descriptionEn: 'High-integrity ZFS enterprise storage architecture providing automatic bit rot scrubbing, copy-on-write integrity validation, and sub-nanosecond atomic snapshots.'
     },
     security: {
       id: 'security',
       name: 'Security SDR / RF',
       titleRo: 'Laborator de Securitate Radio & Audit Hardware',
+      titleEn: 'Radio Security Research Lab & Hardware Auditing Rig',
       category: 'Cybersecurity Research',
+      categoryEn: 'Cybersecurity Research',
       protocol: 'Sub-1GHz • 2.4/5GHz • JTAG / SWD Debug',
       hardwareExample: 'HackRF One SDR + Flipper Zero + WiFi Marauder ESP32',
       categorySlug: 'cybersecurity-research',
       goalType: 'cybersecurity',
-      descriptionRo: 'Unelte complete de cercetare hardware, analiză de spectru radiofrecvență și interfețe hardware de debug pentru auditarea dispozitivelor IoT și a protocolului Coreboot.'
+      descriptionRo: 'Unelte complete de cercetare hardware, analiză de spectru radiofrecvență și interfețe hardware de debug pentru auditarea dispozitivelor IoT și a protocolului Coreboot.',
+      descriptionEn: 'End-to-end hardware hacking workstation, software-defined RF spectrum analysis, and dedicated JTAG/SWD debugging bus for low-level firmware auditing and reverse engineering.'
     },
     sensor_temp: {
       id: 'sensor_temp',
       name: 'Environmental Sensor',
       titleRo: 'Senzori Ambientali & Telemetrie Industrială',
+      titleEn: 'Environmental Telemetry & Industrial Sensors',
       category: 'Sensors & IoT',
+      categoryEn: 'Sensors & IoT',
       protocol: 'I2C / SPI • 3.3V • Ultra-Low Power',
       hardwareExample: 'Senzor Bosch BME280 (Temp, Umiditate, Presiune)',
       categorySlug: 'sensors-iot',
       goalType: 'iot',
-      descriptionRo: 'Captează parametrii de mediu în timp real și îi transmite către nodul gateway prin magistrale cu consum ultra-redus.'
+      descriptionRo: 'Captează parametrii de mediu în timp real și îi transmite către nodul gateway prin magistrale cu consum ultra-redus.',
+      descriptionEn: 'Captures precision ambient metrics in real time (temperature, humidity, atmospheric pressure) and streams telemetry packets across ultra-low-power I2C/SPI buses.'
     },
     sensor_lora: {
       id: 'sensor_lora',
       name: 'LoRaWAN Gateway',
       titleRo: 'Gateway & Noduri LoRaWAN 868MHz Long Range',
+      titleEn: 'Long-Range 868MHz EU LoRaWAN Gateway & Sensor Nodes',
       category: 'Sensors & IoT',
+      categoryEn: 'Sensors & IoT',
       protocol: 'LoRaWAN Class A/C • 868 MHz EU • Raza 10km+',
       hardwareExample: 'RAK Wireless Concentrator LoRaWAN + Antenă 5.8dBi',
       categorySlug: 'sensors-iot',
       goalType: 'iot',
-      descriptionRo: 'Acoperire pe rază de kilometri fără costuri de cartelă SIM, ideal pentru monitorizare extinsă smart city, depozite și sere automatizate.'
+      descriptionRo: 'Acoperire pe rază de kilometri fără costuri de cartelă SIM, ideal pentru monitorizare extinsă smart city, depozite și sere automatizate.',
+      descriptionEn: 'Multi-kilometer wireless coverage without recurring SIM carrier subscriptions, purpose-built for smart agriculture, perimeter automation, and campus-wide telemetry.'
     },
     actuator: {
       id: 'actuator',
       name: 'Smart Home Actuator',
       titleRo: 'Relee & Actuatoare Industriale Zigbee / Matter',
+      titleEn: 'Industrial Zigbee / Matter Actuators & High-Power Relays',
       category: 'Sensors & IoT',
+      categoryEn: 'Sensors & IoT',
       protocol: 'Matter / Thread / Zigbee 3.0 • Relee 16A Optoizolate',
       hardwareExample: 'Modul Releu Dublu Kincony ESP32 DIN-Rail',
       categorySlug: 'sensors-iot',
       goalType: 'iot',
-      descriptionRo: 'Control fizic direct de comutație electrică pentru automatizări rezidențiale și industriale, integrat direct în Home Assistant.'
+      descriptionRo: 'Control fizic direct de comutație electrică pentru automatizări rezidențiale și industriale, integrat direct în Home Assistant.',
+      descriptionEn: 'Direct galvanically isolated electric switching for home and industrial automation systems, with native zero-latency Home Assistant integration.'
     },
     sensor_esp: {
       id: 'sensor_esp',
       name: 'Microcontroller SBC',
       titleRo: 'Microcontrolere & Plăci de Dezvoltare ESP32-S3',
+      titleEn: 'ESP32-S3 Microcontroller & Edge SBC Development Units',
       category: 'SBC & Microcontrollers',
+      categoryEn: 'SBC & Microcontrollers',
       protocol: 'Dual Core Xtensa 240MHz • WiFi 4 + BLE 5.0 Mesh',
       hardwareExample: 'ESP32-S3 DevKitC-1 N16R8 + Camera OV2640',
       categorySlug: 'sbc-microcontrollers',
       goalType: 'iot',
-      descriptionRo: 'Platforma ideală pentru rularea firmware-ului personalizat ESPHome sau Tasmota cu criptare hardware accelerată.'
+      descriptionRo: 'Platforma ideală pentru rularea firmware-ului personalizat ESPHome sau Tasmota cu criptare hardware accelerată.',
+      descriptionEn: 'High-performance dual-core microcontrollers designed for custom ESPHome/Tasmota firmware stacks with hardware-accelerated cryptographic engines.'
     },
     cloud: {
       id: 'cloud',
       name: 'Cloud & Hybrid Uplink',
       titleRo: 'Uplink Cloud & Tunnel Securizat WireGuard',
+      titleEn: 'Offsite Cloud Uplink & Encrypted WireGuard Overlay',
       category: 'Networking & Infrastructure',
+      categoryEn: 'Networking & Infrastructure',
       protocol: 'WireGuard Kernel Module • Zero-Trust Overlay',
       hardwareExample: 'VPS Offsite WireGuard Endpoint + DDNS',
       categorySlug: 'homelab-networking',
       goalType: 'router_firewall',
-      descriptionRo: 'Conectivitate criptată de la distanță către homelab fără a deschide porturi nesigure în routerul furnizorului de internet (ISP).'
+      descriptionRo: 'Conectivitate criptată de la distanță către homelab fără a deschide porturi nesigure în routerul furnizorului de internet (ISP).',
+      descriptionEn: 'Secure kernel-level WireGuard cryptographic overlay connecting remote endpoints to the homelab without exposing vulnerable open ports to the public Internet.'
     },
     console: {
       id: 'console',
       name: 'Operations & Observability',
       titleRo: 'Consolă Centrală de Telemetrie & Observabilitate',
+      titleEn: 'Central Observability Console & Telemetry Workstation',
       category: 'Management & Monitorizare',
+      categoryEn: 'Management & Monitoring',
       protocol: 'Prometheus • Grafana • WebRTC • Syslog',
       hardwareExample: 'Workstation Monitor 4K + Dashboards Mobile',
       categorySlug: 'enterprise-hardware',
       goalType: 'homelab',
-      descriptionRo: 'Monitorizare unificată în timp real a întregii stive: încărcare procesor, temperaturi senzori, flux de pachete în rețea și starea raidului ZFS.'
+      descriptionRo: 'Monitorizare unificată în timp real a întregii stive: încărcare procesor, temperaturi senzori, flux de pachete în rețea și starea raidului ZFS.',
+      descriptionEn: 'Unified full-stack observability command center aggregating Prometheus metrics, Grafana dashboards, system logs, and live ZFS pool health telemetry.'
     }
   };
 
@@ -537,6 +575,11 @@ export class UiTopologyDiagramComponent {
     return this.nodesData[id] || this.nodesData['compute'];
   });
 
+  setPath(path: TopologyPath): void {
+    this.selectedPath.set(path);
+    this.audioService.playSwitch();
+  }
+
   isPathActive(category: string): boolean {
     const path = this.selectedPath();
     if (path === 'all') return true;
@@ -544,10 +587,15 @@ export class UiTopologyDiagramComponent {
   }
 
   selectNode(id: string): void {
-    this.activeNodeId.set(id);
+    if (this.activeNodeId() !== id) {
+      this.activeNodeId.set(id);
+      this.audioService.playClick();
+    }
   }
 
   hoverNode(id: string): void {
-    this.activeNodeId.set(id);
+    if (this.activeNodeId() !== id) {
+      this.activeNodeId.set(id);
+    }
   }
 }

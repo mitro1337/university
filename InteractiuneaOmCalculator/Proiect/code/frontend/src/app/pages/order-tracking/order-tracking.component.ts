@@ -110,7 +110,7 @@ import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
               @for (item of ord.items; track item.id || item.product_id) {
                 <div class="py-2.5 flex items-center justify-between gap-4 text-xs">
                   <div class="truncate text-text-primary font-medium">
-                    {{ item.product_name }}
+                    {{ i18n.getProductNameBySku(item.sku) || item.product_name }}
                   </div>
                   <div class="text-text-muted flex-shrink-0 tabular-nums">
                     {{ item.quantity }} {{ i18n.isRo() ? 'buc' : 'pcs' }} • {{ item.subtotal_ron.toFixed(2) }} {{ i18n.currencyLabel() }}

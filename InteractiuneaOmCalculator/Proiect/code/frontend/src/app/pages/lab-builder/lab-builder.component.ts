@@ -12,6 +12,7 @@ import { Product } from '../../models/product.model';
 import { UiBadgeComponent } from '../../components/ui/ui-badge.component';
 import { UiCompatibilityEngineComponent } from '../../components/ui/ui-compatibility-engine.component';
 import { LenisService } from '../../services/lenis.service';
+import { AudioFeedbackService } from '../../services/audio-feedback.service';
 
 @Component({
   selector: 'app-lab-builder',
@@ -228,15 +229,15 @@ import { LenisService } from '../../services/lenis.service';
                   @for (prod of bundleProducts(); track prod.id) {
                     <div class="py-3 flex items-center justify-between gap-4 first:pt-0 last:pb-0">
                       <div class="flex items-center gap-3 min-w-0">
-                        <img [src]="prod.image_url" [alt]="prod.name" class="w-12 h-12 object-contain rounded bg-canvas-subtle border border-border p-1 flex-shrink-0">
+                        <img [src]="prod.image_url" [alt]="i18n.getProductName(prod)" class="w-12 h-12 object-contain rounded bg-canvas-subtle border border-border p-1 flex-shrink-0">
                         <div class="min-w-0">
                           <a [routerLink]="['/produs', prod.slug]" class="font-heading text-xs font-semibold text-text-primary hover:text-primary truncate block">
-                            {{ prod.name }}
+                            {{ i18n.getProductName(prod) }}
                           </a>
                           <div class="flex items-center gap-2 text-[11px] text-text-muted mt-0.5">
                             <span>{{ prod.sku }}</span>
                             <span>•</span>
-                            <span class="text-text-primary font-medium">{{ prod.subcategory }}</span>
+                            <span class="text-text-primary font-medium">{{ i18n.getSubcategoryName(prod.subcategory) }}</span>
                           </div>
                         </div>
                       </div>
@@ -260,7 +261,7 @@ import { LenisService } from '../../services/lenis.service';
             <div class="bg-surface rounded-xl border border-border p-5 shadow-xs sticky top-20 transition-colors space-y-4">
               <div class="flex items-center justify-between pb-3 border-b border-border">
                 <h4 class="font-heading text-xs font-semibold text-text-primary">
-                  Compatibility Matrix
+                  {{ i18n.isRo() ? 'Matrice de Compatibilitate' : 'Compatibility Matrix' }}
                 </h4>
                 <span class="text-xs text-primary font-medium">{{ selectedGoal().id }}</span>
               </div>
@@ -318,21 +319,49 @@ import { LenisService } from '../../services/lenis.service';
                 </p>
               </div>
 
-              <div class="flex items-center gap-1.5 text-xs">
-                <span class="text-text-muted">{{ i18n.isRo() ? 'Format:' : 'Size:' }}</span>
-                @for (size of [6, 9, 12, 18, 24]; track size) {
+              <div class="flex flex-wrap items-center gap-3">
+                <!-- Front / Rear View Switch -->
+                <div class="inline-flex p-0.5 rounded-lg bg-surface border border-border text-xs">
                   <button 
                     type="button" 
-                    (click)="rackService.setRackSize(size)"
-                    [class.bg-surface-elevated]="rackService.totalUnits() === size"
-                    [class.border-accent]="rackService.totalUnits() === size"
-                    [class.text-text-primary]="rackService.totalUnits() === size"
-                    [class.border-border]="rackService.totalUnits() !== size"
-                    [class.text-text-muted]="rackService.totalUnits() !== size"
-                    class="px-2.5 py-1 rounded border font-semibold text-xs transition-colors">
-                    {{ size }}U
+                    (click)="rackViewMode.set('front'); audioService.playSwitch()"
+                    [class.bg-surface-elevated]="rackViewMode() === 'front'"
+                    [class.text-text-primary]="rackViewMode() === 'front'"
+                    [class.border]="rackViewMode() === 'front'"
+                    [class.border-border]="rackViewMode() === 'front'"
+                    [class.text-text-muted]="rackViewMode() !== 'front'"
+                    class="px-2.5 py-1 rounded transition-colors font-semibold text-[11px] flex items-center gap-1">
+                    <span>{{ i18n.isRo() ? 'VEDERE FRONTALĂ' : 'FRONT VIEW' }}</span>
                   </button>
-                }
+                  <button 
+                    type="button" 
+                    (click)="rackViewMode.set('rear'); audioService.playSwitch()"
+                    [class.bg-surface-elevated]="rackViewMode() === 'rear'"
+                    [class.text-text-primary]="rackViewMode() === 'rear'"
+                    [class.border]="rackViewMode() === 'rear'"
+                    [class.border-border]="rackViewMode() === 'rear'"
+                    [class.text-text-muted]="rackViewMode() !== 'rear'"
+                    class="px-2.5 py-1 rounded transition-colors font-semibold text-[11px] flex items-center gap-1">
+                    <span>{{ i18n.isRo() ? 'VEDERE DORSALĂ (I/O)' : 'REAR VIEW (I/O)' }}</span>
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-1.5 text-xs">
+                  <span class="text-text-muted">{{ i18n.isRo() ? 'Format:' : 'Size:' }}</span>
+                  @for (size of [6, 9, 12, 18, 24]; track size) {
+                    <button 
+                      type="button" 
+                      (click)="rackService.setRackSize(size); audioService.playClick()"
+                      [class.bg-surface-elevated]="rackService.totalUnits() === size"
+                      [class.border-accent]="rackService.totalUnits() === size"
+                      [class.text-text-primary]="rackService.totalUnits() === size"
+                      [class.border-border]="rackService.totalUnits() !== size"
+                      [class.text-text-muted]="rackService.totalUnits() !== size"
+                      class="px-2.5 py-1 rounded border font-semibold text-xs transition-colors">
+                      {{ size }}U
+                    </button>
+                  }
+                </div>
               </div>
             </div>
 
@@ -349,23 +378,54 @@ import { LenisService } from '../../services/lenis.service';
                     <span class="w-7 text-right text-[10px] text-text-muted font-bold tabular-nums">U{{ unitNum }}</span>
                     
                     @if (slot) {
-                      <div 
-                        [style.border-left-color]="slot.colorHex"
-                        class="flex-1 h-10 bg-surface border border-border border-l-4 rounded px-3 flex items-center justify-between text-xs text-text-primary shadow-xs">
-                        <div class="flex items-center gap-2 min-w-0">
-                          <span class="w-2 h-2 rounded-full" [style.background-color]="slot.colorHex"></span>
-                          <span class="font-bold truncate text-[11px]">{{ slot.name }}</span>
-                          <span class="text-[9px] px-1.5 py-0.5 rounded bg-surface-elevated text-text-muted tabular-nums">{{ slot.powerWatts }}W</span>
+                      @if (rackViewMode() === 'front') {
+                        <div 
+                          [style.border-left-color]="slot.colorHex"
+                          class="flex-1 h-10 bg-surface border border-border border-l-4 rounded px-3 flex items-center justify-between text-xs text-text-primary shadow-xs">
+                          <div class="flex items-center gap-2 min-w-0">
+                            <span class="w-2 h-2 rounded-full" [style.background-color]="slot.colorHex"></span>
+                            <span class="font-bold truncate text-[11px]">{{ i18n.isRo() ? slot.name : (slot.nameEn || slot.name) }}</span>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-surface-elevated text-text-muted tabular-nums">{{ slot.powerWatts }}W</span>
+                          </div>
+                          <button 
+                            type="button" 
+                            (click)="rackService.removeItem(idx); audioService.playClick()"
+                            class="w-5 h-5 rounded flex items-center justify-center text-text-muted hover:text-rose-400 hover:bg-surface-elevated transition-colors"
+                            [title]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'"
+                            [attr.aria-label]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                          </button>
                         </div>
-                        <button 
-                          type="button" 
-                          (click)="rackService.removeItem(idx)"
-                          class="w-5 h-5 rounded flex items-center justify-center text-text-muted hover:text-rose-400 hover:bg-surface-elevated transition-colors"
-                          [title]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'"
-                          [attr.aria-label]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'">
-                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                        </button>
-                      </div>
+                      } @else {
+                        <div 
+                          [style.border-right-color]="slot.colorHex"
+                          class="flex-1 h-10 bg-surface-elevated border border-border border-r-4 rounded px-3 flex items-center justify-between text-xs text-text-primary shadow-xs">
+                          <div class="flex items-center gap-2.5 min-w-0">
+                            <div class="px-1.5 py-0.5 rounded bg-black/50 border border-border text-[9px] text-amber-400 font-bold tracking-tight flex items-center gap-1">
+                              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                              <span>PSU 1 [AC IN]</span>
+                            </div>
+                            <div class="flex items-center gap-0.5 text-text-muted">
+                              <div class="w-1 h-3 rounded-full bg-border"></div>
+                              <div class="w-1 h-3 rounded-full bg-border"></div>
+                              <div class="w-1 h-3 rounded-full bg-border"></div>
+                              <span class="text-[9px] ml-1 text-text-muted font-sans">FAN EXHAUST</span>
+                            </div>
+                            <span class="font-bold truncate text-[11px] text-text-secondary hidden sm:inline">{{ i18n.isRo() ? slot.name : (slot.nameEn || slot.name) }}</span>
+                          </div>
+                          <div class="flex items-center gap-2">
+                            <span class="text-[9px] px-1 rounded bg-black/30 text-text-muted">GND M5</span>
+                            <button 
+                              type="button" 
+                              (click)="rackService.removeItem(idx); audioService.playClick()"
+                              class="w-5 h-5 rounded flex items-center justify-center text-text-muted hover:text-rose-400 hover:bg-surface transition-colors"
+                              [title]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'"
+                              [attr.aria-label]="i18n.isRo() ? 'Elimină din rack' : 'Remove from rack'">
+                              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            </button>
+                          </div>
+                        </div>
+                      }
                     } @else {
                       <div 
                         (click)="openSlotSelector(idx)"
@@ -377,16 +437,27 @@ import { LenisService } from '../../services/lenis.service';
                 }
               </div>
 
-              <div class="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs font-medium">
+              <div class="mt-4 pt-3 border-t border-border flex flex-wrap items-center justify-between gap-2 text-xs font-medium">
+                <div class="flex items-center gap-3">
+                  <button 
+                    type="button" 
+                    (click)="rackService.loadSampleHomelabRack(); audioService.playMount()"
+                    class="text-[11px] text-primary hover:underline">
+                    {{ i18n.isRo() ? 'Încarcă Configurație Homelab 12U' : 'Load 12U Homelab Preset' }}
+                  </button>
+                  <button 
+                    type="button" 
+                    (click)="exportRackBOM()"
+                    class="text-[11px] text-accent hover:underline flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span>{{ i18n.isRo() ? 'Exportă Specificația (BOM CSV)' : 'Export Spec Sheet (BOM CSV)' }}</span>
+                  </button>
+                </div>
                 <button 
                   type="button" 
-                  (click)="rackService.loadSampleHomelabRack()"
-                  class="text-[11px] text-primary hover:underline">
-                  {{ i18n.isRo() ? 'Încarcă Configurație Homelab 12U' : 'Load 12U Homelab Preset' }}
-                </button>
-                <button 
-                  type="button" 
-                  (click)="rackService.clearRack()"
+                  (click)="rackService.clearRack(); audioService.playClick()"
                   class="text-[11px] text-rose-400 hover:underline">
                   {{ i18n.isRo() ? 'Golește Rack' : 'Clear Rack' }}
                 </button>
@@ -433,7 +504,7 @@ import { LenisService } from '../../services/lenis.service';
                 @for (item of availableRackItems; track item.id) {
                   <div class="p-2.5 rounded border border-border hover:border-border-focus flex items-center justify-between gap-2 text-xs">
                     <div class="min-w-0">
-                      <div class="font-bold text-text-primary truncate text-[11px]">{{ item.name }}</div>
+                      <div class="font-bold text-text-primary truncate text-[11px]">{{ i18n.isRo() ? item.name : (item.nameEn || item.name) }}</div>
                       <div class="text-[10px] text-text-muted tabular-nums">{{ item.uSize }}U • {{ item.powerWatts }}W • {{ item.weightKg }}kg</div>
                     </div>
                     <button 
@@ -520,7 +591,7 @@ import { LenisService } from '../../services/lenis.service';
                   <div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border flex items-center justify-center text-text-primary">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
                   </div>
-                  <div class="text-xs font-bold text-text-primary font-heading">TrueNAS ZFS Storage</div>
+                  <div class="text-xs font-bold text-text-primary font-heading">{{ i18n.isRo() ? 'Stocare ZFS TrueNAS' : 'TrueNAS ZFS Storage' }}</div>
                   <div class="text-[10px] text-text-muted">10GbE SFP+ iSCSI & NFS</div>
                   <div class="text-[9px] text-accent font-bold">ZFS Pool NVMe Cache</div>
                 </div>
@@ -529,7 +600,7 @@ import { LenisService } from '../../services/lenis.service';
                   <div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border flex items-center justify-center text-text-primary">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                   </div>
-                  <div class="text-xs font-bold text-text-primary font-heading">Hardware Network TAP</div>
+                  <div class="text-xs font-bold text-text-primary font-heading">{{ i18n.isRo() ? 'Dispozitiv Hardware TAP Rețea' : 'Hardware Network TAP' }}</div>
                   <div class="text-[10px] text-text-muted">{{ i18n.isRo() ? 'Inspecție pasivă pcap' : 'Passive pcap analysis' }}</div>
                   <div class="text-[9px] text-rose-400 font-bold">Suricata IDS / Zeek</div>
                 </div>
@@ -554,12 +625,15 @@ export class LabBuilderComponent implements OnInit {
   rackService = inject(RackBuilderService);
   i18n = inject(TranslationService);
   lenisService = inject(LenisService);
+  audioService = inject(AudioFeedbackService);
   route = inject(ActivatedRoute);
 
   activeMainTab = signal<'builder' | 'rack' | 'topology'>('builder');
+  rackViewMode = signal<'front' | 'rear'>('front');
 
   setMainTab(tab: 'builder' | 'rack' | 'topology') {
     this.activeMainTab.set(tab);
+    this.audioService.playSwitch();
     setTimeout(() => {
       this.lenisService.resize();
       this.lenisService.observeRevealElements();
@@ -606,6 +680,7 @@ export class LabBuilderComponent implements OnInit {
   });
 
   addAllBundleToCart(): void {
+    this.audioService.playClick();
     const prods = this.bundleProducts();
     prods.forEach(p => {
       this.cartService.addToCart(p, 1);
@@ -614,6 +689,7 @@ export class LabBuilderComponent implements OnInit {
   }
 
   onAddFixToBundle(sku: string): void {
+    this.audioService.playClick();
     const match = this.allCatalogProducts().find(p => p.sku.toLowerCase() === sku.toLowerCase());
     if (match) {
       this.cartService.addToCart(match, 1);
@@ -621,11 +697,13 @@ export class LabBuilderComponent implements OnInit {
   }
 
   openSlotSelector(slotIndex: number): void {
+    this.audioService.playMount();
     const item = this.availableRackItems[slotIndex % this.availableRackItems.length];
     this.rackService.placeItem(slotIndex, item);
   }
 
   autoMountItem(item: RackUnitItem): void {
+    this.audioService.playMount();
     const slots = this.rackService.slots();
     for (let i = 0; i <= slots.length - item.uSize; i++) {
       let canPlace = true;
@@ -640,5 +718,35 @@ export class LabBuilderComponent implements OnInit {
         return;
       }
     }
+  }
+
+  exportRackBOM(): void {
+    this.audioService.playClick();
+    const slots = this.rackService.slots();
+    const isRo = this.i18n.isRo();
+    const headers = isRo 
+      ? ['Pozitie Rack (U)', 'Denumire Echipament', 'Format', 'Categorie', 'Consum (W)', 'Greutate (kg)']
+      : ['Rack Position (U)', 'Equipment Name', 'Form Factor', 'Category', 'Power Draw (W)', 'Weight (kg)'];
+
+    const rows: string[] = [headers.join(',')];
+    const totalUnits = this.rackService.totalUnits();
+
+    slots.forEach((item, idx) => {
+      const unitNum = totalUnits - idx;
+      if (item) {
+        const name = isRo ? item.name : (item.nameEn || item.name);
+        rows.push(`"U${unitNum}","${name.replace(/"/g, '""')}","${item.uSize}U","${item.category}","${item.powerWatts}","${item.weightKg}"`);
+      } else {
+        rows.push(`"U${unitNum}","${isRo ? 'Slot Liber' : 'Empty Slot'}","1U","empty","0","0"`);
+      }
+    });
+
+    const csvContent = 'data:text/csv;charset=utf-8,' + encodeURIComponent(rows.join('\n'));
+    const link = document.createElement('a');
+    link.setAttribute('href', csvContent);
+    link.setAttribute('download', `VEXERA-Rack-BOM-${totalUnits}U.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable, signal, computed } from '@angular/core';
+import { PRODUCT_TRANSLATIONS, PRODUCT_SKU_TO_SLUG } from './product-translations';
 
 export type Language = 'ro' | 'en';
 
@@ -694,5 +695,135 @@ export class TranslationService {
       return item[this.currentLanguage()];
     }
     return fallback || '';
+  }
+
+  public getSubcategoryName(subcategory?: string): string {
+    if (!subcategory) return '';
+    const clean = subcategory.replace(/\\"/g, '"').trim();
+    const map: Record<string, { ro: string; en: string }> = {
+      'Acceleratoare AI & Compute': { ro: 'Acceleratoare AI & Compute', en: 'AI & Compute Accelerators' },
+      'Acceleratoare Grafice & AI': { ro: 'Acceleratoare Grafice & AI', en: 'Graphics & AI Accelerators' },
+      'Accesorii Rack 19"': { ro: 'Accesorii Rack 19"', en: '19" Rack Accessories' },
+      'Accesorii Rack 19\\"': { ro: 'Accesorii Rack 19"', en: '19" Rack Accessories' },
+      'AgriTech & Environmental IoT': { ro: 'AgriTech & Environmental IoT', en: 'AgriTech & Environmental IoT' },
+      'Alimentare & PDU': { ro: 'Alimentare & PDU', en: 'Power Delivery & PDUs' },
+      'Alimentare & PDU Rack': { ro: 'Alimentare & PDU Rack', en: 'Rack Power & PDUs' },
+      'Apple Hardware Linux': { ro: 'Apple Hardware Linux', en: 'Apple Hardware Linux' },
+      'Apple Linux (A10)': { ro: 'Apple Linux (A10)', en: 'Apple Linux (A10 SoC)' },
+      'Apple Linux (A10X)': { ro: 'Apple Linux (A10X)', en: 'Apple Linux (A10X SoC)' },
+      'Cabinete Rack & Accesorii': { ro: 'Cabinete Rack & Accesorii', en: 'Rack Enclosures & Mounts' },
+      'Compute Accelerators': { ro: 'Compute Accelerators', en: 'Compute Accelerators' },
+      'Comunicație Industrială & CAN': { ro: 'Comunicație Industrială & CAN', en: 'Industrial Comms & CAN Bus' },
+      'Echipamente PoE': { ro: 'Echipamente PoE', en: 'PoE Equipment' },
+      'Echipamente Rețea Wireless': { ro: 'Echipamente Rețea Wireless', en: 'Wireless Network Gear' },
+      'FPGA & Reconfigurable': { ro: 'FPGA & Reconfigurable', en: 'FPGA & Reconfigurable Logic' },
+      'Gateway-uri Smart Home & Coordonatoare': { ro: 'Gateway-uri Smart Home & Coordonatoare', en: 'Smart Home Hubs & Coordinators' },
+      'GrapheneOS & Hardened Mobile Security': { ro: 'GrapheneOS & Hardened Mobile Security', en: 'GrapheneOS & Hardened Mobile' },
+      'Hardware Hacking & Embedded': { ro: 'Hardware Hacking & Embedded', en: 'Hardware Hacking & Embedded' },
+      'Hardware RISC-V': { ro: 'Hardware RISC-V', en: 'RISC-V Hardware' },
+      'Hardware Research & Modding': { ro: 'Hardware Research & Modding', en: 'Hardware Research & Modding' },
+      'Industrial IoT & Modbus': { ro: 'Industrial IoT & Modbus', en: 'Industrial IoT & Modbus' },
+      'Laptopturi Coreboot & Open Firmware': { ro: 'Laptopuri Coreboot & Open Firmware', en: 'Coreboot & Open Firmware Laptops' },
+      'Management Datacenter': { ro: 'Management Datacenter', en: 'Datacenter Management' },
+      'Memorie RAM Homelab': { ro: 'Memorie RAM Homelab', en: 'Homelab RAM Memory' },
+      'Microcontrolere ARM / RISC-V': { ro: 'Microcontrolere ARM / RISC-V', en: 'ARM / RISC-V Microcontrollers' },
+      'Microcontrolere Wi-Fi & BT': { ro: 'Microcontrolere Wi-Fi & BT', en: 'Wi-Fi & Bluetooth MCUs' },
+      'Microcontrolere Zigbee & Matter': { ro: 'Microcontrolere Zigbee & Matter', en: 'Zigbee & Matter MCUs' },
+      'Mini PC & Thin Clients': { ro: 'Mini PC & Thin Clients', en: 'Mini PCs & Thin Clients' },
+      'Module Relee & Putere': { ro: 'Module Relee & Putere', en: 'Relay & Power Modules' },
+      'Network Security & Hak5': { ro: 'Network Security & Hak5', en: 'Network Security & Hak5' },
+      'Network Security & Pentest': { ro: 'Network Security & Pentest', en: 'Network Security & Pentest' },
+      'OS Dev & Reverse Engineering': { ro: 'OS Dev & Reverse Engineering', en: 'OS Dev & Reverse Engineering' },
+      'OS Development & Embedded': { ro: 'OS Development & Embedded', en: 'OS Development & Embedded' },
+      'Plăci Arduino & ARM Cortex': { ro: 'Plăci Arduino & ARM Cortex', en: 'Arduino & ARM Cortex Boards' },
+      'Plăci Edge AI': { ro: 'Plăci Edge AI', en: 'Edge AI Development Boards' },
+      'Plăci de Rețea 10G & 25G': { ro: 'Plăci de Rețea 10G & 25G', en: '10G & 25G Network Cards' },
+      'Prototipare & Cabluri Rețea': { ro: 'Prototipare & Cabluri Rețea', en: 'Prototyping & Network Cables' },
+      'RFID / NFC Research': { ro: 'RFID / NFC Research', en: 'RFID / NFC Research' },
+      'Relee Inteligente & Smart Home': { ro: 'Relee Inteligente & Smart Home', en: 'Smart Relays & Home Automation' },
+      'Reverse Engineering': { ro: 'Reverse Engineering', en: 'Reverse Engineering Tools' },
+      'Rețelistică Datacenter': { ro: 'Rețelistică Datacenter', en: 'Datacenter Networking' },
+      'Routere & Gateway-uri Homelab': { ro: 'Routere & Gateway-uri Homelab', en: 'Homelab Routers & Gateways' },
+      'Răcire Activă & Ventilatoare Industriale': { ro: 'Răcire Activă & Ventilatoare Industriale', en: 'Active Cooling & Industrial Fans' },
+      'SBC ARM': { ro: 'SBC ARM', en: 'ARM Single-Board Computers' },
+      'SBC ARM & Networking': { ro: 'SBC ARM & Networking', en: 'ARM SBCs & Networking' },
+      'SBC Speciale': { ro: 'SBC Speciale', en: 'Specialty SBCs' },
+      'Senzori Ambientali & Calitate Aer': { ro: 'Senzori Ambientali & Calitate Aer', en: 'Environmental & Air Quality Sensors' },
+      'Senzori Industriali & Temperatură': { ro: 'Senzori Industriali & Temperatură', en: 'Industrial & Temperature Sensors' },
+      'Senzori Prezență & Mișcare': { ro: 'Senzori Prezență & Mișcare', en: 'Presence & Motion Sensors' },
+      'Senzori Putere & Energie': { ro: 'Senzori Putere & Energie', en: 'Power & Energy Meters' },
+      'Servere & Mini PC': { ro: 'Servere & Mini PC', en: 'Servers & Mini PCs' },
+      'Servere Datacenter': { ro: 'Servere Datacenter', en: 'Datacenter Servers' },
+      'Servere Rackmount': { ro: 'Servere Rackmount', en: 'Rackmount Servers' },
+      'Smart City & Energie': { ro: 'Smart City & Energie', en: 'Smart City & Energy' },
+      'Smart City & LoRaWAN': { ro: 'Smart City & LoRaWAN', en: 'Smart City & LoRaWAN' },
+      'Smart City & Logistică': { ro: 'Smart City & Logistică', en: 'Smart City & Logistics' },
+      'Smart City & Mediu': { ro: 'Smart City & Mediu', en: 'Smart City & Environment' },
+      'Smart City & Trafic': { ro: 'Smart City & Trafic', en: 'Smart City & Traffic' },
+      'Smart City & Utilități': { ro: 'Smart City & Utilități', en: 'Smart City & Utilities' },
+      'Smart Home & Building Automation': { ro: 'Smart Home & Building Automation', en: 'Smart Home & Building Automation' },
+      'Smart Home & Senzori Prezență': { ro: 'Smart Home & Senzori Prezență', en: 'Smart Home & Presence Sensors' },
+      'Smart Home & Tablouri Electrice': { ro: 'Smart Home & Tablouri Electrice', en: 'Smart Home & Electrical Panels' },
+      'Smart Home Climatizare': { ro: 'Smart Home Climatizare', en: 'Smart Home Climate Control' },
+      'Smart Home Hubs': { ro: 'Smart Home Hubs', en: 'Smart Home Hubs' },
+      'Smart Home Siguranță': { ro: 'Smart Home Siguranță', en: 'Smart Home Safety & Security' },
+      'Software Defined Radio': { ro: 'Software Defined Radio', en: 'Software Defined Radio (SDR)' },
+      'Software Defined Radio & LoRa': { ro: 'Software Defined Radio & LoRa', en: 'Software Defined Radio & LoRa' },
+      'Software Defined Radio (SDR)': { ro: 'Software Defined Radio (SDR)', en: 'Software Defined Radio (SDR)' },
+      'Storage & HDD Homelab': { ro: 'Storage & HDD Homelab', en: 'Homelab Storage & HDDs' },
+      'Storage Enterprise': { ro: 'Storage Enterprise', en: 'Enterprise Storage' },
+      'Surse Industriale & Șină DIN': { ro: 'Surse Industriale & Șină DIN', en: 'Industrial & DIN Rail Power Supplies' },
+      'Surse USB-PD & Laborator': { ro: 'Surse USB-PD & Laborator', en: 'USB-PD & Benchtop Power Supplies' },
+      'Switch-uri cu Management': { ro: 'Switch-uri cu Management', en: 'Managed Switches' },
+      'Telemetrie Laser & ToF': { ro: 'Telemetrie Laser & ToF', en: 'Laser Telemetry & ToF' },
+      'Transceivere & Cabluri DAC/Optice': { ro: 'Transceivere & Cabluri DAC/Optice', en: 'Transceivers & Optical/DAC Cables' },
+      'USB Security & Hotplug': { ro: 'USB Security & Hotplug', en: 'USB Security & Hotplug Tools' },
+      'Unelte Flashing & Reverse Engineering': { ro: 'Unelte Flashing & Reverse Engineering', en: 'Flashing & Reverse Engineering Tools' },
+      'Unități UPS & Alimentare Rack': { ro: 'Unități UPS & Alimentare Rack', en: 'Rackmount UPS & Power Units' },
+      'Wireless & RF Pentesting': { ro: 'Wireless & RF Pentesting', en: 'Wireless & RF Pentesting' },
+      'Wireless & RF Security': { ro: 'Wireless & RF Security', en: 'Wireless & RF Security' }
+    };
+    const item = map[clean] || map[subcategory];
+    if (item) {
+      return item[this.currentLanguage()];
+    }
+    return subcategory;
+  }
+
+  public getSkillLevelLabel(level?: string): string {
+    if (!level) return '';
+    const map: Record<string, { ro: string; en: string }> = {
+      'Beginner': { ro: 'Începător', en: 'Beginner' },
+      'Intermediate': { ro: 'Intermediar', en: 'Intermediate' },
+      'Advanced': { ro: 'Avansat', en: 'Advanced' },
+      'Expert': { ro: 'Expert', en: 'Expert' }
+    };
+    const item = map[level];
+    if (item) {
+      return item[this.currentLanguage()];
+    }
+    return level;
+  }
+
+  public getProductName(prod?: { name: string; slug?: string } | null): string {
+    if (!prod) return '';
+    if (this.isRo() || !prod.slug) return prod.name;
+    const trans = PRODUCT_TRANSLATIONS[prod.slug];
+    return trans?.nameEn || prod.name;
+  }
+
+  public getProductShortDesc(prod?: { short_desc?: string; full_desc?: string; slug?: string } | null): string {
+    if (!prod) return '';
+    if (this.isRo() || !prod.slug) return prod.short_desc || prod.full_desc || '';
+    const trans = PRODUCT_TRANSLATIONS[prod.slug];
+    return trans?.shortDescEn || prod.short_desc || prod.full_desc || '';
+  }
+
+  public getProductNameBySku(sku?: string): string | undefined {
+    if (!sku) return undefined;
+    if (this.isRo()) return undefined;
+    const slug = PRODUCT_SKU_TO_SLUG[sku];
+    if (!slug) return undefined;
+    return PRODUCT_TRANSLATIONS[slug]?.nameEn;
   }
 }

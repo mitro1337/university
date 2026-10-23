@@ -30,7 +30,7 @@ import { TranslationService } from '../../services/translation.service';
               [style.background-color]="selectedColor().hex"
               [class.animate-pulse]="isStamping()">
             </div>
-            <span class="text-[10px] font-medium text-slate-400">READY</span>
+            <span class="text-[10px] font-medium text-slate-400">{{ i18n.isRo() ? 'GATA' : 'READY' }}</span>
           </div>
         </div>
 

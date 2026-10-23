@@ -258,7 +258,7 @@ import { Category, Product } from '../../models/product.model';
                   [class.bg-surface-sunken]="selectedSkill !== lvl"
                   [class.text-text-secondary]="selectedSkill !== lvl"
                   class="px-2 py-1 rounded border border-border hover:border-border-focus transition-colors text-center font-medium">
-                  {{ lvl }}
+                  {{ i18n.getSkillLevelLabel(lvl) }}
                 </button>
               }
             </div>
@@ -400,7 +400,7 @@ import { Category, Product } from '../../models/product.model';
                         <a [routerLink]="['/produs', prod.slug]" class="product-image-container block relative aspect-square p-3 mb-3 bg-surface-sunken rounded-lg flex items-center justify-center overflow-hidden">
                           <img 
                             [src]="prod.image_url" 
-                            [alt]="prod.name"
+                            [alt]="i18n.getProductName(prod)"
                             data-lenis-parallax="0.035"
                             class="lenis-parallax-image max-w-full max-h-full object-contain">
                           
@@ -412,10 +412,10 @@ import { Category, Product } from '../../models/product.model';
                         </a>
 
                         <div class="flex items-center justify-between gap-2 text-[11px] text-text-secondary mb-1 min-w-0 pr-8">
-                          <span class="font-medium truncate">{{ prod.subcategory }}</span>
+                          <span class="font-medium truncate">{{ i18n.getSubcategoryName(prod.subcategory) }}</span>
                           <button 
                             type="button"
-                            (click)="$event.stopPropagation(); uiFeedback.copyToClipboard(prod.sku, 'Cod SKU')"
+                            (click)="$event.stopPropagation(); uiFeedback.copyToClipboard(prod.sku, i18n.isRo() ? 'Cod SKU' : 'SKU Code')"
                             [title]="i18n.isRo() ? 'Copiază codul SKU' : 'Copy SKU code'"
                             class="cursor-copy-interactive text-[10px] text-text-muted font-medium truncate tabular-nums px-1.5 py-0.5 rounded bg-surface-sunken border border-border inline-flex items-center gap-1 active:scale-95 flex-shrink-0">
                             <span>{{ prod.sku }}</span>
@@ -428,13 +428,13 @@ import { Category, Product } from '../../models/product.model';
 
                         <h3 class="font-heading text-xs sm:text-sm font-semibold text-text-primary group-hover:text-accent transition-colors line-clamp-2 leading-snug min-h-[36px]">
                           <a [routerLink]="['/produs', prod.slug]" class="interactive-text-link">
-                            {{ prod.name }}
+                            {{ i18n.getProductName(prod) }}
                           </a>
                         </h3>
 
                         <div class="mt-2 flex flex-wrap gap-1">
                           <span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-surface-elevated text-text-secondary border border-border">
-                            {{ getSkillLevel(prod) }}
+                            {{ i18n.getSkillLevelLabel(getSkillLevel(prod)) }}
                           </span>
                           @if (prod.technical_specs.operating_voltage; as volt) {
                             <span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-surface-elevated text-text-secondary border border-border">
@@ -536,13 +536,13 @@ import { Category, Product } from '../../models/product.model';
                         <tr class="hover:bg-surface-elevated/40 transition-colors">
                           <td class="p-3">
                             <a [routerLink]="['/produs', prod.slug]" class="product-image-container w-10 h-10 bg-surface-sunken rounded border border-border flex items-center justify-center p-1 block">
-                              <img [src]="prod.image_url" [alt]="prod.name" class="max-w-full max-h-full object-contain">
+                              <img [src]="prod.image_url" [alt]="i18n.getProductName(prod)" class="max-w-full max-h-full object-contain">
                             </a>
                           </td>
                           <td class="p-3">
-                            <div class="text-[10px] text-text-muted">{{ prod.sku }} • {{ prod.subcategory }}</div>
+                            <div class="text-[10px] text-text-muted">{{ prod.sku }} • {{ i18n.getSubcategoryName(prod.subcategory) }}</div>
                             <a [routerLink]="['/produs', prod.slug]" class="font-heading font-semibold text-text-primary hover:text-primary transition-colors">
-                              {{ prod.name }}
+                              {{ i18n.getProductName(prod) }}
                             </a>
                           </td>
                           <td class="p-3">
