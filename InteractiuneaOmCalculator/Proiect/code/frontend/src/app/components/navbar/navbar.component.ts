@@ -10,6 +10,7 @@ import { KeyboardShortcutsService } from '../../services/keyboard-shortcuts.serv
 import { AccessibilityService } from '../../services/accessibility.service';
 import { WishlistService } from '../../services/wishlist.service';
 import { AudioFeedbackService } from '../../services/audio-feedback.service';
+import { CommandPaletteService } from '../../services/command-palette.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
@@ -18,6 +19,33 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
   imports: [RouterLink, FormsModule, TranslatePipe],
   template: `
     <header class="header-nav sticky top-0 z-40 transition-colors">
+      <!-- Hardware Telemetry Top Bar (Teenage Engineering & Ubiquiti Inspired) -->
+      <div class="border-b border-border bg-surface-sunken text-[10px] text-text-muted py-1 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 overflow-x-auto whitespace-nowrap select-none">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 font-bold tracking-wider uppercase text-text-secondary">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>SYSTEM: 99.98% NOMINAL</span>
+          </div>
+          <span class="text-border">|</span>
+          <span class="hidden md:inline text-text-muted">10G SFP+ FIBER BACKBONE</span>
+          <span class="hidden md:inline text-border">|</span>
+          <span class="hidden sm:inline text-text-muted">DEPOT BUFFER: 180 HARDWARE NODES</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button 
+            type="button"
+            (click)="commandPalette.open()" 
+            class="hover:text-text-primary flex items-center gap-1 cursor-pointer transition-colors">
+            <span class="font-semibold uppercase tracking-wider text-[9px]">{{ i18n.isRo() ? 'CĂUTARE RAPIDĂ' : 'QUICK SEARCH' }}</span>
+            <kbd class="px-1 py-0.2 rounded bg-surface border border-border text-[9px] font-bold text-accent">⌘K</kbd>
+          </button>
+          <span class="text-border">|</span>
+          <span class="text-accent font-semibold tracking-wider uppercase text-[9px]">
+            {{ i18n.isRo() ? 'LIVRARE 24H DEPOT ROMÂNIA' : 'SAME-DAY EXPRESS DISPATCH' }}
+          </span>
+        </div>
+      </div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between gap-3 sm:gap-6">
         
         <div class="flex items-center gap-3 sm:gap-5 flex-shrink-0">
@@ -390,6 +418,7 @@ export class NavbarComponent {
   shortcutsService = inject(KeyboardShortcutsService);
   a11yService = inject(AccessibilityService);
   wishlistService = inject(WishlistService);
+  commandPalette = inject(CommandPaletteService);
   router = inject(Router);
 
   searchQuery = '';
