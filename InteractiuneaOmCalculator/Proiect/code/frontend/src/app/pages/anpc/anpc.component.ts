@@ -9,9 +9,9 @@ import { TranslationService } from '../../services/translation.service';
   template: `
     <div class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto transition-colors">
       <nav class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-6">
-        <a routerLink="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Acasă</a>
+        <a routerLink="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">{{ i18n.isRo() ? 'Acasă' : 'Home' }}</a>
         <span>/</span>
-        <span class="text-slate-900 dark:text-white font-medium">Protecția Consumatorilor (ANPC & SOL)</span>
+        <span class="text-slate-900 dark:text-white font-medium">{{ i18n.isRo() ? 'Protecția Consumatorilor (ANPC & SOL)' : 'Consumer Rights (ANPC & ODR)' }}</span>
       </nav>
 
       <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs mb-8 transition-colors">
@@ -177,7 +177,7 @@ import { TranslationService } from '../../services/translation.service';
 
       <div class="mt-10 text-center">
         <a routerLink="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold text-xs sm:text-sm transition-all shadow-sm">
-          <span>← Înapoi la Magazin</span>
+          <span>{{ i18n.isRo() ? '← Înapoi la Magazin' : '← Back to Store' }}</span>
         </a>
       </div>
     </div>

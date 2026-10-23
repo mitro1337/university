@@ -32,6 +32,16 @@ export class AudioFeedbackService {
     }
   }
 
+  public play(sound: 'click' | 'switch' | 'mount' | 'beep' | 'stamp'): void {
+    switch (sound) {
+      case 'click': this.playClick(); break;
+      case 'switch': this.playSwitch(); break;
+      case 'mount': this.playMount(); break;
+      case 'beep': this.playBeep(); break;
+      case 'stamp': this.playStamp(); break;
+    }
+  }
+
   private initContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
     if (!this.audioCtx) {

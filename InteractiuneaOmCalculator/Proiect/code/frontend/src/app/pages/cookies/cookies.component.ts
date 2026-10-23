@@ -9,9 +9,9 @@ import { TranslationService } from '../../services/translation.service';
   template: `
     <div class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto transition-colors">
       <nav class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-6">
-        <a routerLink="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Acasă</a>
+        <a routerLink="/" class="hover:text-slate-900 dark:hover:text-white transition-colors">{{ i18n.isRo() ? 'Acasă' : 'Home' }}</a>
         <span>/</span>
-        <span class="text-slate-900 dark:text-white font-medium">Politica privind Modulele Cookie</span>
+        <span class="text-slate-900 dark:text-white font-medium">{{ i18n.isRo() ? 'Politica privind Modulele Cookie' : 'Cookie Policy' }}</span>
       </nav>
 
       <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xs mb-8 transition-colors">
@@ -106,10 +106,10 @@ import { TranslationService } from '../../services/translation.service';
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs">
         <a routerLink="/" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold transition-all shadow-sm">
-          ← Înapoi la Magazin
+          {{ i18n.isRo() ? '← Înapoi la Magazin' : '← Back to Store' }}
         </a>
         <a routerLink="/confidentialitate" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold transition-all">
-          Politica de Confidențialitate & GDPR →
+          {{ i18n.isRo() ? 'Politica de Confidențialitate & GDPR →' : 'Privacy Policy & GDPR →' }}
         </a>
       </div>
     </div>
